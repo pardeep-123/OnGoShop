@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ManageCategoryActivity">
+    <ImageView
+        android:id="@+id/ivBar"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_70sdp"
+        android:scaleType="fitXY"
+        android:src="@drawable/small_header"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        >
+        <ImageView
+            android:id="@+id/ivBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_alignParentLeft="true"
+            android:src="@drawable/back"/>
+        <TextView
+            style="@style/CommonTextWrapcontent"
+            android:textColor="@color/white"
+            android:text="Manage Categories"
+            android:textSize="@dimen/_14sdp"
+            android:layout_centerInParent="true"/>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/llProduct"
+        android:layout_below="@id/ivBar"
+        android:layout_marginTop="@dimen/_70sdp"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_70sdp"
+        android:layout_marginRight="@dimen/_20sdp"
+        android:layout_marginLeft="@dimen/_20sdp"
+        android:backgroundTint="@color/yellow"
+        android:gravity="center"
+        android:background="@drawable/shape_row">
+        <TextView
+            style="@style/CommonTextWrapcontent"
+            android:text="Manage Product &amp; Categories"
+            android:textColor="@color/white"
+
+            android:textSize="@dimen/_14sdp"/>
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/llIndividual"
+        android:layout_below="@id/llProduct"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_70sdp"
+        android:backgroundTint="@color/red"
+        android:layout_marginRight="@dimen/_20sdp"
+        android:gravity="center"
+        android:layout_marginLeft="@dimen/_20sdp"
+        android:background="@drawable/shape_row">
+        <TextView
+            style="@style/CommonTextWrapcontent"
+
+            android:text="Manage Individual Products"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_14sdp"/>
+    </LinearLayout>
+</RelativeLayout>

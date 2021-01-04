@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DeliveryOptionsActivity">
+    <ImageView
+        android:id="@+id/ivBar"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_70sdp"
+        android:scaleType="fitXY"
+        android:src="@drawable/small_header"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        >
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="Home Delivery"
+            android:fontFamily="@font/regular"
+            android:textSize="@dimen/_14sdp"
+            android:layout_centerInParent="true"/>
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_below="@+id/ivBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginRight="@dimen/_20sdp"
+        android:layout_marginLeft="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_70sdp">
+
+    <TextView
+        style="@style/CommonTextWrapcontent"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:text="Will you be offering home"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_12sdp"/>
+        <TextView
+            style="@style/CommonTextWrapcontent"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:text="delivery?"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12sdp"/>
+        <Button
+            android:id="@+id/btnYes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_50sdp"
+            android:background="@drawable/btn"
+            android:text="Yes"
+            android:textAllCaps="false"
+            android:fontFamily="@font/medium"
+            android:textColor="@color/white"
+            />
+        <Button
+            android:id="@+id/btnNo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:background="@drawable/btn"
+            android:text="No"
+            android:textAllCaps="false"
+            android:fontFamily="@font/medium"
+            android:backgroundTint="@color/red"
+            android:textColor="@color/white"
+            />
+    </LinearLayout>
+</RelativeLayout>

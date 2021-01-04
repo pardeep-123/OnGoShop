@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:background="@drawable/noti_shape"
+    android:layout_marginTop="@dimen/_10sdp">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:layout_marginLeft="@dimen/_5sdp"
+        android:layout_marginRight="@dimen/_5sdp">
+        <TextView
+            style="@style/CommonTextWrapcontent"
+            android:textColor="@color/black"
+            android:layout_alignParentLeft="true"
+            android:text="Your Order no 12569 has been picked up!"
+            android:textSize="@dimen/_10sdp" />
+        <TextView
+           style="@style/CommonTextWrapcontent"
+            android:textColor="@color/black"
+          android:layout_alignParentRight="true"
+            android:text="2m ago"
+            android:textSize="@dimen/_8sdp" />
+    </RelativeLayout>
+
+</RelativeLayout>

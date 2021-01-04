@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/ll_1"
+    android:layout_marginTop="@dimen/_10sdp"
+    android:background="@drawable/border_shape">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/_10sdp"
+    android:layout_marginLeft="@dimen/_5sdp"
+android:layout_marginRight="@dimen/_5sdp"
+    android:orientation="horizontal">
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/image_6"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_5sdp"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                style="@style/CommonTextWrapcontent"
+                android:textColor="@color/black"
+                android:text="Nescafe"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:textSize="@dimen/_14sdp" />
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:orientation="horizontal">
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:orientation="horizontal"
+                    android:layout_height="wrap_content">
+
+
+
+                    <TextView
+                        style="@style/textStyleRegular"
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_margin="@dimen/_5sdp"
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:gravity="center"
+                        android:paddingRight="@dimen/_5sdp"
+                        android:paddingBottom="@dimen/_2sdp"
+                        android:paddingTop="@dimen/_2sdp"
+                        android:background="@drawable/add_shape"
+                        android:textColor="@color/white"
+                        android:text="+"
+                        android:textSize="@dimen/_12sdp"/>
+
+                    <TextView
+                        style="@style/textStyleRegular"
+                        android:layout_margin="@dimen/_5sdp"
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:gravity="center"
+                        android:paddingRight="@dimen/_5sdp"
+                        android:paddingBottom="@dimen/_2sdp"
+                        android:paddingTop="@dimen/_2sdp"
+                        android:background="@drawable/add_shape"
+                        android:textColor="@color/white"
+                        android:text="2"
+                        android:textSize="@dimen/_12sdp"/>
+
+                    <TextView
+                        style="@style/textStyleRegular"
+                        android:layout_width="@dimen/_20sdp"
+                        android:layout_margin="@dimen/_5sdp"
+                        android:gravity="center"
+                        android:paddingLeft="@dimen/_5sdp"
+                        android:paddingRight="@dimen/_5sdp"
+                        android:paddingBottom="@dimen/_2sdp"
+                        android:paddingTop="@dimen/_2sdp"
+                        android:background="@drawable/add_shape"
+                        android:textColor="@color/white"
+                        android:text="-"
+                        android:textSize="@dimen/_12sdp"/>
+
+                </LinearLayout>
+            </LinearLayout>
+        </RelativeLayout>
+
+        <TextView
+           style="@style/CommonTextWrapcontent"  android:text="Blend 43 Decaf"
+            android:textSize="@dimen/_12sdp" />
+        <TextView
+         style="@style/CommonTextWrapcontent"
+            android:layout_marginTop="@dimen/_3sdp"
+            android:text="250 gm Qty 2"
+            android:textSize="@dimen/_12sdp" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:orientation="horizontal">
+            <Button
+                android:id="@+id/btnBasket"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_width="wrap_content"
+                android:text="Scan item to basket"
+                android:textAllCaps="false"
+                android:fontFamily="@font/regular"
+                android:textSize="@dimen/_10sdp"
+             android:textColor="@color/white"
+                android:layout_gravity="center"
+                android:layout_centerInParent="true"
+                android:layout_alignParentLeft="true"
+                android:drawableRight="@drawable/scan"
+              android:paddingRight="@dimen/_5sdp"
+                android:layout_marginRight="@dimen/_5sdp"
+                android:paddingLeft="@dimen/_5sdp"
+                android:drawablePadding="@dimen/_5sdp"
+                android:background="@drawable/scan_button"
+                />
+            <Button
+                android:id="@+id/btnNot"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_width="wrap_content"
+                android:text="Not Available"
+             android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:textAllCaps="false"
+                android:layout_gravity="center"
+                android:textSize="@dimen/_10sdp"
+                android:fontFamily="@font/regular"
+                android:padding="@dimen/_5sdp"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:textColor="@color/white"
+                android:background="@drawable/na_button"
+                />
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>
+</LinearLayout>

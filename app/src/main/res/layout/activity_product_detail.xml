@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ProductDetailActivity">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+    <ImageView
+        android:id="@+id/ivBar"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_70sdp"
+        android:scaleType="fitXY"
+        android:src="@drawable/small_header"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        >
+        <ImageView
+            android:id="@+id/ivBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_alignParentLeft="true"
+            android:src="@drawable/back"/>
+        <TextView
+           style="@style/CommonTextWrapcontent"
+            android:textColor="@color/white"
+            android:text="Product"
+            android:textSize="@dimen/_14sdp"
+            android:layout_centerInParent="true"/>
+    </RelativeLayout>
+    <LinearLayout
+        android:id="@+id/ll_img"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/ivBar"
+        android:background="@drawable/shape_1"
+       >
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/_40sdp"
+            android:layout_marginTop="@dimen/_40sdp"
+            android:src="@drawable/image_9"/>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:layout_below="@id/ll_img">
+        <TextView
+            style="@style/CommonTextWrapcontent"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="Lion self Rasing flour 2kg"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_14sdp"/>
+        <TextView
+            style="@style/CommonTextWrapcontent"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="Product Details"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12sdp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="50"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/regular"
+                android:textColor="@color/black"
+                android:text="Product Code"
+                android:textSize="@dimen/_12sdp" />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="50"
+                android:layout_height="wrap_content"
+                android:textColor="@color/grey"
+                android:gravity="end"
+                android:fontFamily="@font/regular"
+
+                android:text="8233KHKMK"
+                android:textSize="@dimen/_12sdp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="50"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="Country of Origin"
+                android:textSize="@dimen/_12sdp"
+                android:fontFamily="@font/regular" />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="50"
+                android:layout_height="wrap_content"
+                android:textColor="@color/grey"
+                android:fontFamily="@font/regular"
+                android:gravity="end"
+                android:text="Australia"
+                android:textSize="@dimen/_12sdp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="50"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="Price"
+                android:textSize="@dimen/_12sdp"
+                android:fontFamily="@font/regular" />
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="50"
+                android:layout_height="wrap_content"
+                android:textColor="@color/grey"
+                android:gravity="end"
+                android:text="$30"
+                android:fontFamily="@font/regular"
+
+                android:textSize="@dimen/_12sdp" />
+
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="50"
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="Uint Measurment"
+                android:textSize="@dimen/_12sdp"
+                android:fontFamily="@font/regular"
+
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="50"
+                android:layout_height="wrap_content"
+                android:textColor="@color/grey"
+                android:gravity="end"
+                android:text="Kg"
+                android:fontFamily="@font/regular"
+
+                android:textSize="@dimen/_12sdp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:orientation="horizontal">
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="50"
+                android:fontFamily="@font/regular"
+
+                android:layout_height="wrap_content"
+                android:textColor="@color/black"
+                android:text="Aleregy Information"
+                android:textSize="@dimen/_12sdp"
+                />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_weight="50"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/regular"
+
+                android:textColor="@color/grey"
+                android:gravity="end"
+                android:text="Gluten"
+                android:textSize="@dimen/_12sdp" />
+        </LinearLayout>
+        <TextView
+            style="@style/CommonTextWrapcontent"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="Description"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_14sdp"/>
+        <TextView
+            style="@style/CommonTextWrapcontent"
+            android:text="Duis fermentum ut elit a scelerisque. Sed a\nenim leo. Donec  magna turpis, tincidunt in\nvulputate ac, porta nec nibh. Donec ut ultrices\naufue, sit amet malesuada nisl.Pellentesque\nut laoreet elit. Curabitur ut mauris urna. Proin\ngravida bibendum volupat."
+            android:textColor="@color/grey"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:textSize="@dimen/_14sdp"/>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginRight="@dimen/_20sdp"
+    android:layout_marginLeft="@dimen/_20sdp"
+    android:layout_marginTop="@dimen/_40sdp"
+
+    android:orientation="horizontal">
+    <Button
+        android:id="@+id/btnEdit"
+       android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_weight="1"
+        android:background="@drawable/edit"
+        android:textColor="@color/white"
+        android:fontFamily="@font/medium"
+        android:text="Edit Price"
+        android:padding="@dimen/_10sdp"
+        android:textSize="@dimen/_15sdp"
+        android:textAllCaps="false"
+        android:layout_marginBottom="@dimen/_20sdp"
+        />
+    <Button
+        android:id="@+id/btnDelete"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        android:background="@drawable/delete_3"
+        android:layout_weight="1"
+        android:fontFamily="@font/medium"
+        android:layout_marginLeft="@dimen/_5sdp"
+        android:text="Delete"
+        android:padding="@dimen/_10sdp"
+        android:textAllCaps="false"
+        android:textSize="@dimen/_15sdp"
+        android:layout_marginBottom="@dimen/_20sdp"
+        android:textColor="@color/white"
+        />
+</LinearLayout>
+    </LinearLayout>
+
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/_10sdp"
+    android:background="@drawable/alert_shape">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:layout_marginLeft="@dimen/_10sdp">
+        <TextView
+            style="@style/CommonTextWrapcontent"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="Tom Martin"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_14sdp"/>
+        <TextView
+            style="@style/CommonTextWrapcontent"
+            android:layout_marginTop="@dimen/_10sdp"
+                android:text="Order number 153633KLL"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_10sdp"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                style="@style/CommonTextWrapcontent"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:text="Instore payment"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_10sdp"/>
+            <TextView
+                android:id="@+id/tvText"
+                style="@style/CommonTextWrapcontent"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_alignParentRight="true"
+                android:text="Refund Complete"
+                android:layout_centerInParent="true"
+                android:textColor="@color/app"
+                android:textSize="@dimen/_10sdp"/>
+        </RelativeLayout>
+
+    </LinearLayout>
+
+</LinearLayout>

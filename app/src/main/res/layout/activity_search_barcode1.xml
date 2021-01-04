@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SearchBarcode1Activity">
+    <ImageView
+        android:id="@+id/ivBar"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_70sdp"
+        android:scaleType="fitXY"
+        android:src="@drawable/small_header"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        >
+        <ImageView
+            android:id="@+id/ivBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_alignParentLeft="true"
+            android:src="@drawable/back"/>
+        <TextView
+           style="@style/CommonTextWrapcontent"
+            android:textColor="@color/white"
+            android:text="Search Barcode"
+            android:textSize="@dimen/_14sdp"
+            android:layout_centerInParent="true"/>
+    </RelativeLayout>
+    <LinearLayout
+        android:id="@+id/llBarcode"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_70sdp"
+        android:layout_below="@id/ivBar"
+        android:layout_marginTop="@dimen/_140sdp"
+        android:layout_marginBottom="@dimen/_20sdp"
+        android:layout_marginLeft="@dimen/_20sdp"
+        android:layout_marginRight="@dimen/_20sdp"
+        android:backgroundTint="@color/grey"
+        android:layout_centerInParent="true"
+        android:background="@drawable/shape_row"
+        android:gravity="center"
+        android:orientation="horizontal">
+        <TextView
+            style="@style/CommonTextWrapcontent"
+
+            android:text="Product not found please\nadd product details manually"
+            android:textSize="@dimen/_14sdp"
+            android:layout_centerInParent="true"/>
+    </LinearLayout>
+    <Button
+        android:id="@+id/btnEntry"
+        android:layout_below="@id/llBarcode"
+        style="@style/Button"
+        android:layout_marginRight="@dimen/_20sdp"
+        android:layout_marginLeft="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:text="Manual Entry"
+        />
+
+</RelativeLayout>

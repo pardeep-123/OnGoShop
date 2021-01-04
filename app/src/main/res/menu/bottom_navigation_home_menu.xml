@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+  >
+    <item
+        android:id="@+id/JobHistory"
+        android:enabled="true"
+        android:icon="@drawable/home1"
+        android:title="      "/>
+
+    <item
+        android:id="@+id/categories"
+        android:enabled="true"
+        android:title="      "
+        android:icon="@drawable/categories"
+     />
+    <item
+        android:id="@+id/settings"
+        android:enabled="true"
+        android:title="      "
+        android:icon="@drawable/settings"
+     />
+    <item
+        android:id="@+id/profile"
+        android:enabled="true"
+        android:title="      "
+        android:icon="@drawable/profile"
+     />
+
+</menu>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:background="@drawable/shape_row"
+    android:id="@+id/rl_list"
+    android:layout_marginTop="@dimen/_10sdp">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal">
+<ImageView
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/_10sdp"
+    android:layout_marginLeft="@dimen/_10sdp"
+    android:src="@drawable/image_5"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:orientation="vertical">
+        <TextView
+            style="@style/CommonTextWrapcontent"
+            android:textColor="@color/black"
+            android:text="Bundaberg Sugar Soft Icing"
+            android:textSize="@dimen/_14sdp"
+            android:layout_centerInParent="true"/>
+        <TextView
+           style="@style/CommonTextWrapcontent"
+            android:textColor="@color/black"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:text="Mixture 1kg"
+            android:textSize="@dimen/_10sdp"
+            android:layout_centerInParent="true"/>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            >
+            <TextView
+               style="@style/CommonTextWrapcontent"
+                android:textColor="@color/black"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:text="$ 9.99"
+                android:textSize="@dimen/_14sdp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:layout_marginBottom="@dimen/_20sdp"
+                android:orientation="vertical">
+                <Button
+                    android:layout_width="@dimen/_70sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:textColor="@color/white"
+                    android:textAllCaps="false"
+                   android:text="Avilable"
+                    android:fontFamily="@font/regular"
+                    android:background="@drawable/btn"/>
+                <Button
+                    android:layout_width="@dimen/_70sdp"
+                    android:layout_height="@dimen/_20sdp"
+                    android:textColor="@color/white"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:textAllCaps="false"
+                    android:text="Not Avilable"
+                    android:fontFamily="@font/regular"
+                    android:background="@drawable/na_button"/>
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
+</LinearLayout>
+</RelativeLayout>

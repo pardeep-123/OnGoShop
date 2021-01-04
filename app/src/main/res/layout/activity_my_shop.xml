@@ -1,0 +1,399 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MyShopActivity">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/ivImg"
+                android:scaleType="fitXY"
+                android:layout_marginTop="@dimen/_40sdp"
+                android:src="@drawable/image_3"/>
+            <ImageView
+                android:id="@+id/ivBar"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_70sdp"
+                android:scaleType="fitXY"
+                android:src="@drawable/small_header"/>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20sdp"
+                >
+                <ImageView
+                    android:id="@+id/ivBack"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_alignParentLeft="true"
+                    android:src="@drawable/back"/>
+
+                <TextView
+                   style="@style/CommonTextWrapcontent"
+                    android:textColor="@color/white"
+                    android:text="My Shop"
+                    android:textSize="@dimen/_14sdp"
+                    android:layout_centerInParent="true"/>
+            </RelativeLayout>
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/ivImg"
+    android:layout_margin="@dimen/_10sdp"
+    android:orientation="vertical">
+    <TextView
+        android:id="@+id/tvEmail"
+        android:layout_below="@id/ivBar"
+        style="@style/CommonTextWrapcontent"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:text="Delphinium Groceries"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_16sdp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="30"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:fontFamily="@font/regular"
+            android:text="Category:"
+            android:textSize="@dimen/_14sdp"
+          />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="70"
+            android:layout_height="wrap_content"
+            android:textColor="@color/grey"
+            android:gravity="end"
+            android:text="Groceries"
+            android:fontFamily="@font/regular"
+            android:textSize="@dimen/_14sdp" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="30"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="Address:"
+            android:textSize="@dimen/_14sdp"
+            android:fontFamily="@font/regular"
+            />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="70"
+            android:layout_height="wrap_content"
+            android:textColor="@color/grey"
+            android:fontFamily="@font/regular"
+            android:gravity="end"
+            android:text="248 Avenue, New york, US"
+            android:textSize="@dimen/_14sdp" />
+
+    </LinearLayout> <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/_5sdp"
+    android:orientation="horizontal">
+    <TextView
+        android:layout_width="0dp"
+        android:layout_weight="30"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:text="ABN:"
+        android:fontFamily="@font/regular"
+        android:textSize="@dimen/_14sdp"
+        />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_weight="70"
+        android:layout_height="wrap_content"
+        android:textColor="@color/grey"
+        android:gravity="end"
+        android:text="748984709469"
+        android:fontFamily="@font/regular"
+        android:inputType="number"
+        android:textSize="@dimen/_14sdp" />
+
+</LinearLayout> <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/_5sdp"
+    android:orientation="horizontal">
+    <TextView
+        android:layout_width="0dp"
+        android:layout_weight="50"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:text="Building Number:"
+        android:fontFamily="@font/regular"
+        android:textSize="@dimen/_14sdp"
+        />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_weight="50"
+        android:layout_height="wrap_content"
+        android:textColor="@color/grey"
+        android:gravity="end"
+        android:text="168"
+        android:fontFamily="@font/regular"
+        android:inputType="number"
+        android:textSize="@dimen/_14sdp" />
+
+</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="50"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:text="Postal Code:"
+            android:fontFamily="@font/regular"
+            android:textSize="@dimen/_14sdp" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="50"
+            android:layout_height="wrap_content"
+            android:textColor="@color/grey"
+            android:gravity="end"
+            android:text="152628"
+            android:fontFamily="@font/regular"
+            android:inputType="number"
+            android:textSize="@dimen/_14sdp" />
+    </LinearLayout>
+    <TextView
+        android:layout_below="@id/ivBar"
+        style="@style/CommonTextWrapcontent"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:text="Delivery Options"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_14sdp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="50"
+            android:layout_height="wrap_content"
+            android:textColor="@color/grey"
+            android:fontFamily="@font/regular"
+            android:text="Sunday"
+            android:textSize="@dimen/_12sdp" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="50"
+            android:layout_height="wrap_content"
+            android:textColor="@color/grey"
+            android:gravity="end"
+            android:text="10:00 AM - 05:00 PM"
+            android:fontFamily="@font/regular"
+            android:textSize="@dimen/_12sdp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:orientation="horizontal"
+        >
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="50"
+            android:fontFamily="@font/regular"
+            android:layout_height="wrap_content"
+            android:textColor="@color/grey"
+            android:text="Monday"
+            android:textSize="@dimen/_12sdp" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="50"
+            android:layout_height="wrap_content"
+            android:textColor="@color/grey"
+            android:fontFamily="@font/regular"
+            android:gravity="end"
+            android:text="10:00 AM - 05:00 PM"
+            android:textSize="@dimen/_12sdp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="50"
+            android:layout_height="wrap_content"
+            android:textColor="@color/grey"
+            android:text="Tuesday"
+            android:fontFamily="@font/regular"
+            android:textSize="@dimen/_12sdp" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="50"
+            android:layout_height="wrap_content"
+            android:textColor="@color/grey"
+            android:gravity="end"
+            android:fontFamily="@font/regular"
+            android:text="10:00 AM - 05:00 PM"
+            android:textSize="@dimen/_12sdp" />
+    </LinearLayout>
+    <TextView
+        android:layout_below="@id/ivBar"
+        style="@style/CommonTextWrapcontent"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:text="Delivery Charges"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_14sdp"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="50"
+            android:layout_height="wrap_content"
+            android:textColor="@color/grey"
+
+            android:text="0-5 KM"
+            android:fontFamily="@font/regular"
+            android:textSize="@dimen/_12sdp" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="50"
+            android:layout_height="wrap_content"
+            android:textColor="@color/grey"
+            android:gravity="end"
+            android:fontFamily="@font/regular"
+            android:text="10:00 AM - 05:00 PM"
+            android:textSize="@dimen/_12sdp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="50"
+            android:layout_height="wrap_content"
+            android:textColor="@color/grey"
+            android:fontFamily="@font/regular"
+            android:text="5-10 KM"
+            android:textSize="@dimen/_12sdp" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="50"
+            android:layout_height="wrap_content"
+            android:textColor="@color/grey"
+            android:fontFamily="@font/regular"
+            android:gravity="end"
+            android:text="10:00 AM - 05:00 PM"
+            android:textSize="@dimen/_12sdp" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="50"
+            android:layout_height="wrap_content"
+            android:textColor="@color/grey"
+            android:fontFamily="@font/regular"
+            android:text="10-15 KM"
+            android:textSize="@dimen/_12sdp" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="50"
+            android:layout_height="wrap_content"
+            android:textColor="@color/grey"
+            android:gravity="end"
+            android:text="10:00 AM - 05:00 PM"
+            android:fontFamily="@font/regular"
+            android:textSize="@dimen/_12sdp" />
+    </LinearLayout> <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/_5sdp"
+    android:orientation="horizontal">
+    <TextView
+        android:layout_width="0dp"
+        android:layout_weight="50"
+        android:layout_height="wrap_content"
+        android:textColor="@color/grey"
+        android:fontFamily="@font/regular"
+        android:text="15-25 KM"
+        android:textSize="@dimen/_12sdp"/>
+    <TextView
+        android:layout_width="0dp"
+        android:layout_weight="50"
+        android:layout_height="wrap_content"
+        android:textColor="@color/grey"
+        android:gravity="end"
+        android:text="10:00 AM - 05:00 PM"
+        android:fontFamily="@font/regular"
+        android:textSize="@dimen/_12sdp" />
+</LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:orientation="horizontal">
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="50"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/regular"
+            android:textColor="@color/grey"
+            android:text="25-35 KM"
+            android:textSize="@dimen/_12sdp" />
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="50"
+            android:layout_height="wrap_content"
+            android:textColor="@color/grey"
+            android:gravity="end"
+            android:fontFamily="@font/regular"
+            android:text="10:00 AM - 05:00 PM"
+            android:textSize="@dimen/_12sdp" />
+    </LinearLayout>
+    <Button
+        android:id="@+id/btnEdit"
+        style="@style/Button"
+       android:layout_margin="@dimen/_20sdp"
+        android:text="Edit"
+        />
+
+</LinearLayout>
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

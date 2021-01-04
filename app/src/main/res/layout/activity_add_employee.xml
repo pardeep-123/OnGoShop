@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddEmployeeActivity">
+    <ImageView
+        android:id="@+id/ivBar"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_70sdp"
+        android:scaleType="fitXY"
+        android:src="@drawable/small_header"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        >
+        <ImageView
+            android:id="@+id/ivBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_alignParentLeft="true"
+            android:src="@drawable/back"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="Add Employee"
+            android:fontFamily="@font/regular"
+            android:textSize="@dimen/_14sdp"
+            android:layout_centerInParent="true"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/img"
+        android:layout_width="@dimen/_75sdp"
+        android:layout_height="@dimen/_75sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+       android:layout_centerInParent="true"
+        android:layout_below="@id/ivBar">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+            <ImageView
+                android:id="@+id/ivImg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_centerInParent="true"/>
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/iv_profile"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:src="@drawable/image_10">
+            </de.hdodenhof.circleimageview.CircleImageView>
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="@dimen/_25sdp"
+            android:layout_height="@dimen/_25sdp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginEnd="0dp"
+            android:gravity="end"
+            android:layout_marginBottom="5dp">
+
+            <ImageView
+                android:id="@+id/ivAdd"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:src="@drawable/add_2" />
+        </RelativeLayout>
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_margin="@dimen/_20sdp"
+        android:layout_below="@id/img">
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_below="@id/ivBar"
+            style="@style/CommonTextWrapcontent"
+            android:text="Name"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12sdp"/>
+
+
+        <EditText
+            android:id="@+id/edName"
+            style="@style/Edittext"
+            android:layout_below="@id/tvEmail"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:hint="Enter name"
+            android:textSize="16sp" />
+
+        <TextView
+            android:id="@+id/tvEmail"
+            android:layout_below="@id/ivBar"
+            style="@style/CommonTextWrapcontent"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="Email"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12sdp"/>
+
+
+        <EditText
+            android:id="@+id/edEmail"
+            style="@style/Edittext"
+            android:layout_below="@id/tvEmail"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:inputType="textEmailAddress"
+            android:hint="Enter email"
+            android:textSize="16sp" />
+
+
+        <TextView
+            android:id="@+id/tvMobile"
+            android:layout_below="@id/ivBar"
+            style="@style/CommonTextWrapcontent"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="Mobile"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12sdp"/>
+
+
+        <EditText
+            android:id="@+id/edMobile"
+            style="@style/Edittext"
+            android:layout_below="@id/tvMobile"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:inputType="number"
+            android:hint="Enter mobile"
+            android:textSize="16sp" />
+        <TextView
+            android:id="@+id/tvId"
+            android:layout_below="@id/ivBar"
+            style="@style/CommonTextWrapcontent"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="Id"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12sdp"/>
+
+
+        <EditText
+            android:id="@+id/edId"
+            style="@style/Edittext"
+            android:layout_below="@id/tvId"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:hint="Enter id"
+            android:textSize="16sp" />
+        <Button
+            android:id="@+id/btnSubmit"
+            android:layout_below="@id/ivBar"
+            style="@style/Button"
+           android:layout_marginTop="@dimen/_20sdp"
+            android:text="Submit"
+            />
+    </LinearLayout>
+</RelativeLayout>

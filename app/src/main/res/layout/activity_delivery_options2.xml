@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".DeliveryOptions2Activity">
+    <ImageView
+        android:id="@+id/ivBar"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_70sdp"
+        android:scaleType="fitXY"
+        android:src="@drawable/small_header"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginRight="@dimen/_10sdp"
+        >
+        <ImageView
+            android:id="@+id/ivBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:src="@drawable/back"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:text="Delivery Days"
+            android:fontFamily="@font/regular"
+            android:textSize="@dimen/_14sdp"
+            android:layout_centerInParent="true"/>
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_below="@+id/ivBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginRight="@dimen/_20sdp"
+        android:layout_marginLeft="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_90sdp">
+
+    <TextView
+        style="@style/CommonTextWrapcontent"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:gravity="center"
+        android:text="What are the maximum number\nof deliveries you can make\nper day?"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_14sdp"/>
+        <EditText
+            android:id="@+id/edPass"
+            android:layout_below="@id/tvPass"
+            style="@style/Edittext"
+            android:layout_marginTop="@dimen/_50sdp"
+            android:hint="Enter number"
+            android:inputType="text"
+            />
+
+        <Button
+            android:id="@+id/btnConfirm"
+            style="@style/Button"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:text="Confirm"
+            />
+
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">OnGoShop</string>
+    <string name="create"><u>Create Account</u></string>
+    <string name="password">Password</string>
+    <string name="email">Email</string>
+    <string name="signin"><u>Sign In</u></string>
+    <string name="terms"><u>I accept terms &amp; conditions</u></string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

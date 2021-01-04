@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddProductActivity">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+    <ImageView
+        android:id="@+id/ivBar"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_70sdp"
+        android:scaleType="fitXY"
+        android:src="@drawable/small_header"/>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        >
+        <ImageView
+            android:id="@+id/ivBack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_alignParentLeft="true"
+            android:src="@drawable/back"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:fontFamily="@font/regular"
+            android:text="Add Product"
+            android:textSize="@dimen/_14sdp"
+            android:layout_centerInParent="true"/>
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_below="@id/ivBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginLeft="@dimen/_20sdp"
+        android:layout_marginRight="@dimen/_20sdp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvName"
+            style="@style/CommonTextWrapcontent"
+            android:text="Add Photo"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12sdp"/>
+        <LinearLayout
+            android:layout_width="match_parent"
+
+            android:layout_height="@dimen/_120sdp"
+            android:gravity="center"
+            android:background="@drawable/shape"
+            >
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/ivImg"/>
+            <ImageView
+                android:id="@+id/ivcamera"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/camera"
+                android:layout_gravity="center" />
+        </LinearLayout>
+        <TextView
+
+            style="@style/CommonTextWrapcontent"
+            android:text="Brand"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12sdp"/>
+
+
+        <EditText
+            style="@style/Edittext"
+            android:layout_below="@id/tvEmail"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:inputType="text"
+            android:hint="Enter brand"
+           />
+
+        <TextView
+            android:id="@+id/tvEmail"
+            android:layout_below="@id/ivBar"
+            style="@style/CommonTextWrapcontent"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="Add Price"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12sdp"/>
+
+
+        <EditText
+            style="@style/Edittext"
+            android:layout_below="@id/tvEmail"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:inputType="number"
+            android:hint="Enter price"
+         />
+        <TextView
+            android:layout_below="@id/ivBar"
+            style="@style/CommonTextWrapcontent"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="Product Name"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12sdp"/>
+        <EditText
+            style="@style/Edittext"
+            android:layout_below="@id/tvEmail"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:inputType="text"
+            android:hint="Enter product name"
+          />
+        <TextView
+            android:layout_below="@id/ivBar"
+            style="@style/CommonTextWrapcontent"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="GTIN Number"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12sdp"/>
+        <EditText
+            style="@style/Edittext"
+            android:layout_below="@id/tvEmail"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:inputType="text"
+            android:hint="Enter gtin number" />
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_5sdp">
+            <TextView
+                style="@style/CommonTextWrapcontent"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:text="No Bar Code Item"
+                android:textColor="@color/black"
+                android:layout_alignParentLeft="true"
+                android:layout_centerInParent="true"
+                android:textSize="@dimen/_12sdp"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_centerInParent="true"
+                android:layout_alignParentRight="true"
+                android:id="@+id/ll_chackbox"
+                >
+                <ImageView
+                    android:id="@+id/ivOn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/check_box_3"/>
+                <ImageView
+                    android:id="@+id/ivOff"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/check_box_4"
+                    android:visibility="gone"/>
+            </LinearLayout>
+        </RelativeLayout>
+        <TextView
+            android:layout_below="@id/ivBar"
+            style="@style/CommonTextWrapcontent"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="Country of Origin"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12sdp"/>
+        <EditText
+            style="@style/Edittext"
+            android:layout_below="@id/tvEmail"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:inputType="text"
+            android:hint="Enter country of origin" />
+        <TextView
+            android:layout_below="@id/ivBar"
+            style="@style/CommonTextWrapcontent"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="Unit of measurement"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12sdp"/>
+        <EditText
+            style="@style/Edittext"
+            android:layout_below="@id/tvEmail"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:inputType="text"
+            android:hint="Enter unit of measurement" />
+        <TextView
+            android:layout_below="@id/ivBar"
+            style="@style/CommonTextWrapcontent"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="Product Description"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12sdp"/>
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_90sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:textColor="@color/black"
+                android:hint="Enter product description"
+                android:layout_gravity="top"
+                android:paddingTop="@dimen/_10sdp"
+                android:paddingRight="@dimen/_10sdp"
+                android:textSize="@dimen/_12sdp"
+                android:paddingLeft="@dimen/_5sdp"
+                android:fontFamily="@font/regular"
+                android:background="@drawable/shape"
+                android:textColorHint="@color/black"/>
+
+        <Button
+            android:id="@+id/btnProceed"
+            style="@style/Button"
+           android:layout_marginTop="@dimen/_20sdp"
+            android:layout_marginBottom="@dimen/_20sdp"
+            android:text="Proceed to Category"
+            />
+    </LinearLayout>
+        </RelativeLayout>
+    </ScrollView>
+</RelativeLayout>

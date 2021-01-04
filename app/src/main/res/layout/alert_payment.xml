@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/alert_shape"
+    android:layout_margin="@dimen/_25sdp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:orientation="vertical"
+        android:gravity="center">
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/tick"
+            android:layout_gravity="center"/>
+        <TextView
+            style="@style/CommonTextWrapcontent"
+            android:text="Your payment has been\ndone successfully!"
+            android:textColor="@color/black"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:gravity="center"
+            android:fontFamily="@font/medium"
+            android:textSize="@dimen/_14sdp"/>
+        <Button
+            android:id="@+id/btnDone"
+            style="@style/Button"
+            android:layout_marginLeft="@dimen/_20sdp"
+            android:layout_marginRight="@dimen/_20sdp"
+            android:layout_marginBottom="@dimen/_20sdp"
+            android:layout_marginTop="@dimen/_30sdp"
+            android:text="Done"
+            />
+    </LinearLayout>
+
+</RelativeLayout>

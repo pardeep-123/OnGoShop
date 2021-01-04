@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/_10sdp"
+    android:id="@+id/rl_1"
+    android:background="@drawable/alert_shape">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="@dimen/_10sdp"
+    android:layout_marginBottom="@dimen/_10sdp"
+    android:layout_marginRight="@dimen/_10sdp"
+    android:layout_marginLeft="@dimen/_10sdp"
+    android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <TextView
+            android:id="@+id/tvName"
+            style="@style/CommonTextWrapcontent"
+            android:text="Sunday"
+            android:layout_alignParentLeft="true"
+            android:layout_centerInParent="true"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_14sdp"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_alignParentRight="true"
+            android:layout_centerInParent="true">
+            <TextView
+                style="@style/CommonTextWrapcontent"
+                android:text="No Delivery"
+                android:layout_marginRight="@dimen/_5sdp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12sdp"/>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:id="@+id/ll_chackbox"
+                >
+
+                <ImageView
+                    android:id="@+id/ivOn"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/check_box_3" />
+                <ImageView
+                    android:id="@+id/ivOff"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/check_box_4"
+                    android:visibility="gone"/>
+            </LinearLayout>
+        </LinearLayout>
+
+    </RelativeLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:orientation="horizontal">
+        <TextView
+            style="@style/CommonTextWrapcontent"
+            android:text="Delivery Times:"
+            android:textSize="@dimen/_10sdp"/>
+        <TextView
+            style="@style/CommonTextWrapcontent"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:text="From"
+            android:textSize="@dimen/_10sdp"/>
+        <LinearLayout
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_marginLeft="@dimen/_5sdp"
+            android:background="@drawable/small_shape"/>
+        <TextView
+            style="@style/CommonTextWrapcontent"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:text="To"
+            android:textSize="@dimen/_10sdp"/>
+        <LinearLayout
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_marginLeft="@dimen/_5sdp"
+            android:background="@drawable/small_shape"/>
+    </LinearLayout>
+</LinearLayout>
+</RelativeLayout>
