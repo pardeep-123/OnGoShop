@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "983673294453",
+    "project_id": "ongo-vendor",
+    "storage_bucket": "ongo-vendor.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:983673294453:android:ee2403bc63059a154af23c",
+        "android_client_info": {
+          "package_name": "com.ongoshop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "983673294453-c72k1dir4d3ln68o21emekl79sudpemo.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ongoshop",
+            "certificate_hash": "6aac5b61a30ca474d43ca514476f0f9edb97281f"
+          }
+        },
+        {
+          "client_id": "983673294453-v8nmhtd8cgqhvke28tr5rd9ljoa2mpg6.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDzjmnYGAsJfFI4nO1EB-9hOTQN9wXiVt4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "983673294453-v8nmhtd8cgqhvke28tr5rd9ljoa2mpg6.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
