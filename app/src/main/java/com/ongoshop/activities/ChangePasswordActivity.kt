@@ -12,8 +12,7 @@ import com.ongoshop.manager.restApi.Status
 import com.ongoshop.pojo.ChangePasswordResponse
 
 import com.ongoshop.utils.others.CommonMethods
-import com.ongoshop.utils.others.Constants
-import com.ongoshop.viewmodel.MyAccountViewModel
+import com.ongoshop.viewmodel.SettingsViewModel
 import kotlinx.android.synthetic.main.activity_change_password.*
 
 
@@ -21,8 +20,8 @@ class ChangePasswordActivity : BaseActivity(), View.OnClickListener, Observer<Re
 
     private lateinit var mContext: ChangePasswordActivity
 
-    private val viewModel: MyAccountViewModel
-            by lazy { ViewModelProviders.of(this).get(MyAccountViewModel::class.java) }
+    private val viewModel: SettingsViewModel
+            by lazy { ViewModelProviders.of(this).get(SettingsViewModel::class.java) }
 
     override fun getContentId(): Int {
         return R.layout.activity_change_password

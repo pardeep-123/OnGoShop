@@ -4,8 +4,6 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.Color;
@@ -16,10 +14,8 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
 
-import com.ongoshop.activities.LoginActivity;
 import com.ongoshop.R;
-import com.ongoshop.utils.others.MyApplication;
-import com.sdsmdg.tastytoast.TastyToast;
+import com.ongoshop.activities.LoginActivity;
 import com.tapadoo.alerter.Alerter;
 
 
@@ -326,6 +322,10 @@ public class CommonMethods {
                 .setContentGravity(Gravity.CENTER)
                 .show();
     }
+
+
+
+
 
     public static void AlertSuccessMessage(Activity activity, String message){
         Alerter.create(activity)

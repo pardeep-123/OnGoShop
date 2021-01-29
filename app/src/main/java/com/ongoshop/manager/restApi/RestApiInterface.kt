@@ -58,6 +58,12 @@ interface RestApiInterface {
             @FieldMap map: HashMap<String, String>
     ): Observable<ResendOTPResponse>
 
+    @FormUrlEncoded
+    @POST(Constants.CategoryList)
+    fun getCategoryList(
+            @FieldMap map: HashMap<String, String>):
+            Observable<CategoryListResponse>
+
 
     @GET(Constants.GetProfile)
     fun getProfile():
@@ -67,13 +73,23 @@ interface RestApiInterface {
     @PUT(Constants.EditProfile)
     fun editProfile(
             @PartMap map: HashMap<String, RequestBody>, @Part image: MultipartBody.Part
-    ): Observable<EditProfileResponse>
+    ): Observable<EditProfileAddShopResponsess>
+
+
 
     @Multipart
     @PUT(Constants.EditProfile)
     fun updateProfileWithoutImage(
             @PartMap map: HashMap<String, RequestBody>
-    ): Observable<EditProfileResponse>
+    ): Observable<EditProfileAddShopResponsess>
+
+
+    /*Add Shop and Delivery Details API*/
+    @Multipart
+    @PUT(Constants.EditProfile)
+    fun addShopAndDeliveryDetails(
+            @PartMap map: HashMap<String, RequestBody>, @Part image: MultipartBody.Part):
+            Observable<EditProfileAddShopResponsess>
 
     @GET(Constants.TermsCondition)
     fun termsCondition():
@@ -170,10 +186,7 @@ interface RestApiInterface {
              Observable<HomeUserResponse>
 
 
-     @GET(Constants.CategoryList)
-     fun getCategoryList():
-             Observable<CategoryResponse>
-
+   
      @FormUrlEncoded
      @POST(Constants.deleteImage)
      fun deleteImage(@FieldMap map:HashMap<String,String>):

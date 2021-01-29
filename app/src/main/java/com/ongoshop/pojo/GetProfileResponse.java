@@ -8,7 +8,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 
-public class SignupResponsess {
+public class GetProfileResponse {
 
     @SerializedName("success")
     @Expose
@@ -54,6 +54,7 @@ public class SignupResponsess {
     public void setBody(Body body) {
         this.body = body;
     }
+
 
     public class Body {
 
@@ -234,9 +235,6 @@ public class SignupResponsess {
         @SerializedName("userId")
         @Expose
         private Integer userId;
-        @SerializedName("token")
-        @Expose
-        private String token;
 
         public Integer getId() {
             return id;
@@ -710,14 +708,6 @@ public class SignupResponsess {
             this.userId = userId;
         }
 
-        public String getToken() {
-            return token;
-        }
-
-        public void setToken(String token) {
-            this.token = token;
-        }
-
     }
 
-}
+ }

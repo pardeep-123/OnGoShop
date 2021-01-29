@@ -122,4 +122,6 @@ class ResendOTPResponse
         @Expose
         var updatedAt: String? = null
 
-    }}
+    }
+
+}

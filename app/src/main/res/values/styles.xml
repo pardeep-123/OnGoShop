@@ -5,6 +5,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowDisablePreview">true</item>
     </style>
 
 
@@ -20,6 +21,15 @@
         <item name="android:background">@drawable/shape</item>
 
     </style>
+
+    <style name="Theme_Dialog" parent="@android:style/Theme.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">match_parent</item>
+
+    </style>
+
 
     <style name="textStyleRegular" parent="@android:style/Widget.TextView">
         <item name="android:layout_width">wrap_content</item>

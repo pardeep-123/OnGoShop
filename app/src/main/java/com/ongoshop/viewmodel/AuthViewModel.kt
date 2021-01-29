@@ -83,5 +83,33 @@ class AuthViewModel :ViewModel() {
             )
     }
 
+    fun categoryListApi(activity: Activity, showLoader:Boolean,
+                 map: HashMap<String, String>
+    ) {
+        restApiInterface.getCategoryList(map)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .doOnSubscribe { mResponse.value = RestObservable.loading(activity,showLoader) }
+            .subscribe(
+                { mResponse.value = RestObservable.success(it) },
+                { mResponse.value = RestObservable.error(activity,it) }
+            )
+    }
+
+    fun addShopAndDeliveryDetailsApi(activity: Activity, showLoader: Boolean, map: HashMap<String, RequestBody>,
+            mImage: MultipartBody.Part
+    ) {
+        restApiInterface.addShopAndDeliveryDetails(map, mImage)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe { mResponse.value = RestObservable.loading(activity, showLoader) }
+                .subscribe(
+                        { mResponse.value = RestObservable.success(it) },
+                        { mResponse.value = RestObservable.error(activity, it) }
+                )
+    }
+
+
+
 
 }

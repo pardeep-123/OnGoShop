@@ -15,15 +15,15 @@ import com.ongoshop.manager.restApi.Status
 import com.ongoshop.pojo.TermsConditionsResponse
 import com.ongoshop.utils.others.CommonMethods
 import com.ongoshop.utils.others.Constants
-import com.ongoshop.viewmodel.MyAccountViewModel
+import com.ongoshop.viewmodel.SettingsViewModel
 import kotlinx.android.synthetic.main.activity_terms.*
 
 
 class TermsConditionsActivity : BaseActivity(), View.OnClickListener, Observer<RestObservable> {
 
     private lateinit var mContext: TermsConditionsActivity
-    private val viewModel: MyAccountViewModel
-            by lazy { ViewModelProviders.of(this).get(MyAccountViewModel::class.java) }
+    private val viewModel: SettingsViewModel
+            by lazy { ViewModelProviders.of(this).get(SettingsViewModel::class.java) }
 
     override fun getContentId(): Int {
         return R.layout.activity_terms

@@ -17,7 +17,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal">
         <TextView
-            android:id="@+id/tvName"
+            android:id="@+id/tv_day"
             style="@style/CommonTextWrapcontent"
             android:text="Sunday"
             android:layout_alignParentLeft="true"
@@ -40,16 +40,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
+                android:orientation="horizontal"
                 android:id="@+id/ll_chackbox"
                 >
 
                 <ImageView
-                    android:id="@+id/ivOn"
+                    android:id="@+id/ivOff"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:src="@drawable/check_box_3" />
                 <ImageView
-                    android:id="@+id/ivOff"
+                    android:id="@+id/ivOn"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:src="@drawable/check_box_4"
@@ -59,31 +60,40 @@
 
     </RelativeLayout>
     <LinearLayout
+        android:id="@+id/ll_delivery_timings"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_10sdp"
         android:orientation="horizontal">
         <TextView
             style="@style/CommonTextWrapcontent"
-            android:text="Delivery Times:"
+            android:text="@string/delivery_times"
             android:textSize="@dimen/_10sdp"/>
         <TextView
             style="@style/CommonTextWrapcontent"
             android:layout_marginLeft="@dimen/_10sdp"
-            android:text="From"
+            android:text="@string/from"
             android:textSize="@dimen/_10sdp"/>
-        <LinearLayout
+        <TextView
+            android:id="@+id/tv_from_time"
             android:layout_width="@dimen/_50sdp"
             android:layout_height="@dimen/_20sdp"
+            android:gravity="center"
+            android:fontFamily="@font/regular"
+            android:textColor="@color/black"
             android:layout_marginLeft="@dimen/_5sdp"
             android:background="@drawable/small_shape"/>
         <TextView
             style="@style/CommonTextWrapcontent"
             android:layout_marginLeft="@dimen/_10sdp"
-            android:text="To"
+            android:text="@string/to"
             android:textSize="@dimen/_10sdp"/>
-        <LinearLayout
+        <TextView
+            android:id="@+id/tv_to_time"
             android:layout_width="@dimen/_50sdp"
+            android:gravity="center"
+            android:fontFamily="@font/regular"
+            android:textColor="@color/black"
             android:layout_height="@dimen/_20sdp"
             android:layout_marginLeft="@dimen/_5sdp"
             android:background="@drawable/small_shape"/>

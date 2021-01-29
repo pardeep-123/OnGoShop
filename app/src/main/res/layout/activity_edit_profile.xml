@@ -20,10 +20,10 @@
         <ImageView
             android:id="@+id/ivProfile"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="@dimen/_250sdp"
             android:scaleType="fitXY"
-            android:layout_marginTop="@dimen/_40sdp"
-            android:src="@drawable/profile_img"/>
+            android:layout_below="@+id/ivBar"
+            android:src="@mipmap/no_image_placeholder"/>
         <ImageView
             android:id="@+id/ivAdd"
             android:layout_width="wrap_content"
@@ -106,14 +106,17 @@
                         android:textSize="@dimen/_14sdp"
                         />
 
-                    <TextView
+                    <EditText
+                        android:id="@+id/et_name"
+                        android:background="@color/transparent"
                         android:layout_width="0dp"
                         android:layout_weight="70"
                         android:layout_height="wrap_content"
                         android:textColor="@color/black"
+                        android:imeOptions="actionNext"
                         android:gravity="end"
+                        android:maxLength="40"
                         android:fontFamily="@font/regular"
-                        android:text="Juliet James"
                         android:textSize="@dimen/_12sdp" />
 
                 </LinearLayout>
@@ -135,14 +138,16 @@
                         />
 
                     <TextView
+                        android:id="@+id/et_email"
+                        android:background="@color/transparent"
                         android:layout_width="0dp"
                         android:layout_weight="70"
                         android:layout_height="wrap_content"
                         android:textColor="@color/black"
                         android:gravity="end"
+                        android:maxLength="40"
+                        android:maxLines="1"
                         android:fontFamily="@font/regular"
-                        android:inputType="textEmailAddress"
-                        android:text="Juliet@gmail.com"
                         android:textSize="@dimen/_12sdp" />
 
                 </LinearLayout>
@@ -156,7 +161,7 @@
                     android:orientation="horizontal">
                     <TextView
                         android:layout_width="0dp"
-                        android:layout_weight="30"
+                        android:layout_weight="1"
                         android:layout_height="wrap_content"
                         android:textColor="@color/black"
                         android:text="Phone:"
@@ -164,16 +169,51 @@
                         android:textSize="@dimen/_14sdp"
                         />
 
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_weight="70"
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/black"
+                        android:layout_below="@id/tvEmail"
                         android:gravity="end"
-                        android:inputType="number"
-                        android:fontFamily="@font/regular"
-                        android:text="+ 12356798353"
-                        android:textSize="@dimen/_12sdp" />
+                        android:layout_weight="1">
+
+                        <com.rilixtech.widget.countrycodepicker.CountryCodePicker
+                            android:id="@+id/ccp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:ccp_showFlag="false"
+                            android:layout_centerVertical="true"
+                            android:focusable="false"
+                            android:paddingLeft="5dp"
+                            android:paddingRight="5dp"
+                            app:ccp_keyboardAutoPopOnSearch="false"
+                            app:ccp_textColor="@color/black"
+                            app:ccp_textSize="@dimen/_12sdp" />
+
+
+                        <EditText
+                            android:id="@+id/et_phone"
+                            android:layout_height="wrap_content"
+                            android:layout_width="wrap_content"
+                            android:fontFamily="@font/regular"
+                            android:background="@android:color/transparent"
+                            android:textColor="@color/black"
+                            android:textColorHint="@color/black"
+                            android:layout_centerVertical="true"
+                            android:imeOptions="actionDone"
+                            android:maxLines="1"
+                            android:layout_toRightOf="@+id/ccp"
+                            android:digits="0123456789"
+
+                            android:inputType="number"
+                            android:hint="Enter mobile"
+                            android:maxLength="10"
+
+                            android:textSize="@dimen/_12sdp" />
+
+
+                    </RelativeLayout>
+
+
 
                 </LinearLayout>
             </LinearLayout>

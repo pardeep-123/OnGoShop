@@ -29,6 +29,12 @@ public class MyShopEditActivity extends image {
                 image("all");
             }
         });
+        ivAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                image("all");
+            }
+        });
         ImageView ivBack=findViewById(R.id.ivBack);
         ivBack.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,7 +45,7 @@ public class MyShopEditActivity extends image {
         btnSubmit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i= new Intent(MyShopEditActivity.this,MyShopActivity.class);
+                Intent i= new Intent(MyShopEditActivity.this, MyShopActivity.class);
                 startActivity(i);
             }
         });

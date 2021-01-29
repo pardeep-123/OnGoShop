@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.DeliveryOptions2Activity">
+    tools:context=".activities.MaximumDeliveryPerDayActivity">
     <ImageView
         android:id="@+id/ivBar"
         android:layout_width="wrap_content"
@@ -52,12 +52,16 @@
         android:textColor="@color/black"
         android:textSize="@dimen/_14sdp"/>
         <EditText
-            android:id="@+id/edPass"
+            android:id="@+id/et_max_number"
             android:layout_below="@id/tvPass"
             style="@style/Edittext"
             android:layout_marginTop="@dimen/_50sdp"
-            android:hint="Enter number"
-            android:inputType="text"
+            android:hint="@string/enter_number"
+            android:maxLength="5"
+            android:imeOptions="actionDone"
+            android:maxLines="1"
+            android:digits="0123456789"
+            android:inputType="number"
             />
 
         <Button

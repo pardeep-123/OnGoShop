@@ -5,108 +5,127 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.LoginActivity">
-    <ImageView
-        android:id="@+id/ivBar"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/_120sdp"
-        android:scaleType="fitXY"
-        android:src="@drawable/header"/>
-    <RelativeLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_20sdp">
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:src="@drawable/header_logo"/>
-    </RelativeLayout>
-    <LinearLayout
-        android:layout_below="@id/ivBar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginRight="@dimen/_20sdp"
-        android:layout_marginLeft="@dimen/_20sdp"
-        android:layout_marginTop="@dimen/_80sdp">
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
-        <TextView
-            android:id="@+id/tvEmail"
-            android:layout_below="@id/ivBar"
-             style="@style/CommonTextWrapcontent"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:text="Email"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_12sdp"/>
-
-
-        <EditText
-            android:id="@+id/edEmail"
-            style="@style/Edittext"
-            android:layout_below="@id/tvEmail"
-            android:layout_marginTop="@dimen/_5sdp"
-            android:inputType="textEmailAddress"
-            android:hint="Enter email"
-          />
-
-        <TextView
-            android:id="@+id/tvPass"
-            style="@style/CommonTextWrapcontent"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:text="Password"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_12sdp"/>
-
-        <EditText
-            android:id="@+id/edPass"
-            android:layout_below="@id/tvPass"
-            style="@style/Edittext"
-            android:layout_marginTop="@dimen/_5sdp"
-            android:hint="Enter password"
-            android:inputType="textWebPassword"
-            />
-
-        <TextView
-            android:id="@+id/tvForgotpassword"
-           style="@style/CommonTextWrapcontent"
-          android:layout_gravity="end"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:textAlignment="viewEnd"
-            android:text="Forgot Password ?"
-            android:textColor="@color/black"
-            android:textSize="12sp"/>
-
-        <Button
-            android:id="@+id/btnSignin"
-            style="@style/Button"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:text="Sign In"
-            />
-
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:layout_marginTop="@dimen/_20sdp"
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            >
-            <TextView
-               style="@style/CommonTextWrapcontent"
-                android:gravity="center"
-                android:text="New User ? "
-                android:textSize="@dimen/_12sdp"
-                android:textColor="@color/black"
-                />
-            <TextView
-                android:id="@+id/tvCreateAccount"
-                style="@style/CommonTextWrapcontent"
-                android:gravity="center"
-                android:textSize="@dimen/_12sdp"
-                android:text="@string/create"
-                android:textColor="@color/black"
-                />
-        </LinearLayout>
-    </LinearLayout>
+            android:layout_height="match_parent">
+
+            <ImageView
+                android:id="@+id/ivBar"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_120sdp"
+                android:scaleType="fitXY"
+                android:src="@drawable/header"/>
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20sdp">
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:src="@drawable/header_logo"/>
+            </RelativeLayout>
+            <LinearLayout
+                android:layout_below="@id/ivBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginRight="@dimen/_20sdp"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_80sdp">
+
+                <TextView
+                    android:id="@+id/tvEmail"
+                    android:layout_below="@id/ivBar"
+                    style="@style/CommonTextWrapcontent"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="Email"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12sdp"/>
+
+
+                <EditText
+                    android:id="@+id/edEmail"
+                    style="@style/Edittext"
+                    android:maxLines="1"
+                    android:imeOptions="actionNext"
+                    android:layout_below="@id/tvEmail"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:inputType="textEmailAddress"
+                    android:hint="@string/enter_email"
+                    />
+
+                <TextView
+                    android:id="@+id/tvPass"
+                    style="@style/CommonTextWrapcontent"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="Password"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12sdp"/>
+
+                <EditText
+                    android:maxLines="1"
+                    android:imeOptions="actionDone"
+                    android:id="@+id/edPass"
+                    android:layout_below="@id/tvPass"
+                    style="@style/Edittext"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:hint="@string/enter_password"
+                    android:inputType="textWebPassword"
+                    />
+
+                <TextView
+                    android:id="@+id/tvForgotpassword"
+                    style="@style/CommonTextWrapcontent"
+                    android:layout_gravity="end"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:textAlignment="viewEnd"
+                    android:text="Forgot Password ?"
+                    android:textColor="@color/black"
+                    android:textSize="12sp"/>
+
+                <Button
+                    android:id="@+id/btnSignin"
+                    style="@style/Button"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="Sign In"
+                    />
+
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    >
+                    <TextView
+                        style="@style/CommonTextWrapcontent"
+                        android:gravity="center"
+                        android:text="New User ? "
+                        android:textSize="@dimen/_12sdp"
+                        android:textColor="@color/black"
+                        />
+                    <TextView
+                        android:id="@+id/tvCreateAccount"
+                        style="@style/CommonTextWrapcontent"
+                        android:gravity="center"
+                        android:textSize="@dimen/_12sdp"
+                        android:text="@string/create"
+                        android:textColor="@color/black"
+                        />
+                </LinearLayout>
+            </LinearLayout>
+
+
+        </RelativeLayout>
+
+    </ScrollView>
+
 
 </RelativeLayout>

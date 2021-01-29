@@ -12,16 +12,18 @@ import android.text.style.UnderlineSpan;
 import android.view.MenuItem;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.ongoshop.fragments.ProfileFragment;
 import com.ongoshop.R;
-import com.ongoshop.fragments.SettingsFragment;
 import com.ongoshop.fragments.CategoriesFragment;
 import com.ongoshop.fragments.HomeFragment;
+import com.ongoshop.fragments.ProfileFragment;
+import com.ongoshop.fragments.SettingsFragment;
 
 public class HomeActivity extends AppCompatActivity implements BottomNavigationView.OnNavigationItemSelectedListener{
+
     Context mContaxt;
     boolean doubleBackToExitPressedOnce = false;
     BottomNavigationView bottomNavigationView;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +36,7 @@ public class HomeActivity extends AppCompatActivity implements BottomNavigationV
         underlineMenuItem(bottomNavigationView.getMenu().getItem(0));
         bottomNavigationView.setOnNavigationItemSelectedListener((BottomNavigationView.OnNavigationItemSelectedListener) this);
         final FragmentManager fragmentManager = getSupportFragmentManager();
+
 
 
         try {

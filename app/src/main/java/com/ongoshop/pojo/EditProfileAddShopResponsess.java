@@ -8,7 +8,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 
-public class SignupResponsess {
+public class EditProfileAddShopResponsess {
 
     @SerializedName("success")
     @Expose
@@ -719,5 +719,4 @@ public class SignupResponsess {
         }
 
     }
-
 }

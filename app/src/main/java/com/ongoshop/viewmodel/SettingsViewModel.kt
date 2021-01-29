@@ -4,6 +4,7 @@ import android.app.Activity
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.ongoshop.manager.restApi.RestObservable
+import com.ongoshop.pojo.EditProfileAddShopResponsess
 import com.ongoshop.pojo.EditProfileResponse
 import com.ongoshop.utils.others.MyApplication
 import com.ongoshop.utils.others.ValidationsClass
@@ -14,9 +15,9 @@ import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import java.io.File
 
-class MyAccountViewModel :ViewModel() {
+class SettingsViewModel :ViewModel() {
 
-    private val TAG = MyAccountViewModel::class.java.name
+    private val TAG = SettingsViewModel::class.java.name
     val restApiInterface = MyApplication.getnstance().provideAuthservice()
     var mResponse: MutableLiveData<RestObservable> = MutableLiveData()
 
@@ -53,7 +54,7 @@ class MyAccountViewModel :ViewModel() {
             mValidationClass: ValidationsClass
     ) {
         lateinit var profileImageFileBody: MultipartBody.Part
-        var updateProfile: Observable<EditProfileResponse>? = null
+        var updateProfile: Observable<EditProfileAddShopResponsess>? = null
         if (!mValidationClass.checkStringNull(mImage)) {
             val file = File(mImage)
             profileImageFileBody = mValidationClass.prepareFilePart("image", file)
