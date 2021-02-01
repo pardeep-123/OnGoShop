@@ -148,7 +148,8 @@ class MyShopEditActivity : BaseActivity(), View.OnClickListener, Observer<RestOb
                 openTimeTimestamp = (CommonMethods.time_to_timestamp(tv_open_time.text.toString(), "hh:mm a"))
                 Log.e("startTimeTimestamp", openTimeTimestamp.toString())
 
-            } else {
+            }
+            else {
                 closeTimeTimestamp = (CommonMethods.time_to_timestamp(SimpleDateFormat("hh:mm a").format(cal.time), "hh:mm a"))
                 if (closeTimeTimestamp >= openTimeTimestamp) {
                     tv_close_time.text = SimpleDateFormat("hh:mm a").format(cal.time)

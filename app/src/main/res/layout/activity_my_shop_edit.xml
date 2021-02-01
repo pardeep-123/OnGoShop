@@ -251,7 +251,6 @@
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_50sdp"
-                    android:layout_below="@id/ivBar"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:background="@drawable/shape_row"
                     android:backgroundTint="@color/white">
@@ -262,7 +261,7 @@
                         android:layout_centerInParent="true"
                         android:layout_marginLeft="@dimen/_10sdp"
                         android:layout_marginTop="@dimen/_10sdp"
-                        android:text="Delivery"
+                        android:text="@string/delivery"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_12sdp" />
 

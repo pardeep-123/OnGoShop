@@ -93,14 +93,12 @@
     <string name="enter_email">Enter email</string>
     <string name="enter_name">Enter name</string>
     <string name="resend">Resend</string>
-    <string name="enter_business_name">Enter business name</string>
-    <string name="enter_category">Enter category</string>
+
     <string name="state">State</string>
     <string name="open_time">Open Time</string>
     <string name="close_time">Close Time</string>
     <string name="add_photo">Add Photo</string>
     <string name="enter_city_suburb">Enter city/suburb</string>
-    <string name="enter_state">Enter state</string>
     <string name="postal_code">Postal Code</string>
     <string name="enter_postal_code">Enter postal code</string>
     <string name="enter_country">Enter country</string>
@@ -129,5 +127,6 @@
     <string name="address">Address</string>
     <string name="enter_state">Enter state</string>
     <string name="country">Country</string>
+    <string name="delivery">Delivery</string>
 
 </resources>
