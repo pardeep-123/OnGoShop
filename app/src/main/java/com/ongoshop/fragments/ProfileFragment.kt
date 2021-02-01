@@ -37,6 +37,9 @@ class ProfileFragment : BaseFragment(), View.OnClickListener, Observer<RestObser
     private var shopStreetNumber=""
     private var shopPostCode=""
     private var shopCity=""
+    private var shopState=""
+    private var openTime=""
+    private var closeTime=""
     private var shopCountry=""
     private var shopImage =""
     private var phone =""
@@ -100,6 +103,9 @@ class ProfileFragment : BaseFragment(), View.OnClickListener, Observer<RestObser
                 intent.putExtra("shopBuildingNumber", shopBuildingNumber)
                 intent.putExtra("shopStreetNumber", shopStreetNumber)
                 intent.putExtra("shopCity", shopCity)
+                intent.putExtra("shopState", shopState)
+                intent.putExtra("openTime", openTime)
+                intent.putExtra("closeTime", closeTime)
                 intent.putExtra("shopCountry", shopCountry)
                 intent.putExtra("shopPostCode", shopPostCode)
                 intent.putExtra("shopImage", shopImage)
@@ -129,8 +135,11 @@ class ProfileFragment : BaseFragment(), View.OnClickListener, Observer<RestObser
         shopStreetNumber= shopdetails.streetNumber
         shopCity= shopdetails.city
         shopCountry= shopdetails.country
+        shopState = shopdetails.state
         shopPostCode= shopdetails.postalCode
         shopImage= shopdetails.shopLogo
+        openTime= shopdetails.shopOpenTime
+        closeTime= shopdetails.shopCloseTime
         vendorDeliveryChargesList= shopdetails.vendorDeliveryCharges
         vendorDeliveryOptionsList= shopdetails.vendorDeliveryOptions
     }

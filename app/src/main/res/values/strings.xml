@@ -116,5 +116,18 @@
     <string name="wednesday">Wednesday</string>
     <string name="thursday">Thursday</string>
     <string name="saturday">Saturday</string>
+    <string name="update">Update</string>
+    <string name="enter_business_name">Enter business name</string>
+    <string name="enter_category">Enter category</string>
+    <string name="enter_abn">Enter abn</string>
+    <string name="enter_building_number">Enter building number</string>
+    <string name="enter_city">Enter city</string>
+    <string name="city_suburb">City/Suburb</string>
+    <string name="my_shop">My Shop</string>
+    <string name="enter_street_number">Enter street number</string>
+    <string name="enter_address">Enter address</string>
+    <string name="address">Address</string>
+    <string name="enter_state">Enter state</string>
+    <string name="country">Country</string>
 
 </resources>

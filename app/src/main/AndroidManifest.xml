@@ -150,10 +150,6 @@
             android:windowSoftInputMode="stateAlwaysHidden" />
 
         <activity
-            android:name=".activities.MyShopEditActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden" />
-        <activity
             android:name=".activities.EditProfileActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
@@ -211,6 +207,11 @@
 
         <activity
             android:name=".activities.VerificationCodeActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+
+        <activity
+            android:name=".activities.MyShopEditActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
 
