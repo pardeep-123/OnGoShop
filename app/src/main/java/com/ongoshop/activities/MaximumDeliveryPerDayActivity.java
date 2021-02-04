@@ -2,7 +2,6 @@ package com.ongoshop.activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -12,7 +11,6 @@ import android.widget.ImageView;
 
 import com.ongoshop.R;
 import com.ongoshop.pojo.VendorDeliveryCharge;
-import com.ongoshop.pojo.VendorDeliveryOption;
 import com.ongoshop.utils.others.CommonMethods;
 
 import java.util.ArrayList;
@@ -26,7 +24,7 @@ public class MaximumDeliveryPerDayActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_delivery_options2);
+        setContentView(R.layout.activity_max_delivery_perday);
         mContext =this;
         btnConfirm=findViewById(R.id.btnConfirm);
         ImageView ivBack=findViewById(R.id.ivBack);
@@ -51,7 +49,7 @@ public class MaximumDeliveryPerDayActivity extends AppCompatActivity {
     }
     public void Go(){
         if ( et_max_number.getText().toString().equals("") || et_max_number.getText().toString().isEmpty()){
-            CommonMethods.AlertErrorMessage(mContext, "Please enter maximum number of delivery per day.");
+            CommonMethods.AlertErrorMessage(mContext, getString(R.string.max_deliveries_error));
         }else {
             if (getIntent() !=null) {
                 Intent intent = new Intent(mContext, DeliveryChargesActivity.class);

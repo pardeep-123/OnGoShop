@@ -13,7 +13,7 @@ import com.ongoshop.base.BaseActivity
 import com.ongoshop.pojo.VendorDeliveryCharge
 import com.ongoshop.pojo.VendorDeliveryOption
 import com.ongoshop.utils.helperclasses.DeliveryOptionsClicklisetener
-import kotlinx.android.synthetic.main.activity_delivery_options1.*
+import kotlinx.android.synthetic.main.activity_delivery_options_timings.*
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
@@ -32,7 +32,7 @@ class DeliveryOptionsActivity : BaseActivity(), View.OnClickListener, DeliveryOp
     private var vendorDeliveryOptionsListJsonArray =""
 
     override fun getContentId(): Int {
-        return R.layout.activity_delivery_options1
+        return R.layout.activity_delivery_options_timings
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {

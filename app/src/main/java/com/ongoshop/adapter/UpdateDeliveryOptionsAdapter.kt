@@ -14,8 +14,9 @@ import android.widget.TextView
 
 import androidx.recyclerview.widget.RecyclerView
 import com.ongoshop.R
+import com.ongoshop.activities.UpdateDeliveryOptionsActivity
 
-import com.ongoshop.activities.DeliveryOptionsActivity
+
 import com.ongoshop.pojo.VendorDeliveryOption
 import com.ongoshop.utils.helperclasses.DeliveryOptionsClicklisetener
 import com.ongoshop.utils.others.CommonMethods
@@ -23,11 +24,12 @@ import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
 
-class DeliveryOptionsAdapter(
+class UpdateDeliveryOptionsAdapter(
         val context: Context?,
         internal var vendorDeliveryOptionList: ArrayList<VendorDeliveryOption>,
-        internal var deliveryOptionsActivity: DeliveryOptionsActivity, internal var deliveryOptionsClicklisetener: DeliveryOptionsClicklisetener
-) : RecyclerView.Adapter<DeliveryOptionsAdapter.DeliveryOptionsHolder>() {
+        internal var updateDeliveryOptionsActivity: UpdateDeliveryOptionsActivity,
+        internal var deliveryOptionsClicklisetener: DeliveryOptionsClicklisetener
+) : RecyclerView.Adapter<UpdateDeliveryOptionsAdapter.DeliveryOptionsHolder>() {
     private var openTimeTimestamp: Long = 0
     private var closeTimeTimestamp: Long = 0
     private var closeTime: String = ""
@@ -63,6 +65,7 @@ class DeliveryOptionsAdapter(
 
         fun bindItems(vendorDeliveryOptionList: VendorDeliveryOption) {
 
+           // tvDay.setText(vendorDeliveryOptionList.day)
             if (vendorDeliveryOptionList.day.equals("sun")){
                 tvDay.setText("Sunday")
             }
@@ -78,15 +81,16 @@ class DeliveryOptionsAdapter(
             if (vendorDeliveryOptionList.day.equals("thu")){
                 tvDay.setText("Thursday")
             }
-             if (vendorDeliveryOptionList.day.equals("fri")){
+            if (vendorDeliveryOptionList.day.equals("fri")){
                 tvDay.setText("Friday")
             }
-             if (vendorDeliveryOptionList.day.equals("sat")){
+            if (vendorDeliveryOptionList.day.equals("sat")){
                 tvDay.setText("Saturday")
             }
 
 
-
+            tvFromTime.setText(vendorDeliveryOptionList.deliveryTimeFrom)
+            tvToTime.setText(vendorDeliveryOptionList.deliveryTimeTo)
 
             ivOn.setOnClickListener {
                  setNoDelivery("on")
@@ -111,7 +115,7 @@ class DeliveryOptionsAdapter(
                 isNoDelivery=0
                 vendorDeliveryOptionList[adapterPosition].noDelivery= isNoDelivery
                 vendorDeliveryOptionList.set(adapterPosition, vendorDeliveryOptionList[adapterPosition])
-                deliveryOptionsActivity.setUpdatedList(adapterPosition, vendorDeliveryOptionList)
+                updateDeliveryOptionsActivity.setUpdatedList(adapterPosition, vendorDeliveryOptionList)
                 llDeliveryTimings.visibility= View.VISIBLE
 
             }else {
@@ -120,7 +124,7 @@ class DeliveryOptionsAdapter(
                 isNoDelivery=1
                 vendorDeliveryOptionList[adapterPosition].noDelivery= isNoDelivery
                 vendorDeliveryOptionList.set(adapterPosition, vendorDeliveryOptionList[adapterPosition])
-                deliveryOptionsActivity.setUpdatedList(adapterPosition, vendorDeliveryOptionList)
+                updateDeliveryOptionsActivity.setUpdatedList(adapterPosition, vendorDeliveryOptionList)
                 llDeliveryTimings.visibility= View.GONE
             }
         }
@@ -139,7 +143,7 @@ class DeliveryOptionsAdapter(
                     Log.e("startTimeTimestamp", openTimeTimestamp.toString())
                     vendorDeliveryOptionList[adapterPosition].deliveryTimeFrom= startTime
                     vendorDeliveryOptionList.set(adapterPosition, vendorDeliveryOptionList[adapterPosition])
-                    deliveryOptionsActivity.setUpdatedList(adapterPosition, vendorDeliveryOptionList)
+                    updateDeliveryOptionsActivity.setUpdatedList(adapterPosition, vendorDeliveryOptionList)
 
 
                 } else {
@@ -149,13 +153,13 @@ class DeliveryOptionsAdapter(
                         tvToTime.text = closeTime
                         vendorDeliveryOptionList[adapterPosition].deliveryTimeTo= closeTime
                         vendorDeliveryOptionList.set(adapterPosition, vendorDeliveryOptionList[adapterPosition])
-                        deliveryOptionsActivity.setUpdatedList(adapterPosition, vendorDeliveryOptionList)
+                        updateDeliveryOptionsActivity.setUpdatedList(adapterPosition, vendorDeliveryOptionList)
 
                         Log.e("endTimeTimestamp", closeTimeTimestamp.toString())
 
                     } else {
                         //it's before current'
-                        CommonMethods.AlertErrorMessage(deliveryOptionsActivity, "Invalid Time")
+                        CommonMethods.AlertErrorMessage(updateDeliveryOptionsActivity, "Invalid Time")
                     }
 
                 }

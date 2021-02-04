@@ -42,6 +42,8 @@ class ProfileFragment : BaseFragment(), View.OnClickListener, Observer<RestObser
     private var closeTime=""
     private var shopCountry=""
     private var shopImage =""
+    private var isDeliver =""
+    private var deliveriesPerDay =""
     private var phone =""
     private var countryCode =""
     private var userId =""
@@ -109,6 +111,8 @@ class ProfileFragment : BaseFragment(), View.OnClickListener, Observer<RestObser
                 intent.putExtra("shopCountry", shopCountry)
                 intent.putExtra("shopPostCode", shopPostCode)
                 intent.putExtra("shopImage", shopImage)
+                intent.putExtra("homeDelivery", isDeliver)
+                intent.putExtra("deliveriesPerDay", deliveriesPerDay)
                 intent.putParcelableArrayListExtra("vendorDeliveryOptions", vendorDeliveryOptionsList)
                 intent.putParcelableArrayListExtra("vendorDeliveryCharges", vendorDeliveryChargesList)
                 startActivity(intent)
@@ -140,6 +144,8 @@ class ProfileFragment : BaseFragment(), View.OnClickListener, Observer<RestObser
         shopImage= shopdetails.shopLogo
         openTime= shopdetails.shopOpenTime
         closeTime= shopdetails.shopCloseTime
+        isDeliver= shopdetails.homeDelivery.toString()
+        deliveriesPerDay= shopdetails.deliveriesPerDay.toString()
         vendorDeliveryChargesList= shopdetails.vendorDeliveryCharges
         vendorDeliveryOptionsList= shopdetails.vendorDeliveryOptions
     }

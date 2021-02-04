@@ -34,11 +34,12 @@ import kotlin.collections.ArrayList
 
 class MyShopActivity : BaseActivity(), View.OnClickListener {
 
-    lateinit var mContext: MyShopActivity
 
     private var shopName = ""
     private var shopCategory = ""
     private var shopAddress = ""
+    private var isDeliver = ""
+    private var deliveriesPerDay = ""
     private var shopABN = ""
     private var shopBuildingNumber = ""
     private var shopStreetNumber = ""
@@ -52,6 +53,10 @@ class MyShopActivity : BaseActivity(), View.OnClickListener {
     private var vendorDeliveryOptionsList: ArrayList<VendorDeliveryOption>? = ArrayList()
     private var vendorDeliveryChargesList: ArrayList<VendorDeliveryCharge>? = ArrayList()
 
+    companion object{
+        lateinit var mContext: MyShopActivity
+
+    }
 
     override fun getContentId(): Int {
         return R.layout.activity_my_shop
@@ -79,6 +84,8 @@ class MyShopActivity : BaseActivity(), View.OnClickListener {
             shopImage = intent.getStringExtra("shopImage")!!
             openTime = intent.getStringExtra("openTime")!!
             closeTime = intent.getStringExtra("closeTime")!!
+            isDeliver = intent.getStringExtra("homeDelivery")!!
+            deliveriesPerDay = intent.getStringExtra("deliveriesPerDay")!!
 
             vendorDeliveryOptionsList = intent.getParcelableArrayListExtra<VendorDeliveryOption>("vendorDeliveryOptions") as ArrayList<VendorDeliveryOption>
             vendorDeliveryChargesList = intent.getParcelableArrayListExtra<VendorDeliveryCharge>("vendorDeliveryCharges") as ArrayList<VendorDeliveryCharge>
@@ -158,6 +165,8 @@ class MyShopActivity : BaseActivity(), View.OnClickListener {
                 intent.putExtra("shopImage", shopImage)
                 intent.putExtra("openTime", openTime)
                 intent.putExtra("closeTime", closeTime)
+                intent.putExtra("homeDelivery", isDeliver)
+                intent.putExtra("deliveriesPerDay", deliveriesPerDay)
                 intent.putParcelableArrayListExtra("vendorDeliveryOptions", vendorDeliveryOptionsList)
                 intent.putParcelableArrayListExtra("vendorDeliveryCharges", vendorDeliveryChargesList)
                 startActivity(intent)

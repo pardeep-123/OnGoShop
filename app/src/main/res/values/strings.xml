@@ -128,5 +128,7 @@
     <string name="enter_state">Enter state</string>
     <string name="country">Country</string>
     <string name="delivery">Delivery</string>
+    <string name="maximum_number_of_deliveries_per_day">Maximum number of deliveries per day</string>
+    <string name="max_deliveries_error">Please enter maximum number of delivery per day.</string>
 
 </resources>

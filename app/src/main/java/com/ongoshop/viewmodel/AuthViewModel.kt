@@ -4,11 +4,15 @@ import android.app.Activity
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.ongoshop.manager.restApi.RestObservable
+import com.ongoshop.pojo.EditProfileAddShopResponsess
 import com.ongoshop.utils.others.MyApplication
+import com.ongoshop.utils.others.ValidationsClass
+import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
+import java.io.File
 import java.util.*
 
 class AuthViewModel :ViewModel() {
@@ -109,6 +113,30 @@ class AuthViewModel :ViewModel() {
                 )
     }
 
+    fun editShopDelivery(
+            activity: Activity, showLoader: Boolean,
+            map: HashMap<String, RequestBody>,
+            mImage: String,
+            mValidationClass: ValidationsClass
+    ) {
+        lateinit var profileImageFileBody: MultipartBody.Part
+        var updateProfile: Observable<EditProfileAddShopResponsess>? = null
+        if (!mValidationClass.checkStringNull(mImage)) {
+            val file = File(mImage)
+            profileImageFileBody = mValidationClass.prepareFilePart("image", file)
+            updateProfile =  restApiInterface.editProfile(map,profileImageFileBody)
+        }else
+        {
+            updateProfile =  restApiInterface.updateProfileWithoutImage(map)
+        }
+        updateProfile!!.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe { mResponse.value = RestObservable.loading(activity, showLoader) }
+                .subscribe(
+                        { mResponse.value = RestObservable.success(it) },
+                        { mResponse.value = RestObservable.error(activity, it) }
+                )
+    }
 
 
 

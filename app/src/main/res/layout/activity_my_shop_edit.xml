@@ -158,6 +158,22 @@
                 <TextView
                     style="@style/CommonTextWrapcontent"
                     android:layout_marginTop="@dimen/_10sdp"
+                    android:text="@string/city_suburb"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12sdp" />
+
+                <EditText
+                    android:id="@+id/et_shop_city"
+                    style="@style/Edittext"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:hint="@string/enter_city"
+                    android:inputType="text"
+                    android:textSize="16sp" />
+
+
+                <TextView
+                    style="@style/CommonTextWrapcontent"
+                    android:layout_marginTop="@dimen/_10sdp"
                     android:text="State"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_12sdp" />
@@ -168,21 +184,6 @@
                     android:layout_below="@id/tvPass"
                     android:layout_marginTop="@dimen/_5sdp"
                     android:hint="@string/enter_state"
-                    android:inputType="text"
-                    android:textSize="16sp" />
-
-                <TextView
-                    style="@style/CommonTextWrapcontent"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:text="@string/city_suburb"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_12sdp" />
-
-                <EditText
-                    android:id="@+id/et_shop_city"
-                    style="@style/Edittext"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:hint="@string/enter_city"
                     android:inputType="text"
                     android:textSize="16sp" />
 
@@ -265,7 +266,8 @@
                         android:textColor="@color/black"
                         android:textSize="@dimen/_12sdp" />
 
-                    <ImageView
+                    <androidx.appcompat.widget.SwitchCompat
+                        android:id="@+id/switch_delivery_on_off"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentRight="true"
@@ -275,7 +277,7 @@
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:id="@+id/rlChange"
+                    android:id="@+id/rl_delivery_options"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_50sdp"
                     android:layout_below="@id/ivBar"
@@ -303,9 +305,9 @@
                 </RelativeLayout>
 
                 <RelativeLayout
+                    android:id="@+id/rl_delivery_charges"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_50sdp"
-                    android:layout_below="@id/ivBar"
                     android:layout_marginTop="@dimen/_10sdp"
                     android:background="@drawable/shape_row"
                     android:backgroundTint="@color/white">
@@ -316,7 +318,7 @@
                         android:layout_centerInParent="true"
                         android:layout_marginLeft="@dimen/_10sdp"
                         android:layout_marginTop="@dimen/_10sdp"
-                        android:text="Delivery Charges"
+                        android:text="@string/delivery_charges"
 
                         android:textColor="@color/black"
                         android:textSize="@dimen/_12sdp" />

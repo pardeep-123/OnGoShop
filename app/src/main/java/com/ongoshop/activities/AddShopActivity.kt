@@ -68,7 +68,6 @@ class AddShopActivity : BaseActivity(), View.OnClickListener,  Observer<RestObse
         super.onCreate(savedInstanceState)
         mContext = this
 
-
         ivBack.setOnClickListener(mContext)
         btnSubmit.setOnClickListener(mContext)
         ivcamera.setOnClickListener(mContext)
@@ -84,7 +83,6 @@ class AddShopActivity : BaseActivity(), View.OnClickListener,  Observer<RestObse
         }
     }
 
-
     private fun getCategoryAPI() {
         if (!mValidationClass.isNetworkConnected) {
             showAlerterRed(resources.getString(R.string.no_internet))
@@ -99,7 +97,7 @@ class AddShopActivity : BaseActivity(), View.OnClickListener,  Observer<RestObse
 
 
     private fun categoryTypesDailogMethod() {
-        categoryTypesDialog = Dialog(mContext!!, R.style.Theme_Dialog)
+        categoryTypesDialog = Dialog(mContext, R.style.Theme_Dialog)
         categoryTypesDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         categoryTypesDialog.setContentView(R.layout.category_types_alert)
         rvCategoryTypes = categoryTypesDialog.findViewById(R.id.rv_category_types)
@@ -196,7 +194,6 @@ class AddShopActivity : BaseActivity(), View.OnClickListener,  Observer<RestObse
                     //it's before current'
                     CommonMethods.AlertErrorMessage(mContext, "Invalid Time")
                 }
-
             }
 
         }

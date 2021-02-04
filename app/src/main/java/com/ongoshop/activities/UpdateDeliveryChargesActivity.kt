@@ -13,6 +13,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ongoshop.R
 import com.ongoshop.adapter.DeliveryChargesAdapter
+import com.ongoshop.adapter.UpdateDeliveryChargesAdapter
+import com.ongoshop.adapter.UpdateDeliveryOptionsAdapter
 import com.ongoshop.base.BaseActivity
 import com.ongoshop.manager.restApi.RestObservable
 import com.ongoshop.manager.restApi.Status
@@ -32,17 +34,17 @@ import java.io.File
 import java.util.*
 
 
-class DeliveryChargesActivity : BaseActivity(), View.OnClickListener, Observer<RestObservable> {
+class UpdateDeliveryChargesActivity : BaseActivity(), View.OnClickListener, Observer<RestObservable> {
     private val viewModel: AuthViewModel
             by lazy { ViewModelProviders.of(this).get(AuthViewModel::class.java) }
 
 
     var dialog: Dialog? = null
     lateinit var deliveryChargesRecyclerview: RecyclerView
-    lateinit var deliveryChargesAdapter: DeliveryChargesAdapter
+    lateinit var deliveryChargesAdapter: UpdateDeliveryChargesAdapter
 
-    private lateinit var mContext: DeliveryChargesActivity
-    private var isDeliver = ""
+    private lateinit var mContext: UpdateDeliveryChargesActivity
+
     private var vendorDeliveryChargesList: ArrayList<VendorDeliveryCharge>? = ArrayList()
     private var vendorDeliveryChargesupdatedList: ArrayList<VendorDeliveryCharge>? = ArrayList()
 
@@ -66,30 +68,13 @@ class DeliveryChargesActivity : BaseActivity(), View.OnClickListener, Observer<R
             vendorDeliveryChargesList = intent.getParcelableArrayListExtra<VendorDeliveryCharge>("vendorDeliveryCharges")
                     as ArrayList<VendorDeliveryCharge>
 
-            deliveryChargesAdapter = DeliveryChargesAdapter(mContext, vendorDeliveryChargesList!!, mContext)
+            deliveryChargesAdapter = UpdateDeliveryChargesAdapter(mContext, vendorDeliveryChargesList!!, mContext)
             deliveryChargesRecyclerview.layoutManager = LinearLayoutManager(mContext)
             deliveryChargesRecyclerview.adapter = deliveryChargesAdapter
 
         }
 
     }
-
-    fun showDailog(addShopResponsess: EditProfileAddShopResponsess.Body) {
-        dialog = Dialog(mContext)
-        dialog!!.window!!.setBackgroundDrawableResource(android.R.color.transparent)
-        dialog!!.setContentView(R.layout.alert_delivery3)
-        dialog!!.setCancelable(false)
-        val btnOk = dialog!!.findViewById<Button>(R.id.btnOk)
-        btnOk.setOnClickListener {
-            val intent = Intent(mContext, HomeActivity::class.java)
-            startActivity(intent)
-            finishAffinity()
-
-            dialog!!.dismiss()
-        }
-        dialog!!.show()
-    }
-
 
     override fun onClick(v: View?) {
         when (v!!.id) {
@@ -129,7 +114,6 @@ class DeliveryChargesActivity : BaseActivity(), View.OnClickListener, Observer<R
                 val partCloseTime = mValidationClass.createPartFromString(intent.getStringExtra("closeTime"))
                 val partHomeDelivery = mValidationClass.createPartFromString(intent.getStringExtra("homeDelivery"))
                 val partDeliveriesPerDay = mValidationClass.createPartFromString(intent.getStringExtra("deliveriesPerDay"))
-                val partDeliveryOptionsJsonArrayString = mValidationClass.createPartFromString(intent.getStringExtra("deliveryOptionsJsonString"))
                 val partDeliveryChargesJsonArrayString = mValidationClass.createPartFromString(deliveryChargesJsonArray)
 
                 val partToken = mValidationClass.createPartFromString(SharedPrefUtil.getInstance().deviceToken)
@@ -152,8 +136,7 @@ class DeliveryChargesActivity : BaseActivity(), View.OnClickListener, Observer<R
                 map.put("deviceToken", partToken)
                 map.put("deliveriesPerDay", partDeliveriesPerDay)
                 map.put("homeDelivery", partHomeDelivery)
-                map.put("vendorDeliveryOptions", partDeliveryOptionsJsonArrayString)
-                map.put("vendorDeliveryCharges", partDeliveryChargesJsonArrayString)
+               map.put("vendorDeliveryCharges", partDeliveryChargesJsonArrayString)
 
                 viewModel.addShopAndDeliveryDetailsApi(this, true, map, bodyimage)
                 viewModel.mResponse.observe(this, this)
@@ -171,7 +154,6 @@ class DeliveryChargesActivity : BaseActivity(), View.OnClickListener, Observer<R
                     if (addShopResponsess.getCode() == Constants.success_code) {
                         showSuccessToast(mContext, addShopResponsess.message)
 
-                        showDailog(addShopResponsess.body)
                         MyApplication.getnstance()
                                 .setString(
                                         Constants.AuthKey,
@@ -184,9 +166,10 @@ class DeliveryChargesActivity : BaseActivity(), View.OnClickListener, Observer<R
                         SharedPrefUtil.getInstance().saveUserId(addShopResponsess.body.id.toString())
                         SharedPrefUtil.getInstance().saveEmail(addShopResponsess.body.email)
                         SharedPrefUtil.getInstance().saveName(addShopResponsess.body.name)
-                        SharedPrefUtil.getInstance().isLogin = true
 
-
+                        finish()
+                        MyShopEditActivity.mContext.finish()
+                        MyShopActivity.mContext.finish()
                     }
 
                 }

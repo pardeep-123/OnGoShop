@@ -11,13 +11,19 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.ongoshop.R;
+import com.ongoshop.base.BaseActivity;
 
-public class AddCardActivity extends AppCompatActivity {
+public class AddCardActivity extends BaseActivity {
     Context mContext;
     ImageView ivBack,ivOn,ivOff,ivImg;
     LinearLayout ll_chackbox;
     Button btnSave;
     int temp=2;
+
+    @Override
+    protected int getContentId() {
+        return 0;
+    }
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,4 +66,6 @@ public class AddCardActivity extends AppCompatActivity {
             }
         });
     }
+
+
 }
