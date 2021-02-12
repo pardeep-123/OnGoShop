@@ -5,253 +5,274 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.PaymentActivity">
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+
+
     <ImageView
         android:id="@+id/ivBar"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/_70sdp"
         android:scaleType="fitXY"
-        android:src="@drawable/small_header"/>
+        android:src="@drawable/small_header" />
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_20sdp"
         android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_20sdp"
         android:layout_marginRight="@dimen/_10sdp">
+
         <ImageView
             android:id="@+id/ivBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
             android:layout_alignParentLeft="true"
-            android:src="@drawable/back"/>
+            android:src="@drawable/back" />
+
         <TextView
-           style="@style/CommonTextWrapcontent"
+            style="@style/CommonTextWrapcontent"
+            android:layout_centerInParent="true"
+            android:text="@string/payment"
             android:textColor="@color/white"
-            android:text="Payment"
-            android:textSize="@dimen/_14sdp"
-            android:layout_centerInParent="true"/>
+            android:textSize="@dimen/_14sdp" />
     </RelativeLayout>
-    <LinearLayout
-        android:id="@+id/ll_1"
-        android:layout_below="@id/ivBar"
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="@dimen/_20sdp"
-        android:layout_marginLeft="@dimen/_20sdp"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:orientation="vertical">
+        android:layout_height="match_parent"
+        android:layout_below="@+id/ivBar">
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/pay1"
-                android:layout_centerInParent="true"/>
+
             <LinearLayout
+                android:id="@+id/ll_1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="@dimen/_10sdp"
-                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginLeft="@dimen/_20sdp"
                 android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_20sdp"
                 android:orientation="vertical">
+
                 <RelativeLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
-                    android:paddingLeft="@dimen/_10sdp">
-                    <TextView
-                        style="@style/CommonTextWrapcontent"
-                        android:text="Standard Charted"
-                        android:textColor="@color/white"
-                        android:layout_alignParentLeft="true"
-                        android:layout_centerInParent="true"
-                        android:textSize="@dimen/_12sdp"/>
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                    android:background="@drawable/pay1">
 
-                        android:layout_centerInParent="true"
-                        android:layout_alignParentRight="true"
-                        android:layout_marginRight="@dimen/_10sdp"
-                        android:src="@drawable/delete1"/>
-                </RelativeLayout>
-                <TextView
-                    style="@style/CommonTextWrapcontent"
-                    android:text="**** **** **** 2026"
-                    android:textColor="@color/white"
-                    android:layout_weight="1"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:paddingLeft="@dimen/_10sdp"
-                    android:textSize="@dimen/_12sdp"/>
-<ImageView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:paddingLeft="@dimen/_20sdp"
-    android:src="@drawable/visa"
-    android:layout_marginTop="@dimen/_20sdp"/>
-            </LinearLayout>
-        </RelativeLayout>
-    </LinearLayout>
 
-            <LinearLayout
-                android:id="@+id/ll_2"
-                android:layout_below="@id/ll_1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="@dimen/_20sdp"
-                android:layout_marginLeft="@dimen/_20sdp"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:orientation="vertical">
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/pay2"
-                        android:layout_centerInParent="true"/>
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="@dimen/_10sdp"
                         android:layout_marginLeft="@dimen/_10sdp"
                         android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
                         android:orientation="vertical">
+
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
                             android:paddingLeft="@dimen/_10sdp">
+
                             <TextView
                                 style="@style/CommonTextWrapcontent"
-                                android:text="Standard Charted"
-                                android:textColor="@color/white"
                                 android:layout_alignParentLeft="true"
                                 android:layout_centerInParent="true"
+                                android:text="Standard Charted"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/_12sdp" />
 
-                                android:textSize="@dimen/_12sdp"/>
                             <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_centerInParent="true"
+
                                 android:layout_alignParentRight="true"
+                                android:layout_centerInParent="true"
                                 android:layout_marginRight="@dimen/_10sdp"
-                                android:src="@drawable/delete1"/>
+                                android:src="@drawable/delete1" />
                         </RelativeLayout>
+
                         <TextView
                             style="@style/CommonTextWrapcontent"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_weight="1"
+                            android:paddingLeft="@dimen/_10sdp"
                             android:text="**** **** **** 2026"
                             android:textColor="@color/white"
-                            android:layout_weight="1"
-                            android:layout_marginTop="@dimen/_10sdp"
-                            android:paddingLeft="@dimen/_10sdp"
-                            android:textSize="@dimen/_12sdp"/>
+                            android:textSize="@dimen/_12sdp" />
+
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_20sdp"
+                            android:paddingLeft="@dimen/_20sdp"
+                            android:src="@drawable/visa" />
+                    </LinearLayout>
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/ll_1"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_20sdp"
+                android:orientation="vertical">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/pay2">
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:orientation="vertical">
+
+                        <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingLeft="@dimen/_10sdp">
+
+                            <TextView
+                                style="@style/CommonTextWrapcontent"
+                                android:layout_alignParentLeft="true"
+                                android:layout_centerInParent="true"
+                                android:text="Standard Charted"
+                                android:textColor="@color/white"
+
+                                android:textSize="@dimen/_12sdp" />
+
+                            <ImageView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_alignParentRight="true"
+                                android:layout_centerInParent="true"
+                                android:layout_marginRight="@dimen/_10sdp"
+                                android:src="@drawable/delete1" />
+                        </RelativeLayout>
+
+                        <TextView
+                            style="@style/CommonTextWrapcontent"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_weight="1"
                             android:paddingLeft="@dimen/_10sdp"
-                            android:src="@drawable/visa"
-                            android:layout_marginTop="@dimen/_20sdp"/>
+                            android:text="**** **** **** 2026"
+                            android:textColor="@color/white"
+                            android:textSize="@dimen/_12sdp" />
+
+                        <ImageView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_20sdp"
+                            android:paddingLeft="@dimen/_10sdp"
+                            android:src="@drawable/visa" />
                     </LinearLayout>
                 </RelativeLayout>
             </LinearLayout>
 
             <LinearLayout
                 android:id="@+id/ll_3"
-                android:layout_below="@id/ll_2"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginRight="@dimen/_20sdp"
+                android:layout_below="@id/ll_2"
                 android:layout_marginLeft="@dimen/_20sdp"
                 android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_20sdp"
                 android:orientation="vertical">
+
                 <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content">
-                    <ImageView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:src="@drawable/pay3"
-                        android:layout_centerInParent="true"/>
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/pay3">
+
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginRight="@dimen/_10sdp"
                         android:layout_marginLeft="@dimen/_10sdp"
                         android:layout_marginTop="@dimen/_10sdp"
-
+                        android:layout_marginRight="@dimen/_10sdp"
                         android:orientation="vertical">
+
                         <RelativeLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="horizontal"
                             android:paddingLeft="@dimen/_10sdp">
+
                             <TextView
                                 style="@style/CommonTextWrapcontent"
-                                android:text="Standard Charted"
-                                android:textColor="@color/white"
                                 android:layout_alignParentLeft="true"
                                 android:layout_centerInParent="true"
-                                android:textSize="@dimen/_12sdp"/>
+                                android:text="Standard Charted"
+                                android:textColor="@color/white"
+                                android:textSize="@dimen/_12sdp" />
+
                             <ImageView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:layout_centerInParent="true"
                                 android:layout_alignParentRight="true"
+                                android:layout_centerInParent="true"
                                 android:layout_marginRight="@dimen/_10sdp"
-                                android:src="@drawable/delete1"/>
+                                android:src="@drawable/delete1" />
                         </RelativeLayout>
+
                         <TextView
                             style="@style/CommonTextWrapcontent"
+                            android:layout_marginTop="@dimen/_10sdp"
+                            android:layout_weight="1"
+                            android:paddingLeft="@dimen/_10sdp"
                             android:text="**** **** **** 2026"
                             android:textColor="@color/white"
-                            android:layout_weight="1"
-                            android:layout_marginTop="@dimen/_10sdp"
-                            android:paddingLeft="@dimen/_10sdp"
-                            android:textSize="@dimen/_12sdp"/>
+                            android:textSize="@dimen/_12sdp" />
+
                         <ImageView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/_20sdp"
                             android:paddingLeft="@dimen/_10sdp"
-                            android:src="@drawable/visa"
-                            android:layout_marginTop="@dimen/_20sdp"/>
+                            android:src="@drawable/visa" />
                     </LinearLayout>
                 </RelativeLayout>
             </LinearLayout>
-<LinearLayout
-    android:id="@+id/ll_card"
-    android:layout_below="@id/ll_3"
-    android:layout_width="match_parent"
-    android:layout_height="@dimen/_50sdp"
-    android:layout_marginRight="@dimen/_20sdp"
-    android:layout_marginLeft="@dimen/_20sdp"
-    android:layout_marginTop="@dimen/_20sdp"
-    android:orientation="horizontal"
-    android:gravity="center"
-    android:background="@drawable/green_border_shape">
-    <TextView
-        style="@style/CommonTextWrapcontent"
-        android:text="Add Card"
-        android:textColor="@color/app"
-        android:textSize="@dimen/_14sdp"/>
-</LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_card"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_below="@id/ll_3"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginRight="@dimen/_20sdp"
+                android:background="@drawable/green_border_shape"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/CommonTextWrapcontent"
+                    android:text="@string/add_card"
+                    android:textColor="@color/app"
+                    android:textSize="@dimen/_14sdp" />
+            </LinearLayout>
+
             <Button
                 android:id="@+id/btnPay"
-                android:layout_below="@id/ll_card"
                 style="@style/Button"
+                android:layout_below="@id/ll_card"
                 android:layout_marginLeft="@dimen/_20sdp"
-                android:layout_marginRight="@dimen/_20sdp"
                 android:layout_marginTop="@dimen/_30sdp"
-                android:text="Pay"
-                />
+                android:layout_marginRight="@dimen/_20sdp"
+                android:text="@string/pay" />
+
         </RelativeLayout>
     </ScrollView>
 </RelativeLayout>

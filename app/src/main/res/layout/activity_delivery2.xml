@@ -5,148 +5,167 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.DeliveryActivity2">
+
     <ImageView
         android:id="@+id/ivBar"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/_70sdp"
         android:scaleType="fitXY"
-        android:src="@drawable/small_header"/>
+        android:src="@drawable/small_header" />
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_20sdp"
-        >
+        android:layout_marginTop="@dimen/_20sdp">
+
         <ImageView
             android:id="@+id/ivBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/_10sdp"
             android:layout_alignParentLeft="true"
-            android:src="@drawable/back"/>
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:src="@drawable/back" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/white"
+            android:layout_centerInParent="true"
             android:fontFamily="@font/regular"
             android:text="Ready for delivery"
-            android:textSize="@dimen/_14sdp"
-            android:layout_centerInParent="true"/>
+            android:textColor="@color/white"
+            android:textSize="@dimen/_14sdp" />
     </RelativeLayout>
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:layout_below="@id/ivBar">
 
-        <LinearLayout
-            android:id="@+id/ll_1"
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/ivBar"
+        android:fillViewport="true">
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
+            android:layout_height="match_parent"
             android:layout_marginTop="@dimen/_10sdp"
-            android:layout_marginLeft="@dimen/_10sdp"
-            android:layout_marginRight="@dimen/_10sdp"
-            android:background="@drawable/back_shape">
+            android:orientation="vertical">
+
             <LinearLayout
+                android:id="@+id/ll_1"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:layout_marginRight="@dimen/_10sdp"
-                android:layout_marginLeft="@dimen/_10sdp"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_weight="50"
+                android:background="@drawable/back_shape"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="50"
+                        android:text="Jackson Jack"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_14sdp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="50"
+                        android:gravity="end"
+                        android:text="@string/today"
+                        android:textColor="@color/grey"
+                        android:textSize="@dimen/_12sdp" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="@string/order_number_152kl0552"
                     android:textColor="@color/black"
-                    android:text="Jackson Jack"
-                    android:textSize="@dimen/_14sdp" />
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_weight="50"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/grey"
-                    android:gravity="end"
-                    android:text="Today"
-                    android:textSize="@dimen/_12sdp" />
-            </LinearLayout>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:layout_marginLeft="@dimen/_10sdp"
-                android:text="Order number 152KL0552"
-                android:textSize="@dimen/_10sdp" />
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:layout_marginRight="@dimen/_10sdp"
-                android:layout_marginLeft="@dimen/_10sdp"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_weight="50"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-                    android:text="Delivery Address"
-                    android:textSize="@dimen/_12sdp" />
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_weight="60"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-                    android:text="11 Ruby Cresent Merdian Plains\nQLD - 4451"
                     android:textSize="@dimen/_10sdp" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:layout_marginRight="@dimen/_10sdp"
-                android:layout_marginBottom="@dimen/_30sdp"
-                android:layout_marginLeft="@dimen/_10sdp"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_weight="40"
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-                    android:text="Phone"
-                    android:textSize="@dimen/_12sdp" />
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_weight="50"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="50"
+                        android:text="@string/delivery_address"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_12sdp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="60"
+                        android:text="@string/_11_ruby_cresent_merdian_plains_nqld_4451"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_10sdp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/black"
-                    android:text="+36788359476"
-                    android:textSize="@dimen/_10sdp" />
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_30sdp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="40"
+                        android:text="@string/phone"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_12sdp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="50"
+                        android:text="+36788359476"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_10sdp" />
+                </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
-        <Button
-            android:id="@+id/btnDelivery"
-            android:layout_below="@id/ll_1"
-            style="@style/Button"
-            android:layout_marginLeft="@dimen/_20sdp"
-            android:layout_marginRight="@dimen/_20sdp"
-            android:layout_marginBottom="@dimen/_20sdp"
-            android:layout_marginTop="@dimen/_40sdp"
-            android:text="Items on board for delivery"
-            />
-        <Button
-            android:id="@+id/btnDelivery2"
-            style="@style/Button"
-            android:layout_below="@id/ll_1"
-            android:visibility="gone"
-            android:layout_marginLeft="@dimen/_20sdp"
-            android:layout_marginRight="@dimen/_20sdp"
-            android:layout_marginBottom="@dimen/_20sdp"
-            android:layout_marginTop="@dimen/_40sdp"
-            android:text="Complete Delivery"
-            />
-    </RelativeLayout>
+
+            <Button
+                android:id="@+id/btnDelivery"
+                style="@style/Button"
+                android:layout_below="@id/ll_1"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_40sdp"
+                android:layout_marginRight="@dimen/_20sdp"
+                android:layout_marginBottom="@dimen/_20sdp"
+                android:text="@string/items_on_board_for_delivery" />
+
+            <Button
+                android:id="@+id/btnDelivery2"
+                style="@style/Button"
+                android:layout_below="@id/ll_1"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_40sdp"
+                android:layout_marginRight="@dimen/_20sdp"
+                android:layout_marginBottom="@dimen/_20sdp"
+                android:text="@string/complete_delivery"
+                android:visibility="gone" />
+        </RelativeLayout>
+
+    </ScrollView>
 </RelativeLayout>

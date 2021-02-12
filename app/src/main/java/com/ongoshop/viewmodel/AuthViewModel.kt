@@ -123,7 +123,7 @@ class AuthViewModel :ViewModel() {
         var updateProfile: Observable<EditProfileAddShopResponsess>? = null
         if (!mValidationClass.checkStringNull(mImage)) {
             val file = File(mImage)
-            profileImageFileBody = mValidationClass.prepareFilePart("image", file)
+            profileImageFileBody = mValidationClass.prepareFilePart("shopLogo", file)
             updateProfile =  restApiInterface.editProfile(map,profileImageFileBody)
         }else
         {

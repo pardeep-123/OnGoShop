@@ -38,10 +38,9 @@ import java.util.HashMap
 class UpdateDeliveryOptionsActivity : BaseActivity(), View.OnClickListener, DeliveryOptionsClicklisetener, Observer<RestObservable> {
 
     lateinit var recyclerview: RecyclerView
-    var shopABN=""
+    private var shopABN=""
     private var shopName = ""
     private var shopCategory = ""
-    private var shopAddress = ""
     private var isDeliver = ""
     private var deliveriesPerDay = ""
     private var shopBuildingNumber = ""
@@ -80,11 +79,11 @@ class UpdateDeliveryOptionsActivity : BaseActivity(), View.OnClickListener, Deli
 
         if (intent != null) {
 
-            shopABN= intent.getStringExtra("shopABN")!!
+
             shopName = intent.getStringExtra("shopName")!!
             shopCategory = intent.getStringExtra("shopCategory")!!
             shopABN = intent.getStringExtra("shopABN")!!
-            shopAddress = intent.getStringExtra("shopAddress")!!
+          //  shopAddress = intent.getStringExtra("shopAddress")!!
             shopBuildingNumber = intent.getStringExtra("shopBuildingNumber")!!
             shopStreetNumber = intent.getStringExtra("shopStreetNumber")!!
             shopCity = intent.getStringExtra("shopCity")!!
@@ -180,13 +179,13 @@ class UpdateDeliveryOptionsActivity : BaseActivity(), View.OnClickListener, Deli
         if (isValid()) {
             if (intent != null) {
                      // val bodyimage = mValidationClass.prepareFilePart("shopLogo", File(intent.getStringExtra("shopImage")))
-                val partShopName = mValidationClass.createPartFromString(intent.getStringExtra("shopName"))
-                val partCategoryName = mValidationClass.createPartFromString(intent.getStringExtra("categoryName"))
+                val partShopName = mValidationClass.createPartFromString(shopName)
+                val partCategoryName = mValidationClass.createPartFromString(shopCategory)
                 val partShopABN = mValidationClass.createPartFromString(shopABN)
-                val partBuildingNumber = mValidationClass.createPartFromString(intent.getStringExtra("buildingNumber"))
-                val partStreetNumber = mValidationClass.createPartFromString(intent.getStringExtra("streetNumber"))
-                val partCity = mValidationClass.createPartFromString(intent.getStringExtra("city"))
-                val partState = mValidationClass.createPartFromString(intent.getStringExtra("state"))
+                val partBuildingNumber = mValidationClass.createPartFromString(shopBuildingNumber)
+                val partStreetNumber = mValidationClass.createPartFromString(shopStreetNumber)
+                val partCity = mValidationClass.createPartFromString(shopCity)
+                val partState = mValidationClass.createPartFromString(shopState)
                 val partCountry = mValidationClass.createPartFromString(shopCountry)
                 val partPostalCode = mValidationClass.createPartFromString(shopPostCode)
                 val partOpenTime = mValidationClass.createPartFromString(openTime)
@@ -220,10 +219,10 @@ class UpdateDeliveryOptionsActivity : BaseActivity(), View.OnClickListener, Deli
 
                 var bodyimage = ""
 
-                if (bodyimage.equals("NoImageChanged")) {
-                    bodyimage = ""
-                } else {
+                if (!shopImage.equals("NoImageChanged")) {
                     bodyimage = intent.getStringExtra("shopImage")!!
+                } else {
+                    bodyimage = ""
                 }
                 viewModel.editShopDelivery(mContext, true, map, bodyimage!!,  mValidationClass)
                 viewModel.mResponse.observe(this, this)
@@ -257,9 +256,9 @@ class UpdateDeliveryOptionsActivity : BaseActivity(), View.OnClickListener, Deli
                         SharedPrefUtil.getInstance().saveUserId(addShopResponsess.body.id.toString())
                         SharedPrefUtil.getInstance().saveEmail(addShopResponsess.body.email)
                         SharedPrefUtil.getInstance().saveName(addShopResponsess.body.name)
-                        finish()
                         MyShopActivity.mContext.finish()
                         MyShopEditActivity.mContext.finish()
+                        finish()
                     }
 
                 }

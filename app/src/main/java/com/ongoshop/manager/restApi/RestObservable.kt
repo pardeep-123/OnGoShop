@@ -116,7 +116,7 @@ class RestObservable(
                 val errorResponse = converter.convert(responseBody!!)
                 val error_message = errorResponse!!.message
                 if (errorResponse.code == Constants.errorCode) {
-                    if (errorResponse.message!!.contains("User authentication failed")) {
+                    if (errorResponse.message!!.contains("Authorization is required.")) {
                         MyApplication.getnstance()
                             .clearData()
                         MyApplication.instance!!.clearData()

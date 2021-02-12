@@ -57,6 +57,7 @@ class UpdateDeliveryChargesAdapter(
 
             tvMinDistance.setText(vendorDeliveryChargeList.minDistance.toString())
             tvMaxDistance.setText(vendorDeliveryChargeList.maxDistance.toString())
+            etPrice.setText(vendorDeliveryChargeList.price)
 
             etPrice.addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
@@ -72,10 +73,11 @@ class UpdateDeliveryChargesAdapter(
 
             ivOn.setOnClickListener {
                 setFreeDelivery("on")
+                etPrice.setText(vendorDeliveryChargeList.price)
             }
             ivOff.setOnClickListener {
                 setFreeDelivery("off")
-
+                etPrice.setText("")
             }
 
         }
@@ -97,7 +99,7 @@ class UpdateDeliveryChargesAdapter(
                 vendorDeliveryChargeList.set(adapterPosition, vendorDeliveryChargeList[adapterPosition])
                 updateDeliveryChargesActivity.setUpdatedList(adapterPosition, vendorDeliveryChargeList)
 
-                etPrice.setKeyListener(etPrice.getTag() as KeyListener)
+                etPrice.setKeyListener(etPrice.getTag() as KeyListener)                   // editable
             } else {
                 ivOff.visibility = View.GONE
                 ivOn.visibility = View.VISIBLE
@@ -105,9 +107,9 @@ class UpdateDeliveryChargesAdapter(
                 vendorDeliveryChargeList[adapterPosition].freeDelivery = isFreeDelivery
                 vendorDeliveryChargeList.set(adapterPosition, vendorDeliveryChargeList[adapterPosition])
                 updateDeliveryChargesActivity.setUpdatedList(adapterPosition, vendorDeliveryChargeList)
-                etPrice.setTag(etPrice.getKeyListener())
+                etPrice.setTag(etPrice.getKeyListener())                    // non editable
                 etPrice.setKeyListener(null)
-                etPrice.setText("00")
+
             }
         }
 

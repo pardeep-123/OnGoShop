@@ -76,7 +76,6 @@ interface RestApiInterface {
     ): Observable<EditProfileAddShopResponsess>
 
 
-
     @Multipart
     @PUT(Constants.EditProfile)
     fun updateProfileWithoutImage(

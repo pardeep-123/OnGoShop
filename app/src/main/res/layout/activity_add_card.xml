@@ -5,146 +5,160 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.AddCardActivity">
+
     <ImageView
         android:id="@+id/ivBar"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/_70sdp"
         android:scaleType="fitXY"
-        android:src="@drawable/small_header"/>
+        android:src="@drawable/small_header" />
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_20sdp"
-        >
+        android:layout_marginTop="@dimen/_20sdp">
+
         <ImageView
             android:id="@+id/ivBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/_10sdp"
             android:layout_alignParentLeft="true"
-            android:src="@drawable/back"/>
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:src="@drawable/back" />
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:text="Add Card"
+            android:layout_centerInParent="true"
             android:fontFamily="@font/regular"
-            android:textSize="@dimen/_14sdp"
-            android:layout_centerInParent="true"/>
+            android:text="@string/add_card"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_14sdp" />
     </RelativeLayout>
-    <LinearLayout
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/_20sdp"
-        android:layout_marginRight="@dimen/_20sdp"
-        android:orientation="vertical"
-        android:layout_below="@id/ivBar">
+        android:layout_height="match_parent"
+        android:layout_below="@id/ivBar"
+        android:fillViewport="true">
 
-        <TextView
-            android:id="@+id/tvScan"
-            style="@style/CommonTextWrapcontent"
-            android:text="Enter a new card details"
-            android:textColor="@color/black"
-            android:layout_marginTop="@dimen/_20sdp"
-            android:textSize="@dimen/_14sdp"/>
-        <TextView
-            android:id="@+id/tvEmail"
-            android:layout_below="@id/ivBar"
-            style="@style/CommonTextWrapcontent"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:text="Name"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_12sdp"/>
-
-
-        <EditText
-            android:id="@+id/edEmail"
-            style="@style/Edittext"
-            android:layout_below="@id/tvEmail"
-            android:layout_marginTop="@dimen/_5sdp"
-            android:inputType="textEmailAddress"
-            android:hint="Enter name"
-            />
-        <TextView
-            android:layout_below="@id/ivBar"
-            style="@style/CommonTextWrapcontent"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:text="Credit Card Number"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_12sdp"/>
-        <EditText
-            style="@style/Edittext"
-            android:layout_below="@id/tvEmail"
-            android:layout_marginTop="@dimen/_5sdp"
-            android:inputType="number"
-            android:maxLength="16"
-            android:hint="Enter credit card number"
-            />
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:orientation="horizontal">
-            <EditText
-                style="@style/Edittext"
-                android:layout_below="@id/tvEmail"
-                android:layout_weight="1"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:layout_marginRight="@dimen/_5sdp"
-                android:inputType="number"
-                android:hint="MM/YY"
-                />
-            <EditText
-                style="@style/Edittext"
-                android:layout_below="@id/tvEmail"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:layout_marginLeft="@dimen/_5sdp"
-                android:inputType="number"
-                android:layout_weight="1"
-                android:maxLength="3"
-                android:hint="CVV/CVC"
-                />
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:orientation="horizontal">
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center"
-                android:id="@+id/ll_chackbox"
-                >
-                <ImageView
-                    android:id="@+id/ivOn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/check_box_3"/>
-                <ImageView
-                    android:id="@+id/ivOff"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/check_box_4"
-                    android:visibility="gone"/>
-            </LinearLayout>
+            android:layout_marginLeft="@dimen/_20sdp"
+            android:layout_marginRight="@dimen/_20sdp"
+            android:orientation="vertical">
+
             <TextView
-                android:id="@+id/tvTerms"
+                android:id="@+id/tvScan"
                 style="@style/CommonTextWrapcontent"
-                android:text="Save for future transaction"
-                android:layout_marginLeft="@dimen/_5sdp"
-                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:text="@string/enter_a_new_card_details"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_12sdp"/>
+                android:textSize="@dimen/_14sdp" />
+
+            <TextView
+                android:id="@+id/tvEmail"
+                style="@style/CommonTextWrapcontent"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:text="@string/name"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12sdp" />
+
+
+            <EditText
+                android:id="@+id/edEmail"
+                style="@style/Edittext"
+                android:layout_below="@id/tvEmail"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:hint="@string/enter_name"
+                android:inputType="textEmailAddress" />
+
+            <TextView
+                style="@style/CommonTextWrapcontent"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:text="@string/credit_card_number"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12sdp" />
+
+            <EditText
+                style="@style/Edittext"
+                android:layout_below="@id/tvEmail"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:hint="@string/enter_credit_card_number"
+                android:inputType="number"
+                android:maxLength="16" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:orientation="horizontal">
+
+                <EditText
+                    style="@style/Edittext"
+                    android:layout_below="@id/tvEmail"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_marginRight="@dimen/_5sdp"
+                    android:layout_weight="1"
+                    android:hint="MM/YY"
+                    android:inputType="number" />
+
+                <EditText
+                    style="@style/Edittext"
+                    android:layout_below="@id/tvEmail"
+                    android:layout_marginLeft="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:layout_weight="1"
+                    android:hint="CVV/CVC"
+                    android:inputType="number"
+                    android:maxLength="3" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/ll_chackbox"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center">
+
+                    <ImageView
+                        android:id="@+id/ivOn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/check_box_3" />
+
+                    <ImageView
+                        android:id="@+id/ivOff"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/check_box_4"
+                        android:visibility="gone" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvTerms"
+                    style="@style/CommonTextWrapcontent"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/_5sdp"
+                    android:text="@string/save_for_future_transaction"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12sdp" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnSave"
+                style="@style/Button"
+                android:layout_marginTop="@dimen/_40sdp"
+                android:text="@string/save" />
         </LinearLayout>
 
-        <Button
-            android:id="@+id/btnSave"
-            style="@style/Button"
-            android:layout_marginTop="@dimen/_40sdp"
-            android:text="Save"
-            />
-    </LinearLayout>
+    </ScrollView>
+
 
 </RelativeLayout>

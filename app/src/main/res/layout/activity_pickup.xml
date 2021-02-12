@@ -28,7 +28,7 @@
         <TextView
            style="@style/CommonTextWrapcontent"
             android:textColor="@color/white"
-            android:text="Ready for Pickup"
+            android:text="@string/ready_for_pickup"
             android:textSize="@dimen/_14sdp"
             android:layout_centerInParent="true"/>
     </RelativeLayout>

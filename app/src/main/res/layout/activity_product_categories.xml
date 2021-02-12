@@ -5,175 +5,191 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.ProductCategoriesActivity">
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-    <ImageView
-        android:id="@+id/ivBar"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/_70sdp"
-        android:scaleType="fitXY"
-        android:src="@drawable/header"/>
 
     <RelativeLayout
+        android:id="@+id/rl_title"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_20sdp"
-        >
+        android:layout_height="@dimen/_70sdp"
+        android:background="@drawable/header">
+
         <ImageView
             android:id="@+id/ivBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/_10sdp"
             android:layout_alignParentLeft="true"
-            android:src="@drawable/back"/>
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:src="@drawable/back" />
+
         <TextView
-          style="@style/CommonTextWrapcontent"
+            style="@style/CommonTextWrapcontent"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:text="@string/product_categories"
             android:textColor="@color/white"
-            android:text="Product Categories"
-            android:textSize="@dimen/_14sdp"
-            android:layout_centerInParent="true"/>
+            android:textSize="@dimen/_14sdp" />
     </RelativeLayout>
-    <LinearLayout
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginRight="@dimen/_10sdp"
-        android:layout_marginLeft="@dimen/_10sdp"
-        android:layout_below="@id/ivBar"
-        android:orientation="vertical">
-        <TextView
-            android:id="@+id/tvName"
-            android:layout_below="@id/ivBar"
-            style="@style/CommonTextWrapcontent"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:text="Select Categories to add"
-            android:textColor="@color/black"
-            android:layout_gravity="center"
-            android:textSize="@dimen/_14sdp"/>
-        <TextView
-            android:layout_below="@id/ivBar"
-            style="@style/CommonTextWrapcontent"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:text="Category 1"
-            android:textColor="@color/black"
-            android:drawableLeft="@drawable/check_box_3"
-            android:drawablePadding="@dimen/_10sdp"
-            android:textSize="@dimen/_12sdp"/>
-        <TextView
-            android:layout_below="@id/ivBar"
-            style="@style/CommonTextWrapcontent"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:text="Category 1"
-            android:textColor="@color/black"
-            android:drawableLeft="@drawable/check_box_3"
-            android:drawablePadding="@dimen/_10sdp"
-            android:textSize="@dimen/_12sdp"/>
-        <TextView
-            android:layout_below="@id/ivBar"
-            style="@style/CommonTextWrapcontent"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:text="Category 1"
-            android:textColor="@color/black"
-            android:drawableLeft="@drawable/check_box_4"
-            android:drawablePadding="@dimen/_10sdp"
-            android:textSize="@dimen/_12sdp"/>
-        <TextView
-            android:layout_below="@id/ivBar"
-            style="@style/CommonTextWrapcontent"
-            android:layout_marginTop="@dimen/_20sdp"
-            android:layout_marginLeft="@dimen/_10sdp"
-            android:text="Sub Category 1"
-            android:textColor="@color/black"
-            android:drawableLeft="@drawable/check_box_4"
-            android:drawablePadding="@dimen/_10sdp"
-            android:textSize="@dimen/_12sdp"/>
-        <TextView
-            android:layout_below="@id/ivBar"
-            style="@style/CommonTextWrapcontent"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:layout_marginLeft="@dimen/_10sdp"
-            android:text="Sub Category 2"
-            android:textColor="@color/black"
-            android:drawableLeft="@drawable/check_box_4"
-            android:drawablePadding="@dimen/_10sdp"
-            android:textSize="@dimen/_12sdp"/>
-        <TextView
-            android:layout_below="@id/ivBar"
-            style="@style/CommonTextWrapcontent"
-            android:layout_marginTop="@dimen/_20sdp"
-            android:text="Category 4"
-            android:textColor="@color/black"
-            android:drawableLeft="@drawable/check_box_4"
-            android:drawablePadding="@dimen/_10sdp"
-            android:textSize="@dimen/_12sdp"/>
-        <TextView
-            android:layout_below="@id/ivBar"
-            style="@style/CommonTextWrapcontent"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:layout_marginLeft="@dimen/_10sdp"
-            android:text="Sub Category 1"
-            android:textColor="@color/black"
-            android:drawableLeft="@drawable/check_box_4"
-            android:drawablePadding="@dimen/_10sdp"
-            android:textSize="@dimen/_12sdp"/>
-        <TextView
-            android:layout_below="@id/ivBar"
-            style="@style/CommonTextWrapcontent"
-            android:layout_marginTop="@dimen/_20sdp"
-            android:text="Bakery"
-            android:textColor="@color/black"
-            android:drawableLeft="@drawable/check_box_4"
-            android:drawablePadding="@dimen/_10sdp"
-            android:textSize="@dimen/_12sdp"/>
-        <TextView
-            android:layout_below="@id/ivBar"
-            style="@style/CommonTextWrapcontent"
-            android:layout_marginTop="@dimen/_20sdp"
-            android:layout_marginLeft="@dimen/_10sdp"
-            android:text="Sub Category 1"
-            android:textColor="@color/black"
-            android:drawableLeft="@drawable/check_box_4"
-            android:drawablePadding="@dimen/_10sdp"
-            android:textSize="@dimen/_12sdp"/>
-        <TextView
-            android:layout_below="@id/ivBar"
-            style="@style/CommonTextWrapcontent"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:layout_marginLeft="@dimen/_10sdp"
-            android:text="Sub Category 2"
-            android:textColor="@color/black"
-            android:drawableLeft="@drawable/check_box_3"
-            android:drawablePadding="@dimen/_10sdp"
-            android:textSize="@dimen/_12sdp"/>
-        <TextView
-            android:layout_below="@id/ivBar"
-            style="@style/CommonTextWrapcontent"
-            android:layout_marginTop="@dimen/_20sdp"
-            android:text="Bakery"
-            android:textColor="@color/black"
-            android:drawableLeft="@drawable/check_box_3"
-            android:drawablePadding="@dimen/_10sdp"
-            android:textSize="@dimen/_12sdp"/>
-        <TextView
-            android:layout_below="@id/ivBar"
-            style="@style/CommonTextWrapcontent"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:text="Vehetables"
-            android:textColor="@color/black"
-            android:drawableLeft="@drawable/check_box_3"
-            android:drawablePadding="@dimen/_10sdp"
-            android:textSize="@dimen/_12sdp"/>
-        <Button
-            android:id="@+id/btnSelection"
-            android:layout_below="@id/ivBar"
-            style="@style/Button"
-            android:layout_marginTop="@dimen/_40sdp"
-            android:text="Selection Completed"
-            />
-    </LinearLayout>
+        android:layout_height="match_parent"
+        android:fillViewport="true"
+        android:layout_below="@+id/rl_title">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvName"
+                    style="@style/CommonTextWrapcontent"
+                    android:layout_below="@id/ivBar"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="Select Categories to add"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_14sdp" />
+
+                <TextView
+                    style="@style/CommonTextWrapcontent"
+                    android:layout_below="@id/ivBar"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:drawableLeft="@drawable/check_box_3"
+                    android:drawablePadding="@dimen/_10sdp"
+                    android:text="Category 1"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12sdp" />
+
+                <TextView
+                    style="@style/CommonTextWrapcontent"
+                    android:layout_below="@id/ivBar"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:drawableLeft="@drawable/check_box_3"
+                    android:drawablePadding="@dimen/_10sdp"
+                    android:text="Category 1"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12sdp" />
+
+                <TextView
+                    style="@style/CommonTextWrapcontent"
+                    android:layout_below="@id/ivBar"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:drawableLeft="@drawable/check_box_4"
+                    android:drawablePadding="@dimen/_10sdp"
+                    android:text="Category 1"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12sdp" />
+
+                <TextView
+                    style="@style/CommonTextWrapcontent"
+                    android:layout_below="@id/ivBar"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:drawableLeft="@drawable/check_box_4"
+                    android:drawablePadding="@dimen/_10sdp"
+                    android:text="Sub Category 1"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12sdp" />
+
+                <TextView
+                    style="@style/CommonTextWrapcontent"
+                    android:layout_below="@id/ivBar"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:drawableLeft="@drawable/check_box_4"
+                    android:drawablePadding="@dimen/_10sdp"
+                    android:text="Sub Category 2"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12sdp" />
+
+                <TextView
+                    style="@style/CommonTextWrapcontent"
+                    android:layout_below="@id/ivBar"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:drawableLeft="@drawable/check_box_4"
+                    android:drawablePadding="@dimen/_10sdp"
+                    android:text="Category 4"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12sdp" />
+
+                <TextView
+                    style="@style/CommonTextWrapcontent"
+                    android:layout_below="@id/ivBar"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:drawableLeft="@drawable/check_box_4"
+                    android:drawablePadding="@dimen/_10sdp"
+                    android:text="Sub Category 1"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12sdp" />
+
+                <TextView
+                    style="@style/CommonTextWrapcontent"
+                    android:layout_below="@id/ivBar"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:drawableLeft="@drawable/check_box_4"
+                    android:drawablePadding="@dimen/_10sdp"
+                    android:text="Bakery"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12sdp" />
+
+                <TextView
+                    style="@style/CommonTextWrapcontent"
+                    android:layout_below="@id/ivBar"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:drawableLeft="@drawable/check_box_4"
+                    android:drawablePadding="@dimen/_10sdp"
+                    android:text="Sub Category 1"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12sdp" />
+
+                <TextView
+                    style="@style/CommonTextWrapcontent"
+                    android:layout_below="@id/ivBar"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:drawableLeft="@drawable/check_box_3"
+                    android:drawablePadding="@dimen/_10sdp"
+                    android:text="Sub Category 2"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12sdp" />
+
+                <TextView
+                    style="@style/CommonTextWrapcontent"
+                    android:layout_below="@id/ivBar"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:drawableLeft="@drawable/check_box_3"
+                    android:drawablePadding="@dimen/_10sdp"
+                    android:text="Bakery"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12sdp" />
+
+                <TextView
+                    style="@style/CommonTextWrapcontent"
+                    android:layout_below="@id/ivBar"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:drawableLeft="@drawable/check_box_3"
+                    android:drawablePadding="@dimen/_10sdp"
+                    android:text="Vehetables"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_12sdp" />
+
+                <Button
+                    android:id="@+id/btnSelection"
+                    style="@style/Button"
+                    android:layout_below="@id/ivBar"
+                    android:layout_marginTop="@dimen/_40sdp"
+                    android:text="Selection Completed" />
+            </LinearLayout>
         </RelativeLayout>
     </ScrollView>
 </RelativeLayout>

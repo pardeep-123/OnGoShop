@@ -5,73 +5,76 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.DeliveryOptionsActivity">
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-    <ImageView
-        android:id="@+id/ivBar"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/_70sdp"
-        android:scaleType="fitXY"
-        android:src="@drawable/small_header"/>
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/_10sdp"
-        android:layout_marginRight="@dimen/_10sdp"
-        android:layout_marginTop="@dimen/_20sdp"
-        >
+        android:paddingBottom="@dimen/_15sdp">
+
         <ImageView
-            android:id="@+id/ivBack"
+            android:id="@+id/ivBar"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:src="@drawable/back"/>
+            android:layout_height="@dimen/_70sdp"
+            android:scaleType="fitXY"
+            android:src="@drawable/small_header" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="@color/white"
-            android:text="Delivery Options"
-            android:fontFamily="@font/regular"
-            android:textSize="@dimen/_14sdp"
-            android:layout_centerInParent="true"/>
-    </RelativeLayout>
-    <LinearLayout
-        android:layout_below="@+id/ivBar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_marginRight="@dimen/_10sdp"
-        android:layout_marginLeft="@dimen/_10sdp"
-        android:layout_marginBottom="@dimen/_20sdp"
-        android:layout_marginTop="@dimen/_10sdp">
-
-        <androidx.recyclerview.widget.RecyclerView
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/recyclerview"
-            android:padding="@dimen/_10sdp" />
+            android:layout_height="@dimen/_70sdp"
+            android:background="@drawable/small_header">
+
+            <ImageView
+                android:id="@+id/ivBack"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:src="@drawable/back" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/regular"
+                android:text="@string/delivery_options"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_14sdp" />
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_below="@+id/ivBar"
+            android:layout_above="@+id/btnConfirm"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_20sdp"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/_10sdp" />
+
+        </LinearLayout>
+
 
         <Button
             android:id="@+id/btnConfirm"
             style="@style/Button"
-            android:layout_marginTop="@dimen/_20sdp"
-            android:layout_marginRight="@dimen/_20sdp"
-            android:layout_marginLeft="@dimen/_20sdp"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="@dimen/_15sdp"
+            android:layout_marginRight="@dimen/_15sdp"
             android:background="@drawable/btn"
-            android:text="Confirm"
-            android:textAllCaps="false"
             android:fontFamily="@font/medium"
-            android:textColor="@color/white"
-            />
-    </LinearLayout>
+            android:text="@string/confirm"
+            android:textAllCaps="false"
+            android:textColor="@color/white" />
 
-        </RelativeLayout>
-    </ScrollView>
+    </RelativeLayout>
+
+
 </RelativeLayout>

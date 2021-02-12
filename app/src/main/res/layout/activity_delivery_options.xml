@@ -39,24 +39,17 @@
         style="@style/CommonTextWrapcontent"
         android:layout_gravity="center"
         android:gravity="center"
-        android:text="Will you be offering home"
+        android:text="@string/will_you_be_offering_home_delivery"
         android:textColor="@color/black"
         android:textSize="@dimen/_12sdp"/>
-        <TextView
-            style="@style/CommonTextWrapcontent"
-            android:layout_gravity="center"
-            android:gravity="center"
-            android:layout_marginTop="@dimen/_2sdp"
-            android:text="delivery?"
-            android:textColor="@color/black"
-            android:textSize="@dimen/_12sdp"/>
+
         <Button
             android:id="@+id/btnYes"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_50sdp"
             android:background="@drawable/btn"
-            android:text="Yes"
+            android:text="@string/yes"
             android:textAllCaps="false"
             android:fontFamily="@font/medium"
             android:textColor="@color/white"
@@ -67,7 +60,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/_20sdp"
             android:background="@drawable/btn"
-            android:text="No"
+            android:text="@string/no"
             android:textAllCaps="false"
             android:fontFamily="@font/medium"
             android:backgroundTint="@color/red"

@@ -43,38 +43,48 @@
         <TextView
            style="@style/CommonTextMatchparent"
             android:textColor="@color/grey"
-            android:text="Days"
+            android:text="@string/days"
             android:layout_weight="1"
             android:textSize="@dimen/_14sdp"
             />
         <TextView
             style="@style/CommonTextMatchparent"
             android:textColor="@color/grey"
-            android:text="Weekly"
+            android:text="@string/weekly"
             android:layout_weight="1"
             android:textSize="@dimen/_14sdp"
             />
         <TextView
             style="@style/CommonTextMatchparent"
             android:textColor="@color/app"
-            android:text="Monthly"
+            android:text="@string/monthly"
             android:layout_weight="1"
             android:textSize="@dimen/_14sdp"
             />
 
     </LinearLayout>
-    <ImageView
-        android:id="@+id/ivData"
-        android:layout_below="@id/llText"
-        android:layout_marginTop="@dimen/_30sdp"
-        android:layout_marginBottom="@dimen/_10sdp"
+
+
+    <com.github.mikephil.charting.charts.BarChart
+        android:id="@+id/chart1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:minHeight="@dimen/_250sdp"
+        android:layout_marginTop="@dimen/_30sdp"
+        android:layout_marginBottom="@dimen/_10sdp"
+        android:layout_below="@id/llText" />
+
+<!--
+    <ImageView
+        android:id="@+id/ivData"
+  android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:src="@drawable/sales_data"/>
+-->
 
     <LinearLayout
         android:id="@+id/llData"
-        android:layout_below="@id/ivData"
+        android:layout_below="@id/chart1"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_50sdp"
         android:layout_margin="@dimen/_20sdp"

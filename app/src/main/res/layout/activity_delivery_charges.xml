@@ -9,81 +9,84 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:fillViewport="true">-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingBottom="@dimen/_15sdp">
+
+
+
         <RelativeLayout
+            android:id="@+id/rl_title"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="@dimen/_70sdp"
+            android:background="@drawable/small_header"
+           >
 
             <ImageView
-                android:id="@+id/ivBar"
+                android:id="@+id/ivBack"
                 android:layout_width="wrap_content"
-                android:layout_height="@dimen/_70sdp"
-                android:scaleType="fitXY"
-                android:src="@drawable/small_header"/>
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_alignParentLeft="true"
+                android:src="@drawable/back" />
 
-            <RelativeLayout
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/regular"
+                android:text="@string/delivery_charges"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_14sdp" />
+        </RelativeLayout>
+
+
+
+        <LinearLayout
+            android:id="@+id/ll_delivery_charges"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/btnConfirm"
+            android:layout_below="@+id/rl_title"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvEmail"
+                style="@style/CommonTextWrapcontent"
+                android:layout_below="@id/ivBar"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:text="@string/set_your_delivery_charges"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12sdp" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerview"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_20sdp"
-                android:layout_marginRight="@dimen/_10sdp"
-                android:layout_marginLeft="@dimen/_10sdp"
-                >
-                <ImageView
-                    android:id="@+id/ivBack"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:src="@drawable/back"/>
+                android:layout_marginTop="@dimen/_10sdp"
+                android:padding="@dimen/_10sdp" />
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/white"
-                    android:text="@string/delivery_charges"
-                    android:fontFamily="@font/regular"
-                    android:textSize="@dimen/_14sdp"
-                    android:layout_centerInParent="true"/>
-            </RelativeLayout>
-            <LinearLayout
-                android:id="@+id/ll_delivery_charges"
-                android:layout_below="@+id/ivBar"
-                android:layout_width="match_parent"
-                android:layout_above="@+id/btnConfirm"
-                android:layout_height="match_parent"
-                android:orientation="vertical"
-                android:layout_marginRight="@dimen/_10sdp"
-                android:layout_marginLeft="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_10sdp">
-                <TextView
-                    android:id="@+id/tvEmail"
-                    android:layout_below="@id/ivBar"
-                    style="@style/CommonTextWrapcontent"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:text="Set Your Delivery Charges"
-                    android:textColor="@color/black"
-                    android:layout_gravity="center"
-                    android:textSize="@dimen/_12sdp"/>
-                <androidx.recyclerview.widget.RecyclerView
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:id="@+id/recyclerview"
-                    android:padding="@dimen/_10sdp" />
+        </LinearLayout>
 
-            </LinearLayout>
-
-            <Button
-                android:id="@+id/btnConfirm"
-                style="@style/Button"
-                android:layout_alignParentBottom="true"
-                android:layout_margin="@dimen/_20sdp"
-                android:background="@drawable/btn"
-                android:text="Confirm"
-                android:fontFamily="@font/medium"
-                android:textAllCaps="false"
-                android:textColor="@color/white"
-                />
+        <Button
+            android:id="@+id/btnConfirm"
+            style="@style/Button"
+            android:layout_alignParentBottom="true"
+            android:layout_marginLeft="@dimen/_15sdp"
+            android:layout_marginRight="@dimen/_15sdp"
+            android:background="@drawable/btn"
+            android:fontFamily="@font/medium"
+            android:text="@string/confirm"
+            android:textAllCaps="false"
+            android:textColor="@color/white" />
 
 
-        </RelativeLayout>
+    </RelativeLayout>
     <!--</ScrollView>-->
 </RelativeLayout>

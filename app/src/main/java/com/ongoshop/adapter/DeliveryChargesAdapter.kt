@@ -107,7 +107,7 @@ class DeliveryChargesAdapter(
                 deliveryChargesActivity.setUpdatedList(adapterPosition, vendorDeliveryChargeList)
                 etPrice.setTag(etPrice.getKeyListener())
                 etPrice.setKeyListener(null)
-                etPrice.setText("00")
+
             }
         }
 

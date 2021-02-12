@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.ManagerManagmentActivity">
+    tools:context=".activities.ManagerManagementActivity">
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -36,7 +36,7 @@
         <TextView
             style="@style/CommonTextWrapcontent"
             android:textColor="@color/white"
-            android:text="Staff Management"
+            android:text="@string/staff_management"
             android:textSize="@dimen/_14sdp"
             android:layout_centerInParent="true"/>
 
@@ -60,7 +60,7 @@
                 android:layout_height="@dimen/_30sdp"
                 android:id="@+id/btnEmployee"
                 android:layout_marginLeft="@dimen/_10sdp"
-                android:text="Employee"
+                android:text="@string/employee"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:fontFamily="@font/regular"
@@ -72,7 +72,7 @@
                 android:id="@+id/btnManager"
                 android:layout_marginRight="@dimen/_10sdp"
                 android:layout_marginLeft="@dimen/_5sdp"
-                android:text="Manager"
+                android:text="@string/manager"
                 android:fontFamily="@font/regular"
                 android:textAllCaps="false"
                 android:background="@drawable/edit"

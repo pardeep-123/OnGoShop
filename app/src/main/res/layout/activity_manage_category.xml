@@ -5,67 +5,72 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.ManageCategoryActivity">
+
     <ImageView
         android:id="@+id/ivBar"
         android:layout_width="wrap_content"
         android:layout_height="@dimen/_70sdp"
         android:scaleType="fitXY"
-        android:src="@drawable/small_header"/>
+        android:src="@drawable/small_header" />
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_20sdp"
-        >
+        android:layout_marginTop="@dimen/_20sdp">
+
         <ImageView
             android:id="@+id/ivBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/_10sdp"
             android:layout_alignParentLeft="true"
-            android:src="@drawable/back"/>
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:src="@drawable/back" />
+
         <TextView
             style="@style/CommonTextWrapcontent"
+            android:layout_centerInParent="true"
+            android:text="@string/manage_categories"
             android:textColor="@color/white"
-            android:text="Manage Categories"
-            android:textSize="@dimen/_14sdp"
-            android:layout_centerInParent="true"/>
+            android:textSize="@dimen/_14sdp" />
     </RelativeLayout>
 
     <LinearLayout
         android:id="@+id/llProduct"
-        android:layout_below="@id/ivBar"
-        android:layout_marginTop="@dimen/_70sdp"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_70sdp"
-        android:layout_marginRight="@dimen/_20sdp"
+        android:layout_below="@id/ivBar"
         android:layout_marginLeft="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_70sdp"
+        android:layout_marginRight="@dimen/_20sdp"
+        android:background="@drawable/shape_row"
         android:backgroundTint="@color/yellow"
-        android:gravity="center"
-        android:background="@drawable/shape_row">
+        android:gravity="center">
+
         <TextView
             style="@style/CommonTextWrapcontent"
-            android:text="Manage Product &amp; Categories"
+            android:text="@string/manage_product_categories"
             android:textColor="@color/white"
 
-            android:textSize="@dimen/_14sdp"/>
+            android:textSize="@dimen/_14sdp" />
     </LinearLayout>
+
     <LinearLayout
         android:id="@+id/llIndividual"
-        android:layout_below="@id/llProduct"
-        android:layout_marginTop="@dimen/_20sdp"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_70sdp"
-        android:backgroundTint="@color/red"
-        android:layout_marginRight="@dimen/_20sdp"
-        android:gravity="center"
+        android:layout_below="@id/llProduct"
         android:layout_marginLeft="@dimen/_20sdp"
-        android:background="@drawable/shape_row">
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginRight="@dimen/_20sdp"
+        android:background="@drawable/shape_row"
+        android:backgroundTint="@color/red"
+        android:gravity="center">
+
         <TextView
             style="@style/CommonTextWrapcontent"
-
-            android:text="Manage Individual Products"
+            android:text="@string/manage_individual_products"
             android:textColor="@color/white"
-            android:textSize="@dimen/_14sdp"/>
+            android:textSize="@dimen/_14sdp" />
+
     </LinearLayout>
 </RelativeLayout>

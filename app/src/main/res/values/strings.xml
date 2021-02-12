@@ -2,7 +2,7 @@
     <string name="app_name">OnGoShop</string>
     <string name="create"><u>Create Account</u></string>
     <string name="password">Password</string>
-    <string name="email">Email</string>
+
     <string name="signin"><u>Sign In</u></string>
     <string name="terms"><u>I accept terms &amp; conditions</u></string>
     <!-- TODO: Remove or change this placeholder text -->
@@ -90,14 +90,14 @@
     <string name="turn_on">Turn on</string>
     <string name="gps_disable">GPS is disabled in your device. Please turn on location of your device</string>
     <string name="enter_old_password">Enter old password</string>
-    <string name="enter_email">Enter email</string>
+
     <string name="enter_name">Enter name</string>
     <string name="resend">Resend</string>
 
     <string name="state">State</string>
     <string name="open_time">Open Time</string>
     <string name="close_time">Close Time</string>
-    <string name="add_photo">Add Photo</string>
+
     <string name="enter_city_suburb">Enter city/suburb</string>
     <string name="postal_code">Postal Code</string>
     <string name="enter_postal_code">Enter postal code</string>
@@ -117,18 +117,129 @@
     <string name="update">Update</string>
     <string name="enter_business_name">Enter business name</string>
     <string name="enter_category">Enter category</string>
-    <string name="enter_abn">Enter abn</string>
-    <string name="enter_building_number">Enter building number</string>
+
     <string name="enter_city">Enter city</string>
     <string name="city_suburb">City/Suburb</string>
     <string name="my_shop">My Shop</string>
-    <string name="enter_street_number">Enter street number</string>
+
     <string name="enter_address">Enter address</string>
     <string name="address">Address</string>
     <string name="enter_state">Enter state</string>
-    <string name="country">Country</string>
+
     <string name="delivery">Delivery</string>
     <string name="maximum_number_of_deliveries_per_day">Maximum number of deliveries per day</string>
     <string name="max_deliveries_error">Please enter maximum number of delivery per day.</string>
+    <string name="confirm">Confirm</string>
+    <string name="select">Select</string>
+    <string name="select_category">Select Category</string>
+    <string name="enter_item">Enter Item</string>
+    <string name="add_categories">Add Categories</string>
+    <string name="board_for_delivery">Items on Board for delivery</string>
+    <string name="complete_delivery">Complete Delivery</string>
+    <string name="enter_a_new_card_details">Enter a new card details</string>
+    <string name="name">Name</string>
+    <string name="credit_card_number">Credit Card Number</string>
+    <string name="enter_credit_card_number">Enter credit card number</string>
+    <string name="save">Save</string>
+    <string name="save_for_future_transaction">Save for future transaction</string>
+    <string name="add_card">Add Card</string>
+    <string name="add_employee">Add Employee</string>
+    <string name="add_product">Add Product</string>
+    <string name="email">Email</string>
+    <string name="enter_email">Enter email</string>
+    <string name="mobile">Mobile</string>
+    <string name="enter_mobile">Enter mobile</string>
+    <string name="ids">Id</string>
+    <string name="enter_id">Enter id</string>
+
+    <string name="add_photo">Add Photo</string>
+    <string name="brand">Brand</string>
+    <string name="enter_brand">Enter brand</string>
+    <string name="add_price">Add Price</string>
+    <string name="enter_price">Enter price</string>
+    <string name="product_name">Product Name</string>
+    <string name="enter_product_name">Enter product name</string>
+    <string name="gtin_number">GTIN Number</string>
+    <string name="no_bar_code_item">No Bar Code Item</string>
+    <string name="enter_gtin_number">Enter gtin number</string>
+    <string name="country_of_origin">Country of Origin</string>
+    <string name="proceed_to_category">Proceed to Category</string>
+    <string name="enter_product_description">Enter product description</string>
+    <string name="product_description">Product Description</string>
+    <string name="enter_unit_of_measurement">Enter unit of measurement</string>
+    <string name="unit_of_measurement">Unit of measurement</string>
+    <string name="enter_country_of_origin">Enter country of origin</string>
+    <string name="scan_barcode_to_add_items">Scan Barcode to add items</string>
+    <string name="barcode_scanner">Barcode Scanner</string>
+    <string name="search_with_barcode_number">Search with barcode number</string>
+    <string name="no_barcode_item">No barcode Item</string>
+    <string name="old_password">Old Password</string>
+    <string name="change_password">Change Password</string>
+    <string name="new_password">New Password</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="business_name">Business Name</string>
+    <string name="category">Category</string>
+    <string name="abn">ABN</string>
+    <string name="enter_abn">Enter abn</string>
+    <string name="building_number">Building Number</string>
+    <string name="enter_building_number">Enter building number</string>
+    <string name="street_number">Street Number</string>
+    <string name="enter_street_number">Enter street number</string>
+    <string name="country">Country</string>
+    <string name="shop_timings">Shop Timings</string>
+    <string name="submit">Submit</string>
+    <string name="welcome_please_sign_up">Welcome, please sign up</string>
+    <string name="to_countinue">to countinue !</string>
+
+    <string name="enter_mobile_number">Enter mobile number</string>
+
+
+    <string name="send_verification_code">Send Verification Code</string>
+    <string name="already_a_member">Already a member?</string>
+    <string name="ready_for_delivery">Ready for delivery</string>
+    <string name="items_on_board_for_delivery">Items on board for delivery</string>
+
+    <string name="phone">Phone</string>
+    <string name="_11_ruby_cresent_merdian_plains_nqld_4451">11 Ruby Cresent Merdian Plains\nQLD - 4451</string>
+    <string name="delivery_address">Delivery Address</string>
+    <string name="order_number_152kl0552">Order number 152KL0552</string>
+    <string name="today">Today</string>
+    <string name="set_your_delivery_charges">Set Your Delivery Charges</string>
+    <string name="will_you_be_offering_home_delivery">Will you be offering home \n delivery?</string>
+    <string name="yes">Yes</string>
+    <string name="no">No</string>
+    <string name="delivery_options">Delivery Options</string>
+    <string name="order_detail">Order Detail</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="phone1">Phone:</string>
+    <string name="email1">Email:</string>
+    <string name="name1">Name:</string>
+    <string name="edit">Edit</string>
+    <string name="manage_product_categories"><![CDATA[Manage Product & Categories]]></string>
+    <string name="manage_individual_products">Manage Individual Products</string>
+    <string name="manage_categories">Manage Categories</string>
+    <string name="staff_management">Staff Management</string>
+    <string name="employee">Employee</string>
+    <string name="manager">Manager</string>
+    <string name="what_are_the_maximum_number_nof_deliveries_you_can_make_nper_day">What are the maximum number \n of deliveries you can make\nper day?</string>
+    <string name="delivery_days">Delivery Days</string>
+    <string name="address1">Address:</string>
+    <string name="abn1">ABN:</string>
+    <string name="building_number1">Building Number:</string>
+    <string name="postal_code1">Postal Code:</string>
+    <string name="new_orders">New Orders</string>
+    <string name="notifications">Notifications</string>
+    <string name="finish_packaging">Finish Packaging</string>
+    <string name="payment">Payment</string>
+    <string name="pay">Pay</string>
+    <string name="ready_for_pickup">Ready for Pickup</string>
+    <string name="grocery">Grocery</string>
+    <string name="add_products">Add Products</string>
+    <string name="product_categories">Product Categories</string>
+    <string name="product">Product</string>
+    <string name="monthly">Monthly</string>
+    <string name="weekly">Weekly</string>
+    <string name="days">Days</string>
+    <string name="dash">Dash</string>
 
 </resources>

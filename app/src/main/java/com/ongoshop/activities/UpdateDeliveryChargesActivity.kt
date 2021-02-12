@@ -100,16 +100,16 @@ class UpdateDeliveryChargesActivity : BaseActivity(), View.OnClickListener, Obse
     private fun addShopApi(deliveryChargesJsonArray: String) {
         if (isValid()) {
             if (intent != null) {
-                val bodyimage = mValidationClass.prepareFilePart("shopLogo", File(intent.getStringExtra("shopImage")))
+              //  val bodyimage = mValidationClass.prepareFilePart("shopLogo", File(intent.getStringExtra("shopImage")))
                 val partShopName = mValidationClass.createPartFromString(intent.getStringExtra("shopName"))
-                val partCategoryName = mValidationClass.createPartFromString(intent.getStringExtra("categoryName"))
+                val partCategoryName = mValidationClass.createPartFromString(intent.getStringExtra("shopCategory"))
                 val partShopABN = mValidationClass.createPartFromString(intent.getStringExtra("shopABN"))
-                val partBuildingNumber = mValidationClass.createPartFromString(intent.getStringExtra("buildingNumber"))
-                val partStreetNumber = mValidationClass.createPartFromString(intent.getStringExtra("streetNumber"))
-                val partCity = mValidationClass.createPartFromString(intent.getStringExtra("city"))
-                val partState = mValidationClass.createPartFromString(intent.getStringExtra("state"))
-                val partCountry = mValidationClass.createPartFromString(intent.getStringExtra("country"))
-                val partPostalCode = mValidationClass.createPartFromString(intent.getStringExtra("postalCode"))
+                val partBuildingNumber = mValidationClass.createPartFromString(intent.getStringExtra("shopBuildingNumber"))
+                val partStreetNumber = mValidationClass.createPartFromString(intent.getStringExtra("shopStreetNumber"))
+                val partCity = mValidationClass.createPartFromString(intent.getStringExtra("shopCity"))
+                val partState = mValidationClass.createPartFromString(intent.getStringExtra("shopState"))
+                val partCountry = mValidationClass.createPartFromString(intent.getStringExtra("shopCountry"))
+                val partPostalCode = mValidationClass.createPartFromString(intent.getStringExtra("shopPostCode"))
                 val partOpenTime = mValidationClass.createPartFromString(intent.getStringExtra("openTime"))
                 val partCloseTime = mValidationClass.createPartFromString(intent.getStringExtra("closeTime"))
                 val partHomeDelivery = mValidationClass.createPartFromString(intent.getStringExtra("homeDelivery"))
@@ -138,7 +138,15 @@ class UpdateDeliveryChargesActivity : BaseActivity(), View.OnClickListener, Obse
                 map.put("homeDelivery", partHomeDelivery)
                map.put("vendorDeliveryCharges", partDeliveryChargesJsonArrayString)
 
-                viewModel.addShopAndDeliveryDetailsApi(this, true, map, bodyimage)
+                var bodyimage = ""
+
+                if (!intent.getStringExtra("shopImage").equals("NoImageChanged")) {
+                    bodyimage = intent.getStringExtra("shopImage")!!
+                } else {
+                    bodyimage = ""
+                }
+
+                viewModel.editShopDelivery(this, true, map, bodyimage, mValidationClass)
                 viewModel.mResponse.observe(this, this)
 
             }

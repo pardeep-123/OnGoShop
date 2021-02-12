@@ -130,7 +130,7 @@ class SettingsFragment : BaseFragment(), View.OnClickListener, Observer<RestObse
                 startActivity(intent)
             }
             R.id.rlStaff -> {
-                val intent = Intent(activity, ManagerManagmentActivity::class.java)
+                val intent = Intent(activity, ManagerManagementActivity::class.java)
                 startActivity(intent)
             }
             R.id.rlTerms -> {

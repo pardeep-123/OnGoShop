@@ -28,7 +28,7 @@
         <TextView
             style="@style/CommonTextWrapcontent"
             android:textColor="@color/white"
-            android:text="New Orders"
+            android:text="@string/new_orders"
             android:textSize="@dimen/_14sdp"
             android:layout_centerInParent="true"/>
         <ImageView

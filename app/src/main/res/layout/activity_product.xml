@@ -5,86 +5,89 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.ProductActivity">
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
 
-   <ImageView
-    android:id="@+id/ivBar"
-    android:layout_width="wrap_content"
-    android:layout_height="@dimen/_70sdp"
-    android:scaleType="fitXY"
-    android:src="@drawable/small_header"/>
 
     <RelativeLayout
+
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_20sdp"
-        >
+        android:layout_height="@dimen/_70sdp"
+        android:background="@drawable/small_header">
+
         <ImageView
             android:id="@+id/ivBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/_10sdp"
             android:layout_alignParentLeft="true"
-            android:src="@drawable/back"/>
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:src="@drawable/back" />
+
         <TextView
-           style="@style/CommonTextWrapcontent"
+            style="@style/CommonTextWrapcontent"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:text="@string/grocery"
             android:textColor="@color/white"
-            android:text="Grocery"
-            android:textSize="@dimen/_14sdp"
-            android:layout_centerInParent="true"/>
+            android:textSize="@dimen/_14sdp" />
     </RelativeLayout>
-            <LinearLayout
-                android:id="@+id/llSearch"
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_40sdp"
-                android:background="@drawable/shape_row"
-                android:layout_marginLeft="@dimen/_30sdp"
-                android:layout_marginRight="@dimen/_30sdp"
-                android:layout_marginTop="@dimen/_50sdp"
-                android:orientation="horizontal">
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginLeft="@dimen/_5sdp"
-                    android:src="@drawable/search"/>
-                <EditText
-                    android:id="@+id/tvName"
-                    style="@style/CommonTextMatchparent"
-                    android:hint="Search"
-                    android:backgroundTint="@color/white"
-                    android:layout_marginLeft="@dimen/_10sdp"
-                    android:layout_gravity="center"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_12sdp"/>
-            </LinearLayout>
+
     <LinearLayout
-        android:layout_below="@id/llSearch"
+        android:id="@+id/llSearch"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:layout_marginLeft="@dimen/_10sdp"
-        android:layout_marginRight="@dimen/_10sdp"
-        android:orientation="vertical">
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
+        android:layout_height="@dimen/_40sdp"
+        android:layout_marginLeft="@dimen/_30sdp"
+        android:layout_marginTop="@dimen/_50sdp"
+        android:layout_marginRight="@dimen/_30sdp"
+        android:background="@drawable/shape_row"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/recyclerview"
-            android:padding="@dimen/_10sdp" />
-        <Button
-            android:id="@+id/btnAddProducts"
-            android:layout_below="@id/ivBar"
-            style="@style/Button"
-            android:layout_margin="@dimen/_20sdp"
-            android:text="Add Products"
-            />
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/_5sdp"
+            android:src="@drawable/search" />
+
+        <EditText
+            android:id="@+id/tvName"
+            style="@style/CommonTextMatchparent"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:backgroundTint="@color/white"
+            android:hint="Search"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12sdp" />
     </LinearLayout>
 
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/llSearch"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:fillViewport="true">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:orientation="vertical">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/btnAddProducts"
+                android:padding="@dimen/_10sdp" />
+
+            <Button
+                android:id="@+id/btnAddProducts"
+                style="@style/Button"
+                android:layout_alignParentBottom="true"
+                android:layout_margin="@dimen/_20sdp"
+                android:text="@string/add_products" />
         </RelativeLayout>
+
     </ScrollView>
+
 </RelativeLayout>

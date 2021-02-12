@@ -6,13 +6,6 @@
     android:layout_height="match_parent"
     tools:context=".activities.SignupActivity">
 
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/ivBar"
@@ -45,7 +38,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/_30sdp"
                         android:fontFamily="@font/regular"
-                        android:text="Welcome, please sign up"
+                        android:text="@string/welcome_please_sign_up"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_14sdp" />
 
@@ -54,280 +47,286 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
                         android:fontFamily="@font/regular"
-                        android:text="to countinue !"
+                        android:text="@string/to_countinue"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_14sdp" />
                 </LinearLayout>
             </RelativeLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/ivBar"
-
-                android:layout_marginLeft="@dimen/_20sdp"
-                android:layout_marginTop="@dimen/_20sdp"
-                android:layout_marginRight="@dimen/_20sdp"
-                android:orientation="vertical">
-
-                <RelativeLayout
-                    android:layout_width="@dimen/_75sdp"
-                    android:layout_height="@dimen/_75sdp"
-                    android:layout_gravity="center">
-
-                    <RelativeLayout
-                        android:id="@+id/rlImg"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:gravity="center">
-
-                        <ImageView
-                            android:id="@+id/ivImg"
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_centerInParent="true" />
-
-                        <de.hdodenhof.circleimageview.CircleImageView
-                            android:id="@+id/iv_profile"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_centerHorizontal="true"
-                            android:src="@drawable/woman_img"></de.hdodenhof.circleimageview.CircleImageView>
-                    </RelativeLayout>
-
-                    <RelativeLayout
-                        android:id="@+id/rlAdd"
-                        android:layout_width="@dimen/_25sdp"
-                        android:layout_height="@dimen/_25sdp"
-                        android:layout_alignParentEnd="true"
-                        android:layout_alignParentBottom="true"
-                        android:layout_marginEnd="0dp"
-                        android:layout_marginBottom="5dp"
-                        android:gravity="end">
-
-                        <ImageView
-                            android:layout_width="@dimen/_20sdp"
-                            android:layout_height="@dimen/_20sdp"
-                            android:src="@drawable/add_2" />
-                    </RelativeLayout>
-                </RelativeLayout>
-                <!-- <RelativeLayout
-                     android:layout_width="match_parent"
-                     android:layout_height="wrap_content"
-                     android:orientation="horizontal"
-                     android:gravity="center">
-                     <ImageView
-                         android:layout_width="wrap_content"
-                         android:layout_height="wrap_content"
-                         android:src="@drawable/woman_img"
-                        />
-                     <ImageView
-                         android:layout_width="wrap_content"
-                         android:layout_height="wrap_content"
-                         android:layout_marginTop="@dimen/_55sdp"
-                         android:layout_marginLeft="@dimen/_80sdp"
-                         android:src="@drawable/add_2"/>
-                 </RelativeLayout>-->
-
-                <TextView
-                    android:id="@+id/tvName"
-                    style="@style/CommonTextWrapcontent"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:text="Name"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_12sdp" />
+              <ScrollView
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:layout_below="@id/ivBar"
+                  android:fillViewport="true">
 
 
-                <EditText
-                    android:id="@+id/et_name"
-                    style="@style/Edittext"
-                    android:layout_below="@id/tvEmail"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:hint="@string/enter_name"
-                    android:imeOptions="actionNext"
-                    android:inputType="text"
-                    android:maxLines="1"
-                    android:textSize="16sp" />
+                  <LinearLayout
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:layout_marginLeft="@dimen/_20sdp"
+                      android:layout_marginTop="@dimen/_20sdp"
+                      android:layout_marginRight="@dimen/_20sdp"
+                      android:orientation="vertical">
 
-                <TextView
-                    android:id="@+id/tvEmail"
-                    style="@style/CommonTextWrapcontent"
-                    android:layout_below="@id/ivBar"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:text="@string/email"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_12sdp" />
+                      <RelativeLayout
+                          android:layout_width="@dimen/_75sdp"
+                          android:layout_height="@dimen/_75sdp"
+                          android:layout_gravity="center">
 
+                          <RelativeLayout
+                              android:id="@+id/rlImg"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:gravity="center">
 
-                <EditText
-                    android:id="@+id/et_email"
-                    style="@style/Edittext"
-                    android:layout_below="@id/tvEmail"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:hint="@string/enter_email"
-                    android:imeOptions="actionNext"
-                    android:inputType="textEmailAddress"
-                    android:maxLines="1"
-                    android:textSize="16sp" />
+                              <ImageView
+                                  android:id="@+id/ivImg"
+                                  android:layout_width="match_parent"
+                                  android:layout_height="match_parent"
+                                  android:layout_centerInParent="true" />
 
-                <TextView
-                    style="@style/CommonTextWrapcontent"
-                    android:layout_below="@id/ivBar"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:text="Mobile"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_12sdp" />
+                              <de.hdodenhof.circleimageview.CircleImageView
+                                  android:id="@+id/iv_profile"
+                                  android:layout_width="wrap_content"
+                                  android:layout_height="wrap_content"
+                                  android:layout_centerHorizontal="true"
+                                  android:src="@drawable/woman_img"/>
+                          </RelativeLayout>
 
+                          <RelativeLayout
+                              android:id="@+id/rlAdd"
+                              android:layout_width="@dimen/_25sdp"
+                              android:layout_height="@dimen/_25sdp"
+                              android:layout_alignParentEnd="true"
+                              android:layout_alignParentBottom="true"
+                              android:layout_marginEnd="0dp"
+                              android:layout_marginBottom="5dp"
+                              android:gravity="end">
 
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@id/tvEmail"
-                    android:background="@drawable/shape"
-                    android:minHeight="@dimen/_45sdp">
+                              <ImageView
+                                  android:layout_width="@dimen/_20sdp"
+                                  android:layout_height="@dimen/_20sdp"
+                                  android:src="@drawable/add_2" />
+                          </RelativeLayout>
+                      </RelativeLayout>
+                      <!-- <RelativeLayout
+                           android:layout_width="match_parent"
+                           android:layout_height="wrap_content"
+                           android:orientation="horizontal"
+                           android:gravity="center">
+                           <ImageView
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:src="@drawable/woman_img"
+                              />
+                           <ImageView
+                               android:layout_width="wrap_content"
+                               android:layout_height="wrap_content"
+                               android:layout_marginTop="@dimen/_55sdp"
+                               android:layout_marginLeft="@dimen/_80sdp"
+                               android:src="@drawable/add_2"/>
+                       </RelativeLayout>-->
 
-                    <com.rilixtech.widget.countrycodepicker.CountryCodePicker
-                        android:id="@+id/ccp"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerVertical="true"
-                        android:focusable="false"
-                        android:paddingLeft="5dp"
-                        android:paddingRight="5dp"
-                        app:ccp_keyboardAutoPopOnSearch="false"
-                        app:ccp_showFlag="false"
-                        app:ccp_textColor="@color/black"
-                        app:ccp_textSize="16sp" />
-
-
-                    <EditText
-                        android:id="@+id/et_phone"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_centerVertical="true"
-                        android:layout_toRightOf="@+id/ccp"
-                        android:background="@android:color/transparent"
-                        android:digits="0123456789"
-                        android:fontFamily="@font/regular"
-                        android:hint="Enter mobile"
-                        android:imeOptions="actionNext"
-                        android:inputType="number"
-                        android:maxLength="10"
-                        android:maxLines="1"
-                        android:textColor="@color/black"
-                        android:textColorHint="@color/black"
-                        android:textSize="16sp" />
+                      <TextView
+                          android:id="@+id/tvName"
+                          style="@style/CommonTextWrapcontent"
+                          android:layout_marginTop="@dimen/_10sdp"
+                          android:text="@string/name"
+                          android:textColor="@color/black"
+                          android:textSize="@dimen/_12sdp" />
 
 
-                </RelativeLayout>
+                      <EditText
+                          android:id="@+id/et_name"
+                          style="@style/Edittext"
+                          android:layout_below="@id/tvEmail"
+                          android:layout_marginTop="@dimen/_5sdp"
+                          android:hint="@string/enter_name"
+                          android:imeOptions="actionNext"
+                          android:inputType="text"
+                          android:maxLines="1"
+                          android:textSize="16sp" />
 
-                <TextView
-                    android:id="@+id/tvPass"
-                    style="@style/CommonTextWrapcontent"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:text="Password"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_12sdp" />
+                      <TextView
+                          android:id="@+id/tvEmail"
+                          style="@style/CommonTextWrapcontent"
+                          android:layout_below="@id/ivBar"
+                          android:layout_marginTop="@dimen/_10sdp"
+                          android:text="@string/email"
+                          android:textColor="@color/black"
+                          android:textSize="@dimen/_12sdp" />
 
-                <EditText
-                    android:id="@+id/edPass"
-                    style="@style/Edittext"
-                    android:layout_below="@id/tvPass"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:hint="@string/enter_password"
-                    android:imeOptions="actionNext"
-                    android:inputType="textPassword"
-                    android:maxLines="1"
-                    android:textSize="16sp" />
 
-                <TextView
-                    style="@style/CommonTextWrapcontent"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:text="Confirm Password"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_12sdp" />
+                      <EditText
+                          android:id="@+id/et_email"
+                          style="@style/Edittext"
+                          android:layout_below="@id/tvEmail"
+                          android:layout_marginTop="@dimen/_5sdp"
+                          android:hint="@string/enter_email"
+                          android:imeOptions="actionNext"
+                          android:inputType="textEmailAddress"
+                          android:maxLines="1"
+                          android:textSize="16sp" />
 
-                <EditText
-                    android:id="@+id/et_cPass"
-                    style="@style/Edittext"
-                    android:layout_below="@id/tvPass"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:hint="@string/enter_confirm_password"
-                    android:imeOptions="actionDone"
-                    android:inputType="textPassword"
-                    android:maxLines="1"
-                    android:textSize="16sp" />
+                      <TextView
+                          style="@style/CommonTextWrapcontent"
+                          android:layout_below="@id/ivBar"
+                          android:layout_marginTop="@dimen/_10sdp"
+                          android:text="@string/mobile"
+                          android:textColor="@color/black"
+                          android:textSize="@dimen/_12sdp" />
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:gravity="center"
 
-                    android:orientation="horizontal">
+                      <RelativeLayout
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:layout_below="@id/tvEmail"
+                          android:background="@drawable/shape"
+                          android:minHeight="@dimen/_45sdp">
 
-                    <LinearLayout
-                        android:id="@+id/ll_chackbox"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
+                          <com.rilixtech.widget.countrycodepicker.CountryCodePicker
+                              android:id="@+id/ccp"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:layout_centerVertical="true"
+                              android:focusable="false"
+                              android:paddingLeft="5dp"
+                              android:paddingRight="5dp"
+                              app:ccp_keyboardAutoPopOnSearch="false"
+                              app:ccp_showFlag="false"
+                              app:ccp_textColor="@color/black"
+                              app:ccp_textSize="16sp" />
 
-                        <ImageView
-                            android:id="@+id/ivOn"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/check_box_4"
-                            android:visibility="gone" />
 
-                        <ImageView
-                            android:id="@+id/ivOff"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:src="@drawable/check_box_3" />
-                    </LinearLayout>
+                          <EditText
+                              android:id="@+id/et_phone"
+                              android:layout_width="match_parent"
+                              android:layout_height="match_parent"
+                              android:layout_centerVertical="true"
+                              android:layout_toRightOf="@+id/ccp"
+                              android:background="@android:color/transparent"
+                              android:digits="0123456789"
+                              android:fontFamily="@font/regular"
+                              android:hint="@string/enter_mobile_number"
+                              android:imeOptions="actionNext"
+                              android:inputType="number"
+                              android:maxLength="10"
+                              android:maxLines="1"
+                              android:textColor="@color/black"
+                              android:textColorHint="@color/black"
+                              android:textSize="16sp" />
 
-                    <TextView
-                        android:id="@+id/tvTerms"
-                        style="@style/CommonTextWrapcontent"
-                        android:layout_gravity="center"
-                        android:layout_marginLeft="@dimen/_5sdp"
-                        android:text="@string/terms"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/_12sdp" />
-                </LinearLayout>
 
-                <Button
-                    android:id="@+id/btnVerification"
-                    style="@style/Button"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:text="Send Verification Code" />
+                      </RelativeLayout>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center"
-                    android:layout_marginTop="@dimen/_20sdp"
-                    android:layout_marginBottom="@dimen/_40sdp"
-                    android:gravity="center"
-                    android:orientation="horizontal">
+                      <TextView
+                          android:id="@+id/tvPass"
+                          style="@style/CommonTextWrapcontent"
+                          android:layout_marginTop="@dimen/_10sdp"
+                          android:text="@string/password"
+                          android:textColor="@color/black"
+                          android:textSize="@dimen/_12sdp" />
 
-                    <TextView
-                        style="@style/CommonTextWrapcontent"
-                        android:layout_marginTop="@dimen/_10sdp"
-                        android:layout_marginBottom="@dimen/_20sdp"
-                        android:text="Already a member? "
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/_12sdp" />
+                      <EditText
+                          android:id="@+id/edPass"
+                          style="@style/Edittext"
+                          android:layout_below="@id/tvPass"
+                          android:layout_marginTop="@dimen/_5sdp"
+                          android:hint="@string/enter_password"
+                          android:imeOptions="actionNext"
+                          android:inputType="textPassword"
+                          android:maxLines="1"
+                          android:textSize="16sp" />
 
-                    <TextView
-                        android:id="@+id/tvSignin"
-                        style="@style/CommonTextWrapcontent"
-                        android:layout_marginTop="@dimen/_10sdp"
-                        android:layout_marginBottom="@dimen/_20sdp"
-                        android:text="@string/signin"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/_12sdp" />
-                </LinearLayout>
-            </LinearLayout>
-        </RelativeLayout>
-    </ScrollView>
+                      <TextView
+                          style="@style/CommonTextWrapcontent"
+                          android:layout_marginTop="@dimen/_10sdp"
+                          android:text="@string/confirm_password"
+                          android:textColor="@color/black"
+                          android:textSize="@dimen/_12sdp" />
+
+                      <EditText
+                          android:id="@+id/et_cPass"
+                          style="@style/Edittext"
+                          android:layout_below="@id/tvPass"
+                          android:layout_marginTop="@dimen/_5sdp"
+                          android:hint="@string/enter_confirm_password"
+                          android:imeOptions="actionDone"
+                          android:inputType="textPassword"
+                          android:maxLines="1"
+                          android:textSize="16sp" />
+
+                      <LinearLayout
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:layout_marginTop="@dimen/_10sdp"
+                          android:gravity="center"
+                          android:orientation="horizontal">
+
+                          <LinearLayout
+                              android:id="@+id/ll_chackbox"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content">
+
+                              <ImageView
+                                  android:id="@+id/ivOn"
+                                  android:layout_width="wrap_content"
+                                  android:layout_height="wrap_content"
+                                  android:src="@drawable/check_box_4"
+                                  android:visibility="gone" />
+
+                              <ImageView
+                                  android:id="@+id/ivOff"
+                                  android:layout_width="wrap_content"
+                                  android:layout_height="wrap_content"
+                                  android:src="@drawable/check_box_3" />
+                          </LinearLayout>
+
+                          <TextView
+                              android:id="@+id/tvTerms"
+                              style="@style/CommonTextWrapcontent"
+                              android:layout_gravity="center"
+                              android:layout_marginLeft="@dimen/_5sdp"
+                              android:text="@string/terms"
+                              android:textColor="@color/black"
+                              android:textSize="@dimen/_12sdp" />
+                      </LinearLayout>
+
+                      <Button
+                          android:id="@+id/btnVerification"
+                          style="@style/Button"
+                          android:layout_marginTop="@dimen/_10sdp"
+                          android:text="@string/send_verification_code" />
+
+                      <LinearLayout
+                          android:layout_width="match_parent"
+                          android:layout_height="wrap_content"
+                          android:layout_gravity="center"
+                          android:layout_marginTop="@dimen/_20sdp"
+                          android:layout_marginBottom="@dimen/_40sdp"
+                          android:gravity="center"
+                          android:orientation="horizontal">
+
+                          <TextView
+                              style="@style/CommonTextWrapcontent"
+                              android:layout_marginTop="@dimen/_10sdp"
+                              android:layout_marginBottom="@dimen/_20sdp"
+                              android:text="@string/already_a_member"
+                              android:textColor="@color/black"
+                              android:textSize="@dimen/_12sdp" />
+
+                          <TextView
+                              android:id="@+id/tvSignin"
+                              style="@style/CommonTextWrapcontent"
+                              android:layout_marginTop="@dimen/_10sdp"
+                              android:layout_marginBottom="@dimen/_20sdp"
+                              android:text="@string/signin"
+                              android:textColor="@color/black"
+                              android:textSize="@dimen/_12sdp" />
+                      </LinearLayout>
+                  </LinearLayout>
+
+              </ScrollView>
+
+
 </RelativeLayout>

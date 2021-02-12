@@ -28,42 +28,50 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/white"
-            android:text="Add Categories"
+            android:text="@string/add_categories"
             android:fontFamily="@font/regular"
             android:textSize="@dimen/_14sdp"
             android:layout_centerInParent="true"/>
     </RelativeLayout>
-    <LinearLayout
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/_20sdp"
-        android:layout_marginRight="@dimen/_20sdp"
-        android:orientation="vertical"
+        android:layout_height="match_parent"
+        android:fillViewport="true"
         android:layout_below="@id/ivBar">
 
-        <TextView
-            android:id="@+id/tvScan"
-            style="@style/CommonTextWrapcontent"
-            android:text="Select Category"
-            android:textColor="@color/black"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/_20sdp"
+            android:layout_marginRight="@dimen/_20sdp"
+            android:orientation="vertical">
 
-            android:layout_marginTop="@dimen/_20sdp"
-            android:textSize="@dimen/_14sdp"/>
+            <TextView
+                android:id="@+id/tvScan"
+                style="@style/CommonTextWrapcontent"
+                android:text="@string/select_category"
+                android:textColor="@color/black"
 
-        <EditText
-            android:id="@+id/edSelect"
-            style="@style/Edittext"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:inputType="textEmailAddress"
-            android:hint="Select"
-            android:drawableRight="@drawable/drop_down"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:textSize="@dimen/_14sdp"/>
 
-            android:textSize="16sp" />
-        <Button
-            android:id="@+id/btnItem"
-            style="@style/Button"
-            android:layout_marginTop="@dimen/_40sdp"
-            android:text="Enter Item"
-            />
-    </LinearLayout>
+            <EditText
+                android:id="@+id/edSelect"
+                style="@style/Edittext"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:inputType="textEmailAddress"
+                android:hint="@string/select"
+                android:drawableRight="@drawable/drop_down"
+                android:textSize="16sp" />
+            <Button
+                android:id="@+id/btnItem"
+                style="@style/Button"
+                android:layout_marginTop="@dimen/_40sdp"
+                android:text="@string/enter_item"
+                />
+        </LinearLayout>
+
+
+    </ScrollView>
 </RelativeLayout>

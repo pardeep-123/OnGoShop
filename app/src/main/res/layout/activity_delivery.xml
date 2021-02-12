@@ -30,13 +30,13 @@
             android:layout_height="wrap_content"
             android:textColor="@color/white"
             android:fontFamily="@font/regular"
-            android:text="Ready for delivery"
+            android:text="@string/ready_for_delivery"
             android:textSize="@dimen/_14sdp"
             android:layout_centerInParent="true"/>
     </RelativeLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_below="@id/ivBar">
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
