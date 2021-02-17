@@ -34,6 +34,17 @@ class HomeViewModel :ViewModel() {
             )
     }
 
+ fun getProductListingAPI(activity: Activity, showLoader:Boolean, map:HashMap<String, String>) {
+        restApiInterface.getProductListing(map)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .doOnSubscribe { mResponse.value = RestObservable.loading(activity,showLoader) }
+            .subscribe(
+                { mResponse.value = RestObservable.success(it) },
+                { mResponse.value = RestObservable.error(activity,it) }
+            )
+    }
+
 
 /*
     fun notificationListApi(activity: Activity, showLoader:Boolean) {
@@ -47,6 +58,62 @@ class HomeViewModel :ViewModel() {
             )
     }
 */
+
+
+    fun allCardsAPI(activity: Activity, showLoader:Boolean) {
+        restApiInterface.allCards()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe { mResponse.value = RestObservable.loading(activity,showLoader) }
+                .subscribe(
+                        { mResponse.value = RestObservable.success(it) },
+                        { mResponse.value = RestObservable.error(activity,it) }
+                )
+    }
+
+    fun addCardAPI(activity: Activity, showLoader:Boolean, map: HashMap<String, String>) {
+        restApiInterface.addCard(map)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe { mResponse.value = RestObservable.loading(activity,showLoader) }
+                .subscribe(
+                        { mResponse.value = RestObservable.success(it) },
+                        { mResponse.value = RestObservable.error(activity,it) }
+                )
+    }
+
+    fun deleteCardAPI(activity: Activity, showLoader:Boolean, map: HashMap<String, String>) {
+        restApiInterface.deleteCard(map)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe { mResponse.value = RestObservable.loading(activity,showLoader) }
+                .subscribe(
+                        { mResponse.value = RestObservable.success(it) },
+                        { mResponse.value = RestObservable.error(activity,it) }
+                )
+    }
+
+    fun updateCardAPI(activity: Activity, showLoader:Boolean, map: HashMap<String, String>) {
+        restApiInterface.updateCard(map)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe { mResponse.value = RestObservable.loading(activity,showLoader) }
+                .subscribe(
+                        { mResponse.value = RestObservable.success(it) },
+                        { mResponse.value = RestObservable.error(activity,it) }
+                )
+    }
+
+    fun setDefaultCardAPI(activity: Activity, showLoader:Boolean, map: HashMap<String, String>) {
+        restApiInterface.setDefaultCard(map)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe { mResponse.value = RestObservable.loading(activity,showLoader) }
+                .subscribe(
+                        { mResponse.value = RestObservable.success(it) },
+                        { mResponse.value = RestObservable.error(activity,it) }
+                )
+    }
 
 
 

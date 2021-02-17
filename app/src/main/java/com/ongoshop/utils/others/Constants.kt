@@ -30,9 +30,16 @@ class Constants {
         const val ChangePassword = BASE_URL + "changePassword"
         const val VerifyOtp = BASE_URL + "verifyOtp"
         const val ResendOtp = BASE_URL + "resendOtp"
+        const val SocialLogin = BASE_URL + "socialLogin"
         const val AboutUs = BASE_URL + "aboutUs"
         const val PrivacyPolicy = BASE_URL + "privacyPolicy"
         const val CategoryList = BASE_URL + "categoryListing"
+        const val ProductListing = BASE_URL + "subCategoryProductListing"
+        const val AddCard = BASE_URL + "addCard"
+        const val AllCards = BASE_URL + "allCards"
+        const val DeleteCard = BASE_URL + "deleteCard"
+        const val UpdateCard = BASE_URL + "updateCard"
+        const val SetDefaultCard = BASE_URL + "setDefaultCard"
 
         const val HomeListing = BASE_URL + "homeListing"              // Home
         const val CategoryListing = BASE_URL + "categoryListing"

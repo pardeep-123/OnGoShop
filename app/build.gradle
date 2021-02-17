@@ -82,6 +82,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-crashlytics:17.2.1'
     implementation 'com.google.firebase:firebase-core:17.4.4'
     implementation 'com.google.firebase:firebase-messaging:20.2.4'
+    implementation 'com.stripe:stripe-android:12.8.1'
 
     implementation 'com.squareup.okhttp3:logging-interceptor:4.9.0'
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'

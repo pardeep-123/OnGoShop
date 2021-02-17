@@ -1,24 +1,38 @@
 package com.ongoshop.activities
 
-import android.content.Context
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
-import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ongoshop.R
 import com.ongoshop.adapter.ProductAdapter
 import com.ongoshop.base.BaseActivity
+import com.ongoshop.manager.restApi.RestObservable
+import com.ongoshop.manager.restApi.Status
+import com.ongoshop.pojo.ProductListingResponse
+import com.ongoshop.utils.others.CommonMethods
+import com.ongoshop.utils.others.Constants
+import com.ongoshop.utils.others.MyApplication
+import com.ongoshop.viewmodel.HomeViewModel
+import kotlinx.android.synthetic.main.activity_product.*
 
-class ProductActivity : BaseActivity(), View.OnClickListener {
+class ProductActivity : BaseActivity(), View.OnClickListener, Observer<RestObservable> {
     var ivBack: ImageView? = null
     var mContext: ProductActivity? = null
-    var btnAddProducts: Button? = null
-    var recyclerview: RecyclerView? = null
+    private var btnAddProducts: Button? = null
+    var rvProductList: RecyclerView? = null
     var productAdapter: ProductAdapter? = null
+    private var productList: ArrayList<ProductListingResponse.Body?>? = ArrayList()
+    private var productId="27"
+    private val viewModel: HomeViewModel
+            by lazy { ViewModelProviders.of(this).get(HomeViewModel::class.java) }
+
+
     override fun getContentId(): Int {
         return R.layout.activity_product
     }
@@ -28,14 +42,42 @@ class ProductActivity : BaseActivity(), View.OnClickListener {
         mContext = this
         ivBack = findViewById(R.id.ivBack)
         btnAddProducts = findViewById(R.id.btnAddProducts)
-        recyclerview = findViewById(R.id.recyclerview)
+        rvProductList = findViewById(R.id.rv_product_list)
 
         btnAddProducts!!.setOnClickListener(mContext)
         ivBack!!.setOnClickListener(this)
 
+        if (intent.extras !=null){
+            productId= intent.getStringExtra("categoryId")!!
+            tv_title.text = intent.getStringExtra("categoryName")!!
+
+        }
+
+
+    }
+
+    override fun onResume() {
+        super.onResume()
+        productListAPI()
+    }
+
+    private fun productListAPI(){
+        if (!MyApplication.instance!!.checkIfHasNetwork())
+            showAlerterRed(resources.getString(R.string.no_internet))
+        else {
+            val map = HashMap<String, String>()
+          //  map.put("searchKeyword", "")
+            map.put("categoryId", productId )
+
+            viewModel.getProductListingAPI(mContext!!, true, map)
+            viewModel.mResponse.observe(this, this)
+        }
+    }
+
+    private fun setProductListAdapter(body: List<ProductListingResponse.Body?>) {
         productAdapter = ProductAdapter(mContext!!)
-        recyclerview!!.setLayoutManager(LinearLayoutManager(mContext))
-        recyclerview!!.setAdapter(productAdapter)
+        rvProductList!!.setLayoutManager(LinearLayoutManager(mContext))
+        rvProductList!!.setAdapter(productAdapter)
     }
 
     override fun onClick(v: View?) {
@@ -50,4 +92,48 @@ class ProductActivity : BaseActivity(), View.OnClickListener {
         }
     }
 
+    override fun onChanged(it: RestObservable?) {
+        when {
+            it!!.status == Status.SUCCESS -> {
+                if (it.data is ProductListingResponse) {
+                    val productListingResponse: ProductListingResponse = it.data
+                    if (productListingResponse.getCode() == Constants.success_code) {
+                        showSuccessToast(mContext!!, productListingResponse!!.getMessage()!!)
+                        productList!!.clear()
+                        productList!!.addAll(productListingResponse!!.getBody()!!)
+
+                        if (productListingResponse.getBody()!!.size == 0){
+                          rvProductList!!.visibility= View.GONE
+                          tv_no_product!!.visibility= View.VISIBLE
+                         }else{
+                            rvProductList!!.visibility= View.VISIBLE
+                            tv_no_product!!.visibility= View.GONE
+                            setProductListAdapter(productListingResponse.getBody()!!)
+                         }
+
+                    } else {
+                        CommonMethods.AlertErrorMessage(
+                                mContext,
+                                productListingResponse.getMessage()
+                        )
+                    }
+                }
+
+            }
+            it.status == Status.ERROR -> {
+                if (it.data != null) {
+                    showAlerterRed(it.data as String)
+                } else {
+                    showAlerterRed(it.error!!.toString())
+                }
+            }
+            it.status == Status.LOADING -> {
+
+            }
+        }
+
+    }
+
 }
+
+

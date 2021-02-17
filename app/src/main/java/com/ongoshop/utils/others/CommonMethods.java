@@ -16,8 +16,11 @@ import android.view.Gravity;
 
 import com.ongoshop.R;
 import com.ongoshop.activities.LoginActivity;
+import com.ongoshop.utils.model.CardTypeModel;
 import com.tapadoo.alerter.Alerter;
 
+
+import org.jetbrains.annotations.NotNull;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -28,6 +31,7 @@ import java.io.OutputStream;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.Locale;
@@ -988,6 +992,25 @@ public class CommonMethods {
         Log.e("pix", w + " " + h + " " + pix.length);
         bitmap.setPixels(pix, 0, w, 0, 0, w, h);
         return (bitmap);
+    }
+
+    public static ArrayList<CardTypeModel> cardTypeModelSet() {
+        ArrayList<CardTypeModel> listOfPattern = new ArrayList<CardTypeModel>();
+
+        CardTypeModel cardTypeModel = new CardTypeModel();
+        cardTypeModel.setName("Visa");
+        cardTypeModel.setRegx("^4[0-9]$");
+        cardTypeModel.setType("0");
+        listOfPattern.add(cardTypeModel);
+
+
+        CardTypeModel cardTypeModel2 = new CardTypeModel();
+        cardTypeModel2.setName("Master");
+        cardTypeModel2.setRegx("^5[1-5]$");
+        cardTypeModel2.setType("1");
+        listOfPattern.add(cardTypeModel2);
+
+        return listOfPattern;
     }
 
 /*

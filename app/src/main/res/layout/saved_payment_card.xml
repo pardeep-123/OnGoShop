@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:padding="@dimen/_15sdp"
+    android:background="@drawable/card_background_box">
+
+    <TextView
+        android:id="@+id/tv_card_number"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/regular"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_14sdp" />
+
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_card_number"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:fontFamily="@font/regular"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_12sdp" />
+
+    <TextView
+        android:id="@+id/card_expiry_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_name"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:fontFamily="@font/regular"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_12sdp" />
+
+    <ImageView
+        android:id="@+id/iv_delete_card"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tv_name"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="10dp"
+        android:src="@drawable/delete1" />
+
+    <ImageView
+        android:id="@+id/iv_select_card"
+        android:layout_width="@dimen/_15sdp"
+        android:layout_height="@dimen/_15sdp"
+        android:layout_alignParentRight="true"
+        android:visibility="gone"
+        android:layout_marginEnd="10dp"
+        android:src="@mipmap/green_tick" />
+    <TextView
+        android:id="@+id/tv_select_card"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_15sdp"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="10dp"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_10sdp"
+        android:fontFamily="@font/regular"
+        android:text="@string/select" />
+    <TextView
+        android:id="@+id/tv_edit_card"
+        android:layout_width="wrap_content"
+        android:layout_height="@dimen/_15sdp"
+        android:layout_alignParentRight="true"
+        android:layout_marginEnd="10dp"
+        android:textColor="@color/black"
+        android:layout_below="@+id/tv_select_card"
+        android:textSize="@dimen/_10sdp"
+        android:fontFamily="@font/regular"
+        android:text="@string/edit" />
+
+</RelativeLayout>

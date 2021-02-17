@@ -5,12 +5,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.SubCategoriesActivity">
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+
         <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent">
 
 
             <ImageView
@@ -33,9 +31,9 @@
                     android:layout_alignParentLeft="true"
                     android:src="@drawable/back"/>
                 <TextView
+                    android:id="@+id/tv_title"
                     style="@style/CommonTextWrapcontent"
                     android:textColor="@color/white"
-                    android:text="Drink &amp; Bevrages"
                     android:textSize="@dimen/_14sdp"
                     android:layout_centerInParent="true"/>
             </RelativeLayout>
@@ -64,66 +62,87 @@
                     android:textColor="@color/black"
                     android:textSize="@dimen/_12sdp"/>
             </LinearLayout>
-            <LinearLayout
+            <RelativeLayout
                 android:id="@+id/ll_data"
                 android:layout_below="@id/llSearch"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_marginTop="@dimen/_20sdp"
                 android:layout_marginLeft="@dimen/_20sdp"
                 android:layout_marginRight="@dimen/_20sdp"
+                android:layout_marginBottom="@dimen/_15sdp"
                 android:orientation="vertical">
 
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_sub_category"
+                    android:layout_width="match_parent"
+
+                    android:layout_height="match_parent">
+
+                </androidx.recyclerview.widget.RecyclerView>
+
                 <TextView
-                    style="@style/text"
-                    android:text="Flavoured milk"
-                    android:layout_gravity="start"
-                    android:gravity="center_vertical"
-                 />
-                <TextView
-                    style="@style/text"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:text="Tea"
-                    android:layout_gravity="start"
-                    android:gravity="center_vertical"/>
-                <TextView
-                    style="@style/text"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:text="Coffee"
-                    android:layout_gravity="start"
-                    android:gravity="center_vertical"/>
-                <TextView
-                    android:id="@+id/tvDrinks"
-                    style="@style/text"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:text="Soft Drinks"
-                    android:layout_gravity="start"
-                    android:gravity="center_vertical"/>
-                <TextView
-                    style="@style/text"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:text="Water"
-                    android:layout_gravity="start"
-                    android:gravity="center_vertical"/>
-                <TextView
-                    style="@style/text"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:text="Sports &amp; Energy Drinks"
-                    android:layout_gravity="start"
-                    android:gravity="center_vertical"/>
-                <TextView
-                    style="@style/text"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:text="Long Life Milk"
-                    android:layout_gravity="start"
-                    android:gravity="center_vertical"/>
-                <TextView
-                    style="@style/text"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:text="Kitchen"
-                    android:layout_gravity="start"
-                    android:gravity="center_vertical"/>
-            </LinearLayout>
+                    android:id="@+id/tv_no_sub_category"
+                    android:visibility="gone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/no_category_available"
+                    android:textSize="@dimen/_16sdp"
+                    android:layout_centerInParent="true"
+                    android:textColor="@color/black"
+                    android:fontFamily="@font/medium"/>
+
+
+                <!-- <TextView
+                     style="@style/text"
+                     android:text="Flavoured milk"
+                     android:layout_gravity="start"
+                     android:gravity="center_vertical"
+                  />
+                 <TextView
+                     style="@style/text"
+                     android:layout_marginTop="@dimen/_5sdp"
+                     android:text="Tea"
+                     android:layout_gravity="start"
+                     android:gravity="center_vertical"/>
+                 <TextView
+                     style="@style/text"
+                     android:layout_marginTop="@dimen/_5sdp"
+                     android:text="Coffee"
+                     android:layout_gravity="start"
+                     android:gravity="center_vertical"/>
+                 <TextView
+                     android:id="@+id/tvDrinks"
+                     style="@style/text"
+                     android:layout_marginTop="@dimen/_5sdp"
+                     android:text="Soft Drinks"
+                     android:layout_gravity="start"
+                     android:gravity="center_vertical"/>
+                 <TextView
+                     style="@style/text"
+                     android:layout_marginTop="@dimen/_5sdp"
+                     android:text="Water"
+                     android:layout_gravity="start"
+                     android:gravity="center_vertical"/>
+                 <TextView
+                     style="@style/text"
+                     android:layout_marginTop="@dimen/_5sdp"
+                     android:text="Sports &amp; Energy Drinks"
+                     android:layout_gravity="start"
+                     android:gravity="center_vertical"/>
+                 <TextView
+                     style="@style/text"
+                     android:layout_marginTop="@dimen/_5sdp"
+                     android:text="Long Life Milk"
+                     android:layout_gravity="start"
+                     android:gravity="center_vertical"/>
+                 <TextView
+                     style="@style/text"
+                     android:layout_marginTop="@dimen/_5sdp"
+                     android:text="Kitchen"
+                     android:layout_gravity="start"
+                     android:gravity="center_vertical"/>-->
+            </RelativeLayout>
         </RelativeLayout>
-    </ScrollView>
+
 </RelativeLayout>

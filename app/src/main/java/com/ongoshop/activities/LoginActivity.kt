@@ -26,8 +26,7 @@ import com.ongoshop.viewmodel.AuthViewModel
 import kotlinx.android.synthetic.main.activity_login.*
 
 
-class LoginActivity : BaseActivity(), View.OnClickListener, Observer<RestObservable>
- {
+class LoginActivity : BaseActivity(), View.OnClickListener, Observer<RestObservable> {
     private val viewModel: AuthViewModel
             by lazy { ViewModelProviders.of(this).get(AuthViewModel::class.java) }
 
@@ -50,9 +49,6 @@ class LoginActivity : BaseActivity(), View.OnClickListener, Observer<RestObserva
 
     }
 
-
-
-
     override fun onClick(v: View?) {
         when (v!!.id) {
             R.id.tvForgotpassword -> {
@@ -65,7 +61,7 @@ class LoginActivity : BaseActivity(), View.OnClickListener, Observer<RestObserva
             }
             R.id.btnSignin -> {
                 FirebaseInstanceId.getInstance().instanceId.addOnSuccessListener(
-                    this
+                        this
                 ) { instanceIdResult: InstanceIdResult ->
                     newToken = instanceIdResult.token
                     Log.e("newToken", newToken)
@@ -138,14 +134,13 @@ class LoginActivity : BaseActivity(), View.OnClickListener, Observer<RestObserva
                         SharedPrefUtil.getInstance().saveName(registerResponse.getBody()!!.name)
                         SharedPrefUtil.getInstance().saveDeviceToken(registerResponse.getBody()!!.deviceToken)
 
-                        if (registerResponse.getBody()!!.verified ==0){
+                        if (registerResponse.getBody()!!.verified == 0) {
                             val intent = Intent(mContext, VerificationCodeActivity::class.java)
                             intent.putParcelableArrayListExtra("vendorDeliveryOptions", registerResponse.body.vendorDeliveryOptions)
                             intent.putParcelableArrayListExtra("vendorDeliveryCharges", registerResponse.body.vendorDeliveryCharges)
                             startActivity(intent)
                             finishAffinity()
-                        }else if (registerResponse.getBody()!!.isShopAdded ==0){
-
+                        } else if (registerResponse.getBody()!!.isShopAdded == 0) {
                             val intent = Intent(mContext, AddShopActivity::class.java)
                             intent.putParcelableArrayListExtra("vendorDeliveryOptions", registerResponse.body.vendorDeliveryOptions)
                             Log.e("LoginSize", registerResponse.body.vendorDeliveryOptions.size.toString())
@@ -153,8 +148,7 @@ class LoginActivity : BaseActivity(), View.OnClickListener, Observer<RestObserva
                             intent.putParcelableArrayListExtra("vendorDeliveryCharges", registerResponse.body.vendorDeliveryCharges)
                             startActivity(intent)
                             finishAffinity()
-                        }
-                        else {
+                        } else {
 
                             SharedPrefUtil.getInstance().isLogin = true
 
@@ -163,7 +157,7 @@ class LoginActivity : BaseActivity(), View.OnClickListener, Observer<RestObserva
                             finishAffinity()
                         }
 
-                      }
+                    }
 
                 }
 

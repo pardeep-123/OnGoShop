@@ -87,6 +87,7 @@ class AuthViewModel :ViewModel() {
             )
     }
 
+
     fun categoryListApi(activity: Activity, showLoader:Boolean,
                  map: HashMap<String, String>
     ) {

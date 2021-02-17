@@ -241,5 +241,12 @@
     <string name="weekly">Weekly</string>
     <string name="days">Days</string>
     <string name="dash">Dash</string>
+    <string name="yyyy">YYYY</string>
+    <string name="cvv_cvc">CVV/CVC</string>
+    <string name="expiry_date">Expiry Date</string>
+    <string name="mm">MM</string>
+    <string name="expiry_year">Expiry Date</string>
+    <string name="expiry_month">Expiry Month</string>
+    <string name="no_card_list_available">"No card available "</string>
 
 </resources>

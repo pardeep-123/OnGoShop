@@ -59,11 +59,47 @@ interface RestApiInterface {
     ): Observable<ResendOTPResponse>
 
     @FormUrlEncoded
+    @POST(Constants.AddCard)
+    fun addCard(
+            @FieldMap map: HashMap<String, String>
+    ): Observable<AddCardResponse>
+
+    @GET(Constants.AllCards)
+    fun allCards():
+            Observable<GetAddedCardListResponse>
+
+
+    @FormUrlEncoded
+    @DELETE(Constants.DeleteCard)
+    fun deleteCard(
+            @FieldMap map: HashMap<String, String>
+    ): Observable<ForgotPasswordResponse>          //TODO change response File
+
+
+    @FormUrlEncoded
+    @PUT(Constants.UpdateCard)
+    fun updateCard(
+            @FieldMap map: HashMap<String, String>
+    ): Observable<EditCardResponse>
+
+
+    @FormUrlEncoded
+    @PUT(Constants.SetDefaultCard)
+    fun setDefaultCard(
+            @FieldMap map: HashMap<String, String>
+    ): Observable<SetDefaultCardResponse>
+
+    @FormUrlEncoded
     @POST(Constants.CategoryList)
     fun getCategoryList(
             @FieldMap map: HashMap<String, String>):
             Observable<CategoryListResponse>
 
+    @FormUrlEncoded
+    @POST(Constants.ProductListing)
+    fun getProductListing(
+            @FieldMap map: HashMap<String, String>):
+            Observable<ProductListingResponse>
 
     @GET(Constants.GetProfile)
     fun getProfile():
@@ -101,7 +137,6 @@ interface RestApiInterface {
     @GET(Constants.AboutUs)
     fun aboutUs():
             Observable<AboutUsResponse>
-
 
 
 /*
