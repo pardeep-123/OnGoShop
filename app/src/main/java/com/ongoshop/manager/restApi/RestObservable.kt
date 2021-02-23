@@ -63,6 +63,7 @@ class RestObservable(
 //            if (mprgressDialog != null)
 //                mprgressDialog!!.dismiss()
             Log.e("REST", "Success")
+            Log.e("RESPONSE BACK",data.toString());
             return RestObservable(Status.SUCCESS, data, null)
         }
 

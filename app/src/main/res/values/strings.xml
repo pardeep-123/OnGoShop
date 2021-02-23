@@ -18,6 +18,15 @@
     <string name="error_country">Please enter country</string>
     <string name="error_phone_number">Please enter phone number</string>
     <string name="error_invalid_phone_number">Please enter valid phone number</string>
+    <string name="error_brand_name">Please enter brand name</string>
+    <string name="error_price">Please enter price</string>
+    <string name="error_product_name">Please enter product name</string>
+    <string name="error_gtin_number">Please enter GTIN number</string>
+    <string name="error_country_origin">Please enter country of origin</string>
+    <string name="error_measurement_unit">Please enter measurement unit</string>
+    <string name="error_product_weight">Please enter product weight</string>
+    <string name="error_product_description">Please enter product description</string>
+
     <string name="error_business_name">Please enter business name</string>
     <string name="error_category">Please enter category</string>
     <string name="error_abn">Please enter ABN</string>
@@ -155,7 +164,7 @@
     <string name="add_photo">Add Photo</string>
     <string name="brand">Brand</string>
     <string name="enter_brand">Enter brand</string>
-    <string name="add_price">Add Price</string>
+    <string name="add_price">Add Price ($)</string>
     <string name="enter_price">Enter price</string>
     <string name="product_name">Product Name</string>
     <string name="enter_product_name">Enter product name</string>
@@ -248,5 +257,29 @@
     <string name="expiry_year">Expiry Date</string>
     <string name="expiry_month">Expiry Month</string>
     <string name="no_card_list_available">"No card available "</string>
+    <string name="available">Available</string>
+    <string name="not_available">Not Available</string>
+    <string name="edit_price">Edit Price</string>
+    <string name="delete">Delete</string>
+    <string name="product_code">Product Code</string>
+    <string name="product_details">Product Details :</string>
+    <string name="price">Price</string>
+    <string name="unit_measurment">Unit Measurment</string>
+    <string name="aleregy_information">Aleregy Information</string>
+    <string name="description">Description</string>
+    <string name="enter_product_weight">Enter product weight</string>
+    <string name="weight">Weight</string>
+    <string name="kilograms">Kilograms</string>
+    <string name="pounds">Pounds</string>
+    <string name="enter_price1">Enter Price ($)</string>
+    <string name="warning_delete_your_account">Are you sure you want to \ndelete your account?</string>
+    <string name="logout_warning_msg">Are you sure you want to \n logout?</string>
+    <string name="subscription">Subscription</string>
+    <string name="no_subscriptions_plans_available">No subscriptions plans available</string>
+    <string name="buy_subscription">Buy Subscription</string>
+    <string name="enter_bar_code_number">Enter bar code number</string>
+    <string name="my_products">My Products</string>
+    <string name="check_availability">Check Availability</string>
+    <string name="please_enter_bar_code">Please enter bar code number</string>
 
 </resources>

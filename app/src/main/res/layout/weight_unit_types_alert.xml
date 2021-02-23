@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/base_layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@android:color/transparent">
+
+    <LinearLayout
+        android:layout_width="310dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:padding="10dp"
+        android:background="@drawable/alert_dialog_shape"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_kilo"
+            android:layout_width="wrap_content"
+            android:gravity="center"
+            android:minHeight="@dimen/_30sdp"
+            android:fontFamily="@font/regular"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_13sdp"
+            android:layout_height="wrap_content"
+            android:text="@string/kilograms"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/black"/>
+
+        <TextView
+            android:id="@+id/tv_pound"
+            android:layout_width="wrap_content"
+            android:gravity="center"
+            android:fontFamily="@font/regular"
+            android:minHeight="@dimen/_30sdp"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_13sdp"
+            android:layout_height="wrap_content"
+            android:text="@string/pounds"/>
+
+
+    </LinearLayout>
+
+</RelativeLayout>

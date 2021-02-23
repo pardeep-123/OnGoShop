@@ -22,19 +22,22 @@
         <TextView
             style="@style/CommonTextWrapcontent"
             android:layout_marginTop="@dimen/_20sdp"
-            android:text="Enter Price"
+            android:text="@string/enter_price1"
             android:textColor="@color/black"
            android:layout_marginLeft="@dimen/_20sdp"
             android:textSize="@dimen/_12sdp"/>
         <EditText
-            android:id="@+id/edEmail"
+            android:id="@+id/et_edit_price"
             style="@style/Edittext"
             android:layout_below="@id/tvEmail"
             android:layout_marginTop="@dimen/_5sdp"
-            android:inputType="textEmailAddress"
+            android:inputType="number"
+            android:digits="0123456789."
+            android:maxLines="1"
+            android:maxLength="25"
             android:layout_marginLeft="@dimen/_20sdp"
             android:layout_marginRight="@dimen/_20sdp"
-            android:hint="$650"
+            android:hint="@string/enter_price"
             android:textSize="16sp" />
         <Button
             android:id="@+id/btnSubmit"

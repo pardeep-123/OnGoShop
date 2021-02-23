@@ -1,13 +1,12 @@
 package com.ongoshop.manager.restApi
 
-import com.google.gson.JsonObject
+
 import com.ongoshop.pojo.*
 import com.ongoshop.utils.others.Constants
-
-
 import io.reactivex.Observable
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
+import retrofit2.Call
 import retrofit2.http.*
 import java.util.*
 
@@ -39,7 +38,6 @@ interface RestApiInterface {
             @FieldMap map: HashMap<String, String>
     ): Observable<ForgotPasswordResponse>
 
-
     @FormUrlEncoded
     @PUT(Constants.ChangePassword)
     fun changePassword(
@@ -64,17 +62,38 @@ interface RestApiInterface {
             @FieldMap map: HashMap<String, String>
     ): Observable<AddCardResponse>
 
+    @FormUrlEncoded
+    @POST(Constants.CheckBarcode)
+    fun checkBarcode(
+            @FieldMap map: HashMap<String, String>
+    ): Observable<CheckBarCodeAvailabilityResponse>
+
+    @FormUrlEncoded
+    @POST(Constants.GetProductbarcode)
+    fun getProductbarcode(
+            @FieldMap map: HashMap<String, String>
+    ): Observable<GetProductbarcodeResponse>
+
     @GET(Constants.AllCards)
     fun allCards():
             Observable<GetAddedCardListResponse>
 
 
-    @FormUrlEncoded
+/*
+
     @DELETE(Constants.DeleteCard)
     fun deleteCard(
-            @FieldMap map: HashMap<String, String>
-    ): Observable<ForgotPasswordResponse>          //TODO change response File
+            @Field("id") cardId: String
+    ): Observable<DeleteCardResponse>
+*/
 
+    @FormUrlEncoded
+    @HTTP(method = "DELETE", path = "deleteCard", hasBody = true)
+    fun deleteCard(@Field("id") id: String?): Observable<DeleteCardResponse>
+
+    @FormUrlEncoded
+    @HTTP(method = "DELETE", path = "deleteproduct", hasBody = true)
+    fun deleteProduct(@Field("id") id: String?): Observable<DeleteProductResponse>
 
     @FormUrlEncoded
     @PUT(Constants.UpdateCard)
@@ -82,6 +101,23 @@ interface RestApiInterface {
             @FieldMap map: HashMap<String, String>
     ): Observable<EditCardResponse>
 
+    @FormUrlEncoded
+    @POST(Constants.ChangeAvailability)
+    fun changeAvailability(
+            @FieldMap map: HashMap<String, String>
+    ): Observable<ChangeAvailabilityResponse>
+
+    @FormUrlEncoded
+    @POST(Constants.DeleteAccount)
+    fun deleteAccount(
+            @FieldMap map: HashMap<String, String>
+    ): Observable<DeleteCardResponse>
+
+    @FormUrlEncoded
+    @POST(Constants.EditPrice)
+    fun editPrice(
+            @FieldMap map: HashMap<String, String>
+    ): Observable<EditProductPriceResponse>
 
     @FormUrlEncoded
     @PUT(Constants.SetDefaultCard)
@@ -96,6 +132,12 @@ interface RestApiInterface {
             Observable<CategoryListResponse>
 
     @FormUrlEncoded
+    @POST(Constants.CategoryList)
+    fun getSubCategoryList(
+            @FieldMap map: HashMap<String, String>):
+            Observable<SubCategoryListResponse>
+
+    @FormUrlEncoded
     @POST(Constants.ProductListing)
     fun getProductListing(
             @FieldMap map: HashMap<String, String>):
@@ -104,6 +146,10 @@ interface RestApiInterface {
     @GET(Constants.GetProfile)
     fun getProfile():
             Observable<GetProfileResponse>
+
+    @GET(Constants.GetSubscriptions)
+    fun getSubscriptions():
+            Observable<SubscriptionListResponse>
 
     @Multipart
     @PUT(Constants.EditProfile)
@@ -117,6 +163,13 @@ interface RestApiInterface {
     fun updateProfileWithoutImage(
             @PartMap map: HashMap<String, RequestBody>
     ): Observable<EditProfileAddShopResponsess>
+
+
+    @Multipart
+    @POST(Constants.AddProduct)
+    fun addProduct(
+            @PartMap map: HashMap<String, RequestBody>, @Part image: MultipartBody.Part
+    ): Observable<AddProductResponse>
 
 
     /*Add Shop and Delivery Details API*/

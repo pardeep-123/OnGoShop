@@ -42,6 +42,11 @@ class DeliveryChargesAdapter(
         return vendorDeliveryChargeList.size
     }
 
+    override fun getItemViewType(position: Int): Int {
+        return super.getItemViewType(position)
+
+    }
+
     inner class DeliveryChargesHolder(view: View) : RecyclerView.ViewHolder(view) {
         // Holds the TextView that will add each animal to
 

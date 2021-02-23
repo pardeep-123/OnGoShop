@@ -14,12 +14,14 @@ import com.ongoshop.activities.*
 import com.ongoshop.base.BaseFragment
 import com.ongoshop.manager.restApi.RestObservable
 import com.ongoshop.manager.restApi.Status
+import com.ongoshop.pojo.DeleteAccountResponse
 import com.ongoshop.pojo.LogoutResponse
 import com.ongoshop.utils.others.CommonMethods
 import com.ongoshop.utils.others.Constants
 import com.ongoshop.utils.others.MyApplication
 import com.ongoshop.utils.others.SharedPrefUtil
 import com.ongoshop.viewmodel.SettingsViewModel
+import kotlinx.android.synthetic.main.alert_delete_account.*
 import kotlinx.android.synthetic.main.alert_logout.*
 
 
@@ -28,12 +30,14 @@ class SettingsFragment : BaseFragment(), View.OnClickListener, Observer<RestObse
     private val viewModel: SettingsViewModel
             by lazy { ViewModelProviders.of(this).get(SettingsViewModel::class.java) }
     private lateinit var logoutDialog: Dialog
+    private lateinit var deleteAccountDialog: Dialog
 
     lateinit var v: View
 
     lateinit var rlChange: RelativeLayout
     lateinit var rlTerms: RelativeLayout
     lateinit var rlLogout: RelativeLayout
+    lateinit var rlDelete: RelativeLayout
     lateinit var rlSales: RelativeLayout
     lateinit var rlStaff: RelativeLayout
     lateinit var rlSubscription: RelativeLayout
@@ -57,6 +61,7 @@ class SettingsFragment : BaseFragment(), View.OnClickListener, Observer<RestObse
         rlChange = v.findViewById<RelativeLayout>(R.id.rlChange)
         rlTerms = v.findViewById<RelativeLayout>(R.id.rlTerms)
         rlLogout = v.findViewById<RelativeLayout>(R.id.rlLogout)
+        rlDelete = v.findViewById<RelativeLayout>(R.id.rlDelete)
         rlSales = v.findViewById<RelativeLayout>(R.id.rlSales)
         rlStaff = v.findViewById<RelativeLayout>(R.id.rlStaff)
         rlSubscription = v.findViewById<RelativeLayout>(R.id.rlSubscription)
@@ -65,6 +70,7 @@ class SettingsFragment : BaseFragment(), View.OnClickListener, Observer<RestObse
         rlChange.setOnClickListener(this)
         rlTerms.setOnClickListener(this)
         rlLogout.setOnClickListener(this)
+        rlDelete.setOnClickListener(this)
         rlStaff.setOnClickListener(this)
         rlSales.setOnClickListener(this)
         rlSubscription.setOnClickListener(this)
@@ -82,14 +88,26 @@ class SettingsFragment : BaseFragment(), View.OnClickListener, Observer<RestObse
             map.put("deviceType", Constants.Device_Type)
             map.put("deviceToken", SharedPrefUtil.getInstance().deviceToken)
 
-            viewModel.logoutApi(activity!!, true, map)
+            viewModel.logoutApi(requireActivity(), true, map)
+            viewModel.mResponse.observe(this, this)
+        }
+    }
+
+    private fun deleteAccountApi() {
+        if (!MyApplication.instance!!.checkIfHasNetwork())
+            showAlerterRed(resources.getString(R.string.no_internet))
+        else {
+            val map = HashMap<String, String>()
+            map.put("id", SharedPrefUtil.getInstance().userId)
+
+            viewModel.deleteAccount(requireActivity(), true, map)
             viewModel.mResponse.observe(this, this)
         }
     }
 
 
     fun logoutDialogMethod() {
-        logoutDialog = Dialog(activity!!, R.style.Theme_Dialog)
+        logoutDialog = Dialog(requireActivity(), R.style.Theme_Dialog)
         logoutDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         logoutDialog.setContentView(R.layout.alert_logout)
 
@@ -115,6 +133,35 @@ class SettingsFragment : BaseFragment(), View.OnClickListener, Observer<RestObse
         }
 
         logoutDialog.show()
+
+    }
+    fun deleteAccountMethod() {
+        deleteAccountDialog = Dialog(requireActivity(), R.style.Theme_Dialog)
+        deleteAccountDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
+        deleteAccountDialog.setContentView(R.layout.alert_delete_account)
+
+        deleteAccountDialog.window!!.setLayout(
+                WindowManager.LayoutParams.MATCH_PARENT,
+                WindowManager.LayoutParams.WRAP_CONTENT
+        )
+        deleteAccountDialog.setCancelable(false)
+        deleteAccountDialog.setCanceledOnTouchOutside(false)
+        deleteAccountDialog.window!!.setGravity(Gravity.CENTER)
+
+
+        //  deleteAccountDialog.tv_fb_alert.setText("Facebook have not been installed. Please click on this "+ link+ " and enter the details manually")
+
+        deleteAccountDialog.window!!.setBackgroundDrawable(ColorDrawable(Color.TRANSPARENT))
+
+        deleteAccountDialog.btn_no.setOnClickListener {
+            deleteAccountDialog.dismiss()
+        }
+        deleteAccountDialog.btn_yes.setOnClickListener {
+            deleteAccountDialog.dismiss()
+            deleteAccountApi()
+        }
+
+        deleteAccountDialog.show()
 
     }
 
@@ -144,6 +191,9 @@ class SettingsFragment : BaseFragment(), View.OnClickListener, Observer<RestObse
             R.id.rlLogout -> {
                 logoutDialogMethod()
             }
+            R.id.rlDelete -> {
+                deleteAccountMethod()
+            }
 
         }
     }
@@ -162,13 +212,33 @@ class SettingsFragment : BaseFragment(), View.OnClickListener, Observer<RestObse
                         val intent = Intent(activity, LoginActivity::class.java)
                         intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
                         startActivity(intent)
-                        activity!!.finishAffinity()
+                        requireActivity().finishAffinity()
 
 
                     } else {
                         CommonMethods.AlertErrorMessage(
                                 activity,
                                 logoutResponse.getMessage()
+                        )
+                    }
+                }
+                if (it.data is DeleteAccountResponse) {
+                    val deleteAccountResponse: DeleteAccountResponse = it.data
+                    if (deleteAccountResponse.getCode() == Constants.success_code) {
+                        showSuccessToast(deleteAccountResponse!!.getMessage()!!)
+                        MyApplication.instance!!.clearData()
+                        SharedPrefUtil.getInstance().clear()
+                        SharedPrefUtil.getInstance().isLogin = false
+                        //   CommonMethods.failureMethod(mContext,"You are already logged in other device");
+                        val intent = Intent(activity, LoginActivity::class.java)
+                        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+                        startActivity(intent)
+                        requireActivity().finishAffinity()
+
+                    } else {
+                        CommonMethods.AlertErrorMessage(
+                                activity,
+                                deleteAccountResponse.getMessage()
                         )
                     }
                 }

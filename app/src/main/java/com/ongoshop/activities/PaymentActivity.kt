@@ -3,6 +3,7 @@ package com.ongoshop.activities
 import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.LinearLayout
@@ -16,6 +17,7 @@ import com.ongoshop.adapter.SavedCardsAdapter
 import com.ongoshop.base.BaseActivity
 import com.ongoshop.manager.restApi.RestObservable
 import com.ongoshop.manager.restApi.Status
+import com.ongoshop.pojo.DeleteCardResponse
 import com.ongoshop.pojo.GetAddedCardListResponse
 import com.ongoshop.utils.others.CommonMethods
 import com.ongoshop.utils.others.Constants
@@ -92,9 +94,9 @@ class PaymentActivity : BaseActivity(), View.OnClickListener, Observer<RestObser
         if (!mValidationClass!!.isNetworkConnected()) {
             showAlerterRed(resources.getString(R.string.no_internet))
         } else {
-            val map = HashMap<String, String>()
-            map.put("id", id!!)
-            viewModel.deleteCardAPI(mContext!!, true, map)
+           /* val map = HashMap<String, String>()
+            map.put("id", id!!)*/
+            viewModel.deleteCardAPI(mContext!!, true, id!!)
         }
     }
 
@@ -141,8 +143,31 @@ class PaymentActivity : BaseActivity(), View.OnClickListener, Observer<RestObser
                         } else {
                             no_payment_card.visibility = View.GONE
                             rv_payment_card.visibility = View.VISIBLE
-                            setSavedCardAdapter(getAddedCardListResponse.getBody()!!)
+                            setSavedCardAdapter(savedCardList)
                         }
+                    }
+
+                }
+
+                if (it.data is DeleteCardResponse) {
+                    val deleteCardResponse: DeleteCardResponse = it.data
+                    if (deleteCardResponse.getCode()!!.equals(Constants.success_code)) {
+                        showSuccessToast(mContext!!, deleteCardResponse!!.getMessage()!!)
+
+                        savedCardList.removeAt(pos)
+                        savedCardsAdapter.notifyDataSetChanged()
+                        Log.e("deleteListSize", savedCardList.size.toString())
+
+                        if (savedCardList!!.size == 0) {
+                            no_payment_card.visibility = View.VISIBLE
+                            rv_payment_card.visibility = View.GONE
+
+                        } else {
+                            no_payment_card.visibility = View.GONE
+                            rv_payment_card.visibility = View.VISIBLE
+                        }
+                    } else {
+                        CommonMethods.AlertErrorMessage(mContext, deleteCardResponse.getMessage())
                     }
 
                 }

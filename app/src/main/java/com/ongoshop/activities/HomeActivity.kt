@@ -30,9 +30,22 @@ class HomeActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
 
         val fragmentManager = supportFragmentManager
 
-        var fragment: Fragment? = null
-        fragment = HomeFragment()
-        loadFragment(fragment)
+
+
+        if (intent.extras != null) {
+            if (intent.getStringExtra("type") == "my") {
+                var fragment: Fragment? = null
+                fragment = CategoriesFragment()
+                loadFragment(fragment)
+                bottomNavigationView!!.selectedItemId = R.id.categories
+            }
+        } else{
+            var fragment: Fragment? = null
+            fragment = HomeFragment()
+            loadFragment(fragment)
+        }
+
+
 /*
         try {
             if (intent.getStringExtra("type") == "my") {

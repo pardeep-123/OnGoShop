@@ -4,10 +4,7 @@ import com.google.gson.annotations.Expose
 
 import com.google.gson.annotations.SerializedName
 
-
-
-
-class ProductListingResponse {
+class AddProductResponse {
 
     @SerializedName("success")
     @Expose
@@ -23,7 +20,7 @@ class ProductListingResponse {
 
     @SerializedName("body")
     @Expose
-    private var body: ArrayList<Body?>? = null
+    private var body: Body? = null
 
     fun getSuccess(): Boolean? {
         return success
@@ -49,11 +46,11 @@ class ProductListingResponse {
         this.message = message
     }
 
-    fun getBody(): ArrayList<Body?>? {
+    fun getBody(): Body? {
         return body
     }
 
-    fun setBody(body: ArrayList<Body?>?) {
+    fun setBody(body: Body?) {
         this.body = body
     }
 

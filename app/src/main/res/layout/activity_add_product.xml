@@ -39,7 +39,7 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@id/ivBar"
+         android:layout_below="@+id/ivBar"
         android:fillViewport="true">
 
         <LinearLayout
@@ -57,24 +57,26 @@
                 android:textColor="@color/black"
                 android:textSize="@dimen/_12sdp" />
 
-            <LinearLayout
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_120sdp"
                 android:background="@drawable/shape"
                 android:gravity="center">
 
-                <ImageView
+                <com.makeramen.roundedimageview.RoundedImageView
                     android:id="@+id/ivImg"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content" />
+                    app:riv_corner_radius="@dimen/_5sdp"
+                    android:scaleType="fitXY"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent" />
 
                 <ImageView
                     android:id="@+id/ivcamera"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
+                    android:layout_centerInParent="true"
                     android:src="@drawable/camera" />
-            </LinearLayout>
+            </RelativeLayout>
 
             <TextView
                 style="@style/CommonTextWrapcontent"
@@ -85,16 +87,17 @@
 
 
             <EditText
+                android:id="@+id/et_brand_Name"
                 style="@style/Edittext"
-                android:layout_below="@id/tvEmail"
+                android:imeOptions="actionNext"
+                android:maxLines="1"
+                android:maxLength="100"
                 android:layout_marginTop="@dimen/_5sdp"
                 android:hint="@string/enter_brand"
                 android:inputType="text" />
 
             <TextView
-                android:id="@+id/tvEmail"
                 style="@style/CommonTextWrapcontent"
-                android:layout_below="@id/ivBar"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:text="@string/add_price"
                 android:textColor="@color/black"
@@ -102,15 +105,19 @@
 
 
             <EditText
+                android:id="@+id/et_price"
                 style="@style/Edittext"
-                android:layout_below="@id/tvEmail"
+                android:imeOptions="actionNext"
+                android:maxLines="1"
+                android:digits="0123456789."
+                android:maxLength="10"
                 android:layout_marginTop="@dimen/_5sdp"
                 android:hint="@string/enter_price"
                 android:inputType="number" />
 
             <TextView
                 style="@style/CommonTextWrapcontent"
-                android:layout_below="@id/ivBar"
+                
                 android:layout_marginTop="@dimen/_10sdp"
                 android:text="@string/product_name"
                 android:textColor="@color/black"
@@ -118,22 +125,27 @@
 
             <EditText
                 style="@style/Edittext"
-                android:layout_below="@id/tvEmail"
+                android:imeOptions="actionNext"
+                android:id="@+id/et_product_name"
+                android:maxLines="1"
+                android:maxLength="100"
                 android:layout_marginTop="@dimen/_5sdp"
                 android:hint="@string/enter_product_name"
                 android:inputType="text" />
 
             <TextView
                 style="@style/CommonTextWrapcontent"
-                android:layout_below="@id/ivBar"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:text="@string/gtin_number"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_12sdp" />
 
             <EditText
+                android:id="@+id/et_gtin_number"
                 style="@style/Edittext"
-                android:layout_below="@id/tvEmail"
+                android:imeOptions="actionNext"
+                android:maxLines="1"
+                android:maxLength="100"
                 android:layout_marginTop="@dimen/_5sdp"
                 android:hint="@string/enter_gtin_number"
                 android:inputType="text" />
@@ -148,6 +160,7 @@
                     android:layout_alignParentLeft="true"
                     android:layout_centerHorizontal="true"
                     android:text="@string/no_bar_code_item"
+                    android:layout_marginTop="@dimen/_5sdp"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_12sdp" />
 
@@ -160,67 +173,132 @@
                     android:layout_gravity="center">
 
                     <ImageView
-                        android:id="@+id/ivOn"
+                        android:id="@+id/ivOff"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/check_box_3" />
 
                     <ImageView
-                        android:id="@+id/ivOff"
+                        android:id="@+id/ivOn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/check_box_4"
                         android:visibility="gone" />
                 </LinearLayout>
+
             </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/ll_bar_code"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:gravity="center_vertical"
+                >
+
+                <EditText
+                    android:id="@+id/et_bar_code"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    style="@style/Edittext"
+                    android:imeOptions="actionNext"
+                    android:background="@drawable/shape"
+                    android:maxLines="1"
+                    android:maxLength="50"
+                    android:layout_marginEnd="@dimen/_5sdp"
+                    android:digits="0123456789"
+                    android:layout_toLeftOf="@+id/tv_check_availability"
+                    android:layout_marginTop="@dimen/_5sdp"
+                    android:hint="@string/enter_bar_code_number"
+                    android:inputType="number" />
+
+                <TextView
+                    android:id="@+id/tv_check_availability"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/check_availability"
+                    android:gravity="center"
+                    android:layout_alignParentEnd="true"
+                    android:fontFamily="@font/medium"
+                    android:textColor="@color/colorGreen"
+                    android:textSize="@dimen/_12sdp"
+                    />
+
+            </RelativeLayout>
+
+
 
             <TextView
                 style="@style/CommonTextWrapcontent"
-                android:layout_below="@id/ivBar"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:text="@string/country_of_origin"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_12sdp" />
 
             <EditText
+                android:id="@+id/et_origin_country"
                 style="@style/Edittext"
-                android:layout_below="@id/tvEmail"
+                android:imeOptions="actionNext"
+                android:maxLines="1"
+                android:maxLength="100"
                 android:layout_marginTop="@dimen/_5sdp"
                 android:hint="@string/enter_country_of_origin"
                 android:inputType="text" />
 
             <TextView
                 style="@style/CommonTextWrapcontent"
-                android:layout_below="@id/ivBar"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:text="@string/weight"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12sdp" />
+
+            <EditText
+                android:id="@+id/et_weight"
+                style="@style/Edittext"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:imeOptions="actionNext"
+                android:maxLines="1"
+                android:digits="0123456789."
+                android:maxLength="25"
+                android:hint="@string/enter_product_weight"
+                android:inputType="number" />
+
+           <TextView
+                style="@style/CommonTextWrapcontent"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:text="@string/unit_of_measurement"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_12sdp" />
 
-            <EditText
+            <TextView
+                android:id="@+id/tv_measurement_unit"
                 style="@style/Edittext"
-                android:layout_below="@id/tvEmail"
                 android:layout_marginTop="@dimen/_5sdp"
+                android:imeOptions="actionNext"
+                android:maxLines="1"
+                android:maxLength="100"
                 android:hint="@string/enter_unit_of_measurement"
-                android:inputType="text" />
+                />
 
             <TextView
                 style="@style/CommonTextWrapcontent"
-                android:layout_below="@id/ivBar"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:text="@string/product_description"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_12sdp" />
 
             <EditText
+                android:id="@+id/et_description"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_90sdp"
-                android:layout_gravity="top"
+                android:layout_height="wrap_content"
+                android:minHeight="@dimen/_90sdp"
+                android:gravity="start"
+                android:imeOptions="actionDone"
                 android:layout_marginTop="@dimen/_5sdp"
                 android:background="@drawable/shape"
                 android:fontFamily="@font/regular"
                 android:hint="@string/enter_product_description"
                 android:paddingLeft="@dimen/_5sdp"
+                android:maxLength="500"
                 android:paddingTop="@dimen/_10sdp"
                 android:paddingRight="@dimen/_10sdp"
                 android:textColor="@color/black"
@@ -232,9 +310,8 @@
                 style="@style/Button"
                 android:layout_marginTop="@dimen/_20sdp"
                 android:layout_marginBottom="@dimen/_20sdp"
-                android:text="@string/proceed_to_category" />
+                android:text="@string/submit" />
         </LinearLayout>
     </ScrollView>
-
 
 </RelativeLayout>

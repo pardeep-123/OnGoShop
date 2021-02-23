@@ -44,14 +44,18 @@
                 android:id="@+id/ll_img"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@drawable/shape_1">
+                android:background="@drawable/shape_1"
+                android:gravity="center">
 
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_40sdp"
-                    android:layout_marginBottom="@dimen/_40sdp"
-                    android:src="@drawable/image_9" />
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/iv_product_image"
+                    android:layout_width="@dimen/_150sdp"
+                    android:layout_height="@dimen/_150sdp"
+                    app:riv_corner_radius="@dimen/_5sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
+                    android:layout_marginBottom="@dimen/_20sdp"
+                    android:scaleType="fitXY"
+                    android:src="@mipmap/no_image_placeholder" />
             </LinearLayout>
 
             <LinearLayout
@@ -63,16 +67,16 @@
                 android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/tv_product_name"
                     style="@style/CommonTextWrapcontent"
                     android:layout_marginTop="@dimen/_10sdp"
-                    android:text="Lion self Rasing flour 2kg"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_14sdp" />
 
                 <TextView
                     style="@style/CommonTextWrapcontent"
                     android:layout_marginTop="@dimen/_10sdp"
-                    android:text="Product Details"
+                    android:text="@string/product_details"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_12sdp" />
 
@@ -87,18 +91,18 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="50"
                         android:fontFamily="@font/regular"
-                        android:text="Product Code"
+                        android:text="@string/product_code"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_12sdp" />
 
                     <TextView
+                        android:id="@+id/tv_product_code"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="50"
                         android:fontFamily="@font/regular"
                         android:gravity="end"
                         android:text="8233KHKMK"
-
                         android:textColor="@color/grey"
                         android:textSize="@dimen/_12sdp" />
                 </LinearLayout>
@@ -114,11 +118,12 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="50"
                         android:fontFamily="@font/regular"
-                        android:text="Country of Origin"
+                        android:text="@string/country_of_origin"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_12sdp" />
 
                     <TextView
+                        android:id="@+id/tv_product_country_origin"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="50"
@@ -140,11 +145,12 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="50"
                         android:fontFamily="@font/regular"
-                        android:text="Price"
+                        android:text="@string/price"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_12sdp" />
 
                     <TextView
+                        android:id="@+id/tv_product_price"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="50"
@@ -152,7 +158,6 @@
                         android:gravity="end"
                         android:text="$30"
                         android:textColor="@color/grey"
-
                         android:textSize="@dimen/_12sdp" />
 
                 </LinearLayout>
@@ -168,13 +173,14 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="50"
                         android:fontFamily="@font/regular"
-                        android:text="Uint Measurment"
+                        android:text="@string/unit_measurment"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_12sdp"
 
                         />
 
                     <TextView
+                        android:id="@+id/tv_weight_unit"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="50"
@@ -196,20 +202,18 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="50"
-
                         android:fontFamily="@font/regular"
-                        android:text="Aleregy Information"
+                        android:text="@string/brand"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_12sdp" />
 
                     <TextView
+                        android:id="@+id/tv_brand"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="50"
                         android:fontFamily="@font/regular"
-
                         android:gravity="end"
-                        android:text="Gluten"
                         android:textColor="@color/grey"
                         android:textSize="@dimen/_12sdp" />
                 </LinearLayout>
@@ -217,15 +221,15 @@
                 <TextView
                     style="@style/CommonTextWrapcontent"
                     android:layout_marginTop="@dimen/_10sdp"
-                    android:text="Description"
+                    android:text="@string/description"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_14sdp" />
 
                 <TextView
+                    android:id="@+id/tv_product_desc"
                     style="@style/CommonTextWrapcontent"
                     android:layout_marginTop="@dimen/_5sdp"
-                    android:text="Duis fermentum ut elit a scelerisque. Sed a\nenim leo. Donec  magna turpis, tincidunt in\nvulputate ac, porta nec nibh. Donec ut ultrices\naufue, sit amet malesuada nisl.Pellentesque\nut laoreet elit. Curabitur ut mauris urna. Proin\ngravida bibendum volupat."
-                    android:textColor="@color/grey"
+                    android:textColor="@color/black"
                     android:textSize="@dimen/_14sdp" />
 
                 <LinearLayout
@@ -234,19 +238,18 @@
                     android:layout_marginLeft="@dimen/_20sdp"
                     android:layout_marginTop="@dimen/_40sdp"
                     android:layout_marginRight="@dimen/_20sdp"
-
                     android:orientation="horizontal">
 
                     <Button
                         android:id="@+id/btnEdit"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_40sdp"
-                        android:layout_marginBottom="@dimen/_20sdp"
+
                         android:layout_weight="1"
                         android:background="@drawable/edit"
                         android:fontFamily="@font/medium"
                         android:padding="@dimen/_10sdp"
-                        android:text="Edit Price"
+                        android:text="@string/edit_price"
                         android:textAllCaps="false"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_15sdp" />
@@ -256,12 +259,11 @@
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_40sdp"
                         android:layout_marginLeft="@dimen/_5sdp"
-                        android:layout_marginBottom="@dimen/_20sdp"
                         android:layout_weight="1"
                         android:background="@drawable/delete_3"
                         android:fontFamily="@font/medium"
                         android:padding="@dimen/_10sdp"
-                        android:text="Delete"
+                        android:text="@string/delete"
                         android:textAllCaps="false"
                         android:textColor="@color/white"
                         android:textSize="@dimen/_15sdp" />

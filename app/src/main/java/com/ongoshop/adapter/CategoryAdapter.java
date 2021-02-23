@@ -10,7 +10,11 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.ongoshop.R;
+import com.ongoshop.activities.ProductActivity;
+import com.ongoshop.activities.ProductCategoriesActivity;
 import com.ongoshop.activities.SubCategoriesActivity;
+import com.ongoshop.clickListeners.CategoryClick;
+import com.ongoshop.fragments.CategoriesFragment;
 import com.ongoshop.pojo.CategoryListResponse;
 
 import java.util.ArrayList;
@@ -18,6 +22,7 @@ import java.util.ArrayList;
 public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.RecyclerViewHolder> {
     Context context;
     LayoutInflater inflater;
+    CategoryClick categoryClick;
 
     public class RecyclerViewHolder extends RecyclerView.ViewHolder {
 
@@ -31,9 +36,10 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Recycl
 
     ArrayList<CategoryListResponse.Body> list;
 
-    public CategoryAdapter(Context context, ArrayList<CategoryListResponse.Body> list) {
+    public CategoryAdapter(Context context, ArrayList<CategoryListResponse.Body> list, CategoryClick categoryClick) {
         this.context = context;
         this.list = list;
+        this.categoryClick = categoryClick;
         inflater = LayoutInflater.from(context);
     }
 
@@ -51,10 +57,8 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.Recycl
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent i = new Intent(context, SubCategoriesActivity.class);
-                i.putExtra("categoryId", list.get(position).getId().toString());
-                i.putExtra("categoryName", list.get(position).getName());
-                context.startActivity(i);
+                categoryClick.categoryClickk(position, list.get(position).getId().toString(),list.get(position).getName(), list.size());
+
             }
         });
     }

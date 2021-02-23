@@ -8,7 +8,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.util.ArrayList;
 
-public class CategoryListResponse implements Parcelable {
+public class SubCategoryListResponse implements Parcelable {
 
     @SerializedName("code")
     @Expose
@@ -23,7 +23,7 @@ public class CategoryListResponse implements Parcelable {
     @Expose
     private ArrayList<Body> body = null;
 
-    protected CategoryListResponse(Parcel in) {
+    protected SubCategoryListResponse(Parcel in) {
         if (in.readByte() == 0) {
             code = null;
         } else {
@@ -34,15 +34,15 @@ public class CategoryListResponse implements Parcelable {
         message = in.readString();
     }
 
-    public static final Creator<CategoryListResponse> CREATOR = new Creator<CategoryListResponse>() {
+    public static final Creator<SubCategoryListResponse> CREATOR = new Creator<SubCategoryListResponse>() {
         @Override
-        public CategoryListResponse createFromParcel(Parcel in) {
-            return new CategoryListResponse(in);
+        public SubCategoryListResponse createFromParcel(Parcel in) {
+            return new SubCategoryListResponse(in);
         }
 
         @Override
-        public CategoryListResponse[] newArray(int size) {
-            return new CategoryListResponse[size];
+        public SubCategoryListResponse[] newArray(int size) {
+            return new SubCategoryListResponse[size];
         }
     };
 

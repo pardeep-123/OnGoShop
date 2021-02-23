@@ -1,77 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="wrap_content"
-    android:background="@drawable/shape_row"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/rl_list"
-    android:layout_marginTop="@dimen/_10sdp">
-<LinearLayout
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:orientation="horizontal">
-<ImageView
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
     android:layout_marginTop="@dimen/_10sdp"
-    android:layout_marginLeft="@dimen/_10sdp"
-    android:src="@drawable/image_5"/>
+    android:background="@drawable/shape_row">
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:layout_marginLeft="@dimen/_10sdp"
-        android:layout_marginRight="@dimen/_10sdp"
-        android:orientation="vertical">
-        <TextView
-            style="@style/CommonTextWrapcontent"
-            android:textColor="@color/black"
-            android:text="Bundaberg Sugar Soft Icing"
-            android:textSize="@dimen/_14sdp"
-            android:layout_centerInParent="true"/>
-        <TextView
-           style="@style/CommonTextWrapcontent"
-            android:textColor="@color/black"
-            android:layout_marginTop="@dimen/_5sdp"
-            android:text="Mixture 1kg"
-            android:textSize="@dimen/_10sdp"
-            android:layout_centerInParent="true"/>
-        <RelativeLayout
+        android:orientation="horizontal">
+
+        <com.makeramen.roundedimageview.RoundedImageView
+            android:id="@+id/iv_product"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            app:riv_corner_radius="@dimen/_5sdp"
+            android:scaleType="fitXY"
+            android:src="@mipmap/no_image_placeholder" />
+
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            >
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:orientation="vertical">
+
             <TextView
-               style="@style/CommonTextWrapcontent"
-                android:textColor="@color/black"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:text="$ 9.99"
-                android:textSize="@dimen/_14sdp"
-                android:layout_alignParentLeft="true"
-                android:layout_centerInParent="true"/>
-            <LinearLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
+                android:id="@+id/tv_product_name"
+                style="@style/CommonTextWrapcontent"
                 android:layout_centerInParent="true"
-                android:layout_marginBottom="@dimen/_20sdp"
-                android:orientation="vertical">
-                <Button
-                    android:layout_width="@dimen/_70sdp"
-                    android:layout_height="@dimen/_20sdp"
-                    android:textColor="@color/white"
-                    android:textAllCaps="false"
-                   android:text="Avilable"
-                    android:fontFamily="@font/regular"
-                    android:background="@drawable/btn"/>
-                <Button
-                    android:layout_width="@dimen/_70sdp"
-                    android:layout_height="@dimen/_20sdp"
-                    android:textColor="@color/white"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_14sdp" />
+
+            <TextView
+                android:id="@+id/tv_product_weight"
+                style="@style/CommonTextWrapcontent"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_10sdp" />
+            <TextView
+                android:id="@+id/tv_product_desc"
+                style="@style/CommonTextWrapcontent"
+                android:layout_centerInParent="true"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_10sdp" />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:id="@+id/tv_product_price"
+                    style="@style/CommonTextWrapcontent"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
                     android:layout_marginTop="@dimen/_5sdp"
-                    android:textAllCaps="false"
-                    android:text="Not Avilable"
-                    android:fontFamily="@font/regular"
-                    android:background="@drawable/na_button"/>
-            </LinearLayout>
-        </RelativeLayout>
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/_14sdp" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentRight="true"
+                    android:layout_centerInParent="true"
+                    android:layout_marginBottom="@dimen/_20sdp"
+                    android:orientation="vertical">
+
+                    <Button
+                        android:id="@+id/btn_available"
+                        android:layout_width="@dimen/_70sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:background="@drawable/btn"
+                        android:fontFamily="@font/regular"
+                        android:text="@string/available"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white" />
+
+                    <Button
+                        android:id="@+id/btn_not_available"
+                        android:layout_width="@dimen/_70sdp"
+                        android:layout_height="@dimen/_20sdp"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:background="@drawable/na_button"
+                        android:fontFamily="@font/regular"
+                        android:text="@string/not_available"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white" />
+                </LinearLayout>
+            </RelativeLayout>
+        </LinearLayout>
     </LinearLayout>
-</LinearLayout>
 </RelativeLayout>

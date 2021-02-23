@@ -1,19 +1,18 @@
 package com.ongoshop.adapter
 
 import android.content.Context
-import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.ongoshop.R
-import com.ongoshop.activities.SubCategoriesActivity
-import com.ongoshop.models.CategoryClick
+import com.ongoshop.clickListeners.CategoryClick
 import com.ongoshop.pojo.CategoryListResponse
+import com.ongoshop.pojo.SubCategoryListResponse
 import java.util.*
 
-class SubCategoryAdapter(internal var context: Context, internal var list: ArrayList<CategoryListResponse.Body>,
+class SubCategoryAdapter(internal var context: Context, internal var list: ArrayList<SubCategoryListResponse.Body>,
                          internal var onClickListener: CategoryClick) : RecyclerView.Adapter<SubCategoryAdapter.RecyclerViewHolder>() {
     var inflater: LayoutInflater
 
@@ -41,7 +40,7 @@ class SubCategoryAdapter(internal var context: Context, internal var list: Array
 
     inner class RecyclerViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
-        fun bindItems(categoryList: CategoryListResponse.Body) {
+        fun bindItems(categoryList: SubCategoryListResponse.Body) {
             val tvName = itemView.findViewById(R.id.tvName) as TextView
             tvName.text = categoryList.name
 
@@ -50,9 +49,9 @@ class SubCategoryAdapter(internal var context: Context, internal var list: Array
 
         init {
             itemView.setOnClickListener {
-                onClickListener.categoryClickk( list.get(adapterPosition).id.toString(), list.get(adapterPosition).name.toString(), list.size)
+                onClickListener.categoryClickk( adapterPosition, list.get(adapterPosition).id.toString(), list.get(adapterPosition).name.toString(), list.size)
               //  selectedpos =adapterPosition
-                notifyDataSetChanged()
+             //   notifyDataSetChanged()
             }
 
         }

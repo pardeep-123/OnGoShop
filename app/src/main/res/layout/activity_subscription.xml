@@ -5,173 +5,196 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".activities.SubscriptionActivity">
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-
-
-    <ImageView
-        android:id="@+id/ivBar"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/_70sdp"
-        android:scaleType="fitXY"
-        android:src="@drawable/small_header"/>
 
     <RelativeLayout
+        android:id="@+id/rl_title"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_height="@dimen/_70sdp"
+        android:background="@drawable/small_header"
+
         >
+
         <ImageView
             android:id="@+id/ivBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/_10sdp"
             android:layout_alignParentLeft="true"
-            android:src="@drawable/back"/>
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:src="@drawable/back" />
 
         <TextView
-          style="@style/CommonTextWrapcontent"
+            style="@style/CommonTextWrapcontent"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/_20sdp"
+            android:text="@string/subscription"
             android:textColor="@color/white"
-            android:text="Subscription"
-            android:textSize="@dimen/_14sdp"
-            android:layout_centerInParent="true"/>
+            android:textSize="@dimen/_14sdp" />
     </RelativeLayout>
-    <LinearLayout
+
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:layout_below="@id/ivBar"
-        android:layout_marginLeft="@dimen/_20sdp"
-        android:layout_marginRight="@dimen/_20sdp"
-        android:layout_marginTop="@dimen/_10sdp">
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/subscription"
-                android:layout_centerInParent="true"/>
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-
-    android:orientation="vertical"
-    android:layout_marginTop="@dimen/_10sdp">
-    <ImageView
-        android:id="@+id/ivDollar"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/dollar"
-       android:layout_gravity="center"/>
-    <TextView
-        style="@style/CommonTextWrapcontent"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:text="$99 Per Month"
-        android:layout_gravity="center"
-        android:textColor="@color/white"
-        android:textSize="@dimen/_14sdp"/>
-    <TextView
-        style="@style/CommonTextWrapcontent"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:text="100 items and 2 employees"
-        android:layout_gravity="center"
-        android:textColor="@color/white"
-        android:textSize="@dimen/_12sdp"/>
-</LinearLayout>
-        </RelativeLayout>
-
+        android:layout_below="@id/rl_title"
+        android:paddingBottom="@dimen/_10sdp"
+        android:orientation="vertical">
 
         <RelativeLayout
+            android:layout_above="@+id/btnSubscription"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10sdp">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/subscription"
-                android:layout_centerInParent="true"/>
-            <LinearLayout
+            android:layout_height="match_parent">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_subscriptions"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+            <TextView
+                android:id="@+id/tv_no_subscription"
+                style="@style/CommonTextWrapcontent"
+                android:layout_gravity="center"
+                android:layout_centerInParent="true"
+                android:text="@string/no_subscriptions_plans_available"
+                android:textColor="@color/black"
+                android:visibility="gone"
+                android:textSize="@dimen/_14sdp" />
+
+
+
+
+            <!--<LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/_20sdp"
-                android:layout_marginRight="@dimen/_20sdp"
-                android:orientation="vertical"
-                android:layout_marginTop="@dimen/_10sdp">
+
+                android:layout_marginTop="@dimen/_10sdp"
+                android:orientation="vertical">
+
                 <ImageView
+                    android:id="@+id/ivDollar"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:layout_marginTop="@dimen/_10sdp"
-                    android:src="@drawable/dollar"
-                    android:layout_gravity="center"/>
+                    android:src="@drawable/dollar" />
+
                 <TextView
                     style="@style/CommonTextWrapcontent"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:text="$199 per month Per Month"
                     android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="$99 Per Month"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/_14sdp"/>
+                    android:textSize="@dimen/_14sdp" />
+
                 <TextView
                     style="@style/CommonTextWrapcontent"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:text="200 items and 4 employees"
                     android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="100 items and 2 employees"
                     android:textColor="@color/white"
-                    android:textSize="@dimen/_12sdp"/>
-            </LinearLayout>
+                    android:textSize="@dimen/_12sdp" />
+            </LinearLayout>-->
         </RelativeLayout>
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10sdp">
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/subscription"
-                android:layout_centerInParent="true"/>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/_20sdp"
-                android:layout_marginRight="@dimen/_20sdp"
-                android:orientation="vertical"
-                android:layout_marginTop="@dimen/_10sdp">
-                <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/dollar"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:layout_gravity="center"/>
-                <TextView
-                    style="@style/CommonTextWrapcontent"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:text="$699 Per Month"
-                    android:layout_gravity="center"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_14sdp"/>
-                <TextView
-                    style="@style/CommonTextWrapcontent"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:text="700 items and 15 employee registration\n for packing and"
-                    android:layout_gravity="center"
-                    android:gravity="center"
-                    android:textColor="@color/white"
-                    android:textSize="@dimen/_12sdp"/>
-            </LinearLayout>
-        </RelativeLayout>
+
         <Button
             android:id="@+id/btnSubscription"
             style="@style/Button"
-            android:layout_marginBottom="@dimen/_20sdp"
-            android:layout_marginTop="@dimen/_20sdp"
-            android:text="Buy Subscription"
-            />
-    </LinearLayout>
+            android:layout_alignParentBottom="true"
+            android:layout_margin="@dimen/_15sdp"
+            android:text="@string/buy_subscription" />
+
+<!--
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@drawable/subscription" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_20sdp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:src="@drawable/dollar" />
+
+                <TextView
+                    style="@style/CommonTextWrapcontent"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="$199 per month Per Month"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_14sdp" />
+
+                <TextView
+                    style="@style/CommonTextWrapcontent"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="200 items and 4 employees"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_12sdp" />
+            </LinearLayout>
         </RelativeLayout>
-    </ScrollView>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_10sdp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:src="@drawable/subscription" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_20sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_20sdp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:src="@drawable/dollar" />
+
+                <TextView
+                    style="@style/CommonTextWrapcontent"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:text="$699 Per Month"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_14sdp" />
+
+                <TextView
+                    style="@style/CommonTextWrapcontent"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:gravity="center"
+                    android:text="700 items and 15 employee registration\n for packing and"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/_12sdp" />
+            </LinearLayout>
+        </RelativeLayout>-->
+
+
+    </RelativeLayout>
+
 </RelativeLayout>

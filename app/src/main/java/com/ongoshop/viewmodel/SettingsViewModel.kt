@@ -46,6 +46,16 @@ class SettingsViewModel :ViewModel() {
                 )
     }
 
+    fun deleteAccount(activity: Activity, showLoader: Boolean, map: HashMap<String, String>) {
+        restApiInterface.deleteAccount(map)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe { mResponse.value = RestObservable.loading(activity, showLoader) }
+                .subscribe(
+                        { mResponse.value = RestObservable.success(it) },
+                        { mResponse.value = RestObservable.error(activity, it) }
+                )
+    }
 
     fun editProfile(
             activity: Activity, showLoader: Boolean,
@@ -76,6 +86,19 @@ class SettingsViewModel :ViewModel() {
 
     ) {
         restApiInterface.termsCondition()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe { mResponse.value = RestObservable.loading(activity,showLoader) }
+                .subscribe(
+                        { mResponse.value = RestObservable.success(it) },
+                        { mResponse.value = RestObservable.error(activity,it) }
+                )
+    }
+
+    fun getSubscriptionsAPI(activity: Activity, showLoader:Boolean
+
+    ) {
+        restApiInterface.getSubscriptions()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe { mResponse.value = RestObservable.loading(activity,showLoader) }

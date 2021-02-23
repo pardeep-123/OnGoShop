@@ -39,14 +39,21 @@ class Constants {
         const val AllCards = BASE_URL + "allCards"
         const val DeleteCard = BASE_URL + "deleteCard"
         const val UpdateCard = BASE_URL + "updateCard"
+        const val ChangeAvailability = BASE_URL + "changeAvailability"
+        const val EditPrice = BASE_URL + "editPrice"
         const val SetDefaultCard = BASE_URL + "setDefaultCard"
+        const val AddProduct = BASE_URL + "addProduct"
+        const val DeleteAccount = BASE_URL + "deleteAccount"
+        const val GetSubscriptions = BASE_URL + "getSubscriptions"
+        const val CheckBarcode = BASE_URL + "checkBarcode"
+        const val GetProductbarcode = BASE_URL + "getProductbarcode"
 
-        const val HomeListing = BASE_URL + "homeListing"              // Home
+
         const val CategoryListing = BASE_URL + "categoryListing"
         const val GetCardsList = BASE_URL + "get_cards_list"
         const val NotificationsList = BASE_URL + "notifications_list"
         const val RemoveNotification = BASE_URL + "remove_push"
-        const val HomeUserSearch = BASE_URL + "home_user_search"
+
         const val Logout = BASE_URL + "logout"
 
     }

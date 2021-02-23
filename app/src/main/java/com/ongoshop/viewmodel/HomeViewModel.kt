@@ -1,6 +1,7 @@
 package com.ongoshop.viewmodel
 
 import android.app.Activity
+import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.ongoshop.manager.restApi.RestObservable
@@ -15,34 +16,69 @@ import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import java.io.File
 
-class HomeViewModel :ViewModel() {
+class HomeViewModel : ViewModel() {
     private val TAG = HomeViewModel::class.java.name
     val restApiInterface = MyApplication.getnstance().provideAuthservice()
     var mResponse: MutableLiveData<RestObservable> = MutableLiveData()
 
 
-
-
-    fun getProfile(activity: Activity, showLoader:Boolean) {
+    fun getProfile(activity: Activity, showLoader: Boolean) {
         restApiInterface.getProfile()
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .doOnSubscribe { mResponse.value = RestObservable.loading(activity,showLoader) }
-            .subscribe(
-                { mResponse.value = RestObservable.success(it) },
-                { mResponse.value = RestObservable.error(activity,it) }
-            )
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe { mResponse.value = RestObservable.loading(activity, showLoader) }
+                .subscribe(
+                        { mResponse.value = RestObservable.success(it) },
+                        { mResponse.value = RestObservable.error(activity, it) }
+                )
     }
 
- fun getProductListingAPI(activity: Activity, showLoader:Boolean, map:HashMap<String, String>) {
+    fun getProductListingAPI(activity: Activity, showLoader: Boolean, map: HashMap<String, String>) {
         restApiInterface.getProductListing(map)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .doOnSubscribe { mResponse.value = RestObservable.loading(activity,showLoader) }
-            .subscribe(
-                { mResponse.value = RestObservable.success(it) },
-                { mResponse.value = RestObservable.error(activity,it) }
-            )
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe { mResponse.value = RestObservable.loading(activity, showLoader) }
+                .subscribe(
+                        { mResponse.value = RestObservable.success(it) },
+                        { mResponse.value = RestObservable.error(activity, it) }
+                )
+    }
+
+    fun addProductApi(activity: Activity, showLoader: Boolean, map: java.util.HashMap<String, RequestBody>,
+                      mImage: MultipartBody.Part
+    ) {
+        restApiInterface.addProduct(map, mImage)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe { mResponse.value = RestObservable.loading(activity, showLoader) }
+                .subscribe(
+                        { mResponse.value = RestObservable.success(it) },
+                        { mResponse.value = RestObservable.error(activity, it) }
+                )
+    }
+
+    fun checkBarcodeApi(activity: Activity, showLoader: Boolean, map: HashMap<String, String>)
+    {
+        restApiInterface.checkBarcode(map)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe { mResponse.value = RestObservable.loading(activity, showLoader) }
+                .subscribe(
+                        { mResponse.value = RestObservable.success(it) },
+                        { mResponse.value = RestObservable.error(activity, it) }
+                )
+    }
+
+ fun getProductBarcodeAPI(activity: Activity, showLoader: Boolean, map: HashMap<String, String>)
+    {
+        restApiInterface.getProductbarcode(map)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe { mResponse.value = RestObservable.loading(activity, showLoader) }
+                .subscribe(
+                        { mResponse.value = RestObservable.success(it) },
+                        { mResponse.value = RestObservable.error(activity, it) }
+                )
     }
 
 
@@ -60,61 +96,97 @@ class HomeViewModel :ViewModel() {
 */
 
 
-    fun allCardsAPI(activity: Activity, showLoader:Boolean) {
+    fun allCardsAPI(activity: Activity, showLoader: Boolean) {
         restApiInterface.allCards()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doOnSubscribe { mResponse.value = RestObservable.loading(activity,showLoader) }
+                .doOnSubscribe { mResponse.value = RestObservable.loading(activity, showLoader) }
                 .subscribe(
                         { mResponse.value = RestObservable.success(it) },
-                        { mResponse.value = RestObservable.error(activity,it) }
+                        { mResponse.value = RestObservable.error(activity, it) }
                 )
     }
 
-    fun addCardAPI(activity: Activity, showLoader:Boolean, map: HashMap<String, String>) {
+    fun addCardAPI(activity: Activity, showLoader: Boolean, map: HashMap<String, String>) {
         restApiInterface.addCard(map)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doOnSubscribe { mResponse.value = RestObservable.loading(activity,showLoader) }
+                .doOnSubscribe { mResponse.value = RestObservable.loading(activity, showLoader) }
                 .subscribe(
                         { mResponse.value = RestObservable.success(it) },
-                        { mResponse.value = RestObservable.error(activity,it) }
+                        { mResponse.value = RestObservable.error(activity, it) }
                 )
     }
+    
 
-    fun deleteCardAPI(activity: Activity, showLoader:Boolean, map: HashMap<String, String>) {
-        restApiInterface.deleteCard(map)
+
+
+    fun deleteCardAPI(activity: Activity, showLoader: Boolean, id: String) {
+        restApiInterface.deleteCard(id)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doOnSubscribe { mResponse.value = RestObservable.loading(activity,showLoader) }
+                .doOnSubscribe { mResponse.value = RestObservable.loading(activity, showLoader) }
                 .subscribe(
                         { mResponse.value = RestObservable.success(it) },
-                        { mResponse.value = RestObservable.error(activity,it) }
+                        { mResponse.value = RestObservable.error(activity, it) }
                 )
     }
 
-    fun updateCardAPI(activity: Activity, showLoader:Boolean, map: HashMap<String, String>) {
+    fun deleteProductAPI(activity: Activity, showLoader: Boolean, id: String) {
+        restApiInterface.deleteProduct(id)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe { mResponse.value = RestObservable.loading(activity, showLoader) }
+                .subscribe(
+
+                        { mResponse.value = RestObservable.success(it) },
+                        { mResponse.value = RestObservable.error(activity, it) }
+                )
+    }
+
+    fun updateCardAPI(activity: Activity, showLoader: Boolean, map: HashMap<String, String>) {
         restApiInterface.updateCard(map)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doOnSubscribe { mResponse.value = RestObservable.loading(activity,showLoader) }
+                .doOnSubscribe { mResponse.value = RestObservable.loading(activity, showLoader) }
                 .subscribe(
                         { mResponse.value = RestObservable.success(it) },
-                        { mResponse.value = RestObservable.error(activity,it) }
+                        { mResponse.value = RestObservable.error(activity, it) }
                 )
     }
 
-    fun setDefaultCardAPI(activity: Activity, showLoader:Boolean, map: HashMap<String, String>) {
+    fun changeAvailabilityAPI(activity: Activity, showLoader: Boolean, map: HashMap<String, String>) {
+        restApiInterface.changeAvailability(map)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe { mResponse.value = RestObservable.loading(activity, showLoader) }
+                .subscribe(
+                        { mResponse.value = RestObservable.success(it) },
+                        { mResponse.value = RestObservable.error(activity, it) }
+                )
+    }
+
+    fun editPriceAPI(activity: Activity, showLoader: Boolean, map: HashMap<String, String>) {
+        restApiInterface.editPrice(map)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe { mResponse.value = RestObservable.loading(activity, showLoader) }
+                .subscribe(
+                        { mResponse.value = RestObservable.success(it) },
+                        { mResponse.value = RestObservable.error(activity, it) }
+                )
+    }
+
+    fun setDefaultCardAPI(activity: Activity, showLoader: Boolean, map: HashMap<String, String>) {
         restApiInterface.setDefaultCard(map)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .doOnSubscribe { mResponse.value = RestObservable.loading(activity,showLoader) }
+                .doOnSubscribe { mResponse.value = RestObservable.loading(activity, showLoader) }
                 .subscribe(
                         { mResponse.value = RestObservable.success(it) },
-                        { mResponse.value = RestObservable.error(activity,it) }
+                        { mResponse.value = RestObservable.error(activity, it) }
                 )
     }
-
 
 
 }

@@ -18,32 +18,31 @@ import com.ongoshop.adapter.SubCategoryAdapter
 import com.ongoshop.base.BaseActivity
 import com.ongoshop.manager.restApi.RestObservable
 import com.ongoshop.manager.restApi.Status
-import com.ongoshop.models.CategoryClick
+import com.ongoshop.clickListeners.CategoryClick
 import com.ongoshop.pojo.CategoryListResponse
-import com.ongoshop.pojo.ProductListingResponse
+import com.ongoshop.pojo.SubCategoryListResponse
 import com.ongoshop.utils.others.CommonMethods
 import com.ongoshop.utils.others.Constants
 import com.ongoshop.utils.others.MyApplication
 import com.ongoshop.viewmodel.AuthViewModel
 import kotlinx.android.synthetic.main.activity_sub_categories.*
 
-class SubCategoriesActivity : BaseActivity(), Observer<RestObservable>, CategoryClick{
+class SubCategoriesActivity : BaseActivity(), Observer<RestObservable>, CategoryClick {
     var ivBack: ImageView? = null
     var mContext: SubCategoriesActivity? = null
     var ll_data: RelativeLayout? = null
-    private var categoryId=""
-    private var categoryName=""
-    private  var listSize:Int? = null
-    private lateinit var  subCategoryAdapter: SubCategoryAdapter
-    private var categoryList: ArrayList<CategoryListResponse.Body> = ArrayList()
-    lateinit var  rvCategory: RecyclerView
+    private var categoryId = ""
+    private var categoryName = ""
+    private lateinit var subCategoryAdapter: SubCategoryAdapter
+    private var categoryList: ArrayList<SubCategoryListResponse.Body> = ArrayList()
+    lateinit var rvCategory: RecyclerView
 
     private val viewModel: AuthViewModel
             by lazy { ViewModelProviders.of(this).get(AuthViewModel::class.java) }
 
 
     override fun getContentId(): Int {
-       return R.layout.activity_sub_categories
+        return R.layout.activity_sub_categories
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,17 +57,21 @@ class SubCategoriesActivity : BaseActivity(), Observer<RestObservable>, Category
             startActivity(i)
         })
 
-        if (intent.extras !=null){
-            categoryId= intent.getStringExtra("categoryId")!!
+        if (intent.extras != null) {
             categoryName= intent.getStringExtra("categoryName")!!
+            categoryList = intent.getParcelableArrayListExtra<SubCategoryListResponse.Body>("categoryList")!!
             tv_title.text = categoryName
 
-        }
+            setCategoryAdapter(categoryList)
 
-        getcategoriesApi()
+            ivBack!!.setOnClickListener {
+               onLeftIconClick()
+            }
+
+        }
     }
 
-    fun setCategoryAdapter(categoryList: ArrayList<CategoryListResponse.Body>?) {
+    fun setCategoryAdapter(categoryList: ArrayList<SubCategoryListResponse.Body>?) {
         subCategoryAdapter = SubCategoryAdapter(mContext!!, categoryList!!, this)
         rvCategory.layoutManager = LinearLayoutManager(mContext, RecyclerView.VERTICAL, false)
         rvCategory.adapter = subCategoryAdapter
@@ -81,9 +84,9 @@ class SubCategoriesActivity : BaseActivity(), Observer<RestObservable>, Category
         else {
             val map = HashMap<String, String>()
             map.put("searchKeyword", "")
-            map.put("categoryId", categoryId )
+            map.put("categoryId", categoryId)
 
-            viewModel.categoryListApi(mContext!!, true, map)
+            viewModel.subCategoryListApi(mContext!!, true, map)
             viewModel.mResponse.observe(this, this)
         }
     }
@@ -91,46 +94,34 @@ class SubCategoriesActivity : BaseActivity(), Observer<RestObservable>, Category
     override fun onChanged(it: RestObservable?) {
         when {
             it!!.status == Status.SUCCESS -> {
-                if (it.data is CategoryListResponse) {
-                    val categoryListingResponse: CategoryListResponse = it.data
-                    if (categoryListingResponse.code == Constants.success_code) {
-                        showSuccessToast(mContext!!, categoryListingResponse!!.getMessage()!!)
+                if (it.data is SubCategoryListResponse) {
+                    val subCategoryListResponse: SubCategoryListResponse = it.data
+                    if (subCategoryListResponse.code == Constants.success_code) {
+                        showSuccessToast(mContext!!, subCategoryListResponse!!.getMessage()!!)
 
-                        categoryList.clear()
-                        categoryList.addAll(categoryListingResponse!!.getBody()!!)
-
-                        if (categoryListingResponse.getBody()!!.size == 0){
-                           /* rvCategory!!.visibility= View.GONE
-                            tv_no_sub_category!!.visibility= View.VISIBLE*/
+                        if (subCategoryListResponse.getBody()!!.size == 0) {
+                            /* rvCategory!!.visibility= View.GONE
+                             tv_no_sub_category!!.visibility= View.VISIBLE*/
 
                             val i = Intent(mContext, ProductActivity::class.java)
                             i.putExtra("categoryId", categoryId)
                             i.putExtra("categoryName", categoryName)
                             startActivity(i)
 
-                          /*  listSize= categoryListingResponse.getBody().size
-                            if (listSize== 0){
-                                val i = Intent(mContext, ProductActivity::class.java)
-                                i.putExtra("categoryId", categoryId)
-                                startActivity(i)
-                            }else {
-                                val i = Intent(mContext, SubCategoriesActivity::class.java)
-                                i.putExtra("categoryId", categoryId)
-                                i.putExtra("categoryName", categoryName)
-                                startActivity(i)
-                            }*/
+                        } else {
+                            val i = Intent(mContext, SubCategoriesActivity::class.java)
+                            i.putParcelableArrayListExtra("categoryList", subCategoryListResponse.body)
+                            i.putExtra("categoryName", categoryName)
+                            startActivity(i)
 
-                        }else{
-                            rvCategory!!.visibility= View.VISIBLE
-                            tv_no_sub_category!!.visibility= View.GONE
+                            rvCategory!!.visibility = View.VISIBLE
+                            tv_no_sub_category!!.visibility = View.GONE
                             tv_title.text = categoryName
-                            setCategoryAdapter(categoryList)
                         }
-
                     } else {
                         CommonMethods.AlertErrorMessage(
                                 mContext,
-                                categoryListingResponse.getMessage()
+                                subCategoryListResponse.getMessage()
                         )
                     }
                 }
@@ -150,13 +141,10 @@ class SubCategoriesActivity : BaseActivity(), Observer<RestObservable>, Category
 
     }
 
-    override fun categoryClickk(id: String, name: String, listsize: Int) {
-        categoryId= id
-        categoryName= name
+    override fun categoryClickk(pos: Int, id: String, name: String, listSize: Int) {
+        categoryId = id
+        categoryName = name
 
         getcategoriesApi()
-
-
-
     }
 }

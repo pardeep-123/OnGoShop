@@ -65,9 +65,6 @@
         android:layout_height="match_parent"
         android:layout_above="@+id/btnAddProducts"
         android:layout_below="@+id/llSearch"
-        android:layout_marginLeft="@dimen/_10sdp"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:layout_marginRight="@dimen/_10sdp"
         android:orientation="vertical">
 
         <androidx.recyclerview.widget.RecyclerView

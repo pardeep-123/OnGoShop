@@ -88,7 +88,7 @@ class ProfileFragment : BaseFragment(), View.OnClickListener, Observer<RestObser
         if (!MyApplication.instance!!.checkIfHasNetwork())
             showAlerterRed(resources.getString(R.string.no_internet))
         else {
-            viewModel.getProfile(activity!!, true)
+            viewModel.getProfile(requireActivity(), true)
             viewModel.mResponse.observe(this, this)
         }
     }
