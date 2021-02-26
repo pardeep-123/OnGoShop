@@ -11,116 +11,122 @@
         android:layout_width="wrap_content"
         android:layout_height="@dimen/_70sdp"
         android:scaleType="fitXY"
-        android:src="@drawable/small_header"/>
+        android:src="@drawable/small_header" />
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_20sdp"
-        >
+        android:layout_marginTop="@dimen/_20sdp">
+
         <ImageView
             android:id="@+id/ivBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/_10sdp"
             android:layout_alignParentLeft="true"
-            android:src="@drawable/back"/>
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:src="@drawable/back" />
+
         <TextView
             style="@style/CommonTextWrapcontent"
-            android:textColor="@color/white"
+            android:layout_centerInParent="true"
             android:text="@string/new_orders"
-            android:textSize="@dimen/_14sdp"
-            android:layout_centerInParent="true"/>
+            android:textColor="@color/white"
+            android:textSize="@dimen/_14sdp" />
+
         <ImageView
             android:id="@+id/ivNoti"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/_15sdp"
-            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_alignParentRight="true"
             android:layout_centerInParent="true"
-          android:layout_alignParentRight="true"
-            android:src="@drawable/notifications"/>
-    </RelativeLayout>
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/_10sdp"
-        android:layout_marginRight="@dimen/_10sdp"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:orientation="vertical"
-        android:layout_below="@id/ivBar">
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/recyclerview"
-            android:padding="@dimen/_10sdp" />
-        <TextView
-           style="@style/CommonTextWrapcontent"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:layout_marginLeft="@dimen/_10sdp"
             android:layout_marginRight="@dimen/_10sdp"
-            android:textColor="@color/red"
-            android:text="Scheduled for later"
-            android:textSize="@dimen/_14sdp"
-            android:layout_centerInParent="true"/>
+            android:src="@drawable/notifications" />
+    </RelativeLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_below="@+id/ivBar"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_height="match_parent"
             android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginRight="@dimen/_10sdp"
-            android:orientation="vertical"
-            android:background="@drawable/border_shape">
-            <LinearLayout
+            android:orientation="vertical">
+
+            <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:layout_marginRight="@dimen/_10sdp"
-                android:layout_marginLeft="@dimen/_10sdp"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_weight="50"
+                android:layout_margin="@dimen/_5sdp">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_new_orders"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:padding="@dimen/_10sdp" />
+
+                <TextView
+                    android:id="@+id/tv_no_neworders"
+                    style="@style/CommonTextWrapcontent"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_margin="@dimen/_50sdp"
+                    android:visibility="gone"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:text="@string/no_new_order_available"
                     android:textColor="@color/black"
-                    android:fontFamily="@font/regular"
-                    android:text="Jackson Jack"
                     android:textSize="@dimen/_14sdp" />
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_weight="50"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/grey"
-                    android:gravity="end"
-                    android:fontFamily="@font/regular"
-                    android:text="28 April 2020"
-                    android:textSize="@dimen/_12sdp" />
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+
+
+            </RelativeLayout>
+
+            <TextView
+                style="@style/CommonTextWrapcontent"
+                android:layout_centerInParent="true"
+                android:layout_marginLeft="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:layout_marginRight="@dimen/_10sdp"
-                android:layout_marginLeft="@dimen/_10sdp"
-                android:layout_marginBottom="@dimen/_10sdp"
-                android:orientation="horizontal">
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_weight="70"
+                android:text="@string/scheduled_for_later"
+                android:textColor="@color/red"
+                android:textSize="@dimen/_14sdp" />
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="@dimen/_5sdp">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_later_new_orders"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:padding="@dimen/_10sdp" />
+
+                <TextView
+                    android:id="@+id/tv_no_later_neworders"
+                    style="@style/CommonTextWrapcontent"
+                    android:layout_centerHorizontal="true"
+                    android:layout_margin="@dimen/_50sdp"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:visibility="gone"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:text="@string/no_new_order_available"
                     android:textColor="@color/black"
-                    android:fontFamily="@font/regular"
-                    android:text="Order number 152KL0552"
-                    android:textSize="@dimen/_12sdp" />
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_weight="30"
-                    android:layout_height="wrap_content"
-                    android:textColor="@color/grey"
-                    android:gravity="end"
-                    android:text="8AM - 12PM"
-                    android:fontFamily="@font/regular"
-                    android:textSize="@dimen/_12sdp" />
-            </LinearLayout>
+                    android:textSize="@dimen/_14sdp" />
+
+
+            </RelativeLayout>
+
+
+
         </LinearLayout>
-    </LinearLayout>
+
+
+    </ScrollView>
+
 </RelativeLayout>

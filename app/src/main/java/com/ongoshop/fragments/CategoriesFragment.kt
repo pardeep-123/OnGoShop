@@ -7,11 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.ImageView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ongoshop.R
+import com.ongoshop.activities.BarcodeScannerActivity
 import com.ongoshop.activities.ManageCategoryActivity
 import com.ongoshop.activities.ProductActivity
 import com.ongoshop.activities.SubCategoriesActivity
@@ -37,6 +39,7 @@ class CategoriesFragment : BaseFragment(), Observer<RestObservable>, CategoryCli
     private lateinit var  subCategoryAdapter: SubCategoryAdapter
     lateinit var  rvCategory: RecyclerView
     private var btnCategories: Button? = null
+    private var ivScan: ImageView? = null
     private var categoryId=""
     private var categoryName=""
     private var pos=0
@@ -55,8 +58,14 @@ class CategoriesFragment : BaseFragment(), Observer<RestObservable>, CategoryCli
 
         rvCategory = v!!.findViewById(R.id.rv_category)
         btnCategories = v!!.findViewById(R.id.btnCategories)
-        btnCategories!!.setOnClickListener(View.OnClickListener {
+        ivScan = v!!.findViewById(R.id.iv_scan)
+       /* btnCategories!!.setOnClickListener(View.OnClickListener {
             val i = Intent(mContext, ManageCategoryActivity::class.java)
+            startActivity(i)
+        })*/
+
+        ivScan!!.setOnClickListener(View.OnClickListener {
+            val i = Intent(mContext, BarcodeScannerActivity::class.java)
             startActivity(i)
         })
 

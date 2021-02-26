@@ -47,6 +47,15 @@ class Constants {
         const val GetSubscriptions = BASE_URL + "getSubscriptions"
         const val CheckBarcode = BASE_URL + "checkBarcode"
         const val GetProductbarcode = BASE_URL + "getProductbarcode"
+        const val OrdersList = BASE_URL + "ordersList"
+        const val Pastorders = BASE_URL + "pastorders"
+        const val OrdersItems = BASE_URL + "ordersItems"
+        const val GetProductList = BASE_URL + "getProductlist"
+        const val Notification = BASE_URL + "notification"
+        const val Acceptorder = BASE_URL + "acceptorder"
+        const val ShippedOrder = BASE_URL + "shippedOrder"
+        const val FinishPacking = BASE_URL + "finishPacking"
+        const val IsSelfpickupOrders = BASE_URL + "isSelfpickupOrders"
 
 
         const val CategoryListing = BASE_URL + "categoryListing"

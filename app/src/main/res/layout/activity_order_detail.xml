@@ -42,7 +42,8 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_above="@+id/btnFinish"
                 android:layout_marginLeft="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:layout_marginRight="@dimen/_10sdp"
@@ -56,7 +57,7 @@
                     android:background="@drawable/border_shape"
                     android:orientation="vertical">
 
-                    <LinearLayout
+                    <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/_10sdp"
@@ -65,26 +66,26 @@
                         android:orientation="horizontal">
 
                         <TextView
-                            android:layout_width="0dp"
+                            android:id="@+id/tv_username"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_weight="50"
                             android:fontFamily="@font/regular"
-                            android:text="Jackson Jack"
                             android:textColor="@color/black"
                             android:textSize="@dimen/_14sdp" />
 
                         <TextView
-                            android:layout_width="0dp"
+                            android:id="@+id/tv_timings"
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="50"
+                            android:layout_alignParentEnd="true"
                             android:fontFamily="@font/regular"
                             android:gravity="end"
-                            android:text="8AM - 12PM"
                             android:textColor="@color/grey"
                             android:textSize="@dimen/_10sdp" />
-                    </LinearLayout>
+                    </RelativeLayout>
 
                     <TextView
+                        android:id="@+id/tv_order_number"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/_10sdp"
@@ -92,16 +93,47 @@
                         android:layout_marginRight="@dimen/_10sdp"
                         android:layout_marginBottom="@dimen/_10sdp"
                         android:fontFamily="@font/regular"
-                        android:text="Order number 152KL0552"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_10sdp" />
+
+                    <TextView
+                        android:id="@+id/tv_total_items"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:layout_marginBottom="@dimen/_10sdp"
+                        android:fontFamily="@font/regular"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_10sdp" />
+
                 </LinearLayout>
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/recyclerview"
+                <RelativeLayout
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="@dimen/_10sdp" />
+                    android:layout_height="match_parent">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerview"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:padding="@dimen/_10sdp" />
+
+                    <TextView
+                        android:id="@+id/tv_no_items"
+                        style="@style/CommonTextWrapcontent"
+                        android:layout_centerInParent="true"
+                        android:layout_centerHorizontal="true"
+                        android:visibility="gone"
+                        android:layout_margin="@dimen/_50sdp"
+                        android:text="@string/no_items_available"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/_14sdp" />
+
+                </RelativeLayout>
+
+
 
 
             </LinearLayout>
@@ -111,6 +143,7 @@
                 style="@style/Button"
                 android:layout_alignParentBottom="true"
                 android:layout_marginLeft="@dimen/_40sdp"
+                android:layout_marginTop="@dimen/_5sdp"
                 android:layout_marginRight="@dimen/_40sdp"
                 android:layout_marginBottom="@dimen/_20sdp"
                 android:background="@drawable/button_8"

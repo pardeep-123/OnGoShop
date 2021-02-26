@@ -62,6 +62,57 @@ interface RestApiInterface {
             @FieldMap map: HashMap<String, String>
     ): Observable<AddCardResponse>
 
+    @GET(Constants.GetProductList)
+    fun getProductList():
+            Observable<MyProductListingResponse>
+
+    @GET(Constants.Notification)
+    fun notificationList():
+            Observable<NotificationsListResponse>
+
+    @FormUrlEncoded
+    @POST(Constants.OrdersList)
+    fun ordersList(
+            @FieldMap map: HashMap<String, String>
+    ): Observable<OrderListResponse>
+
+     @FormUrlEncoded
+    @POST(Constants.Acceptorder)
+    fun acceptorder(
+            @FieldMap map: HashMap<String, String>
+    ): Observable<AcceptOrderResponse>
+
+    @FormUrlEncoded
+    @POST(Constants.ShippedOrder)
+    fun shippedOrder(
+            @FieldMap map: HashMap<String, String>
+    ): Observable<ShippedOrderResponse>
+
+    @FormUrlEncoded
+    @POST(Constants.IsSelfpickupOrders)
+    fun isSelfpickupOrders(
+            @FieldMap map: HashMap<String, String>
+    ): Observable<DeliveryAndPickupOrderListResponse>
+
+    @FormUrlEncoded
+    @POST(Constants.FinishPacking)
+    fun finishPacking(
+            @FieldMap map: HashMap<String, String>
+    ): Observable<FinishPackingResponse>
+
+    @FormUrlEncoded
+    @POST(Constants.Pastorders)
+    fun pastOrdersList(
+            @FieldMap map: HashMap<String, String>
+    ): Observable<PastOrderListResponse>
+
+
+    @FormUrlEncoded
+    @POST(Constants.OrdersItems)
+    fun ordersItems(
+            @FieldMap map: HashMap<String, String>
+    ): Observable<OrderItemsListResponse>
+
     @FormUrlEncoded
     @POST(Constants.CheckBarcode)
     fun checkBarcode(

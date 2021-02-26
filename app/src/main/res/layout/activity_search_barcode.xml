@@ -46,11 +46,14 @@
         android:gravity="center"
         android:orientation="horizontal">
         <EditText
+            android:id="@+id/et_bar_code_number"
            android:layout_height="wrap_content"
             android:layout_width="match_parent"
             android:textColor="@color/black"
             android:hint="Enter the barcode number"
             android:textSize="@dimen/_14sdp"
+            android:maxLines="1"
+            android:maxLength="60"
             android:layout_gravity="center"
             android:gravity="center"
             android:fontFamily="@font/regular"

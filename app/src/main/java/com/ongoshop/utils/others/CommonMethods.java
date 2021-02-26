@@ -45,7 +45,7 @@ import java.util.regex.Pattern;
 
 public class CommonMethods {
     public static File myDir_images_sent = new File(Environment.getExternalStoragePublicDirectory("IDeliverIt"), "Images/Sent");
-    public static File myDir_omorni = new File(Environment.getExternalStoragePublicDirectory("TruTraits"), "Data");
+    public static File myDir_omorni = new File(Environment.getExternalStoragePublicDirectory("Ongo"), "Data");
 
 
     private static ProgressDialog mProgress;
@@ -326,9 +326,6 @@ public class CommonMethods {
                 .setContentGravity(Gravity.CENTER)
                 .show();
     }
-
-
-
 
 
     public static void AlertSuccessMessage(Activity activity, String message){
@@ -662,6 +659,29 @@ public class CommonMethods {
         sdf.setTimeZone(tz);
         Date currenTimeZone = new Date(timestamp * 1000);
         return sdf.format(currenTimeZone);
+    }
+
+    public static String parseDateToddMMyyyy(String dateAndTime,String dateFormate) {
+        String inputPattern = "yyyy-MM-dd'T'HH:mm:ss";
+        SimpleDateFormat inputFormat = new SimpleDateFormat(inputPattern);
+        SimpleDateFormat outputFormat = new SimpleDateFormat(dateFormate);
+        //ne line
+        inputFormat.setTimeZone(TimeZone.getTimeZone("UTC"));
+
+        Date date = null;
+        String str = null;
+
+        try {
+            date = inputFormat.parse(dateAndTime);
+            str = outputFormat.format(date);
+
+            //new line
+            outputFormat.setTimeZone(TimeZone.getDefault());
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return str;
     }
 
     public static String convertTimeStampToDate2(long timestamp) {

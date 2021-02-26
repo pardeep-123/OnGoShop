@@ -22,6 +22,7 @@ import com.ongoshop.utils.others.CommonMethods
 import com.ongoshop.utils.others.Constants
 import com.ongoshop.utils.others.MyApplication
 import com.ongoshop.viewmodel.HomeViewModel
+import kotlinx.android.synthetic.main.activity_new_orders.*
 import kotlinx.android.synthetic.main.activity_product.*
 
 class ProductActivity : BaseActivity(), View.OnClickListener, ProductClick, Observer<RestObservable> {
@@ -52,7 +53,7 @@ class ProductActivity : BaseActivity(), View.OnClickListener, ProductClick, Obse
 
         if (intent.extras != null) {
             productId = intent.getStringExtra("categoryId")!!
-         //   tv_title.text = "Productt"
+            //   tv_title.text = "Productt"
             tv_title.text = intent.getStringExtra("categoryName")!!
 
         }
@@ -108,10 +109,10 @@ class ProductActivity : BaseActivity(), View.OnClickListener, ProductClick, Obse
 
                         if (productListingResponse.getBody()!!.size == 0) {
                             rvProductList!!.visibility = View.GONE
-                            tv_no_product!!.visibility = View.VISIBLE
+                            tv_no_neworders!!.visibility = View.VISIBLE
                         } else {
                             rvProductList!!.visibility = View.VISIBLE
-                            tv_no_product!!.visibility = View.GONE
+                            tv_no_neworders!!.visibility = View.GONE
                             setProductListAdapter(productList!!)
                         }
 

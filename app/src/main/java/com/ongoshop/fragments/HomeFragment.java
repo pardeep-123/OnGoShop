@@ -55,6 +55,11 @@ Button btnCurrent,btnPast;
             case R.id.btnPast:
                 fragment = new PastOrderFragment();
                 replaceFragment(fragment);
+                /*Bundle args = new Bundle();
+                args.putString("pastOrders", "4");
+                fragment.setArguments(args);
+                requireActivity().getSupportFragmentManager().beginTransaction().add(R.id.container, fragment).commit();
+*/
                 btnPast.setTextColor(getResources().getColor(R.color.white));
                 btnCurrent.setTextColor(getResources().getColor(R.color.grey));
                 break;

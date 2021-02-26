@@ -134,7 +134,7 @@ class LoginActivity : BaseActivity(), View.OnClickListener, Observer<RestObserva
                         SharedPrefUtil.getInstance().saveName(registerResponse.getBody()!!.name)
                         SharedPrefUtil.getInstance().saveDeviceToken(registerResponse.getBody()!!.deviceToken)
 
-                        if (registerResponse.getBody()!!.verified == 0) {
+                       /* if (registerResponse.body!!.verified == 0) {
                             val intent = Intent(mContext, VerificationCodeActivity::class.java)
                             intent.putParcelableArrayListExtra("vendorDeliveryOptions", registerResponse.body.vendorDeliveryOptions)
                             intent.putParcelableArrayListExtra("vendorDeliveryCharges", registerResponse.body.vendorDeliveryCharges)
@@ -149,13 +149,13 @@ class LoginActivity : BaseActivity(), View.OnClickListener, Observer<RestObserva
                             startActivity(intent)
                             finishAffinity()
                         } else {
-
+*/
                             SharedPrefUtil.getInstance().isLogin = true
 
                             val intent = Intent(mContext, HomeActivity::class.java)
                             startActivity(intent)
                             finishAffinity()
-                        }
+                       /* }*/
 
                     }
 

@@ -3,143 +3,150 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".fragments.CurrentFragment"
-    >
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:layout_marginTop="@dimen/_20sdp"
-    android:layout_marginLeft="@dimen/_10sdp"
-    android:layout_marginRight="@dimen/_10sdp">
-    <RelativeLayout
-        android:id="@+id/rlOrder"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/_70sdp"
-        android:background="@drawable/button_3"
-        android:orientation="horizontal"
-        >
-        <TextView
-            style="@style/CommonTextWrapcontent"
-            android:textColor="@color/white"
-            android:text="New Orders"
-            android:layout_marginLeft="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:paddingLeft="@dimen/_10sdp"
-            android:layout_alignParentLeft="true"
-            android:layout_centerInParent="true"
-            android:textSize="@dimen/_14sdp" />
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/arrow_1"
-            android:layout_centerInParent="true"
-            android:layout_marginRight="@dimen/_10sdp"
-            android:layout_alignParentRight="true"/>
-    </RelativeLayout>
-    <RelativeLayout
-        android:id="@+id/rlProgress"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/_70sdp"
-        android:background="@drawable/button_4"
-        android:orientation="horizontal"
-        >
-        <TextView
-            style="@style/CommonTextWrapcontent"
-            android:textColor="@color/white"
-            android:text="In Progress"
-            android:paddingLeft="@dimen/_10sdp"
-            android:layout_marginLeft="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:layout_alignParentLeft="true"
-            android:layout_centerInParent="true"
-            android:textSize="@dimen/_14sdp" />
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/arrow_1"
-            android:layout_centerInParent="true"
-            android:layout_marginRight="@dimen/_10sdp"
-            android:layout_alignParentRight="true"/>
-    </RelativeLayout>
-    <RelativeLayout
-        android:id="@+id/rlDelivery"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/_70sdp"
-        android:background="@drawable/button_5"
-        android:orientation="horizontal"
-        >
-        <TextView
-            style="@style/CommonTextWrapcontent"
-            android:textColor="@color/white"
-            android:text="Ready for Delivery"
-            android:layout_marginLeft="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:paddingLeft="@dimen/_10sdp"
-            android:layout_alignParentLeft="true"
-            android:layout_centerInParent="true"
-            android:textSize="@dimen/_14sdp" />
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/arrow_1"
-            android:layout_centerInParent="true"
-            android:layout_marginRight="@dimen/_10sdp"
-            android:layout_alignParentRight="true"/>
-    </RelativeLayout>
-    <RelativeLayout
-        android:id="@+id/rlPickup"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/_70sdp"
-        android:background="@drawable/button_6"
-        android:orientation="horizontal"
-        >
-        <TextView
-            style="@style/CommonTextWrapcontent"
-            android:textColor="@color/white"
-            android:text="@string/ready_for_pickup"
-            android:layout_marginLeft="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:paddingLeft="@dimen/_10sdp"
-            android:layout_alignParentLeft="true"
-            android:layout_centerInParent="true"
-            android:textSize="@dimen/_14sdp" />
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/arrow_1"
-            android:layout_centerInParent="true"
-            android:layout_marginRight="@dimen/_10sdp"
-            android:layout_alignParentRight="true"/>
-    </RelativeLayout>
-    <RelativeLayout
-        android:id="@+id/rl_my_add_products"
-        android:layout_width="wrap_content"
-        android:layout_height="@dimen/_70sdp"
-        android:background="@drawable/button_3"
-        android:orientation="horizontal">
+    tools:context=".fragments.CurrentFragment">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
 
-        <TextView
-            style="@style/CommonTextWrapcontent"
-            android:textColor="@color/white"
-            android:text="@string/my_products"
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginTop="@dimen/_20sdp"
             android:layout_marginLeft="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_10sdp"
-            android:paddingLeft="@dimen/_10sdp"
-            android:layout_alignParentLeft="true"
-            android:layout_centerInParent="true"
-            android:textSize="@dimen/_14sdp" />
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:src="@drawable/arrow_1"
-            android:layout_centerInParent="true"
-            android:layout_marginRight="@dimen/_10sdp"
-            android:layout_alignParentRight="true"/>
-    </RelativeLayout>
+            android:layout_marginRight="@dimen/_10sdp">
+            <RelativeLayout
+                android:id="@+id/rlOrder"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_70sdp"
+                android:background="@drawable/button_3"
+                android:orientation="horizontal"
+                >
+                <TextView
+                    style="@style/CommonTextWrapcontent"
+                    android:textColor="@color/white"
+                    android:text="New Orders"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:paddingLeft="@dimen/_10sdp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:textSize="@dimen/_14sdp" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/arrow_1"
+                    android:layout_centerInParent="true"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:layout_alignParentRight="true"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/rlProgress"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_70sdp"
+                android:background="@drawable/button_4"
+                android:orientation="horizontal"
+                >
+                <TextView
+                    style="@style/CommonTextWrapcontent"
+                    android:textColor="@color/white"
+                    android:text="In Progress"
+                    android:paddingLeft="@dimen/_10sdp"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:textSize="@dimen/_14sdp" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/arrow_1"
+                    android:layout_centerInParent="true"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:layout_alignParentRight="true"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/rlDelivery"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_70sdp"
+                android:background="@drawable/button_5"
+                android:orientation="horizontal"
+                >
+                <TextView
+                    style="@style/CommonTextWrapcontent"
+                    android:textColor="@color/white"
+                    android:text="Ready for Delivery"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:paddingLeft="@dimen/_10sdp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:textSize="@dimen/_14sdp" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/arrow_1"
+                    android:layout_centerInParent="true"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:layout_alignParentRight="true"/>
+            </RelativeLayout>
+            <RelativeLayout
+                android:id="@+id/rlPickup"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_70sdp"
+                android:background="@drawable/button_6"
+                android:orientation="horizontal"
+                >
+                <TextView
+                    style="@style/CommonTextWrapcontent"
+                    android:textColor="@color/white"
+                    android:text="@string/ready_for_pickup"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:paddingLeft="@dimen/_10sdp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:textSize="@dimen/_14sdp" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/arrow_1"
+                    android:layout_centerInParent="true"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:layout_alignParentRight="true"/>
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:id="@+id/rl_my_added_products"
+                android:layout_width="wrap_content"
+                android:layout_height="@dimen/_70sdp"
+                android:background="@drawable/button_3"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/CommonTextWrapcontent"
+                    android:textColor="@color/white"
+                    android:text="@string/my_products"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:paddingLeft="@dimen/_10sdp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerInParent="true"
+                    android:textSize="@dimen/_14sdp" />
+                <ImageView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/arrow_1"
+                    android:layout_centerInParent="true"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:layout_alignParentRight="true"/>
+            </RelativeLayout>
 
 
 
-</LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
 
 </RelativeLayout>

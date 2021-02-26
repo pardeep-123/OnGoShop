@@ -17,6 +17,7 @@ import okhttp3.RequestBody
 import java.io.File
 
 class HomeViewModel : ViewModel() {
+
     private val TAG = HomeViewModel::class.java.name
     val restApiInterface = MyApplication.getnstance().provideAuthservice()
     var mResponse: MutableLiveData<RestObservable> = MutableLiveData()
@@ -24,6 +25,17 @@ class HomeViewModel : ViewModel() {
 
     fun getProfile(activity: Activity, showLoader: Boolean) {
         restApiInterface.getProfile()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe { mResponse.value = RestObservable.loading(activity, showLoader) }
+                .subscribe(
+                        { mResponse.value = RestObservable.success(it) },
+                        { mResponse.value = RestObservable.error(activity, it) }
+                )
+    }
+
+    fun notificationListAPI(activity: Activity, showLoader: Boolean) {
+        restApiInterface.notificationList()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe { mResponse.value = RestObservable.loading(activity, showLoader) }
@@ -57,8 +69,7 @@ class HomeViewModel : ViewModel() {
                 )
     }
 
-    fun checkBarcodeApi(activity: Activity, showLoader: Boolean, map: HashMap<String, String>)
-    {
+    fun checkBarcodeApi(activity: Activity, showLoader: Boolean, map: HashMap<String, String>) {
         restApiInterface.checkBarcode(map)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -69,8 +80,29 @@ class HomeViewModel : ViewModel() {
                 )
     }
 
- fun getProductBarcodeAPI(activity: Activity, showLoader: Boolean, map: HashMap<String, String>)
-    {
+    fun orderListApi(activity: Activity, showLoader: Boolean, map: HashMap<String, String>) {
+        restApiInterface.ordersList(map)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe { mResponse.value = RestObservable.loading(activity, showLoader) }
+                .subscribe(
+                        { mResponse.value = RestObservable.success(it) },
+                        { mResponse.value = RestObservable.error(activity, it) }
+                )
+    }
+
+    fun pastOrderListApi(activity: Activity, showLoader: Boolean, map: HashMap<String, String>) {
+        restApiInterface.pastOrdersList(map)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe { mResponse.value = RestObservable.loading(activity, showLoader) }
+                .subscribe(
+                        { mResponse.value = RestObservable.success(it) },
+                        { mResponse.value = RestObservable.error(activity, it) }
+                )
+    }
+
+    fun getProductBarcodeAPI(activity: Activity, showLoader: Boolean, map: HashMap<String, String>) {
         restApiInterface.getProductbarcode(map)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -117,8 +149,72 @@ class HomeViewModel : ViewModel() {
                         { mResponse.value = RestObservable.error(activity, it) }
                 )
     }
-    
 
+    fun ordersItemsAPI(activity: Activity, showLoader: Boolean, map: HashMap<String, String>) {
+        restApiInterface.ordersItems(map)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe { mResponse.value = RestObservable.loading(activity, showLoader) }
+                .subscribe(
+                        { mResponse.value = RestObservable.success(it) },
+                        { mResponse.value = RestObservable.error(activity, it) }
+                )
+    }
+
+    fun acceptOrderAPI(activity: Activity, showLoader: Boolean, map: HashMap<String, String>) {
+        restApiInterface.acceptorder(map)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe { mResponse.value = RestObservable.loading(activity, showLoader) }
+                .subscribe(
+                        { mResponse.value = RestObservable.success(it) },
+                        { mResponse.value = RestObservable.error(activity, it) }
+                )
+    }
+
+       fun shippedOrderAPI(activity: Activity, showLoader: Boolean, map: HashMap<String, String>) {
+        restApiInterface.shippedOrder(map)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe { mResponse.value = RestObservable.loading(activity, showLoader) }
+                .subscribe(
+                        { mResponse.value = RestObservable.success(it) },
+                        { mResponse.value = RestObservable.error(activity, it) }
+                )
+    }
+
+    fun finishPackingAPI(activity: Activity, showLoader: Boolean, map: HashMap<String, String>) {
+        restApiInterface.finishPacking(map)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe { mResponse.value = RestObservable.loading(activity, showLoader) }
+                .subscribe(
+                        { mResponse.value = RestObservable.success(it) },
+                        { mResponse.value = RestObservable.error(activity, it) }
+                )
+    }
+
+    fun isSelfpickupOrdersAPI(activity: Activity, showLoader: Boolean, map: HashMap<String, String>) {
+        restApiInterface.isSelfpickupOrders(map)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe { mResponse.value = RestObservable.loading(activity, showLoader) }
+                .subscribe(
+                        { mResponse.value = RestObservable.success(it) },
+                        { mResponse.value = RestObservable.error(activity, it) }
+                )
+    }
+
+    fun getMyProductListAPI(activity: Activity, showLoader: Boolean) {
+        restApiInterface.getProductList()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe { mResponse.value = RestObservable.loading(activity, showLoader) }
+                .subscribe(
+                        { mResponse.value = RestObservable.success(it) },
+                        { mResponse.value = RestObservable.error(activity, it) }
+                )
+    }
 
 
     fun deleteCardAPI(activity: Activity, showLoader: Boolean, id: String) {

@@ -34,18 +34,30 @@
             android:textSize="@dimen/_14sdp" />
     </RelativeLayout>
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/ivBar"
         android:orientation="vertical">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recyclerview"
+            android:id="@+id/rv_notification"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/_10sdp"
             android:layout_marginRight="@dimen/_10sdp" />
-    </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_no_notifications"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:visibility="gone"
+            android:fontFamily="@font/medium"
+            android:text="@string/no_notifications"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_16sdp" />
+
+    </RelativeLayout>
 
 </RelativeLayout>

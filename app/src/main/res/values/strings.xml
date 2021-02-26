@@ -181,6 +181,7 @@
     <string name="scan_barcode_to_add_items">Scan Barcode to add items</string>
     <string name="barcode_scanner">Barcode Scanner</string>
     <string name="search_with_barcode_number">Search with barcode number</string>
+    <string name="search_with_barcode_scan">Search with barcode scan</string>
     <string name="no_barcode_item">No barcode Item</string>
     <string name="old_password">Old Password</string>
     <string name="change_password">Change Password</string>
@@ -209,8 +210,10 @@
     <string name="items_on_board_for_delivery">Items on board for delivery</string>
 
     <string name="phone">Phone</string>
+
     <string name="_11_ruby_cresent_merdian_plains_nqld_4451">11 Ruby Cresent Merdian Plains\nQLD - 4451</string>
     <string name="delivery_address">Delivery Address</string>
+    <string name="delivery_address1">Delivery Address :</string>
     <string name="order_number_152kl0552">Order number 152KL0552</string>
     <string name="today">Today</string>
     <string name="set_your_delivery_charges">Set Your Delivery Charges</string>
@@ -281,5 +284,15 @@
     <string name="my_products">My Products</string>
     <string name="check_availability">Check Availability</string>
     <string name="please_enter_bar_code">Please enter bar code number</string>
+    <string name="please_check_barcode_availablity">Please  Check Barcode Availability</string>
+    <string name="scheduled_for_later">Scheduled for later</string>
+    <string name="no_new_order_available">No new order available</string>
+    <string name="no_order_available">No order available</string>
+    <string name="no_past_order_available">No past order available</string>
+    <string name="no_items_available">No items available</string>
+    <string name="qty">Qty:</string>
+    <string name="time">Time:</string>
+    <string name="accept">Accept</string>
+    <string name="total_items">"Total Items: "</string>
 
 </resources>

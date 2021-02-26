@@ -23,6 +23,7 @@
         android:gravity="center"
         android:layout_gravity="center"
         android:textSize="@dimen/_14sdp"/>
+<!--
     <TextView
         style="@style/CommonTextWrapcontent"
         android:layout_marginTop="@dimen/_20sdp"
@@ -31,6 +32,7 @@
         android:gravity="center"
         android:layout_gravity="center"
         android:textSize="@dimen/_14sdp"/>
+-->
     <Button
         android:id="@+id/btnOkk"
        style="@style/Button"

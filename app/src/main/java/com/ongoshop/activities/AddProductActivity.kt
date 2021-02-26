@@ -90,9 +90,34 @@ class AddProductActivity : BaseActivity(), View.OnClickListener, Observer<RestOb
         btnProceed!!.setOnClickListener(mContext)
         ivBack.setOnClickListener(mContext)
         tv_measurement_unit.setOnClickListener(mContext)
+        tv_check_availability.setOnClickListener(mContext)
 
         if (intent.extras != null) {
-            categoryId = intent.getStringExtra("categoryId")
+            if (intent.getStringExtra("from").equals("BarcodeScan")){
+                categoryId = intent.getStringExtra("categoryId")
+                et_product_name.setText(intent.getStringExtra("name"))
+                et_brand_Name.setText(intent.getStringExtra("brandName"))
+                et_bar_code.setText(intent.getStringExtra("barcode"))
+                et_price.setText(intent.getStringExtra("mrp"))
+                et_gtin_number.setText(intent.getStringExtra("gtinNumber"))
+                et_origin_country.setText(intent.getStringExtra("countryOfOrigin"))
+                et_description.setText(intent.getStringExtra("description"))
+                et_weight.setText(intent.getStringExtra("weight"))
+                et_origin_country.setText(intent.getStringExtra("countryOfOrigin"))
+                isBarcode= intent.getStringExtra("isBarcodeItem")!!
+                if (intent.getStringExtra("weightUnit").equals("0")){
+                    tv_measurement_unit.setText(resources.getString(R.string.pounds))
+                }else {
+                    tv_measurement_unit.setText(resources.getString(R.string.kilograms))
+
+                }
+                Glide.with(mContext!!).load(intent.getStringExtra("image")).error(R.drawable.ic_image_placeholder).into(ivImg!!)
+
+
+            }else {
+                categoryId = intent.getStringExtra("categoryId")
+            }
+
         }
     }
 
@@ -188,6 +213,7 @@ class AddProductActivity : BaseActivity(), View.OnClickListener, Observer<RestOb
                 val partWeightUnit = mValidationClass.createPartFromString(weightUnit)
                 val partIsAvailable = mValidationClass.createPartFromString("1")
                 val partWideght = mValidationClass.createPartFromString(et_weight.text.toString().trim())
+                val partBarCodeNumber = mValidationClass.createPartFromString(et_bar_code.text.toString().trim())
 
                 val map = HashMap<String, RequestBody>()
                 map.put("categoryId", partCategoryId)
@@ -201,6 +227,7 @@ class AddProductActivity : BaseActivity(), View.OnClickListener, Observer<RestOb
                 map.put("weightUnit", partWeightUnit)
                 map.put("isAvailable", partIsAvailable)
                 map.put("weight", partWideght)
+                map.put("barcode", partBarCodeNumber)
 
                 viewModel.addProductApi(this, true, map, bodyimage)
                 viewModel.mResponse.observe(this, this)
@@ -232,23 +259,25 @@ class AddProductActivity : BaseActivity(), View.OnClickListener, Observer<RestOb
             }
             R.id.btnProceed -> {
                 if (isBarcode.equals("1")) {
-                    if (mValidationClass.checkStringNull(et_bar_code.text.toString().trim())) {
-                        showAlerterRed(resources.getString(R.string.please_enter_bar_code))
+                    if (isCheckAvailability) {
+                        if (mValidationClass.checkStringNull(et_bar_code.text.toString().trim())) {
+                            showAlerterRed(resources.getString(R.string.please_enter_bar_code))
+                        } else {
+                            addProductAPI()
+                        }
                     } else {
-
+                        showAlerterRed(resources.getString(R.string.please_check_barcode_availablity))
                     }
                 } else {
                     addProductAPI()
                 }
-
-
             }
             R.id.tv_measurement_unit -> {
                 weightUnitDailogMethod()
             }
-        R.id.tv_check_availability -> {
-               isCheckAvailability= true
-               checkBarCodeAPI()
+            R.id.tv_check_availability -> {
+                isCheckAvailability = true
+                checkBarCodeAPI()
             }
         }
     }

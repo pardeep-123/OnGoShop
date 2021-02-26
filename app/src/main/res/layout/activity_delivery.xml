@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".activities.DeliveryActivity">
+    tools:context=".activities.ReadyForDeliveryActivity">
     <ImageView
         android:id="@+id/ivBar"
         android:layout_width="wrap_content"
@@ -34,14 +34,25 @@
             android:textSize="@dimen/_14sdp"
             android:layout_centerInParent="true"/>
     </RelativeLayout>
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/ivBar">
+
+        <TextView
+            android:id="@+id/tv_no_orders"
+            style="@style/CommonTextWrapcontent"
+            android:layout_centerInParent="true"
+            android:text="@string/no_order_available"
+            android:visibility="gone"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_14sdp" />
+
+
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:id="@+id/recyclerview"
+            android:id="@+id/rv_delivery_orders"
             android:padding="@dimen/_10sdp" />
-    </LinearLayout>
+    </RelativeLayout>
 </RelativeLayout>

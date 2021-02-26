@@ -88,6 +88,7 @@ class ProductAdapter(internal var context: Context, internal var productList: Ar
 
                 context.startActivity(intent)
             }
+
             btnAvailable.setOnClickListener {
                 btnAvailable.setBackgroundResource(R.drawable.btn)
                 btnNotAvailable.setBackgroundResource(R.drawable.na_button)
@@ -103,6 +104,5 @@ class ProductAdapter(internal var context: Context, internal var productList: Ar
         }
 
     }
-
 
 }

@@ -31,6 +31,17 @@
                 android:text="Product Categories"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_14sdp" />
+
+            <ImageView
+                android:id="@+id/iv_scan"
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginEnd="@dimen/_8sdp"
+                android:scaleType="fitXY"
+                android:src="@drawable/scan" />
+
         </RelativeLayout>
 
         <LinearLayout
@@ -64,8 +75,8 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_below="@id/llSearch"
             android:layout_above="@+id/btnCategories"
+            android:layout_below="@id/llSearch"
             android:layout_marginLeft="@dimen/_20sdp"
             android:layout_marginTop="@dimen/_20sdp"
             android:layout_marginRight="@dimen/_20sdp"
@@ -78,87 +89,88 @@
 
             </androidx.recyclerview.widget.RecyclerView>
 
-<!--
-            <TextView
-                style="@style/text"
-                android:layout_gravity="center"
-                android:gravity="center_vertical"
-                android:text="Baby products" />
+            <!--
+                        <TextView
+                            style="@style/text"
+                            android:layout_gravity="center"
+                            android:gravity="center_vertical"
+                            android:text="Baby products" />
+
+                        <TextView
+                            style="@style/text"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:gravity="center_vertical"
+                            android:text="Banking Needs" />
+
+                        <TextView
+                            style="@style/text"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:gravity="center_vertical"
+                            android:text="Bathroom" />
+
+                        <TextView
+                            android:id="@+id/tvDrinks"
+                            style="@style/text"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:gravity="center_vertical"
+                            android:text="Drinks &amp; Bevrages" />
+
+                        <TextView
+                            style="@style/text"
+                            android:layout_gravity="center"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:gravity="center_vertical"
+                            android:text="Fruits &amp; Vegetables" />
+
+                        <TextView
+                            style="@style/text"
+                            android:layout_gravity="start"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:gravity="center_vertical"
+                            android:text="Health &amp; Beauty" />
+
+                        <TextView
+                            style="@style/text"
+                            android:layout_gravity="start"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:gravity="center_vertical"
+                            android:text="Household Cleaning" />
+
+                        <TextView
+                            style="@style/text"
+                            android:layout_gravity="start"
+                            android:layout_marginTop="@dimen/_5sdp"
+                            android:gravity="center_vertical"
+                            android:text="Kitchen" />
+            -->
 
             <TextView
-                style="@style/text"
-                android:layout_gravity="center"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:gravity="center_vertical"
-                android:text="Banking Needs" />
-
-            <TextView
-                style="@style/text"
-                android:layout_gravity="center"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:gravity="center_vertical"
-                android:text="Bathroom" />
-
-            <TextView
-                android:id="@+id/tvDrinks"
-                style="@style/text"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:gravity="center_vertical"
-                android:text="Drinks &amp; Bevrages" />
-
-            <TextView
-                style="@style/text"
-                android:layout_gravity="center"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:gravity="center_vertical"
-                android:text="Fruits &amp; Vegetables" />
-
-            <TextView
-                style="@style/text"
-                android:layout_gravity="start"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:gravity="center_vertical"
-                android:text="Health &amp; Beauty" />
-
-            <TextView
-                style="@style/text"
-                android:layout_gravity="start"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:gravity="center_vertical"
-                android:text="Household Cleaning" />
-
-            <TextView
-                style="@style/text"
-                android:layout_gravity="start"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:gravity="center_vertical"
-                android:text="Kitchen" />
--->
-
-            <TextView
-                 android:layout_width="wrap_content"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                 android:layout_gravity="center"
-                android:textSize="@dimen/_16sdp"
-                android:fontFamily="@font/medium"
-                android:textColor="@color/black"
-                android:visibility="gone"
-                android:layout_marginTop="@dimen/_5sdp"
                 android:layout_centerInParent="true"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:fontFamily="@font/medium"
                 android:gravity="center_vertical"
-                android:text="@string/no_category_available" />
+                android:text="@string/no_category_available"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16sdp"
+                android:visibility="gone" />
 
         </RelativeLayout>
 
         <Button
             android:id="@+id/btnCategories"
             style="@style/Button"
+            android:layout_alignParentBottom="true"
             android:layout_marginLeft="@dimen/_10sdp"
             android:layout_marginTop="@dimen/_10sdp"
             android:layout_marginRight="@dimen/_10sdp"
             android:layout_marginBottom="@dimen/_20sdp"
-            android:layout_alignParentBottom="true"
-            android:text="Manage Product &amp; Categories" />
+            android:text="Manage Product &amp; Categories"
+            android:visibility="gone" />
 
     </RelativeLayout>
 
