@@ -97,7 +97,7 @@ class SubCategoriesActivity : BaseActivity(), Observer<RestObservable>, Category
                 if (it.data is SubCategoryListResponse) {
                     val subCategoryListResponse: SubCategoryListResponse = it.data
                     if (subCategoryListResponse.code == Constants.success_code) {
-                        showSuccessToast(mContext!!, subCategoryListResponse!!.getMessage()!!)
+               //         showSuccessToast(mContext!!, subCategoryListResponse!!.getMessage()!!)
 
                         if (subCategoryListResponse.getBody()!!.size == 0) {
                             /* rvCategory!!.visibility= View.GONE

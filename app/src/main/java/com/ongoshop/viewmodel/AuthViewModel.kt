@@ -24,7 +24,8 @@ class AuthViewModel :ViewModel() {
             activity: Activity, showLoader: Boolean,
             map: HashMap<String, RequestBody>,
             mImage: MultipartBody.Part
-    ) {
+    )
+    {
         restApiInterface.signUp(map,mImage)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -88,10 +89,11 @@ class AuthViewModel :ViewModel() {
     }
 
 
-    fun categoryListApi(activity: Activity, showLoader:Boolean,
-                 map: HashMap<String, String>
+    fun categoryListApi(activity: Activity, showLoader:Boolean
+//                 map: HashMap<String, String>
     ) {
-        restApiInterface.getCategoryList(map)
+       // restApiInterface.getCategoryList(map)
+        restApiInterface.getCategoryList()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe { mResponse.value = RestObservable.loading(activity,showLoader) }
@@ -114,6 +116,20 @@ class AuthViewModel :ViewModel() {
             )
     }
 
+    // for check
+    fun newsubCategoryListApi(activity: Activity, showLoader:Boolean
+
+    ) {
+        restApiInterface.getSubCategoryList()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .doOnSubscribe { mResponse.value = RestObservable.loading(activity,showLoader) }
+            .subscribe(
+                { mResponse.value = RestObservable.success(it) },
+                { mResponse.value = RestObservable.error(activity,it) }
+            )
+    }
+
     fun addShopAndDeliveryDetailsApi(activity: Activity, showLoader: Boolean, map: HashMap<String, RequestBody>,
             mImage: MultipartBody.Part
     ) {
@@ -126,7 +142,6 @@ class AuthViewModel :ViewModel() {
                         { mResponse.value = RestObservable.error(activity, it) }
                 )
     }
-
 
     fun editShopDelivery(
             activity: Activity, showLoader: Boolean,
@@ -152,7 +167,5 @@ class AuthViewModel :ViewModel() {
                         { mResponse.value = RestObservable.error(activity, it) }
                 )
     }
-
-
 
 }

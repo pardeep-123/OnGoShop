@@ -1,5 +1,6 @@
 package com.ongoshop.adapter
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -49,11 +50,12 @@ class SubscriptionAdapter(
         val ivOff = itemView.findViewById(R.id.ivOff) as ImageView
 */
 
+        @SuppressLint("SetTextI18n")
         fun bindItems(SubscriptionList: SubscriptionListResponse.Body?) {
 
             tvSubscriptionPrice.setText("$"+SubscriptionList!!.getAmount().toString()+ " Per month")
-            tvTotalProductEmployee.setText(SubscriptionList!!.getItem().toString() +" items and "+
-                    SubscriptionList!!.getEmployes().toString()+" Employees")
+            tvTotalProductEmployee.text = SubscriptionList!!.getItem().toString() +" items and "+
+                    SubscriptionList!!.getEmployes().toString()+" Employees"
 
 
 /*

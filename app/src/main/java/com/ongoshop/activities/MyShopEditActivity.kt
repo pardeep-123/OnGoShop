@@ -12,9 +12,7 @@ import android.view.Gravity
 import android.view.View
 import android.view.Window
 import android.view.WindowManager
-import android.widget.CompoundButton
-import android.widget.LinearLayout
-import android.widget.TextView
+import android.widget.*
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -38,7 +36,20 @@ import com.ongoshop.viewmodel.AuthViewModel
 import com.yanzhenjie.album.Album
 import com.yanzhenjie.album.AlbumFile
 import com.yanzhenjie.album.api.widget.Widget
+import kotlinx.android.synthetic.main.activity_complete_profile.*
 import kotlinx.android.synthetic.main.activity_my_shop_edit.*
+import kotlinx.android.synthetic.main.activity_my_shop_edit.btnSubmit
+import kotlinx.android.synthetic.main.activity_my_shop_edit.et_shop_abn
+import kotlinx.android.synthetic.main.activity_my_shop_edit.et_shop_building_number
+import kotlinx.android.synthetic.main.activity_my_shop_edit.et_shop_city
+import kotlinx.android.synthetic.main.activity_my_shop_edit.et_shop_country
+import kotlinx.android.synthetic.main.activity_my_shop_edit.et_shop_name
+import kotlinx.android.synthetic.main.activity_my_shop_edit.et_shop_postal_code
+import kotlinx.android.synthetic.main.activity_my_shop_edit.et_shop_street_number
+import kotlinx.android.synthetic.main.activity_my_shop_edit.ivBack
+import kotlinx.android.synthetic.main.activity_my_shop_edit.tv_category_name
+import kotlinx.android.synthetic.main.activity_my_shop_edit.tv_close_time
+import kotlinx.android.synthetic.main.activity_my_shop_edit.tv_open_time
 import okhttp3.RequestBody
 import java.io.File
 import java.text.SimpleDateFormat
@@ -81,6 +92,8 @@ class MyShopEditActivity : BaseActivity(), View.OnClickListener, Observer<RestOb
     private val viewModel: AuthViewModel
             by lazy { ViewModelProviders.of(this).get(AuthViewModel::class.java) }
 
+    var statearrays = arrayOf("QLD", "NSW", "ACT", "VIC", "WA", "SA", "TAS", "NT")
+
     companion object{
         lateinit var mContext: MyShopEditActivity
 
@@ -105,6 +118,9 @@ class MyShopEditActivity : BaseActivity(), View.OnClickListener, Observer<RestOb
         rl_delivery_options.setOnClickListener(mContext)
 
         getCategoryAPI()
+
+        editstatespinner.adapter = ArrayAdapter(this,android.R.layout.simple_spinner_dropdown_item,statearrays)
+
 
         if (intent != null) {
             shopName = intent.getStringExtra("shopName")!!
@@ -132,7 +148,14 @@ class MyShopEditActivity : BaseActivity(), View.OnClickListener, Observer<RestOb
             et_shop_building_number.setText(shopBuildingNumber)
             et_shop_street_number.setText(shopStreetNumber)
             et_shop_city.setText(shopCity)
-            et_shop_state.setText(shopState)
+
+            statearrays.forEach {
+                if (it.equals(shopState))
+                {
+                    editstatespinner.setSelection(statearrays.indexOf(it))
+                }
+            }
+
             et_shop_country.setText(shopCountry)
             et_shop_postal_code.setText(shopPostCode)
             tv_open_time.setText(openTime)
@@ -149,7 +172,8 @@ class MyShopEditActivity : BaseActivity(), View.OnClickListener, Observer<RestOb
             switch_delivery_on_off.isChecked = true
             rl_delivery_options.visibility = View.VISIBLE
             rl_delivery_charges.visibility = View.VISIBLE
-            btnSubmit.visibility = View.GONE
+           // btnSubmit.visibility = View.GONE
+            btnSubmit.visibility = View.VISIBLE
         } else {
             switch_delivery_on_off.isChecked = false
             rl_delivery_options.visibility = View.GONE
@@ -157,12 +181,13 @@ class MyShopEditActivity : BaseActivity(), View.OnClickListener, Observer<RestOb
             btnSubmit.visibility = View.VISIBLE
         }
 
-        switch_delivery_on_off.setOnCheckedChangeListener(CompoundButton.OnCheckedChangeListener { buttonView, isChecked ->
+        switch_delivery_on_off.setOnCheckedChangeListener { buttonView, isChecked ->
             if (isChecked) {
                 isDeliver = "1"
                 rl_delivery_options.visibility = View.VISIBLE
                 rl_delivery_charges.visibility = View.VISIBLE
-                btnSubmit.visibility = View.GONE
+                //  btnSubmit.visibility = View.GONE
+                btnSubmit.visibility = View.VISIBLE
 
             } else {
                 isDeliver = "0"
@@ -170,7 +195,7 @@ class MyShopEditActivity : BaseActivity(), View.OnClickListener, Observer<RestOb
                 rl_delivery_charges.visibility = View.GONE
                 btnSubmit.visibility = View.VISIBLE
             }
-        })
+        }
 
     }
 
@@ -180,7 +205,8 @@ class MyShopEditActivity : BaseActivity(), View.OnClickListener, Observer<RestOb
         } else {
             val map = HashMap<String, String>()
             map.put("searchKeyword", "")
-            viewModel.categoryListApi(this, true, map)
+           // viewModel.categoryListApi(this, true, map)
+            viewModel.categoryListApi(this, true)
             viewModel.mResponse.observe(this, this)
 
         }
@@ -265,7 +291,7 @@ class MyShopEditActivity : BaseActivity(), View.OnClickListener, Observer<RestOb
             rvCategoryTypes.visibility = View.VISIBLE
 
             categoryTypesAdapter = CategoryTypesEditShopAdapter(mContext, getTypesOfCategoryList, mContext, mContext)
-            rvCategoryTypes.layoutManager = LinearLayoutManager(mContext, LinearLayout.VERTICAL, false)
+            rvCategoryTypes.layoutManager = LinearLayoutManager(mContext, RecyclerView.VERTICAL, false)
             rvCategoryTypes.adapter = categoryTypesAdapter
 
         }
@@ -299,14 +325,13 @@ class MyShopEditActivity : BaseActivity(), View.OnClickListener, Observer<RestOb
                         SharedPrefUtil.getInstance().saveUserId(addShopResponsess.getBody()!!.id.toString())
                         SharedPrefUtil.getInstance().saveEmail(addShopResponsess.getBody()!!.email)
                         SharedPrefUtil.getInstance().saveName(addShopResponsess.getBody()!!.name)
-                        finish()
-                        MyShopActivity.mContext.finish()
+
+                        var intent = Intent(mContext, HomeActivity::class.java)
+                        Constants.currentFragment= "Profile"
+                        startActivity(intent)
 
                     }
-
                 }
-
-
             }
             it.status == Status.ERROR -> {
                 if (it.data != null) {
@@ -338,8 +363,7 @@ class MyShopEditActivity : BaseActivity(), View.OnClickListener, Observer<RestOb
             showAlerterRed(resources.getString(R.string.error_street_number))
         else if (mValidationClass.checkStringNull(et_shop_city.text.toString().trim()))
             showAlerterRed(resources.getString(R.string.error_city))
-        else if (mValidationClass.checkStringNull(et_shop_state.text.toString().trim()))
-            showAlerterRed(resources.getString(R.string.error_state))
+
         else if (mValidationClass.checkStringNull(et_shop_postal_code.text.toString().trim()))
             showAlerterRed(resources.getString(R.string.error_postal_code))
         else if (mValidationClass.checkStringNull(tv_open_time.text.toString().trim()))
@@ -351,7 +375,7 @@ class MyShopEditActivity : BaseActivity(), View.OnClickListener, Observer<RestOb
         return check
     }
 
-    fun editShopWithoutDeliveryOptions() {
+    private fun editShopWithoutDeliveryOptions() {
         if (isValid()) {
             if (intent != null) {
                 val bodyimage = mValidationClass.prepareFilePart("shopLogo", File(mImagePath))
@@ -361,7 +385,7 @@ class MyShopEditActivity : BaseActivity(), View.OnClickListener, Observer<RestOb
                 val partBuildingNumber = mValidationClass.createPartFromString(et_shop_building_number.text.toString().trim())
                 val partStreetNumber = mValidationClass.createPartFromString(et_shop_street_number.text.toString().trim())
                 val partCity = mValidationClass.createPartFromString(et_shop_city.text.toString().trim())
-                val partState = mValidationClass.createPartFromString(et_shop_state.text.toString().trim())
+                val partState = mValidationClass.createPartFromString(editstatespinner.selectedItem.toString().trim())
                 val partCountry = mValidationClass.createPartFromString(et_shop_country.text.toString().trim())
                 val partPostalCode = mValidationClass.createPartFromString(et_shop_postal_code.text.toString().trim())
                 val partOpenTime = mValidationClass.createPartFromString(tv_open_time.text.toString().trim())
@@ -395,7 +419,6 @@ class MyShopEditActivity : BaseActivity(), View.OnClickListener, Observer<RestOb
 
     }
 
-
     override fun onClick(v: View?) {
         when (v!!.id) {
             R.id.ivBack -> {
@@ -419,8 +442,6 @@ class MyShopEditActivity : BaseActivity(), View.OnClickListener, Observer<RestOb
                 categoryTypesDailogMethod()
             }
 
-
-
             R.id.rl_delivery_charges -> {
                 isDeliver = "1"
                 if (intent != null) {
@@ -431,7 +452,7 @@ class MyShopEditActivity : BaseActivity(), View.OnClickListener, Observer<RestOb
                     intent.putExtra("shopBuildingNumber", et_shop_building_number.text.toString().trim())
                     intent.putExtra("shopStreetNumber", et_shop_street_number.text.toString().trim())
                     intent.putExtra("shopCity", et_shop_city.text.toString().trim())
-                    intent.putExtra("shopState", et_shop_state.text.toString().trim())
+                    intent.putExtra("shopState", editstatespinner.selectedItem.toString().trim())
                     intent.putExtra("shopCountry", et_shop_country.text.toString().trim())
                     intent.putExtra("shopPostCode", et_shop_postal_code.text.toString().trim())
                     intent.putExtra("openTime", tv_open_time.text.toString().trim())
@@ -460,13 +481,14 @@ class MyShopEditActivity : BaseActivity(), View.OnClickListener, Observer<RestOb
                     intent.putExtra("shopBuildingNumber", et_shop_building_number.text.toString().trim())
                     intent.putExtra("shopStreetNumber", et_shop_street_number.text.toString().trim())
                     intent.putExtra("shopCity", et_shop_city.text.toString().trim())
-                    intent.putExtra("shopState", et_shop_state.text.toString().trim())
+                    intent.putExtra("shopState", editstatespinner.selectedItem.toString().trim())
                     intent.putExtra("shopCountry", et_shop_country.text.toString().trim())
                     intent.putExtra("shopPostCode", et_shop_postal_code.text.toString().trim())
                     intent.putExtra("openTime", tv_open_time.text.toString().trim())
                     intent.putExtra("closeTime", tv_close_time.text.toString().trim())
                     intent.putExtra("deliveriesPerDay", deliveriesPerDay)
                     intent.putExtra("homeDelivery", isDeliver)
+
                     if (!mImagePath.equals("") && !mImagePath.isEmpty()) {
                         intent.putExtra("shopImage", mImagePath)
                     } else {

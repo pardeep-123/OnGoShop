@@ -6,8 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".activities.EditProfileActivity">
 
-    <RelativeLayout
-
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical">
@@ -79,7 +78,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/_20sdp"
-                    android:layout_marginTop="@dimen/_300sdp"
+                    android:layout_marginTop="@dimen/_30sdp"
                     android:layout_marginRight="@dimen/_20sdp"
                     android:background="@color/transparent"
                     android:orientation="vertical">
@@ -246,5 +245,5 @@
 
         </ScrollView>
 
-    </RelativeLayout>
+    </LinearLayout>
 </RelativeLayout>

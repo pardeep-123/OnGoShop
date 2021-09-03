@@ -1,41 +1,115 @@
 {
   "project_info": {
-    "project_number": "983673294453",
-    "project_id": "ongo-vendor",
-    "storage_bucket": "ongo-vendor.appspot.com"
+    "project_number": "96409029602",
+    "project_id": "ongo-36b40",
+    "storage_bucket": "ongo-36b40.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:983673294453:android:ee2403bc63059a154af23c",
+        "mobilesdk_app_id": "1:96409029602:android:74ed672295cc7e4f1c07bb",
         "android_client_info": {
-          "package_name": "com.ongoshop"
+          "package_name": "com.ongoemployee"
         }
       },
       "oauth_client": [
         {
-          "client_id": "983673294453-c72k1dir4d3ln68o21emekl79sudpemo.apps.googleusercontent.com",
+          "client_id": "96409029602-i9geal31qig8umlipoj54nb5cmen8a49.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
-            "package_name": "com.ongoshop",
-            "certificate_hash": "6aac5b61a30ca474d43ca514476f0f9edb97281f"
+            "package_name": "com.ongoemployee",
+            "certificate_hash": "61e45254bbbdd1dc925e385e1846034e7c21a931"
           }
         },
         {
-          "client_id": "983673294453-v8nmhtd8cgqhvke28tr5rd9ljoa2mpg6.apps.googleusercontent.com",
+          "client_id": "96409029602-hdvmu7ill7r97eiv152j6pk14r3f2mbk.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyDzjmnYGAsJfFI4nO1EB-9hOTQN9wXiVt4"
+          "current_key": "AIzaSyB2hYDq04BzF7EC-23PzSrmB1xSZTLyoPU"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "983673294453-v8nmhtd8cgqhvke28tr5rd9ljoa2mpg6.apps.googleusercontent.com",
+              "client_id": "96409029602-hdvmu7ill7r97eiv152j6pk14r3f2mbk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:96409029602:android:f203e115e545a6b01c07bb",
+        "android_client_info": {
+          "package_name": "com.ongoshop"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "96409029602-0a1eppt1ptp6c4ggmpimoq21ldrh38tr.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ongoshop",
+            "certificate_hash": "61e45254bbbdd1dc925e385e1846034e7c21a931"
+          }
+        },
+        {
+          "client_id": "96409029602-hdvmu7ill7r97eiv152j6pk14r3f2mbk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2hYDq04BzF7EC-23PzSrmB1xSZTLyoPU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "96409029602-hdvmu7ill7r97eiv152j6pk14r3f2mbk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:96409029602:android:0b3ffe06369268c41c07bb",
+        "android_client_info": {
+          "package_name": "com.ongouser"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "96409029602-ack4s4vg3lqedqcqpdmpneank53m5169.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ongouser",
+            "certificate_hash": "61e45254bbbdd1dc925e385e1846034e7c21a931"
+          }
+        },
+        {
+          "client_id": "96409029602-hdvmu7ill7r97eiv152j6pk14r3f2mbk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB2hYDq04BzF7EC-23PzSrmB1xSZTLyoPU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "96409029602-hdvmu7ill7r97eiv152j6pk14r3f2mbk.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

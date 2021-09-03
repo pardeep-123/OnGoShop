@@ -105,9 +105,8 @@
                         android:text="@string/address1"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_14sdp" />
-
                     <TextView
-                        android:id="@+id/tv_shop_address"
+                        android:id="@+id/tv_address"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="70"
@@ -115,7 +114,6 @@
                         android:gravity="end"
                         android:textColor="@color/black"
                         android:textSize="@dimen/_14sdp" />
-
                 </LinearLayout>
 
                 <LinearLayout
@@ -201,349 +199,243 @@
                         android:textSize="@dimen/_14sdp" />
                 </LinearLayout>
 
-                <TextView
-                    style="@style/CommonTextWrapcontent"
-                    android:layout_below="@id/ivBar"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:fontFamily="@font/bold"
-                    android:text="@string/delivery_options"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_14sdp" />
-
                 <LinearLayout
-                    android:id="@+id/ll_sunday"
+                    android:id="@+id/ll_delivery_options"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:orientation="horizontal">
+                    android:visibility="gone"
+                    android:orientation="vertical">
 
                     <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="50"
-                        android:fontFamily="@font/regular"
-                        android:text="@string/sunday"
+                        style="@style/CommonTextWrapcontent"
+                        android:layout_below="@id/ivBar"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:fontFamily="@font/bold"
+                        android:text="@string/delivery_options"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/_12sdp" />
+                        android:textSize="@dimen/_14sdp" />
 
-                    <TextView
-                        android:id="@+id/tv_delivery_timings_sunday"
-                        android:layout_width="0dp"
+                    <LinearLayout
+                        android:id="@+id/ll_sunday"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_weight="50"
-                        android:fontFamily="@font/regular"
-                        android:gravity="end"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/_12sdp" />
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="50"
+                            android:fontFamily="@font/regular"
+                            android:text="@string/sunday"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_12sdp" />
+
+                        <TextView
+                            android:id="@+id/tv_delivery_timings_sunday"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="50"
+                            android:fontFamily="@font/regular"
+                            android:gravity="end"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_12sdp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_monday"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="50"
+                            android:fontFamily="@font/regular"
+                            android:text="@string/monday"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_12sdp" />
+
+                        <TextView
+                            android:id="@+id/tv_delivery_timings_monday"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="50"
+                            android:fontFamily="@font/regular"
+                            android:gravity="end"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_12sdp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_tuesday"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="50"
+                            android:fontFamily="@font/regular"
+                            android:text="@string/tuesday"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_12sdp" />
+
+                        <TextView
+                            android:id="@+id/tv_delivery_timings_tuesday"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="50"
+                            android:fontFamily="@font/regular"
+                            android:gravity="end"
+
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_12sdp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_wednesday"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="50"
+                            android:fontFamily="@font/regular"
+                            android:text="@string/wednesday"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_12sdp" />
+
+                        <TextView
+                            android:id="@+id/tv_delivery_timings_wednesday"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="50"
+                            android:fontFamily="@font/regular"
+                            android:gravity="end"
+
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_12sdp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_thursday"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="50"
+                            android:fontFamily="@font/regular"
+                            android:text="@string/thursday"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_12sdp" />
+
+                        <TextView
+                            android:id="@+id/tv_delivery_timings_thursday"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="50"
+                            android:fontFamily="@font/regular"
+                            android:gravity="end"
+
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_12sdp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_friday"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="50"
+                            android:fontFamily="@font/regular"
+                            android:text="Friday"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_12sdp" />
+
+                        <TextView
+                            android:id="@+id/tv_delivery_timings_friday"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="50"
+                            android:fontFamily="@font/regular"
+                            android:gravity="end"
+
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_12sdp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/ll_saturday"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="50"
+                            android:fontFamily="@font/regular"
+                            android:text="@string/saturday"
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_12sdp" />
+
+                        <TextView
+                            android:id="@+id/tv_delivery_timings_saturday"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="50"
+                            android:fontFamily="@font/regular"
+                            android:gravity="end"
+
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/_12sdp" />
+                    </LinearLayout>
+
                 </LinearLayout>
 
                 <LinearLayout
-                    android:id="@+id/ll_monday"
+                    android:id="@+id/ll_delivery_charges"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:orientation="horizontal">
+                    android:visibility="gone"
+                    android:orientation="vertical">
 
                     <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="50"
-                        android:fontFamily="@font/regular"
-                        android:text="@string/monday"
+                        style="@style/CommonTextWrapcontent"
+                        android:layout_marginTop="@dimen/_10sdp"
+                        android:fontFamily="@font/bold"
+                        android:text="@string/delivery_charges"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/_12sdp" />
+                        android:textSize="@dimen/_14sdp" />
 
-                    <TextView
-                        android:id="@+id/tv_delivery_timings_monday"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="50"
-                        android:fontFamily="@font/regular"
-                        android:gravity="end"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/_12sdp" />
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_delivery_charges"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                    </androidx.recyclerview.widget.RecyclerView>
+
+
                 </LinearLayout>
 
-                <LinearLayout
-                    android:id="@+id/ll_tuesday"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="50"
-                        android:fontFamily="@font/regular"
-                        android:text="@string/tuesday"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/_12sdp" />
-
-                    <TextView
-                        android:id="@+id/tv_delivery_timings_tuesday"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="50"
-                        android:fontFamily="@font/regular"
-                        android:gravity="end"
-
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/_12sdp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/ll_wednesday"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="50"
-                        android:fontFamily="@font/regular"
-                        android:text="@string/wednesday"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/_12sdp" />
-
-                    <TextView
-                        android:id="@+id/tv_delivery_timings_wednesday"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="50"
-                        android:fontFamily="@font/regular"
-                        android:gravity="end"
-
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/_12sdp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/ll_thursday"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="50"
-                        android:fontFamily="@font/regular"
-                        android:text="@string/thursday"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/_12sdp" />
-
-                    <TextView
-                        android:id="@+id/tv_delivery_timings_thursday"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="50"
-                        android:fontFamily="@font/regular"
-                        android:gravity="end"
-
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/_12sdp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/ll_friday"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="50"
-                        android:fontFamily="@font/regular"
-                        android:text="Friday"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/_12sdp" />
-
-                    <TextView
-                        android:id="@+id/tv_delivery_timings_friday"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="50"
-                        android:fontFamily="@font/regular"
-                        android:gravity="end"
-
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/_12sdp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/ll_saturday"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="50"
-                        android:fontFamily="@font/regular"
-                        android:text="@string/saturday"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/_12sdp" />
-
-                    <TextView
-                        android:id="@+id/tv_delivery_timings_saturday"
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="50"
-                        android:fontFamily="@font/regular"
-                        android:gravity="end"
-
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/_12sdp" />
-                </LinearLayout>
-
-
-                <TextView
-                    style="@style/CommonTextWrapcontent"
-                    android:layout_below="@id/ivBar"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:fontFamily="@font/bold"
-                    android:text="@string/delivery_charges"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/_14sdp" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="5dp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="50"
-                        android:fontFamily="@font/regular"
-
-                        android:text="0-5 KM"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/_12sdp" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="50"
-                        android:fontFamily="@font/regular"
-                        android:gravity="end"
-                        android:textColor="@color/black"
-
-                        android:textSize="@dimen/_12sdp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="50"
-                        android:fontFamily="@font/regular"
-                        android:text="5-10 KM"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/_12sdp" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="50"
-                        android:fontFamily="@font/regular"
-                        android:gravity="end"
-                        android:textColor="@color/black"
-
-                        android:textSize="@dimen/_12sdp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="50"
-                        android:fontFamily="@font/regular"
-                        android:text="10-15 KM"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/_12sdp" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="50"
-                        android:fontFamily="@font/regular"
-                        android:gravity="end"
-
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/_12sdp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="50"
-                        android:fontFamily="@font/regular"
-                        android:text="15-25 KM"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/_12sdp" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="50"
-                        android:fontFamily="@font/regular"
-                        android:gravity="end"
-
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/_12sdp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:orientation="horizontal">
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="50"
-                        android:fontFamily="@font/regular"
-                        android:text="25-35 KM"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/_12sdp" />
-
-                    <TextView
-                        android:layout_width="0dp"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="50"
-                        android:fontFamily="@font/regular"
-                        android:gravity="end"
-                        android:textColor="@color/black"
-
-                        android:textSize="@dimen/_12sdp" />
-                </LinearLayout>
 
                 <Button
                     android:id="@+id/btnEdit"
@@ -551,6 +443,16 @@
                     android:layout_margin="@dimen/_20sdp"
                     android:text="@string/edit" />
             </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_shop_address"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="70"
+                android:fontFamily="@font/regular"
+                android:gravity="end"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_14sdp" />
         </RelativeLayout>
 
     </ScrollView>

@@ -145,7 +145,7 @@
                 <TextView
                     style="@style/CommonTextWrapcontent"
                     android:layout_marginTop="@dimen/_10sdp"
-                    android:text="Street Number"
+                    android:text="Street Name"
                     android:textColor="@color/black"
                     android:textSize="@dimen/_12sdp" />
 
@@ -181,14 +181,21 @@
                     android:textColor="@color/black"
                     android:textSize="@dimen/_12sdp" />
 
-                <EditText
-                    android:id="@+id/et_shop_state"
-                    style="@style/Edittext"
-                    android:layout_below="@id/tvPass"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:hint="@string/enter_state"
-                    android:inputType="text"
-                    android:textSize="16sp" />
+                <RelativeLayout
+                    android:layout_height="@dimen/_45sdp"
+                    android:layout_width="match_parent"
+                    android:paddingLeft="@dimen/_4sdp"
+                    android:background="@drawable/shape"
+                    android:layout_marginTop="@dimen/_5sdp">
+
+
+                    <androidx.appcompat.widget.AppCompatSpinner
+                        android:layout_width="match_parent"
+                        android:id="@+id/editstatespinner"
+                        android:layout_height="match_parent"/>
+
+                </RelativeLayout>
+
 
                 <TextView
                     style="@style/CommonTextWrapcontent"

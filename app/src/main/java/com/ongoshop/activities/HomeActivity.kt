@@ -11,15 +11,15 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.ongoshop.R
-import com.ongoshop.fragments.CategoriesFragment
-import com.ongoshop.fragments.HomeFragment
-import com.ongoshop.fragments.ProfileFragment
-import com.ongoshop.fragments.SettingsFragment
+import com.ongoshop.fragments.*
+import com.ongoshop.utils.others.Constants
 
 class HomeActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
     var mContaxt: Context? = null
     var doubleBackToExitPressedOnce = false
     var bottomNavigationView: BottomNavigationView? = null
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
@@ -31,7 +31,6 @@ class HomeActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         val fragmentManager = supportFragmentManager
 
 
-
         if (intent.extras != null) {
             if (intent.getStringExtra("type") == "my") {
                 var fragment: Fragment? = null
@@ -40,6 +39,8 @@ class HomeActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
                 bottomNavigationView!!.selectedItemId = R.id.categories
             }
         } else{
+
+
             var fragment: Fragment? = null
             fragment = HomeFragment()
             loadFragment(fragment)
@@ -94,12 +95,43 @@ class HomeActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         underlineMenuItem(item)
         var fragment: Fragment? = null
         when (item.itemId) {
-            R.id.home -> fragment = HomeFragment()
-            R.id.categories -> fragment = CategoriesFragment()
-            R.id.settings -> fragment = SettingsFragment()
-            R.id.profile -> fragment = ProfileFragment()
+            R.id.home ->{
+                Constants.currentFragment = "Home"
+                fragment = HomeFragment()
+            }
+            R.id.categories -> {
+                Constants.currentFragment = "Category"
+                fragment = CategoriesFragment()
+            }
+            R.id.settings -> {
+                Constants.currentFragment = "Settings"
+                fragment = SettingsFragment()
+            }
+            R.id.profile -> {
+                Constants.currentFragment = "Profile"
+                fragment = ProfileFragment()
+            }
         }
         return loadFragment(fragment)
+    }
+
+    override fun onResume() {
+        super.onResume()
+
+/*
+        Constants.currentFragment.let {
+            when(it){
+                "Profile"->loadFragment(ProfileFragment())
+                "Category" ->loadFragment(CategoriesFragment())
+                "Settings" -> loadFragment(SettingsFragment())
+                else -> loadFragment(HomeFragment())
+            }
+        }
+*/
+
+    }
+    override fun onRestart() {
+        super.onRestart()
     }
 
     override fun onPointerCaptureChanged(hasCapture: Boolean) {}

@@ -44,6 +44,7 @@ class MaximumDeliveryPerDayActivity : BaseActivity() {
                 val intent = Intent(mContext, DeliveryChargesActivity::class.java)
                 intent.putExtra("shopName", getIntent().getStringExtra("shopName"))
                 intent.putExtra("categoryName", getIntent().getStringExtra("categoryName"))
+                intent.putExtra("shop_category_id", getIntent().getStringExtra("shop_category_id"))
                 intent.putExtra("shopABN", getIntent().getStringExtra("shopABN"))
                 intent.putExtra("buildingNumber", getIntent().getStringExtra("buildingNumber"))
                 intent.putExtra("streetNumber", getIntent().getStringExtra("streetNumber"))

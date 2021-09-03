@@ -11,7 +11,9 @@ import android.view.Gravity
 import android.view.View
 import android.view.Window
 import android.view.WindowManager
+import android.widget.ArrayAdapter
 import android.widget.LinearLayout
+import android.widget.SpinnerAdapter
 import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -58,7 +60,7 @@ class AddShopActivity : BaseActivity(), View.OnClickListener,  Observer<RestObse
             by lazy { ViewModelProviders.of(this).get(AuthViewModel::class.java) }
     private var vendorDeliveryOptionsList: ArrayList<VendorDeliveryOption>? = ArrayList()
     private var vendorDeliveryChargesList: ArrayList<VendorDeliveryCharge>? = ArrayList()
-
+    var statearrays = arrayOf("QLD", "NSW", "ACT", "VIC", "WA", "SA", "TAS", "NT")
 
     override fun getContentId(): Int {
         return R.layout.activity_complete_profile
@@ -74,6 +76,8 @@ class AddShopActivity : BaseActivity(), View.OnClickListener,  Observer<RestObse
         tv_open_time.setOnClickListener(mContext)
         tv_close_time.setOnClickListener(mContext)
         tv_category_name.setOnClickListener(mContext)
+        statespinner.adapter = ArrayAdapter(this,android.R.layout.simple_spinner_dropdown_item,statearrays)
+
 
         getCategoryAPI()
 
@@ -88,8 +92,9 @@ class AddShopActivity : BaseActivity(), View.OnClickListener,  Observer<RestObse
             showAlerterRed(resources.getString(R.string.no_internet))
         } else {
             val map = HashMap<String, String>()
-            map.put("searchKeyword", "")
-            viewModel.categoryListApi(this, true, map)
+            map["searchKeyword"] = ""
+          //  viewModel.categoryListApi(this, true, map)
+            viewModel.categoryListApi(this, true)
             viewModel.mResponse.observe(this, this)
 
         }
@@ -120,7 +125,7 @@ class AddShopActivity : BaseActivity(), View.OnClickListener,  Observer<RestObse
             rvCategoryTypes.visibility = View.VISIBLE
 
             categoryTypesAdapter = CategoryTypesAddShopAdapter(mContext, getTypesOfCategoryList, mContext, mContext)
-            rvCategoryTypes.layoutManager = LinearLayoutManager(this, LinearLayout.VERTICAL, false)
+            rvCategoryTypes.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
             rvCategoryTypes.adapter = categoryTypesAdapter
 
         }
@@ -144,12 +149,12 @@ class AddShopActivity : BaseActivity(), View.OnClickListener,  Observer<RestObse
                     val intent = Intent(mContext, HomeDeliveryOptionsActivity::class.java)
                     intent.putExtra("shopName", et_shop_name.text.toString().trim())
                     intent.putExtra("categoryName", tv_category_name.text.toString().trim())
+                    intent.putExtra("shop_category_id", categoryTypeId)
                     intent.putExtra("shopABN", et_shop_abn.text.toString().trim())
                     intent.putExtra("buildingNumber", et_shop_building_number.text.toString().trim())
                     intent.putExtra("streetNumber", et_shop_street_number.text.toString().trim())
                     intent.putExtra("city", et_shop_city.text.toString().trim())
-                    intent.putExtra("state", et_shop_state.text.toString().trim())
-                    intent.putExtra("state", et_shop_state.text.toString().trim())
+                    intent.putExtra("state", statespinner.selectedItem.toString().trim())
                     intent.putExtra("country", et_shop_country.text.toString().trim())
                     intent.putExtra("postalCode", et_shop_postal_code.text.toString().trim())
                     intent.putExtra("openTime", tv_open_time.text.toString().trim())
@@ -179,7 +184,7 @@ class AddShopActivity : BaseActivity(), View.OnClickListener,  Observer<RestObse
             cal.set(Calendar.MINUTE, minute)
 
             //it's after current
-            if (type.equals("open")) {
+            if (type == "open") {
                 tv_open_time.text = SimpleDateFormat("hh:mm a").format(cal.time)
                 openTimeTimestamp = (CommonMethods.time_to_timestamp(tv_open_time.text.toString(), "hh:mm a"))
                 Log.e("startTimeTimestamp", openTimeTimestamp.toString())
@@ -215,8 +220,8 @@ class AddShopActivity : BaseActivity(), View.OnClickListener,  Observer<RestObse
                     //1 image 2 video
                     mAlbumFiles = result
                     for (i in 0 until mAlbumFiles.size) {
-                        Log.e("imagePath", mAlbumFiles.get(i).path)
-                        mImagePath = mAlbumFiles.get(i).path
+                        Log.e("imagePath", mAlbumFiles[i].path)
+                        mImagePath = mAlbumFiles[i].path
                         Glide.with(mContext).load(mImagePath).into(ivImg)
 
                     }
@@ -235,14 +240,14 @@ class AddShopActivity : BaseActivity(), View.OnClickListener,  Observer<RestObse
             showAlerterRed(resources.getString(R.string.error_category))
         else if (mValidationClass.checkStringNull(et_shop_abn.text.toString().trim()))
             showAlerterRed(resources.getString(R.string.error_abn))
-        else if (mValidationClass.checkStringNull(et_shop_building_number.text.toString().trim()))
-            showAlerterRed(resources.getString(R.string.error_building_number))
+       /* else if (mValidationClass.checkStringNull(et_shop_building_number.text.toString().trim()))
+            showAlerterRed(resources.getString(R.string.error_building_number))*/
         else if (mValidationClass.checkStringNull(et_shop_street_number.text.toString().trim()))
             showAlerterRed(resources.getString(R.string.error_street_number))
         else if (mValidationClass.checkStringNull(et_shop_city.text.toString().trim()))
             showAlerterRed(resources.getString(R.string.error_city))
-        else if (mValidationClass.checkStringNull(et_shop_state.text.toString().trim()))
-            showAlerterRed(resources.getString(R.string.error_state))
+       /* else if (mValidationClass.checkStringNull(et_shop_state.text.toString().trim()))
+            showAlerterRed(resources.getString(R.string.error_state))*/
         else if (mValidationClass.checkStringNull(et_shop_postal_code.text.toString().trim()))
             showAlerterRed(resources.getString(R.string.error_postal_code))
         else if (mValidationClass.checkStringNull(tv_open_time.text.toString().trim()))
@@ -258,7 +263,7 @@ class AddShopActivity : BaseActivity(), View.OnClickListener,  Observer<RestObse
 
     override fun categoryTypeclick(pos: Int, typeId: String, name: String) {
         categoryTypeId = typeId
-        tv_category_name.setText(name)
+        tv_category_name.text = name
         categoryTypesDialog.dismiss()
 
     }

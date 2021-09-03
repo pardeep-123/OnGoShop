@@ -109,11 +109,21 @@
         </LinearLayout>
 
 
+        <TextView
+            android:id="@+id/tv_cart"
+            style="@style/CommonTextWrapcontent"
+            android:layout_below="@+id/ll_user_details"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="@string/cart_details"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_14sdp" />
+
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_above="@+id/btn_accept"
-            android:layout_below="@+id/ll_user_details">
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_below="@+id/tv_cart">
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_cart"
@@ -127,10 +137,10 @@
                 android:layout_centerInParent="true"
                 android:layout_centerHorizontal="true"
                 android:layout_margin="@dimen/_50sdp"
-                android:visibility="gone"
                 android:text="@string/no_items_available"
                 android:textColor="@color/black"
-                android:textSize="@dimen/_14sdp" />
+                android:textSize="@dimen/_14sdp"
+                android:visibility="gone" />
 
 
         </RelativeLayout>

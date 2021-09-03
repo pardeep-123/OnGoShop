@@ -65,12 +65,11 @@ class ProfileFragment : BaseFragment(), View.OnClickListener, Observer<RestObser
             inflater: LayoutInflater,
             container: ViewGroup?,
             savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         v = inflater.inflate(R.layout.fragment_profile, container, false)
 
-        rlShop = v.findViewById<RelativeLayout>(R.id.rlShop)
-        btnEditProfile = v.findViewById<Button>(R.id.btnEditProfile)
-
+        rlShop = v.findViewById(R.id.rlShop)
+        btnEditProfile = v.findViewById(R.id.btnEditProfile)
 
 
         rlShop.setOnClickListener(this)
@@ -131,21 +130,21 @@ class ProfileFragment : BaseFragment(), View.OnClickListener, Observer<RestObser
     }
 
     private fun setShopData(shopdetails: GetProfileResponse.Body) {
-        shopName= shopdetails.shopName
-        shopCategory= shopdetails.shopCategory
-        shopABN= shopdetails.abn
-        shopAddress= shopdetails.shopAddress
-        shopBuildingNumber= shopdetails.buildingNumber
-        shopStreetNumber= shopdetails.streetNumber
-        shopCity= shopdetails.city
-        shopCountry= shopdetails.country
-        shopState = shopdetails.state
-        shopPostCode= shopdetails.postalCode
-        shopImage= shopdetails.shopLogo
-        openTime= shopdetails.shopOpenTime
-        closeTime= shopdetails.shopCloseTime
-        isDeliver= shopdetails.homeDelivery.toString()
-        deliveriesPerDay= shopdetails.deliveriesPerDay.toString()
+        shopName= shopdetails.vendorDetail.shopName
+        shopCategory= shopdetails.vendorDetail.shopCategory
+        shopABN= shopdetails.vendorDetail.abn
+        shopAddress= shopdetails.vendorDetail.shopAddress
+        shopBuildingNumber= shopdetails.vendorDetail.buildingNumber
+        shopStreetNumber= shopdetails.vendorDetail.streetNumber
+        shopCity= shopdetails.vendorDetail.city
+        shopCountry= shopdetails.vendorDetail.country
+        shopState = shopdetails.vendorDetail.state
+        shopPostCode= shopdetails.vendorDetail.postalCode
+        shopImage= shopdetails.vendorDetail.shopLogo
+        openTime= shopdetails.vendorDetail.shopOpenTime
+        closeTime= shopdetails.vendorDetail.shopCloseTime
+        isDeliver= shopdetails.vendorDetail.homeDelivery.toString()
+        deliveriesPerDay= shopdetails.vendorDetail.deliveriesPerDay.toString()
         vendorDeliveryChargesList= shopdetails.vendorDeliveryCharges
         vendorDeliveryOptionsList= shopdetails.vendorDeliveryOptions
     }
@@ -155,21 +154,24 @@ class ProfileFragment : BaseFragment(), View.OnClickListener, Observer<RestObser
             it!!.status == Status.SUCCESS -> {
                 if (it.data is GetProfileResponse) {
                     val getProfileResponse: GetProfileResponse = it.data
-                    if (getProfileResponse.getCode() == Constants.success_code) {
-                        showSuccessToast(getProfileResponse!!.getMessage()!!)
-                        tv_name.setText(getProfileResponse.body.name)
-                        tv_email.setText(getProfileResponse.body.email)
-                        tv_phone.setText("+"+getProfileResponse.body.countryCode + "-" + getProfileResponse.body.phone)
-                        Glide.with(activity!!).load(getProfileResponse.body.image).error(R.mipmap.no_image_placeholder).into(iv_profile_image)
+                    if (getProfileResponse.code == Constants.success_code) {
+                       // showSuccessToast(getProfileResponse.message!!)
+                      //  tv_name.text = getProfileResponse.body.name
+                        tv_name.text = getProfileResponse.body.vendorDetail.name
+                        tv_email.text = getProfileResponse.body.email
+                        tv_addres.text = getProfileResponse.body.geoLocation
+                        tv_phone.text = "+"+getProfileResponse.body.countryCode + "-" + getProfileResponse.body.phone
+                        Glide.with(requireActivity()).load(getProfileResponse.body.vendorDetail.image).error(R.mipmap.no_image_placeholder).into(iv_profile_image)
                         userId= getProfileResponse.body.id.toString()
-                        userImage= getProfileResponse.body.image.toString()
+                        if (getProfileResponse.body.vendorDetail.image!="")
+                        userImage= getProfileResponse.body.vendorDetail.image
                         phone = getProfileResponse.body.phone.toString()
                         countryCode= getProfileResponse.body.countryCode.toString()
 
                         setShopData(getProfileResponse.body)
 
                     } else {
-                        CommonMethods.AlertErrorMessage(activity, getProfileResponse.getMessage())
+                        CommonMethods.AlertErrorMessage(activity, getProfileResponse.message)
                     }
                 }
 

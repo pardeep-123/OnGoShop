@@ -12,16 +12,19 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.ongoshop.R
-import com.ongoshop.activities.ProductActivity
 import com.ongoshop.activities.ProductDetailActivity
-import com.ongoshop.clickListeners.CategoryClick
 import com.ongoshop.clickListeners.ProductClick
 import com.ongoshop.pojo.ProductListingResponse
 
 class ProductAdapter(internal var context: Context, internal var productList: ArrayList<ProductListingResponse.Body?>,
                      internal var onClickListener: ProductClick)
     : RecyclerView.Adapter<ProductAdapter.ProductViewHolder>() {
-  
+    var templist: ArrayList<ProductListingResponse.Body?>
+
+    init {
+        this.templist = productList
+
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ProductViewHolder {
         return ProductViewHolder(
@@ -42,6 +45,33 @@ class ProductAdapter(internal var context: Context, internal var productList: Ar
     override fun getItemCount(): Int {
         return productList.size
     }
+
+    fun filter(charText: String, nobooking: TextView) {
+        var charText = charText
+        charText = charText.toLowerCase()
+        val nList: MutableList<ProductListingResponse.Body?> =
+                ArrayList<ProductListingResponse.Body?>()
+        if (charText.length == 0) {
+            nList.addAll(templist)
+        } else {
+            for (wp in templist) {
+                if (wp!!.name!!.toLowerCase()
+                                .contains(charText.toLowerCase())) {
+                    nList.add(wp)
+                }
+            }
+        }
+        productList = nList as ArrayList<ProductListingResponse.Body?>
+        notifyDataSetChanged()
+
+
+        if (templist.isEmpty()) {
+            nobooking.setVisibility(View.VISIBLE)
+        } else {
+            nobooking.setVisibility(View.GONE)
+        }
+    }
+
 
     inner class ProductViewHolder(view: View?) : RecyclerView.ViewHolder(view!!){
 
@@ -76,6 +106,7 @@ class ProductAdapter(internal var context: Context, internal var productList: Ar
 
             rlProductlist.setOnClickListener {
                 var intent= Intent(context, ProductDetailActivity::class.java)
+                intent.putExtra("from", "ProductsList")
                 intent.putExtra("productId", productList.get(adapterPosition)!!.id.toString())
                 intent.putExtra("productImage", productList.get(adapterPosition)!!.image)
                 intent.putExtra("productName", productList.get(adapterPosition)!!.name)

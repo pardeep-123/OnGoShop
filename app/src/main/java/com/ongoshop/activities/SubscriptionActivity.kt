@@ -38,7 +38,7 @@ class SubscriptionActivity : BaseActivity(), Observer<RestObservable>, Subcripti
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mContext = this
-        ivBack = findViewById<ImageView>(R.id.ivBack)
+        ivBack = findViewById(R.id.ivBack)
         btnSubscription = findViewById(R.id.btnSubscription)
 
         ivBack!!.setOnClickListener { onLeftIconClick() }
@@ -72,7 +72,7 @@ class SubscriptionActivity : BaseActivity(), Observer<RestObservable>, Subcripti
                 if (it.data is SubscriptionListResponse) {
                     val subscriptionListResponse: SubscriptionListResponse = it.data
                     if (subscriptionListResponse.getCode() == Constants.success_code) {
-                        showSuccessToast(mContext!!, subscriptionListResponse!!.getMessage()!!)
+                        showSuccessToast(mContext!!, subscriptionListResponse.getMessage()!!)
 
                         if (subscriptionListResponse.getBody()!!.size == 0) {
                             rv_subscriptions!!.visibility = View.GONE
@@ -105,6 +105,5 @@ class SubscriptionActivity : BaseActivity(), Observer<RestObservable>, Subcripti
     override fun subcriptionClick(pos: Int, id: String) {
 
     }
-
 
 }

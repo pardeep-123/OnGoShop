@@ -10,6 +10,7 @@ import android.location.LocationManager
 import android.net.ConnectivityManager
 import android.preference.PreferenceManager
 import android.provider.Settings
+import com.google.firebase.FirebaseApp
 import com.ongoshop.activities.LoginActivity
 import com.ongoshop.R
 import com.ongoshop.manager.restApi.RestApiInterface
@@ -21,14 +22,17 @@ import java.util.*
 /*
 import com.google.android.libraries.places.api.Places;
 */
+
 class MyApplication : Application() {
     var preferences: SharedPreferences? = null
     var prefToken: SharedPreferences? = null
     var editor: SharedPreferences.Editor? = null
     var editorToken: SharedPreferences.Editor? = null
+
     override fun onCreate() {
         super.onCreate()
         instance = this
+        FirebaseApp.initializeApp(this)
         initializePreferences()
         initializePreferencesToken()
         Album.initialize(

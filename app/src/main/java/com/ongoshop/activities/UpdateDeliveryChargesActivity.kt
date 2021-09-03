@@ -11,6 +11,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.gson.GsonBuilder
 import com.ongoshop.R
 import com.ongoshop.adapter.DeliveryChargesAdapter
 import com.ongoshop.adapter.UpdateDeliveryChargesAdapter
@@ -37,8 +38,7 @@ import java.util.*
 class UpdateDeliveryChargesActivity : BaseActivity(), View.OnClickListener, Observer<RestObservable> {
     private val viewModel: AuthViewModel
             by lazy { ViewModelProviders.of(this).get(AuthViewModel::class.java) }
-
-
+    
     var dialog: Dialog? = null
     lateinit var deliveryChargesRecyclerview: RecyclerView
     lateinit var deliveryChargesAdapter: UpdateDeliveryChargesAdapter
@@ -48,7 +48,7 @@ class UpdateDeliveryChargesActivity : BaseActivity(), View.OnClickListener, Obse
     private var vendorDeliveryChargesList: ArrayList<VendorDeliveryCharge>? = ArrayList()
     private var vendorDeliveryChargesupdatedList: ArrayList<VendorDeliveryCharge>? = ArrayList()
 
-
+    var makebuttonclickable = false
     override fun getContentId(): Int {
         return R.layout.activity_delivery_charges
     }
@@ -79,8 +79,35 @@ class UpdateDeliveryChargesActivity : BaseActivity(), View.OnClickListener, Obse
     override fun onClick(v: View?) {
         when (v!!.id) {
             R.id.btnConfirm -> {
-                makejsonArray()
-               }
+
+                if (vendorDeliveryChargesupdatedList!!.isEmpty())
+                {
+                    showSuccessToast(this,"Please select delivery charges")
+
+                }
+                else
+                {
+                    for (i in 0 until vendorDeliveryChargesupdatedList!!.size)
+                    {
+                        if (vendorDeliveryChargesupdatedList!![i].freeDelivery==1 || vendorDeliveryChargesupdatedList!![i].price>0 )
+                        {
+                            makebuttonclickable = true
+                        }
+
+
+                        else
+                        {
+                            showSuccessToast(this,"Please select free delivery or charges for ${vendorDeliveryChargesupdatedList!![i].minDistance}-${vendorDeliveryChargesupdatedList!![i].maxDistance}")
+                            makebuttonclickable  = false
+                            break
+                        }
+                    }
+                    if (makebuttonclickable)
+                        makejsonArray()
+
+                }
+
+            }
 
             R.id.ivBack -> {
                 onLeftIconClick()
@@ -113,6 +140,7 @@ class UpdateDeliveryChargesActivity : BaseActivity(), View.OnClickListener, Obse
                 val partOpenTime = mValidationClass.createPartFromString(intent.getStringExtra("openTime"))
                 val partCloseTime = mValidationClass.createPartFromString(intent.getStringExtra("closeTime"))
                 val partHomeDelivery = mValidationClass.createPartFromString(intent.getStringExtra("homeDelivery"))
+                val vendorId = mValidationClass.createPartFromString(SharedPrefUtil.getInstance().userId)
                 val partDeliveriesPerDay = mValidationClass.createPartFromString(intent.getStringExtra("deliveriesPerDay"))
                 val partDeliveryChargesJsonArrayString = mValidationClass.createPartFromString(deliveryChargesJsonArray)
 
@@ -134,6 +162,7 @@ class UpdateDeliveryChargesActivity : BaseActivity(), View.OnClickListener, Obse
                 map.put("homeDelivery", partHomeDelivery)
                 map.put("deviceType", partType)
                 map.put("deviceToken", partToken)
+                map.put("vendorId", vendorId)
                 map.put("deliveriesPerDay", partDeliveriesPerDay)
                 map.put("homeDelivery", partHomeDelivery)
                map.put("vendorDeliveryCharges", partDeliveryChargesJsonArrayString)
@@ -159,25 +188,32 @@ class UpdateDeliveryChargesActivity : BaseActivity(), View.OnClickListener, Obse
             it!!.status == Status.SUCCESS -> {
                 if (it.data is EditProfileAddShopResponsess) {
                     val addShopResponsess: EditProfileAddShopResponsess = it.data
-                    if (addShopResponsess.getCode() == Constants.success_code) {
+                    if (addShopResponsess.code == Constants.success_code) {
                         showSuccessToast(mContext, addShopResponsess.message)
-
-                        MyApplication.getnstance()
-                                .setString(
-                                        Constants.AuthKey,
-                                        addShopResponsess!!.body.token!!
-                                )
+//
+//                        MyApplication.getnstance()
+//                                .setString(
+//                                        Constants.AuthKey,
+//                                        addShopResponsess!!.body.token!!
+//                                )
                         MyApplication.instance!!.setString(Constants.UserData, modelToString(addShopResponsess))
 
-                        SharedPrefUtil.getInstance().saveAuthToken(addShopResponsess.body.token)
+                      //  SharedPrefUtil.getInstance().saveAuthToken(addShopResponsess.body.token)
+                        if (addShopResponsess.body.image!=null)
                         SharedPrefUtil.getInstance().saveImage(addShopResponsess.body.image)
                         SharedPrefUtil.getInstance().saveUserId(addShopResponsess.body.id.toString())
+                        if (addShopResponsess.body.email!=null)
                         SharedPrefUtil.getInstance().saveEmail(addShopResponsess.body.email)
+                        if (addShopResponsess.body.name!=null)
                         SharedPrefUtil.getInstance().saveName(addShopResponsess.body.name)
 
-                        finish()
-                        MyShopEditActivity.mContext.finish()
-                        MyShopActivity.mContext.finish()
+                        val gson= GsonBuilder().create()
+
+                        SharedPrefUtil.getInstance().editProfilerespo(gson.toJson(addShopResponsess.body))
+
+                        val intent = Intent(mContext, HomeActivity::class.java)
+                        Constants.currentFragment= "Profile"
+                        startActivity(intent)
                     }
 
                 }
@@ -198,7 +234,7 @@ class UpdateDeliveryChargesActivity : BaseActivity(), View.OnClickListener, Obse
 
     fun setUpdatedList(pos: Int, vendorDeliveryChargeList: ArrayList<VendorDeliveryCharge>) {
         vendorDeliveryChargesupdatedList = vendorDeliveryChargeList
-        Log.e("priceee", vendorDeliveryChargesupdatedList!!.get(pos).price)
+        Log.e("priceee", vendorDeliveryChargesupdatedList!!.get(pos).price.toString())
     }
 
     
@@ -218,7 +254,7 @@ class UpdateDeliveryChargesActivity : BaseActivity(), View.OnClickListener, Obse
                 vendorDeliveryChargesLists.put("updated", vendorDeliveryChargesupdatedList!!.get(i).updated)
                 vendorDeliveryChargesLists.put("createdAt", vendorDeliveryChargesupdatedList!!.get(i).createdAt)
                 vendorDeliveryChargesLists.put("updatedAt", vendorDeliveryChargesupdatedList!!.get(i).updatedAt)
-            } catch (e: JSONException) { // TODO Auto-generated catch block
+            } catch (e: JSONException) {
                 e.printStackTrace()
             }
 

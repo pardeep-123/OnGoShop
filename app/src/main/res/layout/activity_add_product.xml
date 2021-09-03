@@ -43,6 +43,7 @@
         android:fillViewport="true">
 
         <LinearLayout
+            android:id="@+id/ll"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/_20sdp"
@@ -110,7 +111,7 @@
                 android:imeOptions="actionNext"
                 android:maxLines="1"
                 android:digits="0123456789."
-                android:maxLength="10"
+
                 android:layout_marginTop="@dimen/_5sdp"
                 android:hint="@string/enter_price"
                 android:inputType="number" />
@@ -156,6 +157,7 @@
                 android:layout_marginTop="@dimen/_5sdp">
 
                 <TextView
+                    android:id="@+id/nobarcodeitemttxtview"
                     style="@style/CommonTextWrapcontent"
                     android:layout_alignParentLeft="true"
                     android:layout_centerHorizontal="true"
@@ -205,11 +207,10 @@
                     android:maxLines="1"
                     android:maxLength="50"
                     android:layout_marginEnd="@dimen/_5sdp"
-                    android:digits="0123456789"
                     android:layout_toLeftOf="@+id/tv_check_availability"
                     android:layout_marginTop="@dimen/_5sdp"
                     android:hint="@string/enter_bar_code_number"
-                    android:inputType="number" />
+                    android:inputType="text" />
 
                 <TextView
                     android:id="@+id/tv_check_availability"

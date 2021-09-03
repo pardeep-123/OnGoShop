@@ -12,11 +12,6 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.ongoshop.R
-import com.ongoshop.activities.ProductActivity
-import com.ongoshop.activities.ProductDetailActivity
-import com.ongoshop.clickListeners.CategoryClick
-import com.ongoshop.clickListeners.ProductClick
-import com.ongoshop.pojo.MyProductListingResponse
 import com.ongoshop.pojo.OrderItemsListResponse
 
 class OrderItemsListAdapter(internal var context: Context, private var orderItemsList: ArrayList<OrderItemsListResponse.Body?>)

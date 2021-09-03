@@ -66,6 +66,7 @@ class HomeDeliveryOptionsActivity : BaseActivity(), View.OnClickListener, Observ
                     val intent = Intent(mContext, DeliveryOptionsActivity::class.java)
                     intent.putExtra("shopName", getIntent().getStringExtra("shopName"))
                     intent.putExtra("categoryName", getIntent().getStringExtra("categoryName"))
+                    intent.putExtra("shop_category_id", getIntent().getStringExtra("shop_category_id"))
                     intent.putExtra("shopABN", getIntent().getStringExtra("shopABN"))
                     intent.putExtra("buildingNumber", getIntent().getStringExtra("buildingNumber"))
                     intent.putExtra("streetNumber", getIntent().getStringExtra("streetNumber"))

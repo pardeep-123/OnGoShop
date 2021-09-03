@@ -107,9 +107,10 @@
                 android:layout_marginTop="@dimen/_5sdp"
                 android:hint="@string/enter_abn"
                 android:imeOptions="actionNext"
-                android:inputType="text"
-                android:maxLength="100"
+                android:inputType="number"
+                android:maxLength="11"
                 android:maxLines="1"
+
                 android:textSize="16sp" />
 
             <TextView
@@ -160,7 +161,6 @@
                 android:id="@+id/et_shop_city"
                 style="@style/Edittext"
                 android:layout_marginTop="@dimen/_5sdp"
-                android:drawableRight="@drawable/drop_down"
                 android:hint="@string/enter_city_suburb"
                 android:imeOptions="actionNext"
                 android:inputType="text"
@@ -175,16 +175,19 @@
                 android:textColor="@color/black"
                 android:textSize="@dimen/_12sdp" />
 
-            <EditText
+            <RelativeLayout
                 android:id="@+id/et_shop_state"
-                style="@style/Edittext"
-                android:layout_marginTop="@dimen/_5sdp"
-                android:hint="@string/enter_state"
-                android:imeOptions="actionNext"
-                android:inputType="text"
-                android:maxLength="100"
-                android:maxLines="1"
-                android:textSize="16sp" />
+                android:layout_height="@dimen/_45sdp"
+                android:layout_width="match_parent"
+                android:paddingLeft="@dimen/_4sdp"
+                android:background="@drawable/shape"
+                android:layout_marginTop="@dimen/_5sdp">
+                <androidx.appcompat.widget.AppCompatSpinner
+                    android:layout_width="match_parent"
+                    android:id="@+id/statespinner"
+                    android:layout_height="match_parent"/>
+
+            </RelativeLayout>
 
             <TextView
                 style="@style/CommonTextWrapcontent"
@@ -237,15 +240,21 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    style="@style/Edittext"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
                     android:id="@+id/tv_open_time"
+                    android:padding="@dimen/_10sdp"
+                    android:background="@drawable/shape"
                     android:layout_marginRight="@dimen/_5sdp"
                     android:layout_weight="1"
                     android:hint="@string/open_time"
                     android:textSize="16sp" />
 
                 <TextView
-                    style="@style/Edittext"
+                    android:layout_height="wrap_content"
+                    android:layout_width="wrap_content"
+                    android:padding="@dimen/_10sdp"
+                    android:background="@drawable/shape"
                     android:id="@+id/tv_close_time"
                     android:layout_marginLeft="@dimen/_5sdp"
                     android:layout_weight="1"

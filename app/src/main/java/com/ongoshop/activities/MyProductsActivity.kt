@@ -3,6 +3,8 @@ package com.ongoshop.activities
 import android.content.Intent
 import android.hardware.camera2.CameraManager
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
@@ -58,6 +60,35 @@ class MyProductsActivity : BaseActivity(), View.OnClickListener, ProductClick, O
                 btnAddProducts!!.visibility = View.GONE
             }
         }
+
+        et_search_my_products.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(
+                    s: CharSequence,
+                    start: Int,
+                    count: Int,
+                    after: Int
+            ) {
+            }
+
+            override fun onTextChanged(
+                    s: CharSequence,
+                    start: Int,
+                    before: Int,
+                    count: Int
+            ) {
+            }
+
+            override fun afterTextChanged(s: Editable) {
+                try {
+                    if (myProductList != null) {
+                        productAdapter!!.filter(s.toString().trim(), tv_no_product)
+                    }
+
+                } catch (e: Exception) {
+                }
+            }
+        })
+
     }
 
     override fun onResume() {

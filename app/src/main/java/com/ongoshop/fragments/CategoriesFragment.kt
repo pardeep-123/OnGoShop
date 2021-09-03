@@ -3,6 +3,8 @@ package com.ongoshop.fragments
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,10 +15,7 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.ongoshop.R
-import com.ongoshop.activities.BarcodeScannerActivity
-import com.ongoshop.activities.ManageCategoryActivity
-import com.ongoshop.activities.ProductActivity
-import com.ongoshop.activities.SubCategoriesActivity
+import com.ongoshop.activities.*
 import com.ongoshop.adapter.CategoryAdapter
 import com.ongoshop.adapter.SubCategoryAdapter
 import com.ongoshop.base.BaseFragment
@@ -24,11 +23,15 @@ import com.ongoshop.clickListeners.CategoryClick
 import com.ongoshop.manager.restApi.RestObservable
 import com.ongoshop.manager.restApi.Status
 import com.ongoshop.pojo.CategoryListResponse
+import com.ongoshop.pojo.MyProductListingResponse
 import com.ongoshop.pojo.SubCategoryListResponse
 import com.ongoshop.utils.others.CommonMethods
 import com.ongoshop.utils.others.Constants
 import com.ongoshop.utils.others.MyApplication
 import com.ongoshop.viewmodel.AuthViewModel
+import kotlinx.android.synthetic.main.activity_product.*
+import kotlinx.android.synthetic.main.fragment_categories.*
+import kotlinx.android.synthetic.main.fragment_categories.view.*
 
 class CategoriesFragment : BaseFragment(), Observer<RestObservable>, CategoryClick {
 
@@ -46,6 +49,9 @@ class CategoriesFragment : BaseFragment(), Observer<RestObservable>, CategoryCli
     private val viewModel: AuthViewModel
             by lazy { ViewModelProviders.of(this).get(AuthViewModel::class.java) }
 
+    private var categoryList: ArrayList<CategoryListResponse.Body>? = ArrayList()
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -59,6 +65,7 @@ class CategoriesFragment : BaseFragment(), Observer<RestObservable>, CategoryCli
         rvCategory = v!!.findViewById(R.id.rv_category)
         btnCategories = v!!.findViewById(R.id.btnCategories)
         ivScan = v!!.findViewById(R.id.iv_scan)
+
        /* btnCategories!!.setOnClickListener(View.OnClickListener {
             val i = Intent(mContext, ManageCategoryActivity::class.java)
             startActivity(i)
@@ -70,12 +77,41 @@ class CategoriesFragment : BaseFragment(), Observer<RestObservable>, CategoryCli
         })
 
         getcategoriesApi()
+       // getSubcategoriesApi()
+        v!!.et_search_category.addTextChangedListener(object : TextWatcher{
+            override fun beforeTextChanged(
+                    s: CharSequence,
+                    start: Int,
+                    count: Int,
+                    after: Int
+            ) {
+            }
+
+            override fun onTextChanged(
+                    s: CharSequence,
+                    start: Int,
+                    before: Int,
+                    count: Int
+            ) {
+            }
+
+            override fun afterTextChanged(s: Editable) {
+                try {
+                    if (categoryList != null) {
+                        categoryAdapter!!.filter(s.toString().trim(), v!!.tv_no_category)
+                    }
+
+                } catch (e: Exception) {
+                }
+            }
+        })
+
         return v
     }
 
 
     fun setCategoryAdapter(categoryList: ArrayList<CategoryListResponse.Body>?) {
-        categoryAdapter = CategoryAdapter(activity, categoryList, this)
+        categoryAdapter = CategoryAdapter(requireContext(), categoryList!!, this)
         rvCategory.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
         rvCategory.adapter = categoryAdapter
 
@@ -88,7 +124,8 @@ class CategoriesFragment : BaseFragment(), Observer<RestObservable>, CategoryCli
             val map = HashMap<String, String>()
             map.put("searchKeyword", "")
 
-            viewModel.categoryListApi(requireActivity(), true, map)
+          //  viewModel.categoryListApi(requireActivity(), true, map)
+            viewModel.newsubCategoryListApi(requireActivity(), true)
             viewModel.mResponse.observe(requireActivity(), this)
         }
     }
@@ -100,6 +137,7 @@ class CategoriesFragment : BaseFragment(), Observer<RestObservable>, CategoryCli
             val map = HashMap<String, String>()
             map.put("searchKeyword", "")
             map.put("categoryId", categoryId)
+           // map.put("categoryId", "1")
 
             viewModel.subCategoryListApi(requireActivity(), true, map)
             viewModel.mResponse.observe(requireActivity(), this)
@@ -113,8 +151,9 @@ class CategoriesFragment : BaseFragment(), Observer<RestObservable>, CategoryCli
                     val categoryListingResponse: CategoryListResponse = it.data
                     if (categoryListingResponse.code == Constants.success_code) {
                         showSuccessToast(categoryListingResponse!!.getMessage()!!)
-
-                        setCategoryAdapter(categoryListingResponse.getBody())
+                        categoryList!!.clear()
+                        categoryList!!.addAll(categoryListingResponse.getBody())
+                        setCategoryAdapter(categoryList)
 
                     } else {
                         CommonMethods.AlertErrorMessage(

@@ -1,6 +1,7 @@
 package com.ongoshop.activities
 
 
+import android.app.Activity
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -8,8 +9,16 @@ import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.bumptech.glide.Glide
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
+import com.google.android.libraries.places.api.Places
+import com.google.android.libraries.places.api.model.Place
+import com.google.android.libraries.places.widget.Autocomplete
+import com.google.android.libraries.places.widget.AutocompleteActivity
+import com.google.android.libraries.places.widget.model.AutocompleteActivityMode
 import com.google.firebase.iid.FirebaseInstanceId
 import com.google.firebase.iid.InstanceIdResult
+import com.google.gson.GsonBuilder
 import com.ongoshop.R
 import com.ongoshop.base.BaseActivity
 import com.ongoshop.manager.restApi.RestObservable
@@ -43,7 +52,14 @@ class SignupActivity : BaseActivity(), View.OnClickListener, Observer<RestObserv
     //  var countryCodeName = "US"
 
     var isClick = ""
-    var IsCheckedTerms = false
+
+    private var fusedLocationClient: FusedLocationProviderClient? = null
+    private val AUTOCOMPLETE_REQUEST_CODE = 1
+
+    private var latitude = 0.0
+    private var longitude = 0.0
+    private var latLng: com.google.android.gms.maps.model.LatLng? = null
+
     override fun getContentId(): Int {
         return R.layout.activity_create_account
     }
@@ -54,7 +70,7 @@ class SignupActivity : BaseActivity(), View.OnClickListener, Observer<RestObserv
 
 
         rlAdd.setOnClickListener(mContext)
-        ivBack.setOnClickListener(mContext)
+        ivBacksignup.setOnClickListener(this)
         ivOn.setOnClickListener(mContext)
         ivOff.setOnClickListener(mContext)
         tvTerms.setOnClickListener(mContext)
@@ -72,7 +88,36 @@ class SignupActivity : BaseActivity(), View.OnClickListener, Observer<RestObserv
 
             }
         })
+        fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
+        /**
+         *@author Pardeep Sharma
+         *  Created on 24 August 2021
+         *  function for select the location from map
+         */
+        val apiKey = getString(R.string.api_key_map)
+        Places.initialize(this, apiKey)
+        //set On click listener on location EditText
+        et_address.setOnClickListener {
+            // Set the fields to specify which types of place data to
+// return after the user has made a selection.
+            val fields = listOf(
+                Place.Field.ID,
+                Place.Field.NAME,
+                Place.Field.LAT_LNG,
+                Place.Field.ADDRESS_COMPONENTS,
+                Place.Field.ADDRESS
+            )
+
+// Start the autocomplete intent.
+            val intent = Autocomplete.IntentBuilder(AutocompleteActivityMode.FULLSCREEN, fields)
+                .build(this)
+            startActivityForResult(intent, AUTOCOMPLETE_REQUEST_CODE)
+        }
+
+        /**
+         *  Ends here
+         */
     }
 
     private fun selectAlbum() {
@@ -109,6 +154,9 @@ class SignupActivity : BaseActivity(), View.OnClickListener, Observer<RestObserv
             val partCountryCode = mValidationClass.createPartFromString(countryCode)
             val partPassword = mValidationClass.createPartFromString(edPass.text.toString().trim())
             val partPhoneNumber = mValidationClass.createPartFromString(et_phone.text.toString().trim())
+            val partLatitude = mValidationClass.createPartFromString(latitude.toString())
+            val partLongitude = mValidationClass.createPartFromString(longitude.toString())
+            val partAddress = mValidationClass.createPartFromString(et_address.text.toString().trim())
             /*     val is_accept = mValidationClass.createPartFromString(isClick)
             */
             val partToken = mValidationClass.createPartFromString(SharedPrefUtil.getInstance().deviceToken)
@@ -121,6 +169,9 @@ class SignupActivity : BaseActivity(), View.OnClickListener, Observer<RestObserv
             map.put("countryCode", partCountryCode)
             map.put("phone", partPhoneNumber)
             map.put("password", partPassword)
+            map.put("latitude", partLatitude)
+            map.put("longitude", partLongitude)
+            map.put("geoLocation", partAddress)
             map.put("deviceType", partType)
             map.put("deviceToken", partToken)
             /*  map.put("is_accept", is_accept)
@@ -143,7 +194,7 @@ class SignupActivity : BaseActivity(), View.OnClickListener, Observer<RestObserv
                 FirebaseInstanceId.getInstance().instanceId.addOnSuccessListener(
                         this
                 ) { instanceIdResult: InstanceIdResult ->
-                    var newToken = instanceIdResult.token
+                    val newToken = instanceIdResult.token
                     Log.e("newToken", newToken)
                     SharedPrefUtil.getInstance().saveDeviceToken(newToken)
                 }
@@ -179,6 +230,9 @@ class SignupActivity : BaseActivity(), View.OnClickListener, Observer<RestObserv
                 isClick = ""
             }
 
+            R.id.ivBacksignup->{
+                onBackPressed()
+            }
             R.id.ivOff -> {
                 ivOff.visibility = View.GONE
                 ivOn.visibility = View.VISIBLE
@@ -187,6 +241,8 @@ class SignupActivity : BaseActivity(), View.OnClickListener, Observer<RestObserv
             }
         }
     }
+
+
 
     private fun isValid(): Boolean {
         var check = false
@@ -214,7 +270,7 @@ class SignupActivity : BaseActivity(), View.OnClickListener, Observer<RestObserv
             showAlerterRed(resources.getString(R.string.error_cpassword))
         else if (et_cPass.text.toString().length < 6)
             showAlerterRed(resources.getString(R.string.error_cpassword_length))
-        else if (!et_cPass.text.toString().equals(edPass.text.toString(), ignoreCase = true))
+        else if (!et_cPass.text.toString().equals(edPass.text.toString()))
             showAlerterRed(resources.getString(R.string.error_password_not_matched))
         else if (isClick.equals("") || isClick.isEmpty())
             showAlerterRed(resources.getString(R.string.error_terms_conditions))
@@ -246,6 +302,10 @@ class SignupActivity : BaseActivity(), View.OnClickListener, Observer<RestObserv
                         SharedPrefUtil.getInstance().saveEmail(registerResponse.getBody()!!.email)
                         SharedPrefUtil.getInstance().saveName(registerResponse.getBody()!!.name)
 
+                        val gson = GsonBuilder().create()
+
+                        SharedPrefUtil.getInstance().registerrespo(gson.toJson(registerResponse.body))
+                        Log.e("fdf",SharedPrefUtil.getInstance().getregisterr())
                         val intent = Intent(mContext, VerificationCodeActivity::class.java)
                         intent.putParcelableArrayListExtra("vendorDeliveryOptions", registerResponse.body.vendorDeliveryOptions)
                         Log.e("SignupSize", registerResponse.body.vendorDeliveryOptions.size.toString())
@@ -261,6 +321,7 @@ class SignupActivity : BaseActivity(), View.OnClickListener, Observer<RestObserv
                     }
                 }
             }
+
             it.status == Status.ERROR -> {
                 if (it.data != null) {
                     showAlerterRed(it.data as String)
@@ -275,4 +336,38 @@ class SignupActivity : BaseActivity(), View.OnClickListener, Observer<RestObserv
 
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (requestCode == AUTOCOMPLETE_REQUEST_CODE) {
+            when (resultCode) {
+                Activity.RESULT_OK -> {
+
+                    data?.let {
+                        val place = Autocomplete.getPlaceFromIntent(data)
+                        Log.d(
+                            "locationNew",
+                            "Place: ${place.name}, ${place.id}, ${place.addressComponents}, ${place.address}"
+                        )
+
+                        et_address.setText(place.name.toString())
+
+                        latLng = place.latLng
+                        latitude = latLng!!.latitude
+                        longitude = latLng!!.longitude
+                    }
+                }
+
+                AutocompleteActivity.RESULT_ERROR -> {
+                    data?.let {
+                        val status = Autocomplete.getStatusFromIntent(data)
+                        Log.i("TAG", status.statusMessage!!)
+                    }
+                }
+
+                Activity.RESULT_CANCELED -> {
+// The user canceled the operation.
+                }
+            }
+        }
+    }
 }

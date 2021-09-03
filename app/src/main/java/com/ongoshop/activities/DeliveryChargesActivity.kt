@@ -11,12 +11,14 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.gson.GsonBuilder
 import com.ongoshop.R
 import com.ongoshop.adapter.DeliveryChargesAdapter
 import com.ongoshop.base.BaseActivity
 import com.ongoshop.manager.restApi.RestObservable
 import com.ongoshop.manager.restApi.Status
 import com.ongoshop.pojo.EditProfileAddShopResponsess
+import com.ongoshop.pojo.SignupResponsess
 import com.ongoshop.pojo.VendorDeliveryCharge
 import com.ongoshop.utils.others.Constants
 import com.ongoshop.utils.others.MyApplication
@@ -45,7 +47,7 @@ class DeliveryChargesActivity : BaseActivity(), View.OnClickListener, Observer<R
     private var isDeliver = ""
     private var vendorDeliveryChargesList: ArrayList<VendorDeliveryCharge>? = ArrayList()
     private var vendorDeliveryChargesupdatedList: ArrayList<VendorDeliveryCharge>? = ArrayList()
-
+    var makebuttonclickable = false
 
     override fun getContentId(): Int {
         return R.layout.activity_delivery_charges
@@ -63,6 +65,7 @@ class DeliveryChargesActivity : BaseActivity(), View.OnClickListener, Observer<R
         ivBack.setOnClickListener(mContext)
 
         if (intent != null) {
+
             vendorDeliveryChargesList = intent.getParcelableArrayListExtra<VendorDeliveryCharge>("vendorDeliveryCharges")
                     as ArrayList<VendorDeliveryCharge>
 
@@ -70,7 +73,15 @@ class DeliveryChargesActivity : BaseActivity(), View.OnClickListener, Observer<R
             deliveryChargesRecyclerview.layoutManager = LinearLayoutManager(mContext)
             deliveryChargesRecyclerview.adapter = deliveryChargesAdapter
 
+
+          /*  var gson  =  GsonBuilder().create()
+            var data = gson.fromJson<SignupResponsess.Body>(SharedPrefUtil.getInstance().getregisterr(),SignupResponsess.Body::class.java)
+            deliveryChargesAdapter = DeliveryChargesAdapter(mContext, data.vendorDeliveryCharges, mContext)
+            deliveryChargesRecyclerview.layoutManager = LinearLayoutManager(mContext)
+            deliveryChargesRecyclerview.adapter = deliveryChargesAdapter*/
+
         }
+
 
     }
 
@@ -81,10 +92,19 @@ class DeliveryChargesActivity : BaseActivity(), View.OnClickListener, Observer<R
         dialog!!.setCancelable(false)
         val btnOk = dialog!!.findViewById<Button>(R.id.btnOk)
         btnOk.setOnClickListener {
-            val intent = Intent(mContext, HomeActivity::class.java)
+         //   val intent = Intent(mContext, HomeActivity::class.java)
+            /**
+             * To make user to login after admin approval
+             */
+            val intent = Intent(mContext, LoginActivity::class.java)
+            startActivity(intent)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
             startActivity(intent)
             finishAffinity()
-
+      // Clear all the shared preferneces here.
+            MyApplication.instance!!.clearData()
+        SharedPrefUtil.getInstance().clear()
+            SharedPrefUtil.getInstance().isLogin = false
             dialog!!.dismiss()
         }
         dialog!!.show()
@@ -94,7 +114,36 @@ class DeliveryChargesActivity : BaseActivity(), View.OnClickListener, Observer<R
     override fun onClick(v: View?) {
         when (v!!.id) {
             R.id.btnConfirm -> {
-                makejsonArray()
+                vendorDeliveryChargesupdatedList = deliveryChargesAdapter.getvendorchargeslist()
+
+                if (vendorDeliveryChargesupdatedList!!.isEmpty())
+                {
+                    showSuccessToast(this,"Please select delivery charges")
+
+                }
+                else
+                {
+                    for (i in 0 until vendorDeliveryChargesupdatedList!!.size)
+                    {
+                        if (vendorDeliveryChargesupdatedList!![i].freeDelivery==1 || vendorDeliveryChargesupdatedList!![i].price>0 )
+                        {
+                            makebuttonclickable = true
+                        }
+
+
+                        else
+                        {
+                            showSuccessToast(this,"Please select free delivery or charges for ${vendorDeliveryChargesupdatedList!![i].minDistance}-${vendorDeliveryChargesupdatedList!![i].maxDistance}")
+                            makebuttonclickable  = false
+                            break
+                        }
+                    }
+                    if (makebuttonclickable)
+                        makejsonArray()
+
+                }
+
+
                }
 
             R.id.ivBack -> {
@@ -118,6 +167,7 @@ class DeliveryChargesActivity : BaseActivity(), View.OnClickListener, Observer<R
                 val bodyimage = mValidationClass.prepareFilePart("shopLogo", File(intent.getStringExtra("shopImage")))
                 val partShopName = mValidationClass.createPartFromString(intent.getStringExtra("shopName"))
                 val partCategoryName = mValidationClass.createPartFromString(intent.getStringExtra("categoryName"))
+                val partCategoryId = mValidationClass.createPartFromString(intent.getStringExtra("shop_category_id"))
                 val partShopABN = mValidationClass.createPartFromString(intent.getStringExtra("shopABN"))
                 val partBuildingNumber = mValidationClass.createPartFromString(intent.getStringExtra("buildingNumber"))
                 val partStreetNumber = mValidationClass.createPartFromString(intent.getStringExtra("streetNumber"))
@@ -129,6 +179,7 @@ class DeliveryChargesActivity : BaseActivity(), View.OnClickListener, Observer<R
                 val partCloseTime = mValidationClass.createPartFromString(intent.getStringExtra("closeTime"))
                 val partHomeDelivery = mValidationClass.createPartFromString(intent.getStringExtra("homeDelivery"))
                 val partDeliveriesPerDay = mValidationClass.createPartFromString(intent.getStringExtra("deliveriesPerDay"))
+                val vendorId = mValidationClass.createPartFromString(SharedPrefUtil.getInstance().userId)
                 val partDeliveryOptionsJsonArrayString = mValidationClass.createPartFromString(intent.getStringExtra("deliveryOptionsJsonString"))
                 val partDeliveryChargesJsonArrayString = mValidationClass.createPartFromString(deliveryChargesJsonArray)
 
@@ -136,11 +187,14 @@ class DeliveryChargesActivity : BaseActivity(), View.OnClickListener, Observer<R
                 val partType = mValidationClass.createPartFromString(Constants.Device_Type)
 
                 val map = HashMap<String, RequestBody>()
-                map.put("shopName", partShopName)
+                map["shopName"] = partShopName
                 map.put("shopCategory", partCategoryName)
+                map.put("shop_category_id", partCategoryId)
                 map.put("abn", partShopABN)
                 map.put("buildingNumber", partBuildingNumber)
                 map.put("streetNumber", partStreetNumber)
+            //    map.put("latitude", "")
+             // need to add to get neary by shops   map.put("longitude", "")
                 map.put("city", partCity)
                 map.put("state", partState)
                 map.put("country", partCountry)
@@ -152,6 +206,7 @@ class DeliveryChargesActivity : BaseActivity(), View.OnClickListener, Observer<R
                 map.put("deviceToken", partToken)
                 map.put("deliveriesPerDay", partDeliveriesPerDay)
                 map.put("homeDelivery", partHomeDelivery)
+                map.put("vendorId", vendorId)
                 map.put("vendorDeliveryOptions", partDeliveryOptionsJsonArrayString)
                 map.put("vendorDeliveryCharges", partDeliveryChargesJsonArrayString)
 
@@ -168,24 +223,26 @@ class DeliveryChargesActivity : BaseActivity(), View.OnClickListener, Observer<R
             it!!.status == Status.SUCCESS -> {
                 if (it.data is EditProfileAddShopResponsess) {
                     val addShopResponsess: EditProfileAddShopResponsess = it.data
-                    if (addShopResponsess.getCode() == Constants.success_code) {
+                    if (addShopResponsess.code == Constants.success_code) {
                         showSuccessToast(mContext, addShopResponsess.message)
 
                         showDailog(addShopResponsess.body)
-                        MyApplication.getnstance()
-                                .setString(
-                                        Constants.AuthKey,
-                                        addShopResponsess!!.body.token!!
-                                )
+//                        MyApplication.getnstance()
+//                                .setString(
+//                                        Constants.AuthKey,
+//                                        addShopResponsess.body.token!!
+//                                )
                         MyApplication.instance!!.setString(Constants.UserData, modelToString(addShopResponsess))
 
-                        SharedPrefUtil.getInstance().saveAuthToken(addShopResponsess.body.token)
+                       // SharedPrefUtil.getInstance().saveAuthToken(addShopResponsess.body.token)
+                        if (addShopResponsess.body.image!=null)
                         SharedPrefUtil.getInstance().saveImage(addShopResponsess.body.image)
                         SharedPrefUtil.getInstance().saveUserId(addShopResponsess.body.id.toString())
+                        if (addShopResponsess.body.email!=null)
                         SharedPrefUtil.getInstance().saveEmail(addShopResponsess.body.email)
+                        if (addShopResponsess.body.name!=null)
                         SharedPrefUtil.getInstance().saveName(addShopResponsess.body.name)
                         SharedPrefUtil.getInstance().isLogin = true
-
 
                     }
 
@@ -207,40 +264,38 @@ class DeliveryChargesActivity : BaseActivity(), View.OnClickListener, Observer<R
 
     fun setUpdatedList(pos: Int, vendorDeliveryChargeList: ArrayList<VendorDeliveryCharge>) {
         vendorDeliveryChargesupdatedList = vendorDeliveryChargeList
-        Log.e("priceee", vendorDeliveryChargesupdatedList!!.get(pos).price)
+        Log.e("priceee", vendorDeliveryChargesupdatedList!![pos].price.toString())
     }
 
     
     fun makejsonArray() {
         val jsonArray = JSONArray()
+
         for (i in 0 until vendorDeliveryChargesupdatedList!!.size) {
             val vendorDeliveryChargesLists = JSONObject()
             try {
-                vendorDeliveryChargesLists.put("id", vendorDeliveryChargesupdatedList!!.get(i).id)
-                vendorDeliveryChargesLists.put("vendorId", vendorDeliveryChargesupdatedList!!.get(i).vendorId)
-                vendorDeliveryChargesLists.put("minDistance", vendorDeliveryChargesupdatedList!!.get(i).minDistance)
-                vendorDeliveryChargesLists.put("maxDistance", vendorDeliveryChargesupdatedList!!.get(i).maxDistance)
-                vendorDeliveryChargesLists.put("price", vendorDeliveryChargesupdatedList!!.get(i).price)
-                vendorDeliveryChargesLists.put("noDelivery", vendorDeliveryChargesupdatedList!!.get(i).noDelivery)
-                vendorDeliveryChargesLists.put("freeDelivery", vendorDeliveryChargesupdatedList!!.get(i).freeDelivery)
-                vendorDeliveryChargesLists.put("created", vendorDeliveryChargesupdatedList!!.get(i).created)
-                vendorDeliveryChargesLists.put("updated", vendorDeliveryChargesupdatedList!!.get(i).updated)
-                vendorDeliveryChargesLists.put("createdAt", vendorDeliveryChargesupdatedList!!.get(i).createdAt)
-                vendorDeliveryChargesLists.put("updatedAt", vendorDeliveryChargesupdatedList!!.get(i).updatedAt)
-            } catch (e: JSONException) { // TODO Auto-generated catch block
+                vendorDeliveryChargesLists.put("id", vendorDeliveryChargesupdatedList!![i].id)
+                vendorDeliveryChargesLists.put("vendorId", vendorDeliveryChargesupdatedList!![i].vendorId)
+                vendorDeliveryChargesLists.put("minDistance", vendorDeliveryChargesupdatedList!![i].minDistance)
+                vendorDeliveryChargesLists.put("maxDistance", vendorDeliveryChargesupdatedList!![i].maxDistance)
+                vendorDeliveryChargesLists.put("price", vendorDeliveryChargesupdatedList!![i].price)
+                vendorDeliveryChargesLists.put("noDelivery", vendorDeliveryChargesupdatedList!![i].noDelivery)
+                vendorDeliveryChargesLists.put("freeDelivery", vendorDeliveryChargesupdatedList!![i].freeDelivery)
+                vendorDeliveryChargesLists.put("created", vendorDeliveryChargesupdatedList!![i].created)
+                vendorDeliveryChargesLists.put("updated", vendorDeliveryChargesupdatedList!![i].updated)
+                vendorDeliveryChargesLists.put("createdAt", vendorDeliveryChargesupdatedList!![i].createdAt)
+                vendorDeliveryChargesLists.put("updatedAt", vendorDeliveryChargesupdatedList!![i].updatedAt)
+            } catch (e: JSONException) {
                 e.printStackTrace()
             }
 
             jsonArray.put(vendorDeliveryChargesLists)
-
 
         }
         Log.e("jsonString:", jsonArray.toString())
         /* }*/
 
         addShopApi(jsonArray.toString())
-
-
 
     }
 

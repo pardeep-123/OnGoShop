@@ -28,17 +28,13 @@ class DeliveryOptionsAdapter(
         internal var vendorDeliveryOptionList: ArrayList<VendorDeliveryOption>,
         internal var deliveryOptionsActivity: DeliveryOptionsActivity, internal var deliveryOptionsClicklisetener: DeliveryOptionsClicklisetener
 ) : RecyclerView.Adapter<DeliveryOptionsAdapter.DeliveryOptionsHolder>() {
-    private var openTimeTimestamp: Long = 0
-    private var closeTimeTimestamp: Long = 0
-    private var closeTime: String = ""
-    private var startTime: String = ""
+
     private var isNoDelivery: Int = 0
 
     override fun onBindViewHolder(holder: DeliveryOptionsHolder, position: Int) {
         holder.bindItems(vendorDeliveryOptionList[position])
 
     }
-
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DeliveryOptionsHolder {
         return DeliveryOptionsHolder(
@@ -85,9 +81,6 @@ class DeliveryOptionsAdapter(
                 tvDay.setText("Saturday")
             }
 
-
-
-
             ivOn.setOnClickListener {
                  setNoDelivery("on")
             }
@@ -133,28 +126,31 @@ class DeliveryOptionsAdapter(
 
                 //it's after current
                 if (type.equals("open")) {
-                    startTime = SimpleDateFormat("hh:mm a").format(cal.time)
-                    openTimeTimestamp = (CommonMethods.time_to_timestamp(tvFromTime.text.toString(), "hh:mm a"))
-                    tvFromTime.text = startTime
-                    Log.e("startTimeTimestamp", openTimeTimestamp.toString())
-                    vendorDeliveryOptionList[adapterPosition].deliveryTimeFrom= startTime
-                    vendorDeliveryOptionList.set(adapterPosition, vendorDeliveryOptionList[adapterPosition])
+                    vendorDeliveryOptionList[adapterPosition].deliveryTimeFrom = SimpleDateFormat("hh:mm a").format(cal.time)
+                    vendorDeliveryOptionList[adapterPosition].deliverystartmiliseconds = (CommonMethods.time_to_timestamp(SimpleDateFormat("hh:mm a").format(cal.time), "hh:mm a"))
+                    tvFromTime.text = vendorDeliveryOptionList[adapterPosition].deliveryTimeFrom
+
+                   // vendorDeliveryOptionList.set(adapterPosition, vendorDeliveryOptionList[adapterPosition])
                     deliveryOptionsActivity.setUpdatedList(adapterPosition, vendorDeliveryOptionList)
 
 
                 } else {
-                    closeTimeTimestamp = (CommonMethods.time_to_timestamp(SimpleDateFormat("hh:mm a").format(cal.time), "hh:mm a"))
-                    if (closeTimeTimestamp >= openTimeTimestamp) {
-                        closeTime = SimpleDateFormat("hh:mm a").format(cal.time)
-                        tvToTime.text = closeTime
-                        vendorDeliveryOptionList[adapterPosition].deliveryTimeTo= closeTime
-                        vendorDeliveryOptionList.set(adapterPosition, vendorDeliveryOptionList[adapterPosition])
+                    vendorDeliveryOptionList[adapterPosition].delivertendmiliseconds = (CommonMethods.time_to_timestamp(SimpleDateFormat("hh:mm a").format(cal.time), "hh:mm a"))
+
+                    if (vendorDeliveryOptionList[adapterPosition].delivertendmiliseconds >= vendorDeliveryOptionList[adapterPosition].deliverystartmiliseconds) {
+
+                        vendorDeliveryOptionList[adapterPosition].deliveryTimeTo =SimpleDateFormat("hh:mm a").format(cal.time)
+
+                        tvToTime.text = vendorDeliveryOptionList[adapterPosition].deliveryTimeTo
+                       // vendorDeliveryOptionList.set(adapterPosition, vendorDeliveryOptionList[adapterPosition])
                         deliveryOptionsActivity.setUpdatedList(adapterPosition, vendorDeliveryOptionList)
 
-                        Log.e("endTimeTimestamp", closeTimeTimestamp.toString())
+                       // Log.e("endTimeTimestamp", closeTimeTimestamp.toString())
 
                     } else {
                         //it's before current'
+                        tvToTime.text = ""
+                        vendorDeliveryOptionList[adapterPosition].deliveryTimeTo = ""
                         CommonMethods.AlertErrorMessage(deliveryOptionsActivity, "Invalid Time")
                     }
 

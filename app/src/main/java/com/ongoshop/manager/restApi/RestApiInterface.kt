@@ -20,7 +20,7 @@ interface RestApiInterface {
     ): Observable<SignupResponsess>
 
     @FormUrlEncoded
-    @PUT(Constants.Login)
+    @POST(Constants.Login)
     fun login(
             @FieldMap map: HashMap<String, String>
     ): Observable<LoginResponse>
@@ -37,6 +37,12 @@ interface RestApiInterface {
     fun forgotPassword(
             @FieldMap map: HashMap<String, String>
     ): Observable<ForgotPasswordResponse>
+
+    @FormUrlEncoded
+    @POST(Constants.GraphDetail)
+    fun getgraphdetail(
+            @FieldMap map: HashMap<String, String>):
+            Observable<GraphDetailResponse>
 
     @FormUrlEncoded
     @PUT(Constants.ChangePassword)
@@ -176,17 +182,28 @@ interface RestApiInterface {
             @FieldMap map: HashMap<String, String>
     ): Observable<SetDefaultCardResponse>
 
-    @FormUrlEncoded
-    @POST(Constants.CategoryList)
-    fun getCategoryList(
-            @FieldMap map: HashMap<String, String>):
+//    @FormUrlEncoded
+//    @GET(Constants.CategoryList)
+//    fun getCategoryList(
+//            @FieldMap map: HashMap<String, String>):
+//            Observable<CategoryListResponse>
+
+
+    @GET(Constants.CategoryList)
+    fun getCategoryList():
             Observable<CategoryListResponse>
 
     @FormUrlEncoded
-    @POST(Constants.CategoryList)
+    @POST(Constants.SubCategoryList)
     fun getSubCategoryList(
             @FieldMap map: HashMap<String, String>):
             Observable<SubCategoryListResponse>
+
+    // for check
+  //  @FormUrlEncoded
+    @POST(Constants.SubCategoryList)
+    fun getSubCategoryList():
+            Observable<CategoryListResponse>
 
     @FormUrlEncoded
     @POST(Constants.ProductListing)
@@ -220,6 +237,12 @@ interface RestApiInterface {
     @POST(Constants.AddProduct)
     fun addProduct(
             @PartMap map: HashMap<String, RequestBody>, @Part image: MultipartBody.Part
+    ): Observable<AddProductResponse>
+
+    @Multipart
+    @POST(Constants.AddProduct)
+    fun addProduct(
+            @PartMap map: HashMap<String, RequestBody>
     ): Observable<AddProductResponse>
 
 

@@ -135,7 +135,7 @@
                         android:layout_marginTop="@dimen/_5sdp"
                         android:layout_marginRight="@dimen/_10sdp"
                         android:layout_marginLeft="@dimen/_10sdp"
-                        android:layout_marginBottom="@dimen/_40sdp"
+
                         android:orientation="horizontal">
                         <TextView
                             android:layout_width="0dp"
@@ -155,6 +155,37 @@
                             android:textColor="@color/black"
                             android:gravity="end"
                             android:inputType="number"
+                            android:fontFamily="@font/regular"
+                            android:textSize="@dimen/_12sdp" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_5sdp"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:layout_marginLeft="@dimen/_10sdp"
+                        android:layout_marginBottom="@dimen/_40sdp"
+                        android:orientation="horizontal">
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_weight="30"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:fontFamily="@font/regular"
+                            android:text="Address:"
+                            android:textSize="@dimen/_14sdp"
+                            />
+
+                        <TextView
+                            android:id="@+id/tv_addres"
+                            android:layout_width="0dp"
+                            android:layout_weight="70"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/black"
+                            android:gravity="end"
+
                             android:fontFamily="@font/regular"
                             android:textSize="@dimen/_12sdp" />
 

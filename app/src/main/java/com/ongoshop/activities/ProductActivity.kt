@@ -3,6 +3,8 @@ package com.ongoshop.activities
 import android.content.Intent
 import android.hardware.camera2.CameraManager
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import android.widget.Button
 import android.widget.ImageView
@@ -33,6 +35,7 @@ class ProductActivity : BaseActivity(), View.OnClickListener, ProductClick, Obse
     var productAdapter: ProductAdapter? = null
     private var productList: ArrayList<ProductListingResponse.Body?>? = ArrayList()
     private var productId = ""
+
     private val viewModel: HomeViewModel
             by lazy { ViewModelProviders.of(this).get(HomeViewModel::class.java) }
 
@@ -53,10 +56,37 @@ class ProductActivity : BaseActivity(), View.OnClickListener, ProductClick, Obse
 
         if (intent.extras != null) {
             productId = intent.getStringExtra("categoryId")!!
-            //   tv_title.text = "Productt"
-            tv_title.text = intent.getStringExtra("categoryName")!!
+            tvTitle.text = intent.getStringExtra("categoryName")!!
 
         }
+
+        et_search_my_products.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(
+                    s: CharSequence,
+                    start: Int,
+                    count: Int,
+                    after: Int
+            ) {
+            }
+
+            override fun onTextChanged(
+                    s: CharSequence,
+                    start: Int,
+                    before: Int,
+                    count: Int
+            ) {
+            }
+
+            override fun afterTextChanged(s: Editable) {
+                try {
+                    if (productList != null) {
+                        productAdapter!!.filter(s.toString().trim(), tv_no_product)
+                    }
+
+                } catch (e: Exception) {
+                }
+            }
+        })
 
     }
 
@@ -109,10 +139,10 @@ class ProductActivity : BaseActivity(), View.OnClickListener, ProductClick, Obse
 
                         if (productListingResponse.getBody()!!.size == 0) {
                             rvProductList!!.visibility = View.GONE
-                            tv_no_neworders!!.visibility = View.VISIBLE
+                            tv_no_product!!.visibility = View.VISIBLE
                         } else {
                             rvProductList!!.visibility = View.VISIBLE
-                            tv_no_neworders!!.visibility = View.GONE
+                            tv_no_product!!.visibility = View.GONE
                             setProductListAdapter(productList!!)
                         }
 

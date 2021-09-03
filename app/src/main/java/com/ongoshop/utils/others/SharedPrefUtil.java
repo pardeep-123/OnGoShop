@@ -21,6 +21,7 @@ public class SharedPrefUtil {
     public static final String DEVICE_TOKEN = "deviceToken";
     public static final String AUTH_TOKEN = "authToken";
     public static final String COUNTRY_CODE_NAME = "CountryCodeName";
+    public static final String CATEGORYNAME = "CategoryName";
     public static final String LOGIN = "login";
     public static final String BADGE = "badge";
     public static final String NOTIFY = "notify";
@@ -281,21 +282,35 @@ public class SharedPrefUtil {
     }
 
 
-/* Set COUNTRY_CODE_NAME*/
-    public void saveCountryCodeName(String countryCodeName) {
+/* Set shop id*/
+    public void setCategoryId(String countryCodeName) {
         mEditor = mSharedPreferences.edit();
         mEditor.putString(COUNTRY_CODE_NAME, countryCodeName);
         mEditor.apply();
     }
+    /* Set shop category name*/
+    public void setCategoryName(String categoryName) {
+        mEditor = mSharedPreferences.edit();
+        mEditor.putString(CATEGORYNAME, categoryName);
+        mEditor.apply();
+    }
 
     /**
-     * get the COUNTRY_CODE_NAME of the user
+     * get the SHop category id of the user
      */
-    public String getCountryCodeName() {
+    public String getCategoryId() {
         mSharedPreferences = mContext.getSharedPreferences(APP_PREFS, Context.MODE_PRIVATE);
         return mSharedPreferences.getString(COUNTRY_CODE_NAME, "");
     }
 
+
+    /**
+     * get the SHop category name of the user
+     */
+    public String getCategoryName() {
+        mSharedPreferences = mContext.getSharedPreferences(APP_PREFS, Context.MODE_PRIVATE);
+        return mSharedPreferences.getString(CATEGORYNAME, "");
+    }
 
     /**
      * set login state oin the device is there any user current login device
@@ -323,12 +338,38 @@ public class SharedPrefUtil {
         mEditor.apply();
     }
 
+    public void registerrespo(String name) {
+        mEditor = mSharedPreferences.edit();
+        mEditor.putString("register", name);
+        mEditor.apply();
+    }
+
     /**
      * get name of the user
      */
+    public String getregisterr() {
+        mSharedPreferences = mContext.getSharedPreferences(APP_PREFS, Context.MODE_PRIVATE);
+        return mSharedPreferences.getString("register", "");
+    }
+
     public String getName() {
         mSharedPreferences = mContext.getSharedPreferences(APP_PREFS, Context.MODE_PRIVATE);
         return mSharedPreferences.getString(NAME, "");
+    }
+
+
+    public void editProfilerespo(String name) {
+        mEditor = mSharedPreferences.edit();
+        mEditor.putString("profile", name);
+        mEditor.apply();
+    }
+
+    /**
+     * get name of the user
+     */
+    public String getEditProfileRespone() {
+        mSharedPreferences = mContext.getSharedPreferences(APP_PREFS, Context.MODE_PRIVATE);
+        return mSharedPreferences.getString("profile", "");
     }
 
 

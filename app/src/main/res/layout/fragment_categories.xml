@@ -62,12 +62,12 @@
                 android:src="@drawable/search" />
 
             <EditText
-                android:id="@+id/tvName"
+                android:id="@+id/et_search_category"
                 style="@style/CommonTextMatchparent"
                 android:layout_gravity="center"
                 android:layout_marginLeft="@dimen/_10sdp"
                 android:backgroundTint="@color/white"
-                android:hint="Search"
+                android:hint="@string/search"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_12sdp" />
         </LinearLayout>
@@ -88,6 +88,18 @@
                 android:layout_height="match_parent">
 
             </androidx.recyclerview.widget.RecyclerView>
+
+
+            <TextView
+                android:id="@+id/tv_no_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/no_category_available"
+                android:textSize="@dimen/_16sdp"
+                android:visibility="gone"
+                android:layout_centerInParent="true"
+                android:textColor="@color/black"
+                android:fontFamily="@font/medium"/>
 
             <!--
                         <TextView

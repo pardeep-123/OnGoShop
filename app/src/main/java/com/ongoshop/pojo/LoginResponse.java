@@ -133,6 +133,11 @@ public class LoginResponse {
         @SerializedName("shopCategory")
         @Expose
         private String shopCategory;
+
+        @SerializedName("vendorDetail")
+        @Expose
+        private VendorDetail vendorDetail;
+
         @SerializedName("abn")
         @Expose
         private String abn;
@@ -415,6 +420,14 @@ public class LoginResponse {
 
         public String getImage() {
             return image;
+        }
+
+        public VendorDetail getVendorDetail() {
+            return vendorDetail;
+        }
+
+        public void setVendorDetail(VendorDetail vendorDetail) {
+            this.vendorDetail = vendorDetail;
         }
 
         public void setImage(String image) {

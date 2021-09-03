@@ -11,109 +11,166 @@
         android:layout_width="wrap_content"
         android:layout_height="@dimen/_70sdp"
         android:scaleType="fitXY"
-        android:src="@drawable/small_header"/>
+        android:src="@drawable/small_header" />
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_20sdp"
-        >
+        android:layout_marginTop="@dimen/_20sdp">
+
         <ImageView
             android:id="@+id/ivBack"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/_10sdp"
             android:layout_alignParentLeft="true"
-            android:src="@drawable/back"/>
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:src="@drawable/back" />
 
         <TextView
-           style="@style/CommonTextWrapcontent"
-            android:textColor="@color/white"
+            style="@style/CommonTextWrapcontent"
+            android:layout_centerInParent="true"
             android:text="Sales Data"
-            android:textSize="@dimen/_14sdp"
-            android:layout_centerInParent="true"/>
+            android:textColor="@color/white"
+            android:textSize="@dimen/_14sdp" />
     </RelativeLayout>
+
     <LinearLayout
         android:id="@+id/llText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_margin="@dimen/_30sdp"
-        android:layout_below="@id/ivBar"
-        >
+        android:layout_below="@+id/ivBar"
+        android:layout_marginLeft="@dimen/_5sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginRight="@dimen/_5sdp"
+        android:orientation="horizontal">
+
         <TextView
-           style="@style/CommonTextMatchparent"
-            android:textColor="@color/grey"
-            android:text="@string/days"
+            android:id="@+id/tv_from"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/bold"
+            android:hint="From Date: "
+            android:textColor="@color/black"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/fromdatetv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/tv_from"
             android:layout_weight="1"
-            android:textSize="@dimen/_14sdp"
-            />
-        <TextView
-            style="@style/CommonTextMatchparent"
-            android:textColor="@color/grey"
-            android:text="@string/weekly"
-            android:layout_weight="1"
-            android:textSize="@dimen/_14sdp"
-            />
-        <TextView
-            style="@style/CommonTextMatchparent"
+            android:gravity="start"
+            android:hint="@string/select"
             android:textColor="@color/app"
-            android:text="@string/monthly"
+            android:textSize="12sp"  />
+        <!--
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_toRightOf="@+id/tv_from"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/fromdatetv"
+                    android:background="@color/red"/>
+        -->
+
+        <TextView
+            android:id="@+id/tv_to"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_from"
+            android:layout_marginLeft="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:fontFamily="@font/bold"
+            android:hint="To Date: "
+            android:textColor="@color/black"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/todatetv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/tv_from"
+            android:layout_marginLeft="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:layout_toRightOf="@+id/tv_to"
             android:layout_weight="1"
-            android:textSize="@dimen/_14sdp"
-            />
+            android:gravity="start"
+            android:hint="@string/select"
+            android:textColor="@color/app"
+            android:textSize="12sp" />
+
+        <!--
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_toRightOf="@+id/tv_to"
+                    android:layout_height="1dp"
+                    android:layout_below="@+id/todatetv"
+                    android:background="@color/red"/>
+        -->
 
     </LinearLayout>
 
+    <Button
+        android:id="@+id/btngograph"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_below="@+id/llText"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:background="@drawable/btn"
+        android:padding="5dp"
+        android:text="Go"
+        android:textColor="@color/white" />
 
     <com.github.mikephil.charting.charts.BarChart
         android:id="@+id/chart1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:minHeight="@dimen/_250sdp"
+        android:layout_below="@id/llText"
         android:layout_marginTop="@dimen/_30sdp"
         android:layout_marginBottom="@dimen/_10sdp"
-        android:layout_below="@id/llText" />
+        android:minHeight="@dimen/_250sdp" />
 
-<!--
-    <ImageView
-        android:id="@+id/ivData"
-  android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:src="@drawable/sales_data"/>
--->
+    <!--
+        <ImageView
+            android:id="@+id/ivData"
+      android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/sales_data"/>
+    -->
 
     <LinearLayout
         android:id="@+id/llData"
-        android:layout_below="@id/chart1"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_50sdp"
+        android:layout_below="@id/chart1"
+        android:layout_gravity="center"
         android:layout_margin="@dimen/_20sdp"
         android:background="@drawable/shape_row"
-        android:layout_gravity="center"
         android:gravity="center"
         android:orientation="horizontal">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginRight="@dimen/_10sdp"
             android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
             android:orientation="horizontal">
-            <TextView
-                style="@style/CommonTextWrapcontent"
-                android:textColor="@color/black"
-                android:text="Total Earning"
-                android:textSize="@dimen/_14sdp"
-                />
 
             <TextView
+                style="@style/CommonTextWrapcontent"
+                android:text="Total Earning"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_14sdp" />
+
+            <TextView
+                android:id="@+id/earningtv"
                 android:layout_width="0dp"
+                android:layout_height="wrap_content"
                 android:layout_weight="70"
                 android:fontFamily="@font/regular"
-                android:layout_height="wrap_content"
-                android:textColor="@color/black"
                 android:gravity="end"
-                android:text="$5000.20"
+                android:text="$0.00"
+                android:textColor="@color/black"
                 android:textSize="@dimen/_12sdp" />
 
         </LinearLayout>

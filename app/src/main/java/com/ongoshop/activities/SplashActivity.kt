@@ -136,7 +136,7 @@ class SplashActivity : BaseActivity() {
 
     private fun gotoDashBoardOrNot() {
         handler = Handler()
-
+        Log.e("devicetoken", "token"+SharedPrefUtil.getInstance().deviceToken.toString())
         val r = Runnable {
 
             if (SharedPrefUtil.getInstance().isLogin == null) {
@@ -155,7 +155,7 @@ class SplashActivity : BaseActivity() {
                     finishAffinity()
 
             }
-           Log.e("isLogin", SharedPrefUtil.getInstance().isLogin.toString())
+
         }
 
         handler.postDelayed(r, 2000)

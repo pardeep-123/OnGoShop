@@ -662,7 +662,8 @@ public class CommonMethods {
     }
 
     public static String parseDateToddMMyyyy(String dateAndTime,String dateFormate) {
-        String inputPattern = "yyyy-MM-dd'T'HH:mm:ss";
+        //String inputPattern = "yyyy-MM-dd'T'HH:mm:ss";
+        String inputPattern = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
         SimpleDateFormat inputFormat = new SimpleDateFormat(inputPattern);
         SimpleDateFormat outputFormat = new SimpleDateFormat(dateFormate);
         //ne line
@@ -1013,7 +1014,21 @@ public class CommonMethods {
         bitmap.setPixels(pix, 0, w, 0, 0, w, h);
         return (bitmap);
     }
+    public static String CHANGEDATEFORMAT(Date date) throws ParseException {
 
+        SimpleDateFormat changedformat = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH);
+        String formattedDate = changedformat.format(date);
+
+        return formattedDate;
+    }
+
+    public static Date CHANGEDATEFORMAT(String date) throws ParseException {
+
+        SimpleDateFormat changedformat = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH);
+        Date formattedDate = changedformat.parse(date);
+
+        return formattedDate;
+    }
     public static ArrayList<CardTypeModel> cardTypeModelSet() {
         ArrayList<CardTypeModel> listOfPattern = new ArrayList<CardTypeModel>();
 

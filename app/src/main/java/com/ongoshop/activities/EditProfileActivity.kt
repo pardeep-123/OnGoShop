@@ -197,6 +197,7 @@ class EditProfileActivity : BaseActivity(), View.OnClickListener, Observer<RestO
                     Log.e("imagePath",mAlbumFiles.get(i).path)
                     mImagePath=mAlbumFiles.get(i).path
                     Glide.with(mContext).load(mImagePath).into(ivProfile)
+                    defaultImage = mImagePath
 
                 }
             }

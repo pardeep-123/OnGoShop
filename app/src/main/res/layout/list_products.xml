@@ -75,7 +75,7 @@
 
                     <Button
                         android:id="@+id/btn_available"
-                        android:layout_width="@dimen/_70sdp"
+                        android:layout_width="@dimen/_80sdp"
                         android:layout_height="@dimen/_20sdp"
                         android:background="@drawable/btn"
                         android:fontFamily="@font/regular"
@@ -85,7 +85,7 @@
 
                     <Button
                         android:id="@+id/btn_not_available"
-                        android:layout_width="@dimen/_70sdp"
+                        android:layout_width="@dimen/_80sdp"
                         android:layout_height="@dimen/_20sdp"
                         android:layout_marginTop="@dimen/_5sdp"
                         android:background="@drawable/na_button"

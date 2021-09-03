@@ -23,7 +23,7 @@ class ScannerActivity : BaseActivity(), ResultHandler {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_barcode_scanner)
+       // setContentView(R.layout.activity_barcode_scanner)
         mContext = this
 
         mScannerView = ZBarScannerView(this) // Programmatically initialize the scanner view

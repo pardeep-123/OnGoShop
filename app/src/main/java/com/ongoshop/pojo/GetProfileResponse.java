@@ -91,6 +91,8 @@ public class GetProfileResponse {
         @SerializedName("googleId")
         @Expose
         private String googleId;
+
+
         @SerializedName("otp")
         @Expose
         private Integer otp;
@@ -112,6 +114,11 @@ public class GetProfileResponse {
         @SerializedName("vendorDeliveryCharges")
         @Expose
         private ArrayList<VendorDeliveryCharge> vendorDeliveryCharges = null;
+
+        @SerializedName("vendorDetail")
+        @Expose
+        private VendorDetail vendorDetail = null;
+
         @SerializedName("approvalStatus")
         @Expose
         private Integer approvalStatus;
@@ -378,6 +385,14 @@ public class GetProfileResponse {
 
         public void setVendorDeliveryCharges(ArrayList<VendorDeliveryCharge> vendorDeliveryCharges) {
             this.vendorDeliveryCharges = vendorDeliveryCharges;
+        }
+
+        public VendorDetail getVendorDetail() {
+            return vendorDetail;
+        }
+
+        public void setVendorDetail(VendorDetail vendorDetail) {
+            this.vendorDetail = vendorDetail;
         }
 
         public Integer getApprovalStatus() {

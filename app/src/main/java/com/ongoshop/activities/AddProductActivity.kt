@@ -1,40 +1,29 @@
 package com.ongoshop.activities
 
 import android.app.Dialog
-import android.content.Context
 import android.content.Intent
-import android.graphics.Bitmap
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
+import android.text.InputFilter
 import android.util.Log
 import android.view.Gravity
 import android.view.View
 import android.view.Window
 import android.view.WindowManager
-import android.widget.Button
-import android.widget.ImageView
-import android.widget.LinearLayout
-import android.widget.TextView
+import android.widget.*
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
-import com.nauatili.Helper.Helper.showSuccessToast
 import com.ongoshop.R
-import com.ongoshop.adapter.CategoryTypesAddShopAdapter
 import com.ongoshop.base.BaseActivity
 import com.ongoshop.manager.restApi.RestObservable
 import com.ongoshop.manager.restApi.Status
 import com.ongoshop.pojo.AddProductResponse
-import com.ongoshop.pojo.ChangeAvailabilityResponse
 import com.ongoshop.pojo.CheckBarCodeAvailabilityResponse
-import com.ongoshop.pojo.ProductListingResponse
-import com.ongoshop.utils.helperclasses.image
 import com.ongoshop.utils.others.CommonMethods
 import com.ongoshop.utils.others.Constants
-import com.ongoshop.utils.others.SharedPrefUtil
-import com.ongoshop.viewmodel.AuthViewModel
+import com.ongoshop.utils.others.DecimalDigitsInputFilter
 import com.ongoshop.viewmodel.HomeViewModel
 import com.yanzhenjie.album.Album
 import com.yanzhenjie.album.AlbumFile
@@ -44,9 +33,12 @@ import kotlinx.android.synthetic.main.activity_add_product.ivBack
 import kotlinx.android.synthetic.main.activity_complete_profile.*
 import kotlinx.android.synthetic.main.activity_edit_profile.*
 import kotlinx.android.synthetic.main.activity_product_detail.*
+import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import java.io.File
-import java.util.HashMap
+import java.util.*
+import kotlin.collections.ArrayList
+
 
 class AddProductActivity : BaseActivity(), View.OnClickListener, Observer<RestObservable> {
     var btnProceed: Button? = null
@@ -94,6 +86,21 @@ class AddProductActivity : BaseActivity(), View.OnClickListener, Observer<RestOb
 
         if (intent.extras != null) {
             if (intent.getStringExtra("from").equals("BarcodeScan")){
+
+                for (i in 0 until ll.childCount)
+                {
+                    if (ll.getChildAt(i) is EditText){
+                        var edt:EditText =  ll.getChildAt(i) as EditText
+                        edt.isEnabled = false
+                    }
+
+                }
+                et_bar_code.isEnabled = false
+                ivOff?.isEnabled = false
+                et_price?.isEnabled = true
+                et_gtin_number?.isEnabled = true
+                et_origin_country?.isEnabled = true
+                isBarcode = "0"
                 categoryId = intent.getStringExtra("categoryId")
                 et_product_name.setText(intent.getStringExtra("name"))
                 et_brand_Name.setText(intent.getStringExtra("brandName"))
@@ -106,11 +113,14 @@ class AddProductActivity : BaseActivity(), View.OnClickListener, Observer<RestOb
                 et_origin_country.setText(intent.getStringExtra("countryOfOrigin"))
                 isBarcode= intent.getStringExtra("isBarcodeItem")!!
                 if (intent.getStringExtra("weightUnit").equals("0")){
+                    weightUnit = "0"
                     tv_measurement_unit.setText(resources.getString(R.string.pounds))
                 }else {
+                    weightUnit = "1"
                     tv_measurement_unit.setText(resources.getString(R.string.kilograms))
 
                 }
+
                 Glide.with(mContext!!).load(intent.getStringExtra("image")).error(R.drawable.ic_image_placeholder).into(ivImg!!)
 
 
@@ -119,14 +129,17 @@ class AddProductActivity : BaseActivity(), View.OnClickListener, Observer<RestOb
             }
 
         }
+
+        et_price.filters = arrayOf<InputFilter>(DecimalDigitsInputFilter(5, 2))
+
     }
 
     private fun isValid(): Boolean {
         var check = false
         if (!mValidationClass.isNetworkConnected)
             showAlerterRed(resources.getString(R.string.no_internet))
-        else if (mValidationClass.checkStringNull(mImagePath))
-            showAlerterRed(resources.getString(R.string.error_image))
+       /* else if (mValidationClass.checkStringNull(mImagePath))
+            showAlerterRed(resources.getString(R.string.error_image))*/
         else if (mValidationClass.checkStringNull(et_brand_Name.text.toString().trim()))
             showAlerterRed(resources.getString(R.string.error_brand_name))
         else if (mValidationClass.checkStringNull(et_price.text.toString().trim()))
@@ -153,8 +166,8 @@ class AddProductActivity : BaseActivity(), View.OnClickListener, Observer<RestOb
         weightUnitDialog = Dialog(mContext!!, R.style.Theme_Dialog)
         weightUnitDialog.requestWindowFeature(Window.FEATURE_NO_TITLE)
         weightUnitDialog.setContentView(R.layout.weight_unit_types_alert)
-        var tvPound = weightUnitDialog.findViewById(R.id.tv_pound) as TextView
-        var tvKilo = weightUnitDialog.findViewById(R.id.tv_kilo) as TextView
+        val tvPound = weightUnitDialog.findViewById(R.id.tv_pound) as TextView
+        val tvKilo = weightUnitDialog.findViewById(R.id.tv_kilo) as TextView
 
         weightUnitDialog.window!!.setLayout(
                 WindowManager.LayoutParams.MATCH_PARENT,
@@ -201,7 +214,12 @@ class AddProductActivity : BaseActivity(), View.OnClickListener, Observer<RestOb
             if (!mValidationClass.isNetworkConnected) {
                 showAlerterRed(resources.getString(R.string.no_internet))
             } else {
-                val bodyimage = mValidationClass.prepareFilePart("image", File(mImagePath))
+
+                var bodyimage:MultipartBody.Part?=null
+              if (mImagePath.isNotEmpty())
+                     bodyimage = mValidationClass.prepareFilePart("image", File(mImagePath))
+
+
                 val partCategoryId = mValidationClass.createPartFromString(categoryId)
                 val partProductName = mValidationClass.createPartFromString(et_product_name.text.toString().trim())
                 val partProductDescription = mValidationClass.createPartFromString(et_description.text.toString().trim())
@@ -229,7 +247,10 @@ class AddProductActivity : BaseActivity(), View.OnClickListener, Observer<RestOb
                 map.put("weight", partWideght)
                 map.put("barcode", partBarCodeNumber)
 
-                viewModel.addProductApi(this, true, map, bodyimage)
+                if (mImagePath.isNotEmpty())
+                viewModel.addProductApi(this, true, map, bodyimage!!)
+                else
+                    viewModel.addProductApi(this, true, map)
                 viewModel.mResponse.observe(this, this)
 
             }
@@ -250,12 +271,14 @@ class AddProductActivity : BaseActivity(), View.OnClickListener, Observer<RestOb
                 ivOn!!.visibility = View.VISIBLE
                 isBarcode = "0"
                 ll_bar_code.visibility = View.GONE
+                nobarcodeitemttxtview.visibility = View.GONE
             }
             R.id.ivOn -> {
                 ivOff!!.visibility = View.VISIBLE
                 ivOn!!.visibility = View.GONE
                 isBarcode = "1"
                 ll_bar_code.visibility = View.VISIBLE
+                nobarcodeitemttxtview.visibility = View.VISIBLE
             }
             R.id.btnProceed -> {
                 if (isBarcode.equals("1")) {
@@ -276,7 +299,7 @@ class AddProductActivity : BaseActivity(), View.OnClickListener, Observer<RestOb
                 weightUnitDailogMethod()
             }
             R.id.tv_check_availability -> {
-                isCheckAvailability = true
+
                 checkBarCodeAPI()
             }
         }
@@ -317,7 +340,7 @@ class AddProductActivity : BaseActivity(), View.OnClickListener, Observer<RestOb
                         val i = Intent(mContext, HomeActivity::class.java)
                         i.putExtra("type", "my")
                         startActivity(i)
-                        finishAffinity()
+                        //finishAffinity()
 
                     } else {
                         CommonMethods.AlertErrorMessage(mContext, addProductResponse.getMessage())
@@ -326,6 +349,7 @@ class AddProductActivity : BaseActivity(), View.OnClickListener, Observer<RestOb
                 if (it.data is CheckBarCodeAvailabilityResponse) {
                     val checkBarCodeAvailabilityResponse: CheckBarCodeAvailabilityResponse = it.data
                     if (checkBarCodeAvailabilityResponse.getCode() == Constants.success_code) {
+                        isCheckAvailability = true
                         showSuccessToast(mContext!!, checkBarCodeAvailabilityResponse!!.getMessage()!!)
 
                     } else {

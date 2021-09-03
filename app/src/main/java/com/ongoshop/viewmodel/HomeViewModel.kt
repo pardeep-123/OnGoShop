@@ -69,6 +69,18 @@ class HomeViewModel : ViewModel() {
                 )
     }
 
+    fun addProductApi(activity: Activity, showLoader: Boolean, map: java.util.HashMap<String, RequestBody>
+    ) {
+        restApiInterface.addProduct(map)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe { mResponse.value = RestObservable.loading(activity, showLoader) }
+                .subscribe(
+                        { mResponse.value = RestObservable.success(it) },
+                        { mResponse.value = RestObservable.error(activity, it) }
+                )
+    }
+
     fun checkBarcodeApi(activity: Activity, showLoader: Boolean, map: HashMap<String, String>) {
         restApiInterface.checkBarcode(map)
                 .subscribeOn(Schedulers.io())
@@ -82,6 +94,17 @@ class HomeViewModel : ViewModel() {
 
     fun orderListApi(activity: Activity, showLoader: Boolean, map: HashMap<String, String>) {
         restApiInterface.ordersList(map)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .doOnSubscribe { mResponse.value = RestObservable.loading(activity, showLoader) }
+                .subscribe(
+                        { mResponse.value = RestObservable.success(it) },
+                        { mResponse.value = RestObservable.error(activity, it) }
+                )
+    }
+
+    fun getgraphdetailapi(activity: Activity, showLoader: Boolean, map: HashMap<String, String>) {
+        restApiInterface.getgraphdetail(map)
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .doOnSubscribe { mResponse.value = RestObservable.loading(activity, showLoader) }

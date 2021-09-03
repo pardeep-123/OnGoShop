@@ -30,7 +30,7 @@ class TodaysNewOrderAdapter(internal var context: Context, private var todaysNew
         fun bindItems(orderList: OrderListResponse.Pastdate?) {
             tvUsername.setText(orderList!!.username)
             tvOrderNumber.setText("Order Number: "+orderList!!.orderNo)
-            tvDate.text = CommonMethods.parseDateToddMMyyyy(orderList.createdAt, "dd-mm-yyyy");
+            tvDate.text = CommonMethods.parseDateToddMMyyyy(orderList.createdAt, "dd-MM-yyyy");
             tvTimings.setText(orderList!!.deliverySlot)
         }
 

@@ -110,6 +110,8 @@
                     android:textSize="@dimen/_12sdp" />
 
                 <TextView
+                    android:paddingTop="@dimen/_10sdp"
+                    android:paddingBottom="@dimen/_10sdp"
                     android:id="@+id/tvCreateAccount"
                     style="@style/CommonTextWrapcontent"
                     android:gravity="center"
@@ -120,6 +122,5 @@
         </LinearLayout>
 
     </ScrollView>
-
 
 </RelativeLayout>

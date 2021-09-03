@@ -36,8 +36,7 @@ class AddCardActivity : BaseActivity(), View.OnClickListener, Observer<RestObser
     lateinit var ivImg: ImageView
     lateinit var ll_chackbox: LinearLayout
     lateinit var btnSave: Button
-    var temp = 2
-
+    private var temp = 2
     private var etCardNumber: CardNumberEditText? = null
     private var current_year: Int = 0
     private var future_year = 40

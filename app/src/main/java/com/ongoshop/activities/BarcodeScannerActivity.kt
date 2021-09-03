@@ -78,6 +78,14 @@ class BarcodeScannerActivity : BaseActivity(), View.OnClickListener, Observer<Re
                 finish()
             }
             R.id.btnSearch -> {
+
+
+              /*  val map = HashMap<String, String>()
+                map.put("barcode", "352342423823")
+
+                viewModel.getProductBarcodeAPI(this, true, map)
+                viewModel.mResponse.observe(this, this)*/
+
                 val i = Intent(mContext, ScannerActivity::class.java)
                 startActivityForResult(i, LAUNCH_SECOND_ACTIVITY)
             }

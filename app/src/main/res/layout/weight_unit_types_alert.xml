@@ -42,7 +42,23 @@
             android:layout_height="wrap_content"
             android:text="@string/pounds"/>
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:background="@color/black"/>
 
+        <TextView
+            android:id="@+id/tv_gram"
+            android:layout_width="wrap_content"
+            android:gravity="center"
+            android:fontFamily="@font/regular"
+            android:minHeight="@dimen/_30sdp"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_13sdp"
+            android:visibility="gone"
+            android:layout_height="wrap_content"
+            android:text="@string/gram"/>
     </LinearLayout>
 
 </RelativeLayout>

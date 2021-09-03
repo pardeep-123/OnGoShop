@@ -20,11 +20,12 @@
                 android:layout_marginTop="@dimen/_10sdp">
 
                 <ImageView
-                    android:id="@+id/ivBack"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:id="@+id/ivBacksignup"
+                    android:padding="8dp"
+                    android:layout_width="@dimen/_30sdp"
+                    android:layout_height="@dimen/_30sdp"
                     android:layout_alignParentLeft="true"
-                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginLeft="@dimen/_4sdp"
                     android:src="@drawable/back" />
 
                 <LinearLayout
@@ -59,7 +60,6 @@
                   android:layout_below="@id/ivBar"
                   android:fillViewport="true">
 
-
                   <LinearLayout
                       android:layout_width="match_parent"
                       android:layout_height="wrap_content"
@@ -79,18 +79,12 @@
                               android:layout_height="wrap_content"
                               android:gravity="center">
 
-                              <ImageView
-                                  android:id="@+id/ivImg"
-                                  android:layout_width="match_parent"
-                                  android:layout_height="match_parent"
-                                  android:layout_centerInParent="true" />
-
                               <de.hdodenhof.circleimageview.CircleImageView
                                   android:id="@+id/iv_profile"
                                   android:layout_width="wrap_content"
                                   android:layout_height="wrap_content"
                                   android:layout_centerHorizontal="true"
-                                  android:src="@drawable/woman_img"/>
+                                  android:src="@mipmap/ic_user_place"/>
                           </RelativeLayout>
 
                           <RelativeLayout
@@ -139,6 +133,7 @@
                       <EditText
                           android:id="@+id/et_name"
                           style="@style/Edittext"
+                          android:maxLength="20"
                           android:layout_below="@id/tvEmail"
                           android:layout_marginTop="@dimen/_5sdp"
                           android:hint="@string/enter_name"
@@ -256,6 +251,22 @@
                           android:maxLines="1"
                           android:textSize="16sp" />
 
+                      <TextView
+                          style="@style/CommonTextWrapcontent"
+                          android:layout_marginTop="@dimen/_10sdp"
+                          android:text="@string/address"
+                          android:textColor="@color/black"
+                          android:textSize="@dimen/_12sdp" />
+
+                      <EditText
+                          android:id="@+id/et_address"
+                          style="@style/Edittext"
+                          android:layout_marginTop="@dimen/_5sdp"
+                          android:hint="@string/enter_address"
+                          android:focusable="false"
+                          android:maxLines="1"
+                          android:textSize="16sp" />
+
                       <LinearLayout
                           android:layout_width="match_parent"
                           android:layout_height="wrap_content"
@@ -270,15 +281,15 @@
 
                               <ImageView
                                   android:id="@+id/ivOn"
-                                  android:layout_width="wrap_content"
-                                  android:layout_height="wrap_content"
+                                  android:layout_width="@dimen/_15sdp"
+                                  android:layout_height="@dimen/_15sdp"
                                   android:src="@drawable/check_box_4"
                                   android:visibility="gone" />
 
                               <ImageView
                                   android:id="@+id/ivOff"
-                                  android:layout_width="wrap_content"
-                                  android:layout_height="wrap_content"
+                                  android:layout_width="@dimen/_15sdp"
+                                  android:layout_height="@dimen/_15sdp"
                                   android:src="@drawable/check_box_3" />
                           </LinearLayout>
 

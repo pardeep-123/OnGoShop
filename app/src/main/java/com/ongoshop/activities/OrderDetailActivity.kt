@@ -36,7 +36,6 @@ class OrderDetailActivity : BaseActivity(), View.OnClickListener, Observer<RestO
     var orderId: String? = null
 
     var recyclerview: RecyclerView? = null
-    var orderItemsListAdapter: OrderItemsListAdapter? = null
     private val viewModel: HomeViewModel
             by lazy { ViewModelProviders.of(this).get(HomeViewModel::class.java) }
 
@@ -159,6 +158,8 @@ class OrderDetailActivity : BaseActivity(), View.OnClickListener, Observer<RestO
                             recyclerview!!.visibility = View.VISIBLE
                             tv_no_items!!.visibility = View.GONE
                             setCartDetailsAdapter(orderItemsListResponse!!.getBody()!!)
+                            btnFinish!!.visibility = View.VISIBLE
+
                         }
 
                         tv_total_items.setText(getString(R.string.total_items) + orderItemsListResponse.getBody()!!.size.toString())

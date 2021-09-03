@@ -117,44 +117,37 @@ class LoginActivity : BaseActivity(), View.OnClickListener, Observer<RestObserva
                     val registerResponse: LoginResponse = it.data
                     if (registerResponse.getCode() == Constants.success_code) {
 
-                        MyApplication.getnstance()
+                        if (registerResponse.body.role==3)
+                        {
+                            MyApplication.getnstance()
                                 .setString(
-                                        Constants.AuthKey,
-                                        registerResponse.getBody()!!.token!!
+                                    Constants.AuthKey,
+                                    registerResponse.getBody()!!.token!!
                                 )
-                        MyApplication.instance!!.setString(
+                            MyApplication.instance!!.setString(
                                 Constants.UserData,
                                 modelToString(registerResponse.getBody()!!)
-                        )
+                            )
 
-                        SharedPrefUtil.getInstance().saveAuthToken(registerResponse.getBody()!!.token)
-                        SharedPrefUtil.getInstance().saveImage(registerResponse.getBody()!!.image)
-                        SharedPrefUtil.getInstance().saveUserId(registerResponse.getBody()!!.id.toString())
-                        SharedPrefUtil.getInstance().saveEmail(registerResponse.getBody()!!.email)
-                        SharedPrefUtil.getInstance().saveName(registerResponse.getBody()!!.name)
-                        SharedPrefUtil.getInstance().saveDeviceToken(registerResponse.getBody()!!.deviceToken)
+                            SharedPrefUtil.getInstance().saveAuthToken(registerResponse.getBody()!!.token)
+                            SharedPrefUtil.getInstance().saveImage(registerResponse.getBody()!!.vendorDetail.image)
+                            SharedPrefUtil.getInstance().saveUserId(registerResponse.getBody()!!.id.toString())
+                            SharedPrefUtil.getInstance().saveEmail(registerResponse.getBody()!!.email)
+                            SharedPrefUtil.getInstance().categoryId = registerResponse.getBody()!!.vendorDetail.shop_category_id
+                            SharedPrefUtil.getInstance().categoryName = registerResponse.getBody()!!.vendorDetail.shopCategory
+                            SharedPrefUtil.getInstance().saveName(registerResponse.getBody()!!.vendorDetail.name)
+                            SharedPrefUtil.getInstance().saveDeviceToken(registerResponse.getBody()!!.deviceToken)
 
-                       /* if (registerResponse.body!!.verified == 0) {
-                            val intent = Intent(mContext, VerificationCodeActivity::class.java)
-                            intent.putParcelableArrayListExtra("vendorDeliveryOptions", registerResponse.body.vendorDeliveryOptions)
-                            intent.putParcelableArrayListExtra("vendorDeliveryCharges", registerResponse.body.vendorDeliveryCharges)
-                            startActivity(intent)
-                            finishAffinity()
-                        } else if (registerResponse.getBody()!!.isShopAdded == 0) {
-                            val intent = Intent(mContext, AddShopActivity::class.java)
-                            intent.putParcelableArrayListExtra("vendorDeliveryOptions", registerResponse.body.vendorDeliveryOptions)
-                            Log.e("LoginSize", registerResponse.body.vendorDeliveryOptions.size.toString())
 
-                            intent.putParcelableArrayListExtra("vendorDeliveryCharges", registerResponse.body.vendorDeliveryCharges)
-                            startActivity(intent)
-                            finishAffinity()
-                        } else {
-*/
                             SharedPrefUtil.getInstance().isLogin = true
-
                             val intent = Intent(mContext, HomeActivity::class.java)
                             startActivity(intent)
                             finishAffinity()
+                        }
+                        else{
+                            showAlerterRed("Wrong credentials!!")
+                        }
+
                        /* }*/
 
                     }

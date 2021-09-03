@@ -56,8 +56,11 @@ class VerificationCodeActivity : BaseActivity(), TextWatcher, View.OnClickListen
         editTextfour.addTextChangedListener(mContext)
 
         if (intent !=null){
-            vendorDeliveryOptionsList = intent.getParcelableArrayListExtra<VendorDeliveryOption>("vendorDeliveryOptions") as ArrayList<VendorDeliveryOption>
-            vendorDeliveryChargesList = intent.getParcelableArrayListExtra<VendorDeliveryCharge>("vendorDeliveryCharges") as ArrayList<VendorDeliveryCharge>
+            if (intent.getParcelableArrayListExtra<VendorDeliveryOption>("vendorDeliveryOptions")!=null){
+                vendorDeliveryOptionsList = intent.getParcelableArrayListExtra<VendorDeliveryOption>("vendorDeliveryOptions") as ArrayList<VendorDeliveryOption>
+                vendorDeliveryChargesList = intent.getParcelableArrayListExtra<VendorDeliveryCharge>("vendorDeliveryCharges") as ArrayList<VendorDeliveryCharge>
+
+            }
 
         }
 

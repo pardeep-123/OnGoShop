@@ -34,14 +34,14 @@
     </RelativeLayout>
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/ivBar">
+        android:layout_height="match_parent"
+        android:layout_below="@+id/ivBar">
 
         <TextView
             android:id="@+id/tv_no_orders"
             style="@style/CommonTextWrapcontent"
             android:layout_centerInParent="true"
-            android:visibility="gone"
+
             android:text="@string/no_order_available"
             android:textColor="@color/black"
             android:textSize="@dimen/_14sdp" />
@@ -50,6 +50,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:id="@+id/rv_pickup_orders"
+
             android:padding="@dimen/_10sdp" />
     </RelativeLayout>
 </RelativeLayout>

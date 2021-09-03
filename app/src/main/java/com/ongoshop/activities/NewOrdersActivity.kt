@@ -54,6 +54,12 @@ class NewOrdersActivity : BaseActivity(), View.OnClickListener, Observer<RestObs
             if (!mValidationClass.isNetworkConnected) {
                 showAlerterRed(resources.getString(R.string.no_internet))
             } else {
+
+                if (intent.getStringExtra("Orders")!!.equals("1")){
+                    tv_title.text = getString(R.string.inprogress)
+                }else{
+
+                }
                 val map = HashMap<String, String>()
                 map.put("status", intent.getStringExtra("Orders")!!)
 
@@ -76,14 +82,25 @@ class NewOrdersActivity : BaseActivity(), View.OnClickListener, Observer<RestObs
         rvTodaysOrder!!.adapter = todaysNewOrderAdapter
     }
 
+    override fun onBackPressed() {
+
+        if (intent.hasExtra("from"))
+        {
+            val i = Intent(mContext, HomeActivity::class.java)
+            startActivity(i)
+        }
+        else{
+            super.onBackPressed()
+        }
+
+    }
     override fun onClick(v: View?) {
         when (v!!.id) {
             R.id.ivBack -> {
-                onLeftIconClick()
+               onBackPressed()
             }
             R.id.ivNoti -> {
-                val i = Intent(mContext, NotificationActivity::class.java)
-                startActivity(i)
+
             }
         }
     }

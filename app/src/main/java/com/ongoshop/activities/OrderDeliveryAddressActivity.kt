@@ -28,12 +28,9 @@ class OrderDeliveryAddressActivity : BaseActivity(), View.OnClickListener, Obser
     var mContext: OrderDeliveryAddressActivity? = null
     var btnDelivery: Button? = null
     var orderId: String? = null
-    var btnDelivery2: Button? = null
+
     private val viewModel: HomeViewModel
             by lazy { ViewModelProviders.of(this).get(HomeViewModel::class.java) }
-
-
-
 
     override fun getContentId(): Int {
         return R.layout.activity_delivery2
@@ -41,7 +38,6 @@ class OrderDeliveryAddressActivity : BaseActivity(), View.OnClickListener, Obser
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_delivery2)
         mContext = this
         ivBack = findViewById(R.id.ivBack)
         btnDelivery = findViewById(R.id.btnDelivery)
@@ -92,6 +88,7 @@ class OrderDeliveryAddressActivity : BaseActivity(), View.OnClickListener, Obser
             }
         })
 */
+
     }
 
     fun orderShippedAPI() {

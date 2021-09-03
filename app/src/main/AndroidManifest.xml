@@ -17,6 +17,7 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:logo="@mipmap/ic_launcher"
         android:networkSecurityConfig="@xml/network_security_config"
         android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -163,6 +164,7 @@
         <activity
             android:name=".activities.MyShopActivity"
             android:screenOrientation="portrait"
+            android:launchMode="singleTask"
             android:windowSoftInputMode="stateAlwaysHidden" />
 
         <activity
@@ -173,8 +175,10 @@
         <activity
             android:name=".activities.HomeActivity"
             android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden" />
+            android:launchMode="singleTask"
 
+            android:windowSoftInputMode="stateAlwaysHidden" />
+      <!--  android:noHistory="true"-->
         <activity
             android:name=".activities.MaximumDeliveryPerDayActivity"
             android:screenOrientation="portrait"
@@ -189,6 +193,7 @@
             android:name=".activities.AddShopActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden">
+
         </activity>
         <activity
             android:name=".activities.DeliveryOptionsActivity"
@@ -211,6 +216,21 @@
             android:name=".activities.VerificationCodeActivity"
             android:screenOrientation="portrait"
             android:windowSoftInputMode="stateAlwaysHidden" />
+
+        <activity
+            android:name=".activities.SplashActivity"
+            android:screenOrientation="portrait"
+            android:windowSoftInputMode="stateAlwaysHidden">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
+
+
 
         <activity
             android:name=".activities.MyShopEditActivity"
@@ -246,16 +266,6 @@
             android:name="com.google.android.gms.vision.DEPENDENCIES"
             android:value="barcode" />
 
-        <activity
-            android:name=".activities.SplashActivity"
-            android:screenOrientation="portrait"
-            android:windowSoftInputMode="stateAlwaysHidden">
-                        <intent-filter>
-                            <action android:name="android.intent.action.MAIN" />
-
-                            <category android:name="android.intent.category.LAUNCHER" />
-                        </intent-filter>
-        </activity>
 
         <provider
             android:name="androidx.core.content.FileProvider"

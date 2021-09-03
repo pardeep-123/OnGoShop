@@ -5,6 +5,7 @@ import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
+import android.app.TaskStackBuilder;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
@@ -15,11 +16,15 @@ import android.net.Uri;
 import android.os.Build;
 import android.util.Log;
 
+import androidx.annotation.NonNull;
 import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.firebase.messaging.RemoteMessage;
 import com.ongoshop.R;
+import com.ongoshop.activities.HomeActivity;
+import com.ongoshop.activities.NewOrdersActivity;
+import com.ongoshop.utils.others.SharedPrefUtil;
 
 
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
@@ -34,13 +39,18 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     Notification notification;
 
     @Override
+    public void onNewToken(@NonNull String s) {
+        super.onNewToken(s);
+        SharedPrefUtil.getInstance().saveDeviceToken(s);
+        Log.e("devicetoken:",s);
+    }
+
+    @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
         Log.d(TAG, "From: " + remoteMessage.getData());
 
         NotificationManager notificationManager = (NotificationManager) getSystemService(Context.NOTIFICATION_SERVICE);
         notificationManager.cancelAll();
-
-
         // stopService(new Intent(this, GetCurrentLocation.class));
 
         getManager();
@@ -58,8 +68,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         Log.e(TAG, "Notification Message Body: " + remoteMessage.getData());
 
         if (remoteMessage.getData().size() > 0) {
-            message = remoteMessage.getData().get("message");
-            notification_code = remoteMessage.getData().get("notification_code");
+            message = remoteMessage.getData().get("msg");
             title = remoteMessage.getData().get("title");
 
 
@@ -82,55 +91,20 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     }
 
     @TargetApi(Build.VERSION_CODES.LOLLIPOP)
-    private void sendNotification(Context context, String message, String notification_code) {
+    private void sendNotification(Context context, String message, String orderid) {
+
+        TaskStackBuilder stackBuilder = TaskStackBuilder.create(this);
+
+        stackBuilder.addNextIntent(new Intent(this, HomeActivity.class));
         Intent local = new Intent();
         local.setAction("pushstatus");
-
-        Intent intent = null;
-
+        Intent launchintent =  new Intent(this, HomeActivity.class);
+        Intent openintent = new Intent(this, NewOrdersActivity.class);
+        openintent.putExtra("Orders", "0");
+        openintent.putExtra("from","notification");
         LocalBroadcastManager.getInstance(this).sendBroadcast(local);
 
-/*        if (notification_code.equals("1")) {
-            intent = new Intent(this, MainActivity.class);
-            intent.putExtra("from", "push");
-            local.putExtra("from", "push");
-
-            LocalBroadcastManager.getInstance(this).sendBroadcast(local);
-
-        } else if (notification_code.equals("2")) {
-            intent = new Intent(this, TraitsActivity.class);
-            intent.putExtra("from", "push");
-            local.putExtra("from", "push");
-
-
-            LocalBroadcastManager.getInstance(this).sendBroadcast(local);
-
-
-        } else if (notification_code.equals("3")) {
-            intent = new Intent(this, ConnectionRequestsActivity.class);
-            intent.putExtra("from", "push");
-            local.putExtra("from", "push");
-
-
-            LocalBroadcastManager.getInstance(this).sendBroadcast(local);
-
-
-        } else if (notification_code.equals("4")) {
-            intent = new Intent(this, ConnectionsActivity.class);
-            intent.putExtra("from", "push");
-            local.putExtra("from", "push");
-
-
-            LocalBroadcastManager.getInstance(this).sendBroadcast(local);
-
-
-        } else  {
-             intent = new Intent(this, MainActivity.class);
-            intent.putExtra("from", "push");
-
-        }*/
-
-        PendingIntent pendingIntent = PendingIntent.getActivity(context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        PendingIntent pendingIntent = PendingIntent.getActivities(context, 21,  new Intent[] {launchintent, openintent}, PendingIntent.FLAG_UPDATE_CURRENT);
         Bitmap icon1 = BitmapFactory.decodeResource(context.getResources(), R.mipmap.ic_launcher);
         Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
 

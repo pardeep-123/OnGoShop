@@ -12,16 +12,20 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.ongoshop.R
-import com.ongoshop.activities.ProductActivity
 import com.ongoshop.activities.ProductDetailActivity
-import com.ongoshop.clickListeners.CategoryClick
 import com.ongoshop.clickListeners.ProductClick
 import com.ongoshop.pojo.MyProductListingResponse
+import com.ongoshop.pojo.ProductListingResponse
 
 class MyProductsAdapter(internal var context: Context, internal var productList: ArrayList<MyProductListingResponse.Body?>,
                         internal var onClickListener: ProductClick)
     : RecyclerView.Adapter<MyProductsAdapter.MyProductsViewHolder>() {
-  
+    var templist: ArrayList<MyProductListingResponse.Body?>
+
+    init {
+        this.templist = productList
+
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyProductsViewHolder {
         return MyProductsViewHolder(
@@ -42,6 +46,33 @@ class MyProductsAdapter(internal var context: Context, internal var productList:
     override fun getItemCount(): Int {
         return productList.size
     }
+
+    fun filter(charText: String, nobooking: TextView) {
+        var charText = charText
+        charText = charText.toLowerCase()
+        val nList: MutableList<MyProductListingResponse.Body?> =
+                ArrayList<MyProductListingResponse.Body?>()
+        if (charText.length == 0) {
+            nList.addAll(templist)
+        } else {
+            for (wp in templist) {
+                if (wp!!.name!!.toLowerCase()
+                                .contains(charText.toLowerCase())) {
+                    nList.add(wp)
+                }
+            }
+        }
+        productList = nList as ArrayList<MyProductListingResponse.Body?>
+        notifyDataSetChanged()
+
+
+        if (templist.isEmpty()) {
+            nobooking.setVisibility(View.VISIBLE)
+        } else {
+            nobooking.setVisibility(View.GONE)
+        }
+    }
+
 
     inner class MyProductsViewHolder(view: View?) : RecyclerView.ViewHolder(view!!){
 
@@ -76,6 +107,7 @@ class MyProductsAdapter(internal var context: Context, internal var productList:
 
             rlProductlist.setOnClickListener {
                 var intent= Intent(context, ProductDetailActivity::class.java)
+                intent.putExtra("from", "MyProducts")
                 intent.putExtra("productId", productList.get(adapterPosition)!!.id.toString())
                 intent.putExtra("productImage", productList.get(adapterPosition)!!.image)
                 intent.putExtra("productName", productList.get(adapterPosition)!!.name)
@@ -85,7 +117,6 @@ class MyProductsAdapter(internal var context: Context, internal var productList:
                 intent.putExtra("brand", productList.get(adapterPosition)!!.brandName)
                 intent.putExtra("weight", tvProductWeight.text.toString())
                 intent.putExtra("description", productList.get(adapterPosition)!!.description)
-
                 context.startActivity(intent)
             }
 

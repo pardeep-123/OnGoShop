@@ -27,8 +27,9 @@ class ProductDetailActivity : BaseActivity(), View.OnClickListener, Observer<Res
     var btnEdit: Button? = null
     var btnDelete: Button? = null
     var ivBack: ImageView? = null
-    private  var productId=""
+    private var productId = ""
     var dialog: Dialog? = null
+
     private val viewModel: HomeViewModel
             by lazy { ViewModelProviders.of(this).get(HomeViewModel::class.java) }
 
@@ -50,8 +51,7 @@ class ProductDetailActivity : BaseActivity(), View.OnClickListener, Observer<Res
         btnEdit!!.setOnClickListener(mContext)
 
         if (intent.extras != null) {
-            Glide.with(mContext!!).load(intent.getStringExtra("productImage")).
-            error(R.mipmap.no_image_placeholder).into(iv_product_image)
+            Glide.with(mContext!!).load(intent.getStringExtra("productImage")).error(R.mipmap.no_image_placeholder).into(iv_product_image)
             productId = intent.getStringExtra("productId")!!
             tv_product_name.text = intent.getStringExtra("productName")
             tv_product_code.text = intent.getStringExtra("barcode")
@@ -61,10 +61,13 @@ class ProductDetailActivity : BaseActivity(), View.OnClickListener, Observer<Res
             tv_brand.text = intent.getStringExtra("brand")
             tv_product_desc.text = intent.getStringExtra("description")
 
+            if (intent.getStringExtra("from").equals("MyProducts")) {
+                btnDelete!!.visibility = View.VISIBLE
+            } else {
+                btnDelete!!.visibility = View.GONE
+            }
         }
     }
-
-
 
 
     private fun showDialog() {
@@ -115,19 +118,20 @@ class ProductDetailActivity : BaseActivity(), View.OnClickListener, Observer<Res
                 }
             }
 
-         //   edit2Dialog()
+            //   edit2Dialog()
         }
         dialog!!.show()
     }
 
-    private fun edit2Dialog(minimumSellingPrice: String?) {
+    private fun edit2Dialog(mrp: String?) {
         dialog = Dialog(mContext!!)
         dialog!!.window!!.setBackgroundDrawableResource(android.R.color.transparent)
         dialog!!.setContentView(R.layout.aleet_edit_productdetail2)
         dialog!!.setCancelable(true)
         val btnOk = dialog!!.findViewById<Button>(R.id.btnOk)
-        btnOk.setOnClickListener { dialog!!.dismiss()
-            tv_product_price.setText(minimumSellingPrice)
+        btnOk.setOnClickListener {
+            dialog!!.dismiss()
+            tv_product_price.text = mrp
         }
         dialog!!.show()
     }
@@ -175,7 +179,7 @@ class ProductDetailActivity : BaseActivity(), View.OnClickListener, Observer<Res
                     val editProductPriceResponse: EditProductPriceResponse = it.data
                     if (editProductPriceResponse.getCode() == Constants.success_code) {
                         showSuccessToast(mContext!!, editProductPriceResponse.getMessage()!!)
-                        edit2Dialog(editProductPriceResponse.getBody()!!.minimumSellingPrice)
+                        edit2Dialog(editProductPriceResponse.getBody()!!.mrp)
 
                     } else {
                         CommonMethods.AlertErrorMessage(mContext, editProductPriceResponse.getMessage())

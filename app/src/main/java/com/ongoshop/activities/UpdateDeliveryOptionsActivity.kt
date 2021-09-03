@@ -9,6 +9,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.gson.GsonBuilder
 import com.ongoshop.R
 
 import com.ongoshop.adapter.UpdateDeliveryOptionsAdapter
@@ -40,6 +41,7 @@ class UpdateDeliveryOptionsActivity : BaseActivity(), View.OnClickListener, Deli
     lateinit var recyclerview: RecyclerView
     private var shopABN=""
     private var shopName = ""
+    private var vendorId = ""
     private var shopCategory = ""
     private var isDeliver = ""
     private var deliveriesPerDay = ""
@@ -52,6 +54,7 @@ class UpdateDeliveryOptionsActivity : BaseActivity(), View.OnClickListener, Deli
     private var shopImage = ""
     private var openTime = ""
     private var closeTime = ""
+    var makebuttonclickable = false
     lateinit var deliveryOptions1Adapter: UpdateDeliveryOptionsAdapter
     private lateinit var mContext: UpdateDeliveryOptionsActivity
     private var vendorDeliveryOptionsList: ArrayList<VendorDeliveryOption>? = ArrayList()
@@ -79,7 +82,6 @@ class UpdateDeliveryOptionsActivity : BaseActivity(), View.OnClickListener, Deli
 
         if (intent != null) {
 
-
             shopName = intent.getStringExtra("shopName")!!
             shopCategory = intent.getStringExtra("shopCategory")!!
             shopABN = intent.getStringExtra("shopABN")!!
@@ -103,7 +105,7 @@ class UpdateDeliveryOptionsActivity : BaseActivity(), View.OnClickListener, Deli
                     ArrayList<VendorDeliveryOption>
             Log.e("UpdateDeliOptionSize", vendorDeliveryOptionsList!!.size.toString())
 
-            deliveryOptions1Adapter = UpdateDeliveryOptionsAdapter(mContext, vendorDeliveryOptionsList!!, mContext, mContext)
+            deliveryOptions1Adapter = UpdateDeliveryOptionsAdapter(mContext, vendorDeliveryOptionsList!!, mContext, mContext,openTime,closeTime)
             recyclerview.layoutManager = LinearLayoutManager(mContext)
             recyclerview.adapter = deliveryOptions1Adapter
 
@@ -115,7 +117,33 @@ class UpdateDeliveryOptionsActivity : BaseActivity(), View.OnClickListener, Deli
     override fun onClick(v: View?) {
         when (v!!.id) {
             R.id.btnConfirm -> {
-                makejsonArray()
+
+                if (vendorDeliveryOptionsupdatedList!!.isEmpty())
+                {
+                    showSuccessToast(this,"Please select delivery or delivery date")
+
+                }
+                else
+                {
+                    for (i in 0 until vendorDeliveryOptionsupdatedList!!.size)
+                    {
+                        if (vendorDeliveryOptionsupdatedList!![i].noDelivery==1||vendorDeliveryOptionsupdatedList!![i].deliveryTimeTo.isNotEmpty())
+                        {
+                            makebuttonclickable = true
+                        }
+                        else
+                        {
+                            makebuttonclickable = false
+                            showSuccessToast(this,"Please select no delivery or delivery date for ${vendorDeliveryOptionsupdatedList!![i].day}")
+                            break
+                        }
+                    }
+                }
+
+                if (makebuttonclickable)
+                    makejsonArray()
+
+
             }
 
             R.id.ivBack -> {
@@ -125,7 +153,7 @@ class UpdateDeliveryOptionsActivity : BaseActivity(), View.OnClickListener, Deli
     }
 
 
-    open fun setUpdatedList(pos: Int, vendorDeliveryOptionsList: ArrayList<VendorDeliveryOption>) {
+     fun setUpdatedList(pos: Int, vendorDeliveryOptionsList: ArrayList<VendorDeliveryOption>) {
         vendorDeliveryOptionsupdatedList = vendorDeliveryOptionsList
         Log.e("delivertybe", vendorDeliveryOptionsupdatedList!!.get(pos).deliveryTimeTo)
         Log.e("list", vendorDeliveryOptionsupdatedList.toString())
@@ -148,7 +176,7 @@ class UpdateDeliveryOptionsActivity : BaseActivity(), View.OnClickListener, Deli
                 vendorDeliveryOptionLists.put("updated", vendorDeliveryOptionsupdatedList!!.get(i).updated)
                 vendorDeliveryOptionLists.put("createdAt", vendorDeliveryOptionsupdatedList!!.get(i).createdAt)
                 vendorDeliveryOptionLists.put("updatedAt", vendorDeliveryOptionsupdatedList!!.get(i).updatedAt)
-            } catch (e: JSONException) { // TODO Auto-generated catch block
+            } catch (e: JSONException) {
                 e.printStackTrace()
             }
 
@@ -191,6 +219,7 @@ class UpdateDeliveryOptionsActivity : BaseActivity(), View.OnClickListener, Deli
                 val partOpenTime = mValidationClass.createPartFromString(openTime)
                 val partCloseTime = mValidationClass.createPartFromString(closeTime)
                 val partHomeDelivery = mValidationClass.createPartFromString(isDeliver)
+                val vendorId = mValidationClass.createPartFromString(SharedPrefUtil.getInstance().userId)
                 val partDeliveriesPerDay = mValidationClass.createPartFromString(et_max_number.text.toString())
                 val partDeliveryOptionsJsonArrayString = mValidationClass.createPartFromString(deliveryOptionsJsonArray)
 
@@ -216,6 +245,7 @@ class UpdateDeliveryOptionsActivity : BaseActivity(), View.OnClickListener, Deli
                 map.put("deliveriesPerDay", partDeliveriesPerDay)
                 map.put("homeDelivery", partHomeDelivery)
                 map.put("vendorDeliveryOptions", partDeliveryOptionsJsonArrayString)
+                map.put("vendorId", vendorId)
 
                 var bodyimage = ""
 
@@ -224,7 +254,7 @@ class UpdateDeliveryOptionsActivity : BaseActivity(), View.OnClickListener, Deli
                 } else {
                     bodyimage = ""
                 }
-                viewModel.editShopDelivery(mContext, true, map, bodyimage!!,  mValidationClass)
+                viewModel.editShopDelivery(mContext, true, map, bodyimage,  mValidationClass)
                 viewModel.mResponse.observe(this, this)
 
             }
@@ -241,26 +271,33 @@ class UpdateDeliveryOptionsActivity : BaseActivity(), View.OnClickListener, Deli
             it!!.status == Status.SUCCESS -> {
                 if (it.data is EditProfileAddShopResponsess) {
                     val addShopResponsess: EditProfileAddShopResponsess = it.data
-                    if (addShopResponsess.getCode() == Constants.success_code) {
+                    if (addShopResponsess.code == Constants.success_code) {
                         showSuccessToast(mContext, addShopResponsess.message)
 
-                        MyApplication.getnstance()
-                                .setString(
-                                        Constants.AuthKey,
-                                        addShopResponsess!!.body.token!!
-                                )
+//                        MyApplication.getnstance()
+//                                .setString(
+//                                        Constants.AuthKey,
+//                                        addShopResponsess.body.token!!
+//                                )
                         MyApplication.instance!!.setString(Constants.UserData, modelToString(addShopResponsess))
 
-                        SharedPrefUtil.getInstance().saveAuthToken(addShopResponsess.body.token)
+                    //    SharedPrefUtil.getInstance().saveAuthToken(addShopResponsess.body.token)
+                        if (addShopResponsess.body.image!=null)
                         SharedPrefUtil.getInstance().saveImage(addShopResponsess.body.image)
                         SharedPrefUtil.getInstance().saveUserId(addShopResponsess.body.id.toString())
+                        if (addShopResponsess.body.email!=null)
                         SharedPrefUtil.getInstance().saveEmail(addShopResponsess.body.email)
+                        if (addShopResponsess.body.name!=null)
                         SharedPrefUtil.getInstance().saveName(addShopResponsess.body.name)
-                        MyShopActivity.mContext.finish()
-                        MyShopEditActivity.mContext.finish()
-                        finish()
-                    }
 
+                        val gson= GsonBuilder().create()
+
+                        SharedPrefUtil.getInstance().editProfilerespo(gson.toJson(addShopResponsess.body))
+
+                        val intent = Intent(mContext, HomeActivity::class.java)
+                        Constants.currentFragment= "Profile"
+                        startActivity(intent)
+                    }
                 }
 
             }
