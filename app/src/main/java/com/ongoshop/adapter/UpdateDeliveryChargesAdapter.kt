@@ -58,22 +58,19 @@ class UpdateDeliveryChargesAdapter(
 
         fun bindItems(vendorDeliveryChargeList: VendorDeliveryCharge) {
 
-            tvMinDistance.setText(vendorDeliveryChargeList.minDistance.toString())
-            tvMaxDistance.setText(vendorDeliveryChargeList.maxDistance.toString() + context!!.getString(R.string.kms))
+            tvMinDistance.text = vendorDeliveryChargeList.minDistance.toString()
+            tvMaxDistance.text = vendorDeliveryChargeList.maxDistance.toString() + context!!.getString(R.string.kms)
             etPrice.setText(vendorDeliveryChargeList.price.toString())
 
             etPrice.addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
                 override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {}
                 override fun afterTextChanged(s: Editable) {
-                    if (s.length >= 1) {
+                    if (s.isNotEmpty()) {
                         setPrice(etPrice.text.toString())
-                    } else {
-
                     }
                 }
             })
-
 
             ivOn.setOnClickListener {
                 setFreeDelivery("on")
@@ -108,7 +105,7 @@ class UpdateDeliveryChargesAdapter(
         }
 
         fun setFreeDelivery(type: String) {
-            if (type.equals("on")) {
+            if (type == "on") {
                 ivOff.visibility = View.VISIBLE
                 ivOn.visibility = View.GONE
 
@@ -118,29 +115,29 @@ class UpdateDeliveryChargesAdapter(
               //  etPrice.isClickable = true
                 etPrice.isEnabled = true
 
-              //  etPrice.setKeyListener(etPrice.getTag() as KeyListener)
+              // etPrice.setKeyListener(etPrice.getTag() as KeyListener)
+
             } else {
                 ivOff.visibility = View.GONE
                 ivOn.visibility = View.VISIBLE
                 vendorDeliveryChargeList[adapterPosition].freeDelivery = 1
-
-                if (etPrice.text.toString().isEmpty())
-                {
-                    vendorDeliveryChargeList[adapterPosition].price = 0
-                }else
-                {
-                    vendorDeliveryChargeList[adapterPosition].price = etPrice.text.toString().toInt()
-                }
+                vendorDeliveryChargeList[adapterPosition].price = 0
+//                if (etPrice.text.toString().isEmpty())
+//                {
+//                    vendorDeliveryChargeList[adapterPosition].price = 0
+//                }else
+//                {
+//                   // vendorDeliveryChargeList[adapterPosition].price = etPrice.text.toString().toInt()
+//                    vendorDeliveryChargeList[adapterPosition].price =0
+//                }
 
                 updateDeliveryChargesActivity.setUpdatedList(adapterPosition, vendorDeliveryChargeList)
                /* etPrice.setTag(etPrice.getKeyListener())
                 etPrice.setKeyListener(null)*/
              //   etPrice.isClickable = false
-                etPrice.setEnabled(false);
+                etPrice.isEnabled = false
             }
         }
-
-
 
         init {
             itemView.setOnClickListener {

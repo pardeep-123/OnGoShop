@@ -78,9 +78,7 @@ class AddCardActivity : BaseActivity(), View.OnClickListener, Observer<RestObser
         etCardNumber = findViewById(R.id.et_card_number)
         ll_chackbox = findViewById(R.id.ll_chackbox)
 
-
-
-
+        
         if (intent.extras !=null){
             cardId= intent.getStringExtra("id")!!
             etCardNumber!!.setText(intent.getStringExtra("cardNumber"))

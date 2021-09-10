@@ -2,7 +2,6 @@ package com.ongoshop.adapter
 
 import android.app.TimePickerDialog
 import android.content.Context
-import android.util.Log
 
 import android.view.LayoutInflater
 import android.view.View
@@ -11,6 +10,7 @@ import android.widget.ImageView
 import android.widget.LinearLayout
 
 import android.widget.TextView
+import android.widget.Toast
 
 import androidx.recyclerview.widget.RecyclerView
 import com.ongoshop.R
@@ -24,12 +24,17 @@ import java.util.*
 import kotlin.collections.ArrayList
 
 class DeliveryOptionsAdapter(
-        val context: Context?,
-        internal var vendorDeliveryOptionList: ArrayList<VendorDeliveryOption>,
-        internal var deliveryOptionsActivity: DeliveryOptionsActivity, internal var deliveryOptionsClicklisetener: DeliveryOptionsClicklisetener
+    val context: Context?,
+    internal var vendorDeliveryOptionList: ArrayList<VendorDeliveryOption>,
+    internal var deliveryOptionsActivity: DeliveryOptionsActivity,
+    internal var deliveryOptionsClicklisetener: DeliveryOptionsClicklisetener,
+    var openTime: String,
+   var closeTime: String
 ) : RecyclerView.Adapter<DeliveryOptionsAdapter.DeliveryOptionsHolder>() {
 
     private var isNoDelivery: Int = 0
+    private var startChooseTime = ""
+    private var closeChooseTime = ""
 
     override fun onBindViewHolder(holder: DeliveryOptionsHolder, position: Int) {
         holder.bindItems(vendorDeliveryOptionList[position])
@@ -60,25 +65,25 @@ class DeliveryOptionsAdapter(
         fun bindItems(vendorDeliveryOptionList: VendorDeliveryOption) {
 
             if (vendorDeliveryOptionList.day.equals("sun")){
-                tvDay.setText("Sunday")
+                tvDay.text = "Sunday"
             }
             if (vendorDeliveryOptionList.day.equals("mon")){
-                tvDay.setText("Monday")
+                tvDay.text = "Monday"
             }
             if (vendorDeliveryOptionList.day.equals("tue")){
-                tvDay.setText("Tuesday")
+                tvDay.text = "Tuesday"
             }
             if (vendorDeliveryOptionList.day.equals("wed")){
-                tvDay.setText("Wednesday")
+                tvDay.text = "Wednesday"
             }
             if (vendorDeliveryOptionList.day.equals("thu")){
-                tvDay.setText("Thursday")
+                tvDay.text = "Thursday"
             }
              if (vendorDeliveryOptionList.day.equals("fri")){
-                tvDay.setText("Friday")
+                 tvDay.text = "Friday"
             }
              if (vendorDeliveryOptionList.day.equals("sat")){
-                tvDay.setText("Saturday")
+                 tvDay.text = "Saturday"
             }
 
             ivOn.setOnClickListener {
@@ -96,7 +101,18 @@ class DeliveryOptionsAdapter(
             }
 
         }
+        /**
+         * Function to get the current Date
+         * @author Pardeep Sharma
+         *  implemented on 07 Sep 2021
+         */
+        fun getCurrentDate(): String {
+            val c = Calendar.getInstance().time
+            println("Current time => $c")
 
+            val df = SimpleDateFormat("yyyy-MM-dd")
+            return df.format(c)
+        }
         fun setNoDelivery(type: String){
             if (type.equals("on")){
                 ivOff.visibility = View.VISIBLE
@@ -126,27 +142,60 @@ class DeliveryOptionsAdapter(
 
                 //it's after current
                 if (type.equals("open")) {
-                    vendorDeliveryOptionList[adapterPosition].deliveryTimeFrom = SimpleDateFormat("hh:mm a").format(cal.time)
-                    vendorDeliveryOptionList[adapterPosition].deliverystartmiliseconds = (CommonMethods.time_to_timestamp(SimpleDateFormat("hh:mm a").format(cal.time), "hh:mm a"))
-                    tvFromTime.text = vendorDeliveryOptionList[adapterPosition].deliveryTimeFrom
+                    // get value of selected time
+                    startChooseTime = SimpleDateFormat("hh:mm a", Locale.getDefault()).format(cal.time)
+                    val currentStartTime = getCurrentDate() + " " + startChooseTime
+                    val shopStartTime = getCurrentDate() + " " + openTime
+                    val dfDate = SimpleDateFormat("yyyy-MM-dd hh:mm a",Locale.getDefault())
 
-                   // vendorDeliveryOptionList.set(adapterPosition, vendorDeliveryOptionList[adapterPosition])
-                    deliveryOptionsActivity.setUpdatedList(adapterPosition, vendorDeliveryOptionList)
+                    //check date before or after the shop time
+                    if (dfDate.parse(currentStartTime).before(dfDate.parse(shopStartTime))){
+                        Toast.makeText(context,"Please Choose time After your Shop Open time",
+                            Toast.LENGTH_LONG).show()
+                    }else {
+                        // else set the time if all good
+                        vendorDeliveryOptionList[adapterPosition].deliveryTimeFrom =
+                            SimpleDateFormat("hh:mm a", Locale.getDefault()).format(cal.time)
+                        vendorDeliveryOptionList[adapterPosition].deliverystartmiliseconds =
+                            (CommonMethods.time_to_timestamp(
+                                SimpleDateFormat("hh:mm a", Locale.getDefault()).format(cal.time),
+                                "hh:mm a"
+                            ))
+                        tvFromTime.text = vendorDeliveryOptionList[adapterPosition].deliveryTimeFrom
 
+                        // vendorDeliveryOptionList.set(adapterPosition, vendorDeliveryOptionList[adapterPosition])
+                        deliveryOptionsActivity.setUpdatedList(
+                            adapterPosition,
+                            vendorDeliveryOptionList
+                        )
+                    }
 
                 } else {
                     vendorDeliveryOptionList[adapterPosition].delivertendmiliseconds = (CommonMethods.time_to_timestamp(SimpleDateFormat("hh:mm a").format(cal.time), "hh:mm a"))
 
                     if (vendorDeliveryOptionList[adapterPosition].delivertendmiliseconds >= vendorDeliveryOptionList[adapterPosition].deliverystartmiliseconds) {
 
-                        vendorDeliveryOptionList[adapterPosition].deliveryTimeTo =SimpleDateFormat("hh:mm a").format(cal.time)
+                        closeChooseTime = SimpleDateFormat("hh:mm a", Locale.getDefault()).format(cal.time)
+                        val currentTime = getCurrentDate() +" "+ closeChooseTime
+                        val shopTime = getCurrentDate() +" "+ closeTime
+                        val dfDate = SimpleDateFormat("yyyy-MM-dd hh:mm a", Locale.getDefault())
+                        if (dfDate.parse(currentTime).after(dfDate.parse(shopTime))){
+                            Toast.makeText(context,"Please Choose time before your Shop close time",Toast.LENGTH_LONG).show()
+                        }else {
 
-                        tvToTime.text = vendorDeliveryOptionList[adapterPosition].deliveryTimeTo
-                       // vendorDeliveryOptionList.set(adapterPosition, vendorDeliveryOptionList[adapterPosition])
-                        deliveryOptionsActivity.setUpdatedList(adapterPosition, vendorDeliveryOptionList)
 
-                       // Log.e("endTimeTimestamp", closeTimeTimestamp.toString())
+                            vendorDeliveryOptionList[adapterPosition].deliveryTimeTo =
+                                SimpleDateFormat("hh:mm a").format(cal.time)
 
+                            tvToTime.text = vendorDeliveryOptionList[adapterPosition].deliveryTimeTo
+                            // vendorDeliveryOptionList.set(adapterPosition, vendorDeliveryOptionList[adapterPosition])
+                            deliveryOptionsActivity.setUpdatedList(
+                                adapterPosition,
+                                vendorDeliveryOptionList
+                            )
+
+                            // Log.e("endTimeTimestamp", closeTimeTimestamp.toString())
+                        }
                     } else {
                         //it's before current'
                         tvToTime.text = ""

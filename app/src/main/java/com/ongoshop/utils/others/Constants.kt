@@ -16,6 +16,8 @@ class Constants {
         const val TYPE_USER = "3"
 
         const val Name = "name"
+        const val openTime = "openTime"
+        const val closeTime = "closeTime"
         const val Email = "email"
         const val Password = "password"
         const val PhoneNumber = "phone_number"

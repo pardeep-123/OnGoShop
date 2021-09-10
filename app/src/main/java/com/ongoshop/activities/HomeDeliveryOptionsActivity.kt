@@ -6,6 +6,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.ongoshop.R
@@ -48,7 +49,8 @@ class HomeDeliveryOptionsActivity : BaseActivity(), View.OnClickListener, Observ
 
         btnYes.setOnClickListener(mContext)
         btnNo.setOnClickListener(mContext)
-
+   Toast.makeText(applicationContext,SharedPrefUtil.getInstance().getString(Constants.openTime) + " " +
+                  SharedPrefUtil.getInstance().getString(Constants.closeTime),Toast.LENGTH_LONG).show()
         if (intent !=null){
             vendorDeliveryOptionsList = intent.getParcelableArrayListExtra<VendorDeliveryOption>("vendorDeliveryOptions") as ArrayList<VendorDeliveryOption>
             vendorDeliveryChargesList = intent.getParcelableArrayListExtra<VendorDeliveryCharge>("vendorDeliveryCharges") as ArrayList<VendorDeliveryCharge>

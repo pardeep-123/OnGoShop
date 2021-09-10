@@ -2,7 +2,6 @@ package com.ongoshop.activities
 
 
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -35,6 +34,9 @@ class DeliveryOptionsActivity : BaseActivity(), View.OnClickListener, DeliveryOp
 
     private var vendorDeliveryOptionsListJsonArray =""
 
+    private var openTime = ""
+    private var closeTime = ""
+
     override fun getContentId(): Int {
         return R.layout.activity_delivery_options_timings
     }
@@ -50,6 +52,8 @@ class DeliveryOptionsActivity : BaseActivity(), View.OnClickListener, DeliveryOp
 
 
         if (intent.extras !=null){
+            openTime = intent.getStringExtra("openTime")!!
+            closeTime = intent.getStringExtra("closeTime")!!
             vendorDeliveryOptionsList = intent.getParcelableArrayListExtra<VendorDeliveryOption>("vendorDeliveryOptions") as ArrayList<VendorDeliveryOption>
             Log.e("DeliOptionSize", vendorDeliveryOptionsList!!.size.toString())
             vendorDeliveryChargesList = intent.getParcelableArrayListExtra<VendorDeliveryCharge>("vendorDeliveryCharges") as ArrayList<VendorDeliveryCharge>
@@ -57,7 +61,7 @@ class DeliveryOptionsActivity : BaseActivity(), View.OnClickListener, DeliveryOp
 
         var body = gson.fromJson<SignupResponsess.Body>(SharedPrefUtil.getInstance().getregisterr(),SignupResponsess.Body::class.java)
 
-            deliveryOptions1Adapter = DeliveryOptionsAdapter(mContext, vendorDeliveryOptionsList!!, mContext, mContext)
+            deliveryOptions1Adapter = DeliveryOptionsAdapter(mContext, vendorDeliveryOptionsList!!, mContext, mContext,openTime,closeTime)
             recyclerview.layoutManager = LinearLayoutManager(mContext)
             recyclerview.adapter = deliveryOptions1Adapter
 

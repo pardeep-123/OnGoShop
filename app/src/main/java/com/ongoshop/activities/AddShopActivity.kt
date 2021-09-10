@@ -33,6 +33,7 @@ import com.ongoshop.pojo.VendorDeliveryOption
 import com.ongoshop.utils.helperclasses.CategoryTypesClicklisetener
 import com.ongoshop.utils.others.CommonMethods
 import com.ongoshop.utils.others.Constants
+import com.ongoshop.utils.others.SharedPrefUtil
 import com.ongoshop.viewmodel.AuthViewModel
 import com.yanzhenjie.album.Album
 import com.yanzhenjie.album.AlbumFile
@@ -186,6 +187,7 @@ class AddShopActivity : BaseActivity(), View.OnClickListener,  Observer<RestObse
             //it's after current
             if (type == "open") {
                 tv_open_time.text = SimpleDateFormat("hh:mm a").format(cal.time)
+                SharedPrefUtil.getInstance().saveString(Constants.openTime,tv_open_time.text.toString())
                 openTimeTimestamp = (CommonMethods.time_to_timestamp(tv_open_time.text.toString(), "hh:mm a"))
                 Log.e("startTimeTimestamp", openTimeTimestamp.toString())
 
@@ -193,6 +195,7 @@ class AddShopActivity : BaseActivity(), View.OnClickListener,  Observer<RestObse
                 closeTimeTimestamp = (CommonMethods.time_to_timestamp(SimpleDateFormat("hh:mm a").format(cal.time), "hh:mm a"))
                 if (closeTimeTimestamp >= openTimeTimestamp) {
                     tv_close_time.text = SimpleDateFormat("hh:mm a").format(cal.time)
+                    SharedPrefUtil.getInstance().saveString(Constants.closeTime,tv_close_time.text.toString())
                     Log.e("endTimeTimestamp", closeTimeTimestamp.toString())
 
                 } else {

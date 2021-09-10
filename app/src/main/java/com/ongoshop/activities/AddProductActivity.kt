@@ -234,18 +234,18 @@ class AddProductActivity : BaseActivity(), View.OnClickListener, Observer<RestOb
                 val partBarCodeNumber = mValidationClass.createPartFromString(et_bar_code.text.toString().trim())
 
                 val map = HashMap<String, RequestBody>()
-                map.put("categoryId", partCategoryId)
-                map.put("name", partProductName)
-                map.put("description", partProductDescription)
-                map.put("countryOfOrigin", partCountryOfOrigin)
-                map.put("gtinNumber", partGTINNumber)
-                map.put("brandName", partBrandName)
-                map.put("mrp", partMRP)
-                map.put("isBarcodeItem", partisBarcode)
-                map.put("weightUnit", partWeightUnit)
-                map.put("isAvailable", partIsAvailable)
-                map.put("weight", partWideght)
-                map.put("barcode", partBarCodeNumber)
+                map["categoryId"] = partCategoryId
+                map["name"] = partProductName
+                map["description"] = partProductDescription
+                map["countryOfOrigin"] = partCountryOfOrigin
+                map["gtinNumber"] = partGTINNumber
+                map["brandName"] = partBrandName
+                map["mrp"] = partMRP
+                map["isBarcodeItem"] = partisBarcode
+                map["weightUnit"] = partWeightUnit
+                map["isAvailable"] = partIsAvailable
+                map["weight"] = partWideght
+                map["barcode"] = partBarCodeNumber
 
                 if (mImagePath.isNotEmpty())
                 viewModel.addProductApi(this, true, map, bodyimage!!)

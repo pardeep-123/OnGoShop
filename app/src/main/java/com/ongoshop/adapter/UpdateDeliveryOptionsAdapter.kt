@@ -159,7 +159,9 @@ class UpdateDeliveryOptionsAdapter(
                 cal.set(Calendar.MINUTE, minute)
 
                 //it's after current
-                if (type.equals("open")) {
+                if (type == "open") {
+
+                    // First compare the current time with shop open
                     startTime = SimpleDateFormat("hh:mm a").format(cal.time)
                   val currentTime = getCurrentDate() +" "+ startTime
                     val shopTime = getCurrentDate() +" "+ openTime
