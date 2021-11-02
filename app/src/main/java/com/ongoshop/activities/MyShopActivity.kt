@@ -1,6 +1,5 @@
 package com.ongoshop.activities
 
-
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
@@ -16,9 +15,7 @@ import com.ongoshop.utils.others.SharedPrefUtil
 import kotlinx.android.synthetic.main.activity_my_shop.*
 import kotlin.collections.ArrayList
 
-
 class MyShopActivity : BaseActivity(), View.OnClickListener {
-
 
     private var shopName = ""
     private lateinit var myShopDeliveryChargesAdapter: MyShopDeliveryChargesAdapter

@@ -64,7 +64,6 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
             notificationChannel.setLockscreenVisibility(Notification.VISIBILITY_PUBLIC);
         }
 
-
         Log.e(TAG, "Notification Message Body: " + remoteMessage.getData());
 
         if (remoteMessage.getData().size() > 0) {

@@ -90,7 +90,7 @@ class UpdateDeliveryChargesAdapter(
             {
                 ivOff.visibility = View.GONE
                 ivOn.visibility = View.VISIBLE
-
+                etPrice.isEnabled = false
                 etPrice.setText("")
 
             }

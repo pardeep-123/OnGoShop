@@ -14,7 +14,6 @@ class Constants {
         val UserData = "userData"
 
         const val TYPE_USER = "3"
-
         const val Name = "name"
         const val openTime = "openTime"
         const val closeTime = "closeTime"

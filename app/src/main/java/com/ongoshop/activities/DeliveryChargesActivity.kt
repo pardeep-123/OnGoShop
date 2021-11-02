@@ -130,7 +130,6 @@ class DeliveryChargesActivity : BaseActivity(), View.OnClickListener, Observer<R
                             makebuttonclickable = true
                         }
 
-
                         else
                         {
                             showSuccessToast(this,"Please select free delivery or charges for ${vendorDeliveryChargesupdatedList!![i].minDistance}-${vendorDeliveryChargesupdatedList!![i].maxDistance}")

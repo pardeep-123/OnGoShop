@@ -2,6 +2,7 @@ package com.ongoshop.activities
 
 import android.app.Dialog
 import android.content.Intent
+import android.os.Build
 
 import android.os.Bundle
 import android.util.Log
@@ -143,6 +144,7 @@ class LoginActivity : BaseActivity(), View.OnClickListener, Observer<RestObserva
                             val intent = Intent(mContext, HomeActivity::class.java)
                             startActivity(intent)
                             finishAffinity()
+
                         }
                         else{
                             showAlerterRed("Wrong credentials!!")

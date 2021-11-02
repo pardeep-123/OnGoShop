@@ -124,6 +124,7 @@ class ProfileFragment : BaseFragment(), View.OnClickListener, Observer<RestObser
                 intent.putExtra("countryCode", countryCode)
                 intent.putExtra("image", userImage)
                 intent.putExtra("userId", userId)
+                intent.putExtra("shopAddress", shopAddress)
                 startActivity(intent)
             }
         }
@@ -133,7 +134,7 @@ class ProfileFragment : BaseFragment(), View.OnClickListener, Observer<RestObser
         shopName= shopdetails.vendorDetail.shopName
         shopCategory= shopdetails.vendorDetail.shopCategory
         shopABN= shopdetails.vendorDetail.abn
-        shopAddress= shopdetails.vendorDetail.shopAddress
+        shopAddress= shopdetails.vendorDetail.geoLocation
         shopBuildingNumber= shopdetails.vendorDetail.buildingNumber
         shopStreetNumber= shopdetails.vendorDetail.streetNumber
         shopCity= shopdetails.vendorDetail.city
@@ -159,7 +160,7 @@ class ProfileFragment : BaseFragment(), View.OnClickListener, Observer<RestObser
                       //  tv_name.text = getProfileResponse.body.name
                         tv_name.text = getProfileResponse.body.vendorDetail.name
                         tv_email.text = getProfileResponse.body.email
-                        tv_addres.text = getProfileResponse.body.geoLocation
+                        tv_addres.text = getProfileResponse.body.vendorDetail.geoLocation
                         tv_phone.text = "+"+getProfileResponse.body.countryCode + "-" + getProfileResponse.body.phone
                         Glide.with(requireActivity()).load(getProfileResponse.body.vendorDetail.image).error(R.mipmap.no_image_placeholder).into(iv_profile_image)
                         userId= getProfileResponse.body.id.toString()

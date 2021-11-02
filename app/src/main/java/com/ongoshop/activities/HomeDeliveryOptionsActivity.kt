@@ -1,11 +1,12 @@
 package com.ongoshop.activities
 
 
-import android.app.TimePickerDialog
+import android.app.Dialog
 import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.View
+import android.widget.Button
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -20,12 +21,9 @@ import com.ongoshop.utils.others.Constants
 import com.ongoshop.utils.others.MyApplication
 import com.ongoshop.utils.others.SharedPrefUtil
 import com.ongoshop.viewmodel.AuthViewModel
-
 import kotlinx.android.synthetic.main.activity_delivery_options.*
-
 import okhttp3.RequestBody
 import java.io.File
-
 import java.util.*
 
 
@@ -37,7 +35,7 @@ class HomeDeliveryOptionsActivity : BaseActivity(), View.OnClickListener, Observ
     private var isDeliver = ""
     private var vendorDeliveryOptionsList: ArrayList<VendorDeliveryOption>? = ArrayList()
     private var vendorDeliveryChargesList: ArrayList<VendorDeliveryCharge>? = ArrayList()
-
+    var dialog: Dialog? = null
 
     override fun getContentId(): Int {
         return R.layout.activity_delivery_options
@@ -49,8 +47,8 @@ class HomeDeliveryOptionsActivity : BaseActivity(), View.OnClickListener, Observ
 
         btnYes.setOnClickListener(mContext)
         btnNo.setOnClickListener(mContext)
-   Toast.makeText(applicationContext,SharedPrefUtil.getInstance().getString(Constants.openTime) + " " +
-                  SharedPrefUtil.getInstance().getString(Constants.closeTime),Toast.LENGTH_LONG).show()
+//   Toast.makeText(applicationContext,SharedPrefUtil.getInstance().getString(Constants.openTime) + " " +
+//                  SharedPrefUtil.getInstance().getString(Constants.closeTime),Toast.LENGTH_LONG).show()
         if (intent !=null){
             vendorDeliveryOptionsList = intent.getParcelableArrayListExtra<VendorDeliveryOption>("vendorDeliveryOptions") as ArrayList<VendorDeliveryOption>
             vendorDeliveryChargesList = intent.getParcelableArrayListExtra<VendorDeliveryCharge>("vendorDeliveryCharges") as ArrayList<VendorDeliveryCharge>
@@ -148,35 +146,56 @@ class HomeDeliveryOptionsActivity : BaseActivity(), View.OnClickListener, Observ
         }
     }
 
-
-
-
     override fun onChanged(it: RestObservable?) {
         when {
             it!!.status == Status.SUCCESS -> {
                 if (it.data is EditProfileAddShopResponsess) {
                     val addShopResponsess: EditProfileAddShopResponsess = it.data
-                    if (addShopResponsess.getCode() == Constants.success_code) {
-                      showSuccessToast(mContext, addShopResponsess.message)
-                        MyApplication.getnstance()
-                                .setString(
-                                        Constants.AuthKey,
-                                        addShopResponsess.getBody()!!.token!!
-                                )
-                        MyApplication.instance!!.setString(Constants.UserData, modelToString(addShopResponsess.getBody()!!))
+//                    if (addShopResponsess.getCode() == Constants.success_code) {
+//                      showSuccessToast(mContext, addShopResponsess.message)
+//                        MyApplication.getnstance()
+//                                .setString(
+//                                        Constants.AuthKey,
+//                                        addShopResponsess.getBody()!!.token!!
+//                                )
+//                        MyApplication.instance!!.setString(Constants.UserData, modelToString(addShopResponsess.getBody()!!))
+//
+//                        SharedPrefUtil.getInstance().saveAuthToken(addShopResponsess.getBody()!!.token)
+//                        SharedPrefUtil.getInstance().saveImage(addShopResponsess.getBody()!!.image)
+//                        SharedPrefUtil.getInstance().saveUserId(addShopResponsess.getBody()!!.id.toString())
+//                        SharedPrefUtil.getInstance().saveEmail(addShopResponsess.getBody()!!.email)
+//                        SharedPrefUtil.getInstance().saveName(addShopResponsess.getBody()!!.name)
+//                        SharedPrefUtil.getInstance().isLogin = true
+//
+//                        val intent = Intent(mContext, HomeActivity::class.java)
+//                        startActivity(intent)
+//                        finishAffinity()
+//                    }
+        //
+                 //   val addShopResponsess: EditProfileAddShopResponsess = it.data
+                    if (addShopResponsess.code == Constants.success_code) {
+                        showSuccessToast(mContext, addShopResponsess.message)
 
-                        SharedPrefUtil.getInstance().saveAuthToken(addShopResponsess.getBody()!!.token)
-                        SharedPrefUtil.getInstance().saveImage(addShopResponsess.getBody()!!.image)
-                        SharedPrefUtil.getInstance().saveUserId(addShopResponsess.getBody()!!.id.toString())
-                        SharedPrefUtil.getInstance().saveEmail(addShopResponsess.getBody()!!.email)
-                        SharedPrefUtil.getInstance().saveName(addShopResponsess.getBody()!!.name)
+                        showDailog(addShopResponsess.body)
+//                        MyApplication.getnstance()
+//                                .setString(
+//                                        Constants.AuthKey,
+//                                        addShopResponsess.body.token!!
+//                                )
+                        MyApplication.instance!!.setString(Constants.UserData, modelToString(addShopResponsess))
+
+                        // SharedPrefUtil.getInstance().saveAuthToken(addShopResponsess.body.token)
+                        if (addShopResponsess.body.image!=null)
+                            SharedPrefUtil.getInstance().saveImage(addShopResponsess.body.image)
+                        SharedPrefUtil.getInstance().saveUserId(addShopResponsess.body.id.toString())
+                        if (addShopResponsess.body.email!=null)
+                            SharedPrefUtil.getInstance().saveEmail(addShopResponsess.body.email)
+                        if (addShopResponsess.body.name!=null)
+                            SharedPrefUtil.getInstance().saveName(addShopResponsess.body.name)
                         SharedPrefUtil.getInstance().isLogin = true
 
-                        val intent = Intent(mContext, HomeActivity::class.java)
-                        startActivity(intent)
-                        finishAffinity()
                     }
-
+                    //
                 }
 
             }
@@ -191,5 +210,30 @@ class HomeDeliveryOptionsActivity : BaseActivity(), View.OnClickListener, Observ
 
             }
         }
+    }
+
+    fun showDailog(addShopResponsess: EditProfileAddShopResponsess.Body) {
+        dialog = Dialog(mContext)
+        dialog!!.window!!.setBackgroundDrawableResource(android.R.color.transparent)
+        dialog!!.setContentView(R.layout.alert_delivery3)
+        dialog!!.setCancelable(false)
+        val btnOk = dialog!!.findViewById<Button>(R.id.btnOk)
+        btnOk.setOnClickListener {
+            //   val intent = Intent(mContext, HomeActivity::class.java)
+            /**
+             * To make user to login after admin approval
+             */
+            val intent = Intent(mContext, LoginActivity::class.java)
+            startActivity(intent)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TASK or Intent.FLAG_ACTIVITY_NEW_TASK
+            startActivity(intent)
+            finishAffinity()
+            // Clear all the shared preferneces here.
+            MyApplication.instance!!.clearData()
+            SharedPrefUtil.getInstance().clear()
+            SharedPrefUtil.getInstance().isLogin = false
+            dialog!!.dismiss()
+        }
+        dialog!!.show()
     }
 }

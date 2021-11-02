@@ -23,8 +23,6 @@ class DeliveryChargesAdapter(
 
     override fun onBindViewHolder(holder: DeliveryChargesHolder, position: Int) {
 
-
-
         holder.tvMinDistance.setText(vendorDeliveryChargeList[position].minDistance.toString())
         holder.tvMaxDistance.setText("${vendorDeliveryChargeList[position].maxDistance.toString()} Km")
         holder.myCustomEditTextListener.updatePosition(position)
@@ -36,10 +34,10 @@ class DeliveryChargesAdapter(
 
 
         holder.ivOn.setOnClickListener {
-            setFreeDelivery(holder.ivOff,holder.ivOn,position,"on")
+            setFreeDelivery(holder.ivOff,holder.ivOn,position,"on",holder.etPrice)
         }
         holder.ivOff.setOnClickListener {
-            setFreeDelivery(holder.ivOff,holder.ivOn,position,"off")
+            setFreeDelivery(holder.ivOff,holder.ivOn,position,"off",holder.etPrice)
 
         }
 
@@ -59,24 +57,32 @@ class DeliveryChargesAdapter(
     }
 
     override fun getItemViewType(position: Int): Int {
-        return super.getItemViewType(position)
+        return position
 
     }
 
     fun getvendorchargeslist():ArrayList<VendorDeliveryCharge>{
         return vendorDeliveryChargeList
     }
-    fun setFreeDelivery(ivOff:ImageView,ivOn:ImageView,position: Int,type: String) {
+    fun setFreeDelivery(
+        ivOff: ImageView,
+        ivOn: ImageView,
+        position: Int,
+        type: String,
+        etPrice: EditText
+    ) {
         if (type.equals("on")) {
             ivOff.visibility = View.VISIBLE
             ivOn.visibility = View.GONE
-
+            etPrice.isEnabled = true
             vendorDeliveryChargeList[position].price = 0
             vendorDeliveryChargeList[position].freeDelivery = 0
            // deliveryChargesActivity.setUpdatedList(position, vendorDeliveryChargeList)
 
            // etPrice.setKeyListener(etPrice.getTag() as KeyListener)
         } else {
+            etPrice.isEnabled = false
+            etPrice.setText("")
             ivOff.visibility = View.GONE
             ivOn.visibility = View.VISIBLE
             vendorDeliveryChargeList[position].freeDelivery = 1
@@ -130,6 +136,7 @@ class DeliveryChargesAdapter(
             // no op
         }
     }
+
 
     }
 
