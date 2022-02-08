@@ -104,7 +104,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         LocalBroadcastManager.getInstance(this).sendBroadcast(local);
 
         PendingIntent pendingIntent = PendingIntent.getActivities(context, 21,  new Intent[] {launchintent, openintent}, PendingIntent.FLAG_UPDATE_CURRENT);
-        Bitmap icon1 = BitmapFactory.decodeResource(context.getResources(), R.mipmap.ic_launcher);
+        Bitmap icon1 = BitmapFactory.decodeResource(context.getResources(), R.drawable.mainongoicon);
         Uri defaultSoundUri = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
 
         Notification.Builder notificationBuilder = new Notification.Builder(context)
@@ -128,7 +128,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
 
     private int getNotificationIcon() {
         boolean useWhiteIcon = (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP);
-        return useWhiteIcon ? R.mipmap.ic_launcher : R.mipmap.ic_launcher;
+        return useWhiteIcon ? R.drawable.mainongoicon : R.drawable.mainongoicon;
     }
 
 }
