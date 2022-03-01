@@ -35,6 +35,7 @@ class VerificationCodeActivity : BaseActivity(), TextWatcher, View.OnClickListen
     private var vendorDeliveryOptionsList: ArrayList<VendorDeliveryOption>? = ArrayList()
     private var vendorDeliveryChargesList: ArrayList<VendorDeliveryCharge>? = ArrayList()
 
+    private var fromLogin = false
     override fun getContentId(): Int {
         return R.layout.activity_verfication_code
     }
@@ -61,9 +62,12 @@ class VerificationCodeActivity : BaseActivity(), TextWatcher, View.OnClickListen
                 vendorDeliveryChargesList = intent.getParcelableArrayListExtra<VendorDeliveryCharge>("vendorDeliveryCharges") as ArrayList<VendorDeliveryCharge>
 
             }
-
+            fromLogin = intent.getBooleanExtra("fromLogin",false)
         }
 
+            if (fromLogin){
+                resendOTPApi()
+            }
 
     }
 
@@ -165,7 +169,7 @@ class VerificationCodeActivity : BaseActivity(), TextWatcher, View.OnClickListen
                 if (it.data is VerifyOTPResponse) {
                     val verifyOTPResponse: VerifyOTPResponse = it.data
                     if (verifyOTPResponse.getCode()!!.equals(Constants.success_code)) {
-                        showSuccessToast(mContext, verifyOTPResponse.getMessage()!!)
+                      //  showSuccessToast(mContext, verifyOTPResponse.getMessage()!!)
                         val intent = Intent(this, AddShopActivity::class.java)
                         intent.putParcelableArrayListExtra("vendorDeliveryOptions", vendorDeliveryOptionsList)
                         intent.putParcelableArrayListExtra("vendorDeliveryCharges", vendorDeliveryChargesList)
@@ -181,7 +185,7 @@ class VerificationCodeActivity : BaseActivity(), TextWatcher, View.OnClickListen
                 if (it.data is ResendOTPResponse) {
                     val resendOTPResponse: ResendOTPResponse = it.data
                     if (resendOTPResponse.getCode()!!.equals(Constants.success_code)) {
-                         showSuccessToast(mContext, resendOTPResponse.getMessage()!!)
+                       //  showSuccessToast(mContext, resendOTPResponse.getMessage()!!)
 
                     } else {
                         CommonMethods.AlertErrorMessage(mContext, resendOTPResponse.getMessage())

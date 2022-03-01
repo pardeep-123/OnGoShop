@@ -48,5 +48,6 @@ class VendorDetail(
     val geoLocation: String,
     val shopAddress: String,
     val shopDescription: String,
-    val shopName: String
+    val shopName: String,
+    val isShopAdded: Int
 ) : Parcelable

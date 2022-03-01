@@ -30,7 +30,7 @@
     <string name="error_product_description">Please enter product description</string>
 
     <string name="error_business_name">Please enter business name</string>
-    <string name="error_category">Please enter category</string>
+    <string name="error_category">Please select category</string>
     <string name="error_abn">Please enter ABN</string>
     <string name="error_building_number">Please enter building number</string>
     <string name="error_street_number">Please enter street number</string>
@@ -302,6 +302,7 @@
     <string name="yearly">Yearly</string>
     <string name="kms">Kms</string>
     <string name="gram">Grams</string>
+    <string name="choose_location">Select a address</string>
 
 
 </resources>

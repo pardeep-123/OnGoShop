@@ -96,6 +96,22 @@
           }
         },
         {
+          "client_id": "96409029602-bnj7ppsneab5ant6rbq2gpij7u95d0h8.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ongouser",
+            "certificate_hash": "89aabb2d699a4f2e099d4b609335de8b21105694"
+          }
+        },
+        {
+          "client_id": "96409029602-dq6lvai07in11h4054rghhlqnakh9sb9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ongouser",
+            "certificate_hash": "6a7eb54651ef17f51090670421d3539d20aaedb4"
+          }
+        },
+        {
           "client_id": "96409029602-hdvmu7ill7r97eiv152j6pk14r3f2mbk.apps.googleusercontent.com",
           "client_type": 3
         }

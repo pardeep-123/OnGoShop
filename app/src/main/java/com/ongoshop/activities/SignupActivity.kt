@@ -272,6 +272,8 @@ class SignupActivity : BaseActivity(), View.OnClickListener, Observer<RestObserv
             showAlerterRed(resources.getString(R.string.error_cpassword_length))
         else if (!et_cPass.text.toString().equals(edPass.text.toString()))
             showAlerterRed(resources.getString(R.string.error_password_not_matched))
+        else if (mValidationClass.checkStringNull(et_address.text.toString()))
+            showAlerterRed(resources.getString(R.string.choose_location))
         else if (isClick.equals("") || isClick.isEmpty())
             showAlerterRed(resources.getString(R.string.error_terms_conditions))
         else

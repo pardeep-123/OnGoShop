@@ -94,12 +94,15 @@
                 android:layout_marginRight="@dimen/_10sdp"
                 android:text="@string/scheduled_for_later"
                 android:textColor="@color/red"
+                android:id="@+id/schedule"
+                android:visibility="gone"
                 android:textSize="@dimen/_14sdp" />
 
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:visibility="gone"
                 android:layout_margin="@dimen/_5sdp">
 
                 <androidx.recyclerview.widget.RecyclerView

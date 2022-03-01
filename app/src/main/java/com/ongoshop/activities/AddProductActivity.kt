@@ -4,6 +4,7 @@ import android.app.Dialog
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.graphics.pdf.PdfDocument
 import android.os.Bundle
 import android.text.InputFilter
 import android.util.Log
@@ -150,10 +151,10 @@ class AddProductActivity : BaseActivity(), View.OnClickListener, Observer<RestOb
             showAlerterRed(resources.getString(R.string.error_gtin_number))
         else if (mValidationClass.checkStringNull(et_origin_country.text.toString().trim()))
             showAlerterRed(resources.getString(R.string.error_country_origin))
-        else if (mValidationClass.checkStringNull(tv_measurement_unit.text.toString().trim()))
-            showAlerterRed(resources.getString(R.string.error_measurement_unit))
         else if (mValidationClass.checkStringNull(et_weight.text.toString().trim()))
             showAlerterRed(resources.getString(R.string.error_product_weight))
+        else if (mValidationClass.checkStringNull(tv_measurement_unit.text.toString().trim()))
+            showAlerterRed(resources.getString(R.string.error_measurement_unit))
         else if (mValidationClass.checkStringNull(et_description.text.toString().trim()))
             showAlerterRed(resources.getString(R.string.error_product_description))
         else
