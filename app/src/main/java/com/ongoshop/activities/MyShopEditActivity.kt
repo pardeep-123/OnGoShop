@@ -161,7 +161,7 @@ class MyShopEditActivity : BaseActivity(), View.OnClickListener, Observer<RestOb
             tv_open_time.setText(openTime)
             tv_close_time.setText(closeTime)
 
-            Glide.with(mContext).load(shopImage).error(R.drawable.ic_image_placeholder).into(iv_shop_image)
+            Glide.with(mContext).load(shopImage).placeholder(R.drawable.ic_image_placeholder).error(R.drawable.ic_image_placeholder).into(iv_shop_image)
 
             openTimeTimestamp = (CommonMethods.time_to_timestamp(tv_open_time.text.toString(), "hh:mm a"))
             closeTimeTimestamp = (CommonMethods.time_to_timestamp(tv_close_time.text.toString(), "hh:mm a"))

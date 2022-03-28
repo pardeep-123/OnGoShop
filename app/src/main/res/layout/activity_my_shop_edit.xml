@@ -25,7 +25,7 @@
             style="@style/CommonTextWrapcontent"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="@dimen/_20sdp"
-            android:text="@string/my_shop"
+            android:text="@string/edit_my_shop"
             android:textColor="@color/white"
             android:textSize="@dimen/_14sdp" />
     </RelativeLayout>
@@ -49,8 +49,7 @@
                     android:id="@+id/iv_shop_image"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_250sdp"
-                    android:layout_below="@+id/ivBar"
-                    android:scaleType="fitXY"
+                    android:scaleType="centerCrop"
                     android:src="@mipmap/no_image_placeholder" />
 
                 <ImageView

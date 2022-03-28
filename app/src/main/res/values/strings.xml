@@ -303,6 +303,7 @@
     <string name="kms">Kms</string>
     <string name="gram">Grams</string>
     <string name="choose_location">Select a address</string>
+    <string name="edit_my_shop">Edit Shop</string>
 
 
 </resources>

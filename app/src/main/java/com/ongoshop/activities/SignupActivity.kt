@@ -78,16 +78,13 @@ class SignupActivity : BaseActivity(), View.OnClickListener, Observer<RestObserv
         btnVerification.setOnClickListener(mContext)
 
 
-        ccp.setOnCountryChangeListener(object : CountryCodePicker.OnCountryChangeListener {
-            override fun onCountrySelected(selectedCountry: Country?) {
-                ccp.getSelectedCountryCode()
-                ccp.showFlag(false)
-                ccp.enableHint(true)
-                ccp.setKeyboardAutoPopOnSearch(false)
-                countryCode = ccp.getSelectedCountryCode()
-
-            }
-        })
+        ccp.setOnCountryChangeListener {
+            ccp.selectedCountryCode
+            ccp.showFlag(false)
+            ccp.enableHint(true)
+            ccp.setKeyboardAutoPopOnSearch(false)
+            countryCode = ccp.selectedCountryCode
+        }
         fusedLocationClient = LocationServices.getFusedLocationProviderClient(this)
 
         /**
@@ -351,7 +348,7 @@ class SignupActivity : BaseActivity(), View.OnClickListener, Observer<RestObserv
                             "Place: ${place.name}, ${place.id}, ${place.addressComponents}, ${place.address}"
                         )
 
-                        et_address.setText(place.name.toString())
+                        et_address.setText(place.address.toString())
 
                         latLng = place.latLng
                         latitude = latLng!!.latitude

@@ -177,7 +177,7 @@
             android:screenOrientation="portrait"
             android:launchMode="singleTask"
 
-            android:windowSoftInputMode="stateAlwaysHidden" />
+            android:windowSoftInputMode="stateAlwaysHidden|adjustPan" />
       <!--  android:noHistory="true"-->
         <activity
             android:name=".activities.MaximumDeliveryPerDayActivity"

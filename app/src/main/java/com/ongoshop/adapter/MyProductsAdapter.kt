@@ -29,7 +29,7 @@ class MyProductsAdapter(internal var context: Context, internal var productList:
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyProductsViewHolder {
         return MyProductsViewHolder(
-                LayoutInflater.from(context).inflate(R.layout.list_products, parent, false)
+                LayoutInflater.from(context).inflate(R.layout.new_list_products, parent, false)
         )
        
        /* val v = inflater.inflate(R.layout.list_products, parent, false)
@@ -50,8 +50,7 @@ class MyProductsAdapter(internal var context: Context, internal var productList:
     fun filter(charText: String, nobooking: TextView) {
         var charText = charText
         charText = charText.toLowerCase()
-        val nList: MutableList<MyProductListingResponse.Body?> =
-                ArrayList<MyProductListingResponse.Body?>()
+        val nList: MutableList<MyProductListingResponse.Body?> = ArrayList()
         if (charText.length == 0) {
             nList.addAll(templist)
         } else {
@@ -81,7 +80,7 @@ class MyProductsAdapter(internal var context: Context, internal var productList:
         val tvProductWeight = itemView.findViewById(R.id.tv_product_weight) as TextView
         val tvProductDesc = itemView.findViewById(R.id.tv_product_desc) as TextView
         val tvProductPrice = itemView.findViewById(R.id.tv_product_price) as TextView
-        val rlProductlist = itemView.findViewById(R.id.rl_list) as RelativeLayout
+      //  val rlProductlist = itemView.findViewById(R.id.rl_list) as RelativeLayout
         val btnNotAvailable = itemView.findViewById(R.id.btn_not_available) as Button
         val btnAvailable = itemView.findViewById(R.id.btn_available) as Button
 
@@ -105,7 +104,7 @@ class MyProductsAdapter(internal var context: Context, internal var productList:
 
             Glide.with(context).load(productListing.image).error(R.mipmap.no_image_placeholder).into(ivProduct)
 
-            rlProductlist.setOnClickListener {
+            itemView.setOnClickListener {
                 var intent= Intent(context, ProductDetailActivity::class.java)
                 intent.putExtra("from", "MyProducts")
                 intent.putExtra("productId", productList.get(adapterPosition)!!.id.toString())

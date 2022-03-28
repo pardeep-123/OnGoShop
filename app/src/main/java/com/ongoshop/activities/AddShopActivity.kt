@@ -82,7 +82,7 @@ class AddShopActivity : BaseActivity(), View.OnClickListener,  Observer<RestObse
 
         getCategoryAPI()
 
-        if (intent !=null){
+        if (intent.extras !=null){
             vendorDeliveryOptionsList = intent.getParcelableArrayListExtra<VendorDeliveryOption>("vendorDeliveryOptions") as ArrayList<VendorDeliveryOption>
             vendorDeliveryChargesList = intent.getParcelableArrayListExtra<VendorDeliveryCharge>("vendorDeliveryCharges") as ArrayList<VendorDeliveryCharge>
         }

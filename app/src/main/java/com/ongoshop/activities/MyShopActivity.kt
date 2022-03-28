@@ -84,7 +84,7 @@ class MyShopActivity : BaseActivity(), View.OnClickListener {
                 shopStreetNumber + "," + shopCity + "," + shopCountry + "," + shopPostCode
             tv_building_number.text = shopBuildingNumber
             tv_postal_code.text = shopPostCode
-            Glide.with(mContext).load(shopImage).error(R.drawable.ic_image_placeholder)
+            Glide.with(mContext).load(shopImage).placeholder(R.drawable.ic_image_placeholder).error(R.drawable.ic_image_placeholder)
                 .into(iv_shop)
 
             if (isDeliver.equals("1")) {
@@ -223,7 +223,7 @@ class MyShopActivity : BaseActivity(), View.OnClickListener {
             tv_shop_address.setText(shopStreetNumber + "," + shopCity + "," + shopCountry + "," + shopPostCode)
             tv_building_number.setText(shopBuildingNumber)
             tv_postal_code.setText(shopPostCode)
-            Glide.with(mContext).load(shopImage).error(R.drawable.ic_image_placeholder)
+            Glide.with(mContext).load(shopImage).placeholder(R.drawable.ic_image_placeholder).error(R.drawable.ic_image_placeholder)
                 .into(iv_shop)
 
             if (vendorDeliveryOptionsList!!.get(0).deliveryTimeFrom.equals("")) {
